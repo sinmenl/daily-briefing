@@ -191,7 +191,7 @@ export default function Home() {
               <div>
                 <span className="planet-time">大胡子 · 22:26</span>
                 <strong>一个生成“反常识认知”的提示词</strong>
-                <span>完整原文与个人理解</span>
+                <span>完整原文</span>
               </div>
               <span className="open-label">展开</span>
             </summary>
@@ -200,11 +200,6 @@ export default function Home() {
                 <span>原文</span>
                 <p>就是这个提示词。拿走，不谢。</p>
                 <p>请你给我一个醍醐灌顶的认知，它是有违人们常识的。人们平时做的都是反的，但真正正确的方法应该是这样的。用大白话讲清楚，给我至少3个真实案例，每个案例有出处，不是运气。然后给一个最小可执行方法，一周以内的。不要鸡汤，我要实操。</p>
-              </div>
-              <div className="analysis">
-                <span>我的理解</span>
-                <p>这个提示词不是单纯追求“惊人观点”，而是设置了四层约束：反常识、大白话、真实证据、短周期行动。它试图防止 AI 只给出听起来深刻却无法验证的鸡汤。</p>
-                <p><strong>适用边界：</strong>“反常识”本身不等于正确。案例出处仍需逐一核验，不能因为 AI 给出了三个案例，就把一个有趣说法当成普遍规律。</p>
               </div>
             </div>
           </details>
