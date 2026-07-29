@@ -12,6 +12,16 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: base,
     title: "每日简报｜产品、创作与个人规划",
     description: "每天自动更新的产品早报、知识星球与个人行动简报。",
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+      googleBot: {
+        index: false,
+        follow: false,
+        noimageindex: true,
+      },
+    },
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
