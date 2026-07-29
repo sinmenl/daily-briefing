@@ -138,7 +138,7 @@ export default function Home() {
 
           <nav className="sidebar-nav">
             <div className="nav-group">
-              <a className="nav-title" href="#today"><span>✓</span>今天只做三件事</a>
+              <a className="nav-title" href="#today"><span className="nav-icon icon-focus" aria-hidden="true">✓</span>今天只做三件事</a>
               <div className="nav-sub">
                 {tasks.map((task, index) => (
                   <a href={`#task-${index + 1}`} key={task.title}>{task.title}</a>
@@ -147,7 +147,7 @@ export default function Home() {
             </div>
 
             <div className="nav-group">
-              <a className="nav-title" href="#briefing"><span>◫</span>产品与创作早报</a>
+              <a className="nav-title" href="#briefing"><span className="nav-icon icon-briefing" aria-hidden="true">▤</span>产品与创作早报</a>
               <div className="nav-sub">
                 {briefing.map((item, index) => (
                   <a href={`#brief-${index + 1}`} key={item.title}>{item.title}</a>
@@ -156,14 +156,14 @@ export default function Home() {
             </div>
 
             <div className="nav-group">
-              <a className="nav-title" href="#planet"><span>✦</span>昨日知识星球</a>
+              <a className="nav-title" href="#planet"><span className="nav-icon icon-planet" aria-hidden="true">✦</span>昨日知识星球</a>
               <div className="nav-sub">
                 <a href="#planet-post-1">反常识认知提示词</a>
               </div>
             </div>
 
             <div className="nav-group">
-              <a className="nav-title" href="#review"><span>↺</span>昨日复盘与趋势</a>
+              <a className="nav-title" href="#review"><span className="nav-icon icon-review" aria-hidden="true">↺</span>昨日复盘与趋势</a>
               <div className="nav-sub">
                 <a href="#yesterday-review">昨日复盘</a>
                 <a href="#seven-day-trend">近七天趋势</a>
@@ -172,11 +172,11 @@ export default function Home() {
             </div>
 
             <div className="nav-group">
-              <a className="nav-title" href="#schedule"><span>◷</span>今日时间块</a>
+              <a className="nav-title" href="#schedule"><span className="nav-icon icon-schedule" aria-hidden="true">◷</span>今日时间块</a>
             </div>
 
             <div className="nav-group">
-              <a className="nav-title" href="/hotlist/2026-07-28.html"><span>↗</span>昨日热点榜单</a>
+              <a className="nav-title" href="/hotlist/2026-07-28.html"><span className="nav-icon icon-hotlist" aria-hidden="true">↗</span>昨日热点榜单</a>
             </div>
           </nav>
 
