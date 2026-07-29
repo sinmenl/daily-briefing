@@ -85,17 +85,30 @@ const trends = [
   ["正向变化", "你开始直接向真实分享者提问，也越来越能明确说出“不感兴趣”和“不想做”。"],
 ];
 
+const briefDate = "2026-07-29";
+
 export default function Home() {
   return (
-    <main>
+    <main data-brief-date={briefDate}>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="返回顶部">
           <span className="brand-dot" />
           每日简报
         </a>
-        <div className="status">
-          <span className="status-dot" />
-          每天自动更新
+        <div className="top-actions">
+          <details className="date-picker">
+            <summary>
+              <span>{briefDate.replaceAll("-", ".")}</span>
+              <span className="chevron">⌄</span>
+            </summary>
+            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期">
+              <a href="/daily-briefing/archive/2026-07-29.html" aria-current="page">2026年7月29日</a>
+            </nav>
+          </details>
+          <div className="status">
+            <span className="status-dot" />
+            每天自动更新
+          </div>
         </div>
       </header>
 
