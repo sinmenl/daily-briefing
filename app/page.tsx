@@ -96,6 +96,18 @@ export default function Home() {
           每日简报
         </a>
         <div className="top-actions">
+          <button
+            className="menu-button"
+            type="button"
+            aria-label="打开阅读目录"
+            aria-controls="content-menu"
+            aria-expanded="false"
+            data-menu-button
+          >
+            <span />
+            <span />
+            <span />
+          </button>
           <details className="date-picker">
             <summary>
               <span>{briefDate.replaceAll("-", ".")}</span>
@@ -112,7 +124,66 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="page" id="top">
+      <button className="sidebar-overlay" type="button" aria-label="关闭阅读目录" data-menu-close />
+
+      <div className="app-shell">
+        <aside className="sidebar" id="content-menu" aria-label="简报阅读目录">
+          <div className="sidebar-head">
+            <div>
+              <span className="sidebar-kicker">CONTENTS</span>
+              <strong>今天看什么</strong>
+            </div>
+            <button className="menu-close" type="button" aria-label="关闭阅读目录" data-menu-close>×</button>
+          </div>
+
+          <nav className="sidebar-nav">
+            <div className="nav-group">
+              <a className="nav-title" href="#today"><span>✓</span>今天只做三件事</a>
+              <div className="nav-sub">
+                {tasks.map((task, index) => (
+                  <a href={`#task-${index + 1}`} key={task.title}>{task.title}</a>
+                ))}
+              </div>
+            </div>
+
+            <div className="nav-group">
+              <a className="nav-title" href="#briefing"><span>◫</span>产品与创作早报</a>
+              <div className="nav-sub">
+                {briefing.map((item, index) => (
+                  <a href={`#brief-${index + 1}`} key={item.title}>{item.title}</a>
+                ))}
+              </div>
+            </div>
+
+            <div className="nav-group">
+              <a className="nav-title" href="#planet"><span>✦</span>昨日知识星球</a>
+              <div className="nav-sub">
+                <a href="#planet-post-1">反常识认知提示词</a>
+              </div>
+            </div>
+
+            <div className="nav-group">
+              <a className="nav-title" href="#review"><span>↺</span>昨日复盘与趋势</a>
+              <div className="nav-sub">
+                <a href="#yesterday-review">昨日复盘</a>
+                <a href="#seven-day-trend">近七天趋势</a>
+                <a href="#action-diagnosis">执行力诊断</a>
+              </div>
+            </div>
+
+            <div className="nav-group">
+              <a className="nav-title" href="#schedule"><span>◷</span>今日时间块</a>
+            </div>
+
+            <div className="nav-group">
+              <a className="nav-title" href="/hotlist/2026-07-28.html"><span>↗</span>昨日热点榜单</a>
+            </div>
+          </nav>
+
+          <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
+        </aside>
+
+        <div className="page" id="top">
         <section className="hero">
           <div className="date-block">
             <div className="date-day">29</div>
@@ -131,13 +202,6 @@ export default function Home() {
           <div className="hero-mark" aria-hidden="true">晴</div>
         </section>
 
-        <nav className="section-nav" aria-label="页面目录">
-          <a href="#today">今日三件事</a>
-          <a href="#briefing">产品早报</a>
-          <a href="#planet">知识星球</a>
-          <a href="#review">个人复盘</a>
-        </nav>
-
         <section className="section" id="today">
           <div className="section-heading">
             <div>
@@ -147,8 +211,8 @@ export default function Home() {
             <p>留出缓冲，不把一天排满</p>
           </div>
           <div className="task-grid">
-            {tasks.map((task) => (
-              <article className={`task-card ${task.tone}`} key={task.number}>
+            {tasks.map((task, index) => (
+              <article className={`task-card ${task.tone}`} id={`task-${index + 1}`} key={task.number}>
                 <span className="task-number">{task.number}</span>
                 <h3>{task.title}</h3>
                 <p>{task.body}</p>
@@ -172,7 +236,7 @@ export default function Home() {
           </div>
           <div className="brief-list">
             {briefing.map((item, index) => (
-              <details className="brief-item" key={item.title}>
+              <details className="brief-item" id={`brief-${index + 1}`} key={item.title}>
                 <summary>
                   <span className="brief-index">{String(index + 1).padStart(2, "0")}</span>
                   <span className="brief-main">
@@ -198,7 +262,7 @@ export default function Home() {
             </div>
             <p>归档区间：7 月 28 日 23:30—7 月 29 日 23:30<br /><a className="archive-link" href="/knowledge/2026-07-29.md">查看原始归档 ↗</a></p>
           </div>
-          <details className="planet-card">
+          <details className="planet-card" id="planet-post-1">
             <summary>
               <div className="avatar">胡</div>
               <div>
@@ -227,14 +291,14 @@ export default function Home() {
             <p>事实与建议分开</p>
           </div>
           <div className="review-grid">
-            <details className="review-card" open>
+            <details className="review-card" id="yesterday-review" open>
               <summary>昨日复盘</summary>
               <div>
                 <p><strong>事实：</strong>直播看到凌晨四点；主动添加 GEO 分享者并提出具体问题；后半段听不懂、走神并感到烦躁；你再次明确不想继续已拒绝的旧项目。</p>
                 <p className="advice"><strong>建议：</strong>延续“向真人问具体问题”，停止“听不懂仍硬撑”。今天不要求先掌握完整体系。</p>
               </div>
             </details>
-            <details className="review-card">
+            <details className="review-card" id="seven-day-trend">
               <summary>近七天趋势</summary>
               <div className="trend-list">
                 {trends.map(([label, text]) => (
@@ -242,7 +306,7 @@ export default function Home() {
                 ))}
               </div>
             </details>
-            <details className="review-card diagnosis">
+            <details className="review-card diagnosis" id="action-diagnosis">
               <summary>为什么知道却做不动</summary>
               <div>
                 <p><strong>信号：</strong>知识上瘾与思考替代行动。听不懂后仍熬夜，并立刻转向知识库、Agent、系统配置等更大的学习任务。</p>
@@ -253,7 +317,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="schedule">
+        <section className="schedule" id="schedule">
           <div>
             <span>上午</span>
             <p>补水、正常吃饭，只确定实验对象和查询问题。</p>
@@ -278,6 +342,7 @@ export default function Home() {
           <p>今天不用证明 GEO 值不值得长期做，<br />只要完成一次你真正感兴趣的实验。</p>
           <span>每日 08:00 更新 · 完整内容折叠保存</span>
         </footer>
+        </div>
       </div>
     </main>
   );

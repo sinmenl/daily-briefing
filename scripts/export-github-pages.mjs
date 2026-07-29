@@ -60,6 +60,38 @@ html = html.replace(
   /(<nav class="date-list"[^>]*data-archive-list="true"[^>]*>)[\s\S]*?(<\/nav>)/,
   `$1${dateLinks}$2`,
 );
+
+const menuScript = `<script data-brief-menu>
+(() => {
+  const root = document.documentElement;
+  const button = document.querySelector("[data-menu-button]");
+  const closeMenu = () => {
+    root.classList.remove("menu-open");
+    button?.setAttribute("aria-expanded", "false");
+  };
+  button?.addEventListener("click", () => {
+    const willOpen = !root.classList.contains("menu-open");
+    root.classList.toggle("menu-open", willOpen);
+    button.setAttribute("aria-expanded", String(willOpen));
+  });
+  document.querySelectorAll("[data-menu-close]").forEach((item) => {
+    item.addEventListener("click", closeMenu);
+  });
+  document.querySelectorAll('.sidebar a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const target = document.querySelector(link.getAttribute("href"));
+      const details = target?.tagName === "DETAILS" ? target : target?.closest("details");
+      if (details) details.open = true;
+      closeMenu();
+    });
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+})();
+</script>`;
+html = html.replace("</body>", `${menuScript}</body>`);
+
 for (const archiveFile of existingArchiveFiles) {
   const archivePath = path.join(archiveSource, archiveFile);
   const previousHtml = await readFile(archivePath, "utf8");

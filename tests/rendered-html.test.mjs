@@ -20,5 +20,10 @@ test("renders the daily briefing", async () => {
   assert.match(html, /产品与创作早报/);
   assert.match(html, /昨日姜胡说知识星球/);
   assert.match(html, /每天自动更新/);
+  assert.match(html, /id="content-menu"/);
+  assert.match(html, /href="#task-1">做一次 GEO 小实验/);
+  assert.match(html, /href="#brief-1">Reuters 将视觉内容授权统一到 Reuters Connect/);
+  assert.match(html, /id="action-diagnosis"/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
+  assert.doesNotMatch(html, /我的理解/);
 });
