@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render() {
@@ -33,4 +34,16 @@ test("renders the daily briefing", async () => {
   assert.match(html, /未发现可核验更新/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
   assert.doesNotMatch(html, /我的理解/);
+});
+
+test("exports the archive calendar to current and historical pages", async () => {
+  const current = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
+  const historical = await readFile(new URL("../docs/archive/2026-07-29.html", import.meta.url), "utf8");
+
+  assert.match(current, /data-calendar-year/);
+  assert.match(current, /data-calendar-grid/);
+  assert.match(current, /data-archive-date="2026-07-30"/);
+  assert.match(current, /data-archive-date="2026-07-29"/);
+  assert.match(historical, /aria-current="page" data-archive-date="2026-07-29"/);
+  assert.match(historical, /data-calendar-month/);
 });

@@ -85,7 +85,8 @@ export default function Home() {
             <span />
           </button>
           <details className="date-picker">
-            <summary>
+            <summary aria-label="选择简报日期">
+              <span className="calendar-symbol" aria-hidden="true">▦</span>
               <span>{briefDate.replaceAll("-", ".")}</span>
               <span className="chevron">⌄</span>
             </summary>
