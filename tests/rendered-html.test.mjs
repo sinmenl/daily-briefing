@@ -21,9 +21,16 @@ test("renders the daily briefing", async () => {
   assert.match(html, /昨日姜胡说知识星球/);
   assert.match(html, /每天自动更新/);
   assert.match(html, /id="content-menu"/);
-  assert.match(html, /href="#task-1">做一次 GEO 小实验/);
-  assert.match(html, /href="#brief-1">Reuters 将视觉内容授权统一到 Reuters Connect/);
+  assert.match(html, /data-brief-date="2026-07-30"/);
+  assert.match(html, /href="#task-1">验收每日简报闭环/);
+  assert.match(html, /href="#brief-1">dbskill v2.18.15：默认避开重复 Skill 目录/);
+  assert.match(html, /href="#planet-post-1">一个“反常识认知”提示词/);
+  assert.match(html, /href="\/hotlist\/2026-07-29.html"/);
+  assert.match(html, /href="\/knowledge\/2026-07-29\/26-07-29姜胡说知识星球.md"/);
   assert.match(html, /id="action-diagnosis"/);
+  assert.match(html, /AI 执行力诊断 \/ 建议/);
+  assert.match(html, /id="deep-reads"/);
+  assert.match(html, /未发现可核验更新/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
   assert.doesNotMatch(html, /我的理解/);
 });

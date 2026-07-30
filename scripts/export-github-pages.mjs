@@ -31,11 +31,22 @@ html = html
   .replace(/<link rel="modulepreload"[^>]*>/g, "")
   .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
 
-if (!html.includes('name="robots"')) {
+const indexDirective = "noindex,nofollow,noarchive,noimageindex";
+if (html.includes('name="robots"')) {
   html = html.replace(
-    "</head>",
-    '<meta name="robots" content="noindex,nofollow,noarchive,noimageindex"><meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex"></head>',
+    /<meta name="robots" content="[^"]*"\s*\/?>/,
+    `<meta name="robots" content="${indexDirective}">`,
   );
+} else {
+  html = html.replace("</head>", `<meta name="robots" content="${indexDirective}"></head>`);
+}
+if (html.includes('name="googlebot"')) {
+  html = html.replace(
+    /<meta name="googlebot" content="[^"]*"\s*\/?>/,
+    `<meta name="googlebot" content="${indexDirective}">`,
+  );
+} else {
+  html = html.replace("</head>", `<meta name="googlebot" content="${indexDirective}"></head>`);
 }
 
 const dateMatch = html.match(/data-brief-date="(\d{4}-\d{2}-\d{2})"/);
@@ -111,6 +122,32 @@ await writeFile(path.join(docs, "index.html"), html, "utf8");
 await writeFile(path.join(docs, "404.html"), html, "utf8");
 await writeFile(path.join(docs, "robots.txt"), "User-agent: *\nDisallow: /\n", "utf8");
 await writeFile(path.join(docs, ".nojekyll"), "", "utf8");
+
+const localBriefingRoot = path.resolve(root, "..");
+const currentMonth = Number(currentDate.slice(5, 7));
+const localMonthDir = path.join(localBriefingRoot, `26年${currentMonth}月`);
+await mkdir(localMonthDir, { recursive: true });
+const localHtml = html
+  .replaceAll(`/${repoName}/assets/`, "../web/docs/assets/")
+  .replaceAll(`/${repoName}/archive/`, "../web/public/archive/")
+  .replace(
+    new RegExp(`/${repoName}/hotlist/(\\d{4}-\\d{2}-\\d{2})\\.html`, "g"),
+    "../../3.热点库/热点看榜/$1%20热点看榜.html",
+  )
+  .replace(
+    new RegExp(`/${repoName}/knowledge/(\\d{4})-(\\d{2})-(\\d{2})/`, "g"),
+    (_match, _year, month, day) => `../../8.姜胡说知识星球/output/26.${Number(month)}月/26-${month}-${day}姜胡说知识星球/`,
+  );
+await writeFile(
+  path.join(localMonthDir, `${currentDate} 每日简报.html`),
+  localHtml,
+  "utf8",
+);
+await writeFile(
+  path.join(localBriefingRoot, "今日简报.html"),
+  `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,noimageindex"><meta http-equiv="refresh" content="0;url=26年${currentMonth}月/${currentDate}%20每日简报.html"><title>今日简报</title></head><body><p><a href="26年${currentMonth}月/${currentDate}%20每日简报.html">打开 ${currentDate} 每日简报</a></p></body></html>`,
+  "utf8",
+);
 
 const robots = await readFile(path.join(docs, "robots.txt"), "utf8");
 if (!robots.includes("Disallow: /") || !html.includes("noindex")) {
