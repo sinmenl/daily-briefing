@@ -21,6 +21,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /产品与创作早报/);
   assert.match(html, /昨日姜胡说知识星球/);
   assert.match(html, /每天自动更新/);
+  assert.match(html, /南宁当天天气：中雨转小雨，26–31℃/);
+  assert.match(html, /南宁<!-- --> · <!-- -->26–31℃/);
   assert.match(html, /id="content-menu"/);
   assert.match(html, /data-brief-date="2026-07-30"/);
   assert.match(html, /href="#task-1">验收每日简报闭环/);
@@ -46,6 +48,8 @@ test("exports the archive calendar to current and historical pages", async () =>
   assert.match(current, /data-archive-date="2026-07-29"/);
   assert.match(historical, /aria-current="page" data-archive-date="2026-07-29"/);
   assert.match(historical, /data-calendar-month/);
+  assert.match(historical, /class="hero-mark" aria-hidden="true">晴/);
+  assert.doesNotMatch(historical, /南宁当天天气：中雨转小雨/);
   assert.match(current, /archive\/2026-07-29\.html\?v=20260730/);
   assert.match(historical, /蔓蔓的早课/);
   assert.doesNotMatch(historical, />每日简报<\/a>/);

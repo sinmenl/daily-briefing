@@ -62,6 +62,12 @@ const trends = [
 ];
 
 const briefDate = "2026-07-30";
+const weather = {
+  location: "南宁",
+  condition: "中雨转小雨",
+  temperature: "26–31℃",
+  icon: "🌦️",
+};
 
 export default function Home() {
   return (
@@ -190,7 +196,16 @@ export default function Home() {
               昨天完成了知识星球采集与简报融合，却仍觉得“啥也没干”。今天不再增加系统：只验收一次、完整读一条、留下本人一句话锚点，让工具第一次产生可感知的使用结果。
             </p>
           </div>
-          <div className="hero-mark" aria-hidden="true">晴</div>
+          <div
+            className="hero-weather"
+            aria-label={`${weather.location}当天天气：${weather.condition}，${weather.temperature}`}
+          >
+            <span className="weather-icon" aria-hidden="true">{weather.icon}</span>
+            <span className="weather-copy">
+              <strong>{weather.condition}</strong>
+              <small>{weather.location} · {weather.temperature}</small>
+            </span>
+          </div>
         </section>
 
         <section className="section" id="today">
