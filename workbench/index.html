@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人工作台</title>
+<meta name="theme-color" content="#c9920e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="工作台">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<style>
+  :root{
+    --bg:#f5f3ee; --card:#ffffff; --line:#e8e3d9; --text:#2a2620; --sub:#8a8175;
+    --gold:#c9920e; --gold-soft:#faf3df; --coral:#ff5a5f; --coral-soft:#fff0f0;
+    --violet:#7a5af8; --blue:#4f6ef7; --green:#3d9a50; --red:#e5484d;
+    --shadow:0 1px 2px rgba(60,50,20,.05),0 4px 16px rgba(60,50,20,.07);
+    --radius:14px;
+  }
+  [data-theme="dark"]{
+    --bg:#191712; --card:#242118; --line:#3b3527; --text:#ece7da; --sub:#9a917e;
+    --gold:#e0aa2e; --gold-soft:#33290f; --coral:#ff7a7e; --coral-soft:#3a2120;
+    --violet:#9d86ff; --blue:#7f9aff; --green:#5cb86e; --red:#ff6b6f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{font-size:15px}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    background:var(--bg);color:var(--text);min-height:100vh;padding:22px;transition:background .25s,color .25s;
+  }
+  .wrap{max-width:1180px;margin:0 auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .card-pad{padding:16px 18px}
+  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .section-head h3{font-size:1rem}
+  .muted{color:var(--sub);font-size:.78rem}
+  a{color:var(--blue);text-decoration:none}
+
+  /* header */
+  header{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+  .avatar{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#c9920e,#ff5a5f);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;font-weight:700;box-shadow:var(--shadow)}
+  .who{flex:1;min-width:200px}
+  .who .lv{font-size:1.15rem;font-weight:700}
+  .who .lv b{color:var(--gold)}
+  .xp-line{display:flex;align-items:center;gap:8px;margin-top:5px}
+  .xp-bar{flex:1;max-width:300px;height:9px;background:var(--gold-soft);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+  .xp-bar i{display:block;height:100%;background:linear-gradient(90deg,#c9920e,#ffb84d);transition:width .5s}
+  .xp-num{font-size:.75rem;color:var(--sub);font-variant-numeric:tabular-nums}
+  .head-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+  .streak{background:var(--gold-soft);border:1px solid var(--gold);color:var(--gold);border-radius:12px;
+    padding:8px 14px;font-weight:700;font-size:.95rem;white-space:nowrap}
+  .streak small{display:block;font-weight:400;font-size:.68rem;color:var(--sub)}
+  .icon-btn{border:1px solid var(--line);background:var(--card);border-radius:10px;width:36px;height:36px;
+    cursor:pointer;font-size:1rem;color:var(--text)}
+  .updated-line{font-size:.72rem;color:var(--sub);margin:-8px 0 14px 2px}
+
+  /* chips */
+  .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+  @media (max-width:760px){.chips{grid-template-columns:repeat(2,1fr)}}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;box-shadow:var(--shadow)}
+  .chip .num{font-size:1.35rem;font-weight:700;font-variant-numeric:tabular-nums}
+  .chip .lbl{font-size:.72rem;color:var(--sub);margin-top:3px}
+  .c-gold .num{color:var(--gold)} .c-coral .num{color:var(--coral)} .c-violet .num{color:var(--violet)} .c-green .num{color:var(--green)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  @media (max-width:900px){.grid2{grid-template-columns:1fr}}
+
+  /* stepper */
+  .stepper{display:flex;align-items:flex-start;margin:6px 0 14px}
+  .stp{flex:1;text-align:center;position:relative}
+  .stp .ball{width:26px;height:26px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;
+    font-size:.72rem;font-weight:700;background:var(--bg);border:2px solid var(--line);color:var(--sub);position:relative;z-index:1}
+  .stp .cap{font-size:.66rem;color:var(--sub);margin-top:5px;line-height:1.3}
+  .stp::before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:2px;background:var(--line)}
+  .stp:first-child::before{display:none}
+  .stp.done .ball{background:var(--green);border-color:var(--green);color:#fff}
+  .stp.done::before{background:var(--green)}
+  .stp.now .ball{background:var(--gold);border-color:var(--gold);color:#fff;box-shadow:0 0 0 4px var(--gold-soft)}
+  .stp.now .cap{color:var(--gold);font-weight:700}
+
+  /* lists */
+  .list{max-height:300px;overflow-y:auto}
+  .row{display:flex;gap:9px;padding:8px 4px;border-bottom:1px solid var(--line);font-size:.85rem;align-items:baseline}
+  .row:last-child{border-bottom:none}
+  .row .d{flex:none;font-size:.72rem;color:var(--sub);font-variant-numeric:tabular-nums;width:58px}
+  .row .d a{color:var(--sub);border-bottom:1px dashed var(--line)}
+  .row .d a:hover{color:var(--blue);border-color:var(--blue)}
+  .row .t{flex:1;line-height:1.5;min-width:0}
+  .pill{flex:none;font-size:.66rem;border-radius:5px;padding:1px 7px;font-weight:600;white-space:nowrap}
+  .p-noticed{background:var(--bg);color:var(--sub);border:1px solid var(--line)}
+  .p-helping{background:#eef1fe;color:var(--blue)}
+  [data-theme="dark"] .p-helping{background:#23294a}
+  .p-solved{background:#eaf6ec;color:var(--green)}
+  [data-theme="dark"] .p-solved{background:#1d3020}
+  .p-paid{background:var(--gold-soft);color:var(--gold)}
+  .amt{flex:none;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .amt.zero{color:var(--sub);font-weight:400;font-size:.75rem}
+  .dedup .t,.dedup .amt{text-decoration:line-through;opacity:.55}
+  .total-row{display:flex;justify-content:space-between;padding:10px 4px 2px;font-size:.88rem;font-weight:700;border-top:2px solid var(--line);margin-top:4px}
+  .total-row span:last-child{color:var(--gold)}
+  .type-ico{flex:none;width:18px;text-align:center}
+
+  /* flags */
+  .align-box{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+  .align-num{font-size:2rem;font-weight:700;color:var(--coral);font-variant-numeric:tabular-nums}
+  .align-bar{flex:1;height:9px;background:var(--coral-soft);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+  .align-bar i{display:block;height:100%;background:linear-gradient(90deg,#ff5a5f,#ff9f43)}
+  .week-note{background:var(--gold-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+    font-size:.8rem;line-height:1.6;color:var(--text);margin-bottom:10px}
+  .flag-ico{flex:none;width:18px}
+
+  /* snapshot */
+  .snap-row{display:flex;gap:10px;padding:7px 0;font-size:.86rem;line-height:1.6}
+  .snap-row .k{flex:none;width:64px;font-size:.75rem;font-weight:700;padding-top:2px}
+  .k-did{color:var(--green)} .k-stuck{color:var(--coral)} .k-next{color:var(--violet)}
+
+  /* share card */
+  .share-card{border-radius:18px;padding:22px;color:#fff;
+    background:linear-gradient(135deg,#b87c0a 0%,#e0603c 55%,#d64060 100%);
+    box-shadow:0 6px 24px rgba(180,80,40,.35)}
+  .share-card .sc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+  .share-card .sc-lv{font-size:1.5rem;font-weight:800}
+  .share-card .sc-sub{font-size:.75rem;opacity:.85;margin-top:2px}
+  .share-card .sc-streak{text-align:right}
+  .share-card .sc-streak b{font-size:1.6rem;font-variant-numeric:tabular-nums}
+  .share-card .sc-streak small{display:block;font-size:.7rem;opacity:.85}
+  .sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+  .sc-item{background:rgba(255,255,255,.16);border-radius:10px;padding:9px 6px;text-align:center}
+  .sc-item b{display:block;font-size:1.05rem;font-variant-numeric:tabular-nums}
+  .sc-item small{font-size:.62rem;opacity:.85}
+  .share-card .sc-foot{font-size:.68rem;opacity:.75;display:flex;justify-content:space-between}
+  .share-hint{font-size:.72rem;color:var(--sub);margin-top:8px;text-align:center}
+
+  details{margin-top:16px;font-size:.8rem;color:var(--sub)}
+  details summary{cursor:pointer;font-weight:600;color:var(--text)}
+  details li{margin:5px 0 0 18px;line-height:1.5}
+  footer{text-align:center;color:var(--sub);font-size:.72rem;margin-top:24px;line-height:1.8}
+  .list::-webkit-scrollbar{width:6px}
+  .list::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="avatar">创</div>
+    <div class="who">
+      <div class="lv" id="lv-line">Lv.?</div>
+      <div class="xp-line">
+        <div class="xp-bar"><i id="xp-fill" style="width:0%"></i></div>
+        <span class="xp-num" id="xp-num"></span>
+      </div>
+    </div>
+    <div class="head-right">
+      <div class="streak"><small>日记连续</small><span id="streak-num">🔥 -</span></div>
+      <button class="icon-btn" id="theme-btn" title="切换暗色">🌙</button>
+    </div>
+  </header>
+  <div class="updated-line" id="updated-line"></div>
+
+  <div class="chips">
+    <div class="chip c-gold"><div class="num" id="c-xp">-</div><div class="lbl">总经验 XP</div></div>
+    <div class="chip c-coral"><div class="num" id="c-diary">-</div><div class="lbl">日记天数</div></div>
+    <div class="chip c-violet"><div class="num" id="c-outputs">-</div><div class="lbl">创作输出</div></div>
+    <div class="chip c-green"><div class="num" id="c-income">-</div><div class="lbl">收费验证(元)</div></div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <section class="card card-pad" style="margin-bottom:16px">
+        <div class="section-head"><h3>💰 主线 · 赚钱闭环</h3><span class="muted" id="stage-note"></span></div>
+        <div class="stepper" id="stepper"></div>
+        <div class="section-head" style="margin-top:6px"><h3 style="font-size:.9rem">问题账本 <span class="muted" id="prob-count"></span></h3></div>
+        <div class="list" id="problems" style="max-height:230px"></div>
+      </section>
+
+      <section class="card card-pad" style="margin-bottom:16px">
+        <div class="section-head"><h3>🧾 收费验证</h3><span class="muted">只计明确收入</span></div>
+        <div class="list" id="income" style="max-height:240px"></div>
+        <div class="total-row"><span>累计到手</span><span id="income-total"></span></div>
+      </section>
+
+      <section class="card card-pad">
+        <div class="section-head"><h3>📅 昨日快照</h3><span class="muted" id="snap-date"></span></div>
+        <div id="snapshot"></div>
+      </section>
+    </div>
+
+    <div>
+      <section class="card card-pad" style="margin-bottom:16px">
+        <div class="section-head"><h3>🎨 支线 · 创作输出</h3><span class="muted" id="output-note"></span></div>
+        <div class="list" id="outputs"></div>
+      </section>
+
+      <section class="card card-pad" style="margin-bottom:16px">
+        <div class="section-head"><h3>🪞 说的 vs 做的</h3><span class="muted">每周日晚自动对照</span></div>
+        <div class="align-box">
+          <div class="align-num" id="align-num">-</div>
+          <div class="align-bar"><i id="align-fill" style="width:0%"></i></div>
+        </div>
+        <div class="week-note" id="week-note"></div>
+        <div class="list" id="flags" style="max-height:240px"></div>
+      </section>
+
+      <section class="card card-pad" style="margin-bottom:16px">
+        <div class="section-head"><h3>⚓ 锚点时刻</h3><span class="muted" id="anchor-count"></span></div>
+        <div class="list" id="anchors" style="max-height:180px"></div>
+      </section>
+
+      <section>
+        <div class="share-card" id="share-card">
+          <div class="sc-top">
+            <div>
+              <div class="sc-lv" id="sc-lv"></div>
+              <div class="sc-sub" id="sc-sub"></div>
+            </div>
+            <div class="sc-streak"><b id="sc-streak"></b><small>天连续记录</small></div>
+          </div>
+          <div class="sc-grid">
+            <div class="sc-item"><b id="sc-weekxp"></b><small>本周 XP</small></div>
+            <div class="sc-item"><b id="sc-outputs"></b><small>创作输出</small></div>
+            <div class="sc-item"><b id="sc-income"></b><small>收费验证</small></div>
+            <div class="sc-item"><b id="sc-align"></b><small>flag 完成率</small></div>
+          </div>
+          <div class="sc-foot"><span>数据来自我的日记,自动整理</span><span id="sc-date"></span></div>
+        </div>
+        <div class="share-hint">📸 截图即可发小红书或发给朋友——这就是一条成长记录</div>
+      </section>
+    </div>
+  </div>
+
+  <details>
+    <summary>经验值规则(透明可查,判错了随时纠正)</summary>
+    <ul>
+      <li>写日记:+5 XP/天;每连续满 7 天,额外 +20 XP</li>
+      <li>创作输出(发布视频/写完文章/做出工具):+30 XP/次</li>
+      <li>帮人解决问题(帮到一半以上):+40 XP/次</li>
+      <li>收费验证(任何一笔真实进账):+50 XP/笔</li>
+      <li>锚点时刻(完整读完长内容/写下锚点):+15 XP/次</li>
+      <li>flag 完成(周对照确认):+20 XP/个</li>
+      <li>每 500 XP 升一级。所有事件由自动化读日记判定,带日期可点回原日记核对。</li>
+    </ul>
+  </details>
+
+  <footer>
+    数据全部来自你的 Obsidian 日记,每天早 9 点自动更新 · 页面零录入,你只管写日记<br>
+    日期链接可跳转回 Obsidian 原文 · 想改规则或纠正判定,跟 WorkBuddy 说一声
+  </footer>
+</div>
+
+<script>
+/* ============ 数据(自动化只改标记之间的 JSON) ============ */
+const WB_DATA = /*WB-DATA-START*/{"privacy":true,
+  "updated": "2026-07-30 21:20",
+  "diary": {"total": 149, "streak": 149, "start": "2026-03-04"},
+  "moneyStage": 3,
+  "weekNote": "回填统计:3~7 月可判定 flag 共 19 个,完成 8 个(42%)。完成的都是小事(领教资、送糕点),泡汤的多是宏大计划(7 日挑战、日更 1000 字)。下次立 flag 前问自己:这件事小到不可能失败吗?",
+  "snapshot": {
+    "date": "2026-07-30",
+    "did": "看完了今天的简报(毕竟花了 token,不看浪费)",
+    "stuck": "通宵王者+刷视频,白天补觉后依然没状态,自嘲'又是一个休息日'",
+    "next": "今晚 10 点睡、明早 6 点起——挑战成功奖励自己吃粉"
+  },
+  "income": [
+    {"date":"2026-04-17","title":"华图公考助教带班日结","amount":300,"note":"当天净赚 240"},
+    {"date":"2026-05-05","title":"五一自拍馆分成","amount":300,"note":"利润 25% 分成"},
+    {"date":"2026-05-09","title":"舒华姐红包(疫苗补偿)","amount":1500,"note":"非工资"},
+    {"date":"2026-05-15","title":"华图工资到账('赈灾粮')","amount":0,"note":"金额未记,到账即还贷"},
+    {"date":"2026-05-23","title":"玉林带班约定工资 320/天×10 天","amount":3200,"dedup":true,"note":"约定口径,已并入 07-16 实际到账"},
+    {"date":"2026-07-16","title":"华图工资到账(玉林班)","amount":7531,"note":"到手即还各类欠款"},
+    {"date":"2026-07-16","title":"自拍馆结算(2000 借款转工资)","amount":2000,"note":""},
+    {"date":"2026-07-22","title":"中考择校网页交付报销","amount":140,"note":"第一次收费验证"},
+    {"date":"2026-07-27","title":"车票报销到账","amount":0,"note":"金额未记"}
+  ],
+  "outputs": [
+    {"date":"2026-03-23","title":"写完第一篇短篇小说草稿(约 1 万字)","type":"writing"},
+    {"date":"2026-03-26","title":"剪好并发布第一条口播视频","type":"video"},
+    {"date":"2026-03-26","title":"做了 3 个拆文 skill","type":"tool"},
+    {"date":"2026-03-29","title":"vibe coding 公考面试助手 demo","type":"tool"},
+    {"date":"2026-03-29","title":"口播稿多版本生成工具","type":"tool"},
+    {"date":"2026-03-31","title":"发布第二条口播视频,多平台分发","type":"video"},
+    {"date":"2026-03-31","title":"跑通公众号一键排版发布流程","type":"tool"},
+    {"date":"2026-04-04","title":"《快思慢想》卡点口播稿定稿(迭代十几版)","type":"writing"},
+    {"date":"2026-04-08","title":"创建日记复盘 skill","type":"tool"},
+    {"date":"2026-04-09","title":"小报童 PDF 整理成 markdown 知识库","type":"tool"},
+    {"date":"2026-04-13","title":"给华图小红书做手绘图兼职","type":"other"},
+    {"date":"2026-04-23","title":"拆文 skill 迭代到 3.0","type":"tool"},
+    {"date":"2026-04-26","title":"跑通 QClaw 预约同步腾讯文档","type":"tool"},
+    {"date":"2026-04-27","title":"客片宣传视频三平台分发","type":"video"},
+    {"date":"2026-04-29","title":"壮锦边框+南宁 Q 版地标文旅模板","type":"other"},
+    {"date":"2026-05-18","title":"设计 520 活动模板(GPT 生图)","type":"other"},
+    {"date":"2026-06-18","title":"PH 产品观察打卡 skill","type":"tool"},
+    {"date":"2026-06-18","title":"写 2 篇 PH 产品观察日记","type":"writing"},
+    {"date":"2026-06-19","title":"给 Dopami 写营销方案并交付 maker(获回复)","type":"writing"},
+    {"date":"2026-06-28","title":"Trae 活动现场 vibe coding 自媒体创作流","type":"tool"},
+    {"date":"2026-06-29","title":"Obsidian 板块联动 skill","type":"tool"},
+    {"date":"2026-07-11","title":"中考择校推荐网页(部署上线,迭代 4 次)","type":"tool"},
+    {"date":"2026-07-12","title":"汪苏泷桌面宠物,发抖音获同担点赞","type":"tool"},
+    {"date":"2026-07-17","title":"给 codex 做汪苏泷主题皮肤","type":"tool"},
+    {"date":"2026-07-22","title":"写《如何用 AI 制作部署网页》教程并交付","type":"writing"},
+    {"date":"2026-07-23","title":"第一条小红书帖(吐槽《千香》女主 ooc)","type":"writing"},
+    {"date":"2026-07-26","title":"小红书长评回答'怎么学 AI'","type":"writing"},
+    {"date":"2026-07-29","title":"知识星球正文采集程序,并入每日简报","type":"tool"}
+  ],
+  "problems": [
+    {"date":"2026-03-26","who":"老年顾客","problem":"想用现金/对话在智能售货机购物,设备只支持扫码","status":"noticed"},
+    {"date":"2026-04-07","who":"外甥及其家长","problem":"孩子基础差,但家长很少愿花高价辅导作业","status":"noticed"},
+    {"date":"2026-04-15","who":"进面考生","problem":"需要面试陪练,但只砍价不认可时间价值","status":"noticed"},
+    {"date":"2026-04-18","who":"公考面试学员","problem":"不知道自己卡在哪一步,只能抓听得懂的片段","status":"helping"},
+    {"date":"2026-04-25","who":"自拍馆","problem":"位置偏自然流差,获客只能线上,营业额仅 250/天","status":"helping"},
+    {"date":"2026-04-29","who":"容貌焦虑的女孩","problem":"想拍照留念但自卑不敢拍","status":"noticed"},
+    {"date":"2026-05-04","who":"想入局 AI 的小老板","problem":"神化 AI,不知从何入手","status":"noticed"},
+    {"date":"2026-05-20","who":"舅舅(生意人)","problem":"月底对账,大量账单图片手工整理繁琐易错","status":"helping"},
+    {"date":"2026-05-22","who":"帮人取快递的妹妹","problem":"微信 700+ 精准女性用户却只能赚几十/天","status":"helping"},
+    {"date":"2026-06-03","who":"公考助教(自己)","problem":"主讲录音整理逐字稿重复劳动,一晚 4 万字","status":"helping"},
+    {"date":"2026-06-18","who":"Dopami 的 maker","problem":"产品不错但营销不行,价值主张没翻译成用户语言","status":"helping"},
+    {"date":"2026-06-28","who":"银行考证人群","problem":"需要行业题库(看到别人卖 12r 已售 3000+)","status":"paid"},
+    {"date":"2026-07-10","who":"中考生家长","problem":"出成绩后不知道位次能报哪所学校","status":"helping"},
+    {"date":"2026-07-12","who":"周桃(教育从业者)","problem":"想要更精准的择校推荐工具,愿意付费定制","status":"noticed"},
+    {"date":"2026-07-17","who":"中小学校","problem":"心理测评设备 30 分钟/人不落地,软件落后","status":"noticed"},
+    {"date":"2026-07-26","who":"被要求学 AI 的职场人","problem":"觉得'学 AI'很抽象,不知从何学起","status":"helping"}
+  ],
+  "flags": [
+    {"date":"2026-03-06","flag":"明天再写 600 字小说,每天多 100 字","outcome":"done","evidence":"2026-03-07"},
+    {"date":"2026-03-07","flag":"明天挑战写 700 字","outcome":"missed","evidence":"2026-03-08"},
+    {"date":"2026-03-10","flag":"3.11 把小说成稿发出去","outcome":"missed","evidence":"2026-03-11"},
+    {"date":"2026-03-17","flag":"每天写够 1000 字小说+强制输入 20 分钟","outcome":"missed","evidence":"2026-03-18"},
+    {"date":"2026-03-19","flag":"7 日挑战:7 天卖出一篇短篇并公开过程","outcome":"missed","evidence":"2026-03-21"},
+    {"date":"2026-03-28","flag":"明早 7:30 拍第二条口播视频","outcome":"missed","evidence":"2026-03-29"},
+    {"date":"2026-04-08","flag":"这周整理胡子哥提示词做成手册","outcome":"missed","evidence":"2026-04-21"},
+    {"date":"2026-05-16","flag":"明天开始执行连麦交代的事(看书/关注成交端)","outcome":"missed","evidence":"2026-05-18"},
+    {"date":"2026-06-09","flag":"带完玉林班后去演练+去倩倩公司面试","outcome":"done","evidence":"2026-06-17"},
+    {"date":"2026-06-12","flag":"明天开始追赶,回归 AI 赛道","outcome":"missed","evidence":"2026-06-13"},
+    {"date":"2026-07-01","flag":"明天还是去图书馆吧","outcome":"missed","evidence":"2026-07-02"},
+    {"date":"2026-07-15","flag":"发工资后买糕点送借电的商铺老板","outcome":"done","evidence":"2026-07-19"},
+    {"date":"2026-07-20","flag":"写 200 字以内给新手的解决说明并给真人看","outcome":"done","evidence":"2026-07-23"},
+    {"date":"2026-07-21","flag":"明天补听胡子哥直播","outcome":"missed","evidence":"2026-07-22"},
+    {"date":"2026-07-23","flag":"明天去领教师资格证","outcome":"done","evidence":"2026-07-24"},
+    {"date":"2026-07-26","flag":"27 号最重要的事:找到问题并去帮他们解决","outcome":"missed","evidence":"2026-07-27"},
+    {"date":"2026-07-27","flag":"明天一定不能在家","outcome":"done","evidence":"2026-07-28"},
+    {"date":"2026-07-30","flag":"今晚 10 点睡明天 6 点起,挑战成功奖励吃粉","outcome":"unknown","evidence":""}
+  ],
+  "anchors": [
+    {"date":"2026-03-07","what":"看完胡子哥长视频(首次静下心看完)"},
+    {"date":"2026-03-09","what":"读完《线性思维是一个缺陷》并研读"},
+    {"date":"2026-03-11","what":"听润宇直播 2h+整理笔记 2h"},
+    {"date":"2026-04-08","what":"看直播回放并花 2.5h 跟 AI 讨论复盘"},
+    {"date":"2026-05-10","what":"与胡子哥第一次连麦(被点醒:关注成交端)"},
+    {"date":"2026-06-19","what":"读完 PG《Do Things That Don't Scale》并做大量笔记"},
+    {"date":"2026-06-22","what":"看《为什么热爱工作是特权》并纸笔摘录"},
+    {"date":"2026-06-25","what":"读完《No Meetings, No Deadlines, No Full-Time Employees》"},
+    {"date":"2026-07-19","what":"听胡子哥直播并记下六个连麦想法"},
+    {"date":"2026-07-25","what":"完整看完长视频,学会'暂停—锚点—继续'"},
+    {"date":"2026-07-26","what":"听胡子哥闭门会直播并记详细笔记"}
+  ]
+}/*WB-DATA-END*/;
+
+/* ============ 工具 ============ */
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+function fmtMoney(n){ return "¥" + Number(n).toLocaleString("zh-CN"); }
+function obsUrl(date){
+  var m = parseInt(date.slice(5,7), 10);
+  var file = "2.26年日记/" + m + "月日记/" + date;
+  return "obsidian://open?vault=9.obsidian&file=" + encodeURIComponent(file);
+}
+function dLink(date){
+  return '<a href="' + obsUrl(date) + '" title="在 Obsidian 中打开">' + date.slice(5) + "</a>";
+}
+function daysSince(dateStr){
+  var now = new Date(); var d = new Date(dateStr + "T00:00:00");
+  return Math.floor((now - d) / 86400000);
+}
+function mondayStr(){
+  var now = new Date(); var mon = new Date(now);
+  mon.setDate(now.getDate() - (now.getDay() + 6) % 7);
+  return mon.getFullYear() + "-" + String(mon.getMonth()+1).padStart(2,"0") + "-" + String(mon.getDate()).padStart(2,"0");
+}
+
+/* ============ 经验值 ============ */
+var RULES = {diary:5, streakWeek:20, output:30, help:40, income:50, anchor:15, flagDone:20};
+function computeXP(d){
+  var parts = [];
+  var diaryXP = d.diary.total * RULES.diary + Math.floor(d.diary.streak / 7) * RULES.streakWeek;
+  parts.push({label:"写日记", n:d.diary.total + " 天", xp:diaryXP});
+  parts.push({label:"创作输出", n:d.outputs.length + " 次", xp:d.outputs.length * RULES.output});
+  var helps = d.problems.filter(function(p){ return p.status === "helping" || p.status === "solved" || p.status === "paid"; }).length;
+  parts.push({label:"帮人解决", n:helps + " 次", xp:helps * RULES.help});
+  parts.push({label:"收费验证", n:d.income.length + " 笔", xp:d.income.length * RULES.income});
+  parts.push({label:"锚点时刻", n:d.anchors.length + " 次", xp:d.anchors.length * RULES.anchor});
+  var flagsDone = d.flags.filter(function(f){ return f.outcome === "done"; }).length;
+  parts.push({label:"flag 完成", n:flagsDone + " 个", xp:flagsDone * RULES.flagDone});
+  var total = parts.reduce(function(s,p){ return s + p.xp; }, 0);
+  return {total:total, parts:parts};
+}
+function weekXP(d){
+  var mon = mondayStr(), xp = 0;
+  d.outputs.forEach(function(o){ if(o.date >= mon) xp += RULES.output; });
+  d.income.forEach(function(i){ if(i.date >= mon) xp += RULES.income; });
+  d.anchors.forEach(function(a){ if(a.date >= mon) xp += RULES.anchor; });
+  d.flags.forEach(function(f){ if(f.outcome === "done" && f.evidence && f.evidence >= mon) xp += RULES.flagDone; });
+  xp += 7 * RULES.diary + RULES.streakWeek;
+  return xp;
+}
+function levelOf(xp){ return Math.floor(xp / 500) + 1; }
+function titleOf(lv){
+  if(lv <= 2) return "新手村民"; if(lv <= 4) return "见习创作者"; if(lv <= 6) return "行动派";
+  if(lv <= 8) return "闭环探索者"; if(lv <= 10) return "生态位猎人"; return "破局者";
+}
+
+/* ============ 渲染 ============ */
+var TYPE_ICO = {video:"🎬", writing:"✍️", tool:"🛠️", other:"💡"};
+var STATUS_TXT = {noticed:"发现", helping:"帮忙中", solved:"已解决", paid:"有付费"};
+
+function render(){
+  var d = WB_DATA;
+  var PRIV = !!d.privacy;
+  var xp = computeXP(d);
+  var lv = levelOf(xp.total);
+  var inLevel = xp.total % 500;
+
+  document.getElementById("lv-line").innerHTML = "Lv." + lv + " <b>" + titleOf(lv) + "</b>";
+  document.getElementById("xp-fill").style.width = Math.round(inLevel / 500 * 100) + "%";
+  document.getElementById("xp-num").textContent = inLevel + " / 500 XP";
+  document.getElementById("streak-num").textContent = "🔥 " + d.diary.streak + " 天";
+  document.getElementById("updated-line").textContent = "上次更新:" + d.updated + " · 数据来源:Obsidian 日记(自动整理,零录入)" + (PRIV ? " · 公开脱敏版,金额已隐藏" : "");
+
+  document.getElementById("c-xp").textContent = xp.total.toLocaleString();
+  document.getElementById("c-diary").textContent = d.diary.total;
+  document.getElementById("c-outputs").textContent = d.outputs.length;
+  var incomeTotal = d.income.filter(function(i){ return !i.dedup; }).reduce(function(s,i){ return s + (Number(i.amount)||0); }, 0);
+  document.getElementById("c-income").textContent = PRIV ? "***" : incomeTotal.toLocaleString();
+
+  /* stepper */
+  var STEPS = ["选一类人","问题账本","人工帮解决","收费验证","同一人群四周","复盘复制"];
+  var html = "";
+  STEPS.forEach(function(s, i){
+    var cls = i < d.moneyStage ? "done" : (i === d.moneyStage ? "now" : "");
+    var ball = i < d.moneyStage ? "✓" : (i + 1);
+    html += '<div class="stp ' + cls + '"><div class="ball">' + ball + '</div><div class="cap">' + s + "</div></div>";
+  });
+  document.getElementById("stepper").innerHTML = html;
+  document.getElementById("stage-note").textContent = "当前:第 " + (d.moneyStage + 1) + " 步 · 收费验证";
+
+  /* problems */
+  document.getElementById("prob-count").textContent = "共 " + d.problems.length + " 条";
+  document.getElementById("problems").innerHTML = d.problems.slice().reverse().map(function(p){
+    return '<div class="row"><span class="d">' + dLink(p.date) + "</span>" +
+      '<span class="t"><b>' + esc(p.who) + "</b>:" + esc(p.problem) + "</span>" +
+      '<span class="pill p-' + p.status + '">' + STATUS_TXT[p.status] + "</span></div>";
+  }).join("");
+
+  /* income */
+  document.getElementById("income").innerHTML = d.income.slice().reverse().map(function(i){
+    return '<div class="row' + (i.dedup ? " dedup" : "") + '"><span class="d">' + dLink(i.date) + "</span>" +
+      '<span class="t">' + esc(i.title) + (i.note ? ' <span class="muted">' + esc(i.note) + "</span>" : "") + "</span>" +
+      (i.amount > 0 ? '<span class="amt">' + (PRIV ? "¥***" : fmtMoney(i.amount)) + "</span>" : '<span class="amt zero">未记</span>') + "</div>";
+  }).join("");
+  document.getElementById("income-total").textContent = PRIV ? "¥***" : fmtMoney(incomeTotal);
+
+  /* snapshot */
+  document.getElementById("snap-date").textContent = d.snapshot.date;
+  document.getElementById("snapshot").innerHTML =
+    '<div class="snap-row"><span class="k k-did">做成了</span><span>' + esc(d.snapshot.did) + "</span></div>" +
+    '<div class="snap-row"><span class="k k-stuck">卡在哪</span><span>' + esc(d.snapshot.stuck) + "</span></div>" +
+    '<div class="snap-row"><span class="k k-next">下一步</span><span>' + esc(d.snapshot.next) + "</span></div>";
+
+  /* outputs */
+  var lastOutput = d.outputs.reduce(function(a,b){ return a.date > b.date ? a : b; });
+  var gap = daysSince(lastOutput.date);
+  document.getElementById("output-note").textContent = "共 " + d.outputs.length + " 次 · 距上次 " + gap + " 天(只记录,不催更)";
+  document.getElementById("outputs").innerHTML = d.outputs.slice().reverse().map(function(o){
+    return '<div class="row"><span class="d">' + dLink(o.date) + "</span>" +
+      '<span class="type-ico">' + (TYPE_ICO[o.type] || "💡") + '</span><span class="t">' + esc(o.title) + "</span></div>";
+  }).join("");
+
+  /* flags */
+  var done = d.flags.filter(function(f){ return f.outcome === "done"; }).length;
+  var missed = d.flags.filter(function(f){ return f.outcome === "missed"; }).length;
+  var rate = (done + missed) ? Math.round(done / (done + missed) * 100) : 0;
+  document.getElementById("align-num").textContent = rate + "%";
+  document.getElementById("align-fill").style.width = rate + "%";
+  document.getElementById("week-note").textContent = d.weekNote;
+  var FLAG_ICO = {done:"✅", missed:"❌", unknown:"⏳"};
+  document.getElementById("flags").innerHTML = d.flags.slice().reverse().map(function(f){
+    return '<div class="row"><span class="flag-ico">' + FLAG_ICO[f.outcome] + "</span>" +
+      '<span class="d">' + dLink(f.date) + "</span>" +
+      '<span class="t">' + esc(f.flag) + (f.evidence ? ' <span class="muted">→ ' + f.evidence.slice(5) + "</span>" : "") + "</span></div>";
+  }).join("");
+
+  /* anchors */
+  document.getElementById("anchor-count").textContent = "共 " + d.anchors.length + " 次";
+  document.getElementById("anchors").innerHTML = d.anchors.slice().reverse().map(function(a){
+    return '<div class="row"><span class="d">' + dLink(a.date) + '</span><span class="t">' + esc(a.what) + "</span></div>";
+  }).join("");
+
+  /* share card */
+  document.getElementById("sc-lv").textContent = "Lv." + lv + " " + titleOf(lv);
+  document.getElementById("sc-sub").textContent = "总经验 " + xp.total.toLocaleString() + " XP";
+  document.getElementById("sc-streak").textContent = d.diary.streak;
+  document.getElementById("sc-weekxp").textContent = "+" + weekXP(d);
+  document.getElementById("sc-outputs").textContent = d.outputs.length;
+  document.getElementById("sc-income").textContent = PRIV ? "保密" : ("¥" + (incomeTotal >= 10000 ? (incomeTotal/10000).toFixed(1) + "万" : incomeTotal));
+  document.getElementById("sc-align").textContent = rate + "%";
+  document.getElementById("sc-date").textContent = d.updated.slice(0, 10);
+}
+
+/* ============ 主题 ============ */
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme", t);
+  document.getElementById("theme-btn").textContent = t === "dark" ? "☀️" : "🌙";
+  try { localStorage.setItem("wb-theme", t); } catch(e) {}
+}
+document.getElementById("theme-btn").addEventListener("click", function(){
+  var cur = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(cur);
+});
+(function(){
+  var t = "light";
+  try { t = localStorage.getItem("wb-theme") || "light"; } catch(e) {}
+  applyTheme(t);
+})();
+
+if("serviceWorker" in navigator && location.protocol.indexOf("http") === 0){
+  navigator.serviceWorker.register("sw.js").catch(function(){});
+}
+
+render();
+</script>
+</body>
+</html>
