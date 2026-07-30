@@ -18,6 +18,8 @@ test("renders the daily briefing", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /蔓蔓的早课/);
+  assert.match(html, /<title>蔓蔓的早课<\/title>/);
+  assert.doesNotMatch(html, /产品、创作与个人规划/);
   assert.match(html, /产品与创作早报/);
   assert.match(html, /昨日姜胡说知识星球/);
   assert.match(html, /每天自动更新/);
@@ -52,5 +54,7 @@ test("exports the archive calendar to current and historical pages", async () =>
   assert.doesNotMatch(historical, /南宁当天天气：中雨转小雨/);
   assert.match(current, /archive\/2026-07-29\.html\?v=20260730/);
   assert.match(historical, /蔓蔓的早课/);
+  assert.match(historical, /<title>蔓蔓的早课<\/title>/);
+  assert.doesNotMatch(historical, /产品、创作与个人规划/);
   assert.doesNotMatch(historical, />每日简报<\/a>/);
 });

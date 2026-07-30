@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: base,
-    title: "蔓蔓的早课｜产品、创作与个人规划",
+    title: "蔓蔓的早课",
     description: "蔓蔓每天自动更新的产品早报、知识星球与个人行动简报。",
     robots: {
       index: false,

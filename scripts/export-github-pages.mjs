@@ -221,7 +221,7 @@ html = html.replace("</body>", `${menuScript}</body>`);
 
 const currentStylesheet = html.match(/href="(\/daily-briefing\/assets\/index-[^"]+\.css)"/)?.[1];
 const normalizeArchiveBrand = (documentHtml) => documentHtml
-  .replace(/<title>[^<]*<\/title>/, "<title>蔓蔓的早课｜产品、创作与个人规划</title>")
+  .replace(/<title>[^<]*<\/title>/, "<title>蔓蔓的早课</title>")
   .replace(
     /(<a class="brand"[^>]*>[\s\S]*?<span class="brand-dot"><\/span>)(?:每日简报|蔓蔓的早课)(<\/a>)/,
     "$1蔓蔓的早课$2",
