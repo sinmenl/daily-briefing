@@ -97,7 +97,7 @@ export default function Home() {
               <span className="chevron">⌄</span>
             </summary>
             <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期">
-              <a href="/daily-briefing/archive/2026-07-30.html" aria-current="page">2026年7月30日</a>
+              <a href="?date=2026-07-30" aria-current="page">2026年7月30日</a>
             </nav>
           </details>
           <div className="status">

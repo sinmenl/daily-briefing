@@ -40,21 +40,30 @@ test("renders the daily briefing", async () => {
   assert.doesNotMatch(html, /我的理解/);
 });
 
-test("exports the archive calendar to current and historical pages", async () => {
+test("exports one page shell with cloud data for every date", async () => {
   const current = await readFile(new URL("../docs/index.html", import.meta.url), "utf8");
-  const historical = await readFile(new URL("../docs/archive/2026-07-29.html", import.meta.url), "utf8");
+  const manifest = JSON.parse(
+    await readFile(new URL("../docs/data/manifest.json", import.meta.url), "utf8"),
+  );
+  const historical = JSON.parse(
+    await readFile(new URL("../docs/data/2026-07-29.json", import.meta.url), "utf8"),
+  );
+  const latest = JSON.parse(
+    await readFile(new URL("../docs/data/2026-07-30.json", import.meta.url), "utf8"),
+  );
 
   assert.match(current, /data-calendar-year/);
   assert.match(current, /data-calendar-grid/);
-  assert.match(current, /data-archive-date="2026-07-30"/);
-  assert.match(current, /data-archive-date="2026-07-29"/);
-  assert.match(historical, /aria-current="page" data-archive-date="2026-07-29"/);
-  assert.match(historical, /data-calendar-month/);
-  assert.match(historical, /class="hero-mark" aria-hidden="true">晴/);
-  assert.doesNotMatch(historical, /南宁当天天气：中雨转小雨/);
-  assert.match(current, /archive\/2026-07-29\.html\?v=20260730/);
-  assert.match(historical, /蔓蔓的早课/);
-  assert.match(historical, /<title>蔓蔓的早课<\/title>/);
-  assert.doesNotMatch(historical, /产品、创作与个人规划/);
-  assert.doesNotMatch(historical, />每日简报<\/a>/);
+  assert.match(current, /data-brief-app/);
+  assert.match(current, /fetch\(repoBase \+ "\/data\/" \+ date \+ "\.json/);
+  assert.doesNotMatch(current, /window\.location\.assign\(entry\.href\)/);
+  assert.equal(manifest.latest, "2026-07-30");
+  assert.deepEqual(manifest.dates, ["2026-07-30", "2026-07-29"]);
+  assert.equal(historical.date, "2026-07-29");
+  assert.equal(latest.date, "2026-07-30");
+  assert.match(historical.mainHtml, /data-brief-date="2026-07-29"/);
+  assert.match(historical.mainHtml, /class="hero-mark" aria-hidden="true">晴/);
+  assert.doesNotMatch(historical.mainHtml, /南宁当天天气：中雨转小雨/);
+  assert.match(latest.mainHtml, /南宁当天天气：中雨转小雨，26–31℃/);
+  assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });
