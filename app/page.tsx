@@ -69,7 +69,7 @@ export default function Home() {
       <header className="topbar">
         <a className="brand" href="#top" aria-label="返回顶部">
           <span className="brand-dot" />
-          每日简报
+          蔓蔓的早课
         </a>
         <div className="top-actions">
           <button

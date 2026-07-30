@@ -17,7 +17,7 @@ test("renders the daily briefing", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /每日简报/);
+  assert.match(html, /蔓蔓的早课/);
   assert.match(html, /产品与创作早报/);
   assert.match(html, /昨日姜胡说知识星球/);
   assert.match(html, /每天自动更新/);
@@ -46,4 +46,7 @@ test("exports the archive calendar to current and historical pages", async () =>
   assert.match(current, /data-archive-date="2026-07-29"/);
   assert.match(historical, /aria-current="page" data-archive-date="2026-07-29"/);
   assert.match(historical, /data-calendar-month/);
+  assert.match(current, /archive\/2026-07-29\.html\?v=20260730/);
+  assert.match(historical, /蔓蔓的早课/);
+  assert.doesNotMatch(historical, />每日简报<\/a>/);
 });

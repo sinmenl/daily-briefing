@@ -65,7 +65,8 @@ const archiveDates = [...new Set([
 const buildDateLinks = (activeDate) => archiveDates.map((date) => {
   const [year, month, day] = date.split("-");
   const current = date === activeDate ? ' aria-current="page"' : "";
-  return `<a href="/${repoName}/archive/${date}.html"${current} data-archive-date="${date}">${year}年${Number(month)}月${Number(day)}日</a>`;
+  const version = currentDate.replaceAll("-", "");
+  return `<a href="/${repoName}/archive/${date}.html?v=${version}"${current} data-archive-date="${date}">${year}年${Number(month)}月${Number(day)}日</a>`;
 }).join("");
 const dateLinks = buildDateLinks(currentDate);
 html = html.replace(
@@ -219,6 +220,14 @@ const menuScript = `<script data-brief-menu>
 html = html.replace("</body>", `${menuScript}</body>`);
 
 const currentStylesheet = html.match(/href="(\/daily-briefing\/assets\/index-[^"]+\.css)"/)?.[1];
+const normalizeArchiveBrand = (documentHtml) => documentHtml
+  .replace(/<title>[^<]*<\/title>/, "<title>蔓蔓的早课｜产品、创作与个人规划</title>")
+  .replace(
+    /(<a class="brand"[^>]*>[\s\S]*?<span class="brand-dot"><\/span>)(?:每日简报|蔓蔓的早课)(<\/a>)/,
+    "$1蔓蔓的早课$2",
+  )
+  .replace(/(<meta property="og:title" content=")[^"]*(")/, "$1蔓蔓的早课$2")
+  .replace(/(<meta name="twitter:title" content=")[^"]*(")/, "$1蔓蔓的早课$2");
 for (const archiveFile of existingArchiveFiles) {
   const archivePath = path.join(archiveSource, archiveFile);
   const archiveDate = archiveFile.replace(/\.html$/, "");
@@ -238,6 +247,7 @@ for (const archiveFile of existingArchiveFiles) {
       currentStylesheet,
     );
   }
+  refreshedHtml = normalizeArchiveBrand(refreshedHtml);
   await writeFile(archivePath, refreshedHtml, "utf8");
 }
 await writeFile(path.join(archiveSource, `${currentDate}.html`), html, "utf8");
