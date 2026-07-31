@@ -27,6 +27,7 @@ const normalizeDocument = (documentHtml) => {
     .replaceAll('href="/assets/', `href="/${repoName}/assets/`)
     .replaceAll('src="/assets/', `src="/${repoName}/assets/`)
     .replaceAll('href="/knowledge/', `href="/${repoName}/knowledge/`)
+    .replaceAll('src="/knowledge/', `src="/${repoName}/knowledge/`)
     .replaceAll('href="/hotlist/', `href="/${repoName}/hotlist/`)
     .replaceAll("http://localhost:3000/og.png", `${publicUrl}og.png`)
     .replaceAll("http://localhost:3000/favicon.svg", `${publicUrl}favicon.svg`)
