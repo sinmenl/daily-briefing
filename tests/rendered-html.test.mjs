@@ -55,6 +55,7 @@ test("exports one page shell with cloud data for every date", async () => {
 
   assert.match(current, /data-calendar-year/);
   assert.match(current, /data-calendar-grid/);
+  assert.match(current, /renderCalendar\(\);\s*picker\.addEventListener/);
   assert.match(current, /data-brief-app/);
   assert.match(current, /src="\/daily-briefing\/knowledge\/2026-07-30\/images\//);
   assert.doesNotMatch(current, /src="\/knowledge\/2026-07-30\/images\//);

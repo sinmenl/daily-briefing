@@ -242,6 +242,7 @@ const appScript = `<script data-brief-app>
       else viewMonth += 1;
       renderCalendar();
     });
+    renderCalendar();
     picker.addEventListener("click", (event) => event.stopPropagation());
   };
 
