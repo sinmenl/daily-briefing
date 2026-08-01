@@ -1,72 +1,72 @@
 const tasks = [
   {
     number: "01",
-    title: "先确认今天的精力",
-    body: "昨日日记记录通宵后只睡四五小时。开始任何任务前先吃饭、补水并判断困倦程度；状态差就不追加新项目。",
-    first: "用一句话记录此刻精力",
-    time: "5 分钟",
+    title: "去图书馆，确定第一条视频",
+    body: "你已经明确写下今天去图书馆、八月开始 AI 知识库视频。到馆后不研究整套知识库，只确定第一条视频要回答的一个具体问题。",
+    first: "写下观众的一句具体问题",
+    time: "30 分钟",
     tone: "mint",
   },
   {
     number: "02",
-    title: "让工作台完成一次真任务",
-    body: "不要先研究所有功能。只拿一个今天真实要解决的小问题，完整走一遍输入、结果、核对与是否有用。",
-    first: "写下一个真实问题",
-    time: "25 分钟",
+    title: "做出第一条视频 1.0",
+    body: "只完成一个可观看版本：开头说明谁遇到什么问题，中间演示一个步骤，结尾给出结果。先允许粗糙，再用真实观看体验决定怎么改。",
+    first: "录下 30 秒开头",
+    time: "60–90 分钟",
     tone: "blue",
   },
   {
     number: "03",
-    title: "保住一次主动阅读",
-    body: "昨天已经明确写下“还是把我的简报看了”。今天延续这个动作，只读一条并留下本人一句话，不扩建系统。",
-    first: "从下方任选一条展开",
-    time: "15 分钟",
+    title: "给今天设置停止线",
+    body: "早睡挑战昨天再次失败。今天不靠额度、积分或熬夜制造紧迫感；到了停止时间就保存当前版本，不追加工具与新想法。",
+    first: "现在写下今晚停止工作的时间",
+    time: "5 分钟",
     tone: "peach",
   },
 ];
 
 const briefing = [
   {
-    tag: "阅读与创作",
-    title: "Dan Koe：阅读不是逐字记忆，而是形成理解",
-    intro: "最近一次可核验公开文章，把“记住全部”与“真正理解并能使用”分开。",
+    tag: "视频创作",
+    title: "YouTube：Shorts 开始支持自定义缩略图",
+    intro: "平台把缩略图控制权进一步交给创作者，也把“用户看到什么”变成可设计环节。",
     content: [
-      "事实背景：Dan Koe 于 2026 年 7 月 25 日发布《How to remember everything you read... don't》。文章反对把阅读目标设成记住每句话，认为机械记忆常被误当成聪明或学习成果；更重要的是理解概念、把它与已有经验连接，并在需要时用出来。截至 7 月 31 日早间，未发现 7 月 30—31 日新的可核验 Letters 条目。",
-      "必要概念解释：记忆回答“我能不能复述”，理解回答“我能不能用自己的语言解释、判断它在什么情况下成立”。两者会重叠，但不是一回事。为了保存所有内容而不断摘录，可能增加资料量，却不一定改变判断。",
-      "为什么重要：生成式 AI 可以替人保存、搜索和总结大量材料，但不能自动替人决定什么值得相信、什么与当前问题有关。内容创作者若只追求收集完整，容易把表达变成资料搬运；产品若只追求记录更多用户数据，也可能没有真正支持用户做决定。",
-      "对实践的建议：你 7 月 25 日本人写过“一句话想法是理解过程的起点”，昨天又明确写下已阅读简报。今天只需从一条材料中写出一个本人可复查的连接，不要求记住整篇，也不把作者的判断当成自己的判断。",
+      "事实背景：YouTube 于 2026 年 7 月 24 日宣布，YouTube Partner Program 创作者开始可以为 Shorts 上传自定义缩略图，后续会扩大范围；桌面端也可从三个建议画面中选择。长视频方面，Ask Studio 可直接生成缩略图，并通过对话继续调整颜色和版式。",
+      "必要概念解释：缩略图不是视频内容本身，却承担一次“进入承诺”——它告诉用户这条视频大致讲什么、适合谁、看完可能得到什么。自定义能力增加，不代表缩略图可以与内容脱节；承诺越夸张、实际内容越弱，点击可能上升，但信任与留存会受损。",
+      "为什么重要：短视频过去常依赖系统截帧，创作者对入口信息控制有限。现在 Shorts 的包装与长视频更接近，意味着同一个内容需要同时考虑被推荐时的前几秒，以及出现在频道页、搜索与历史记录时的静态入口。",
+      "对实践的建议：你今天做 AI 知识库视频时，先写一句缩略图承诺，再录内容。承诺必须能在视频里被实际兑现，例如“我怎么把一份资料放进本地知识库”，而不是泛化成“普通人必须学会 AI 知识库”。",
     ],
-    source: "https://letters.thedankoe.com/p/how-to-remember-everything-you-read",
-    sourceLabel: "Dan Koe 原文",
+    source: "https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/",
+    sourceLabel: "YouTube 官方博客",
   },
   {
-    tag: "Agent 基建",
-    title: "dbskill v2.18.15：默认避开重复 Skill 目录",
-    intro: "一次很小的路径调整，解决的是多端安装后能力重复、真源不清的问题。",
+    tag: "用户研究",
+    title: "Dovetail：用真实研究资料建立客户数字孪生",
+    intro: "AI 可以让团队更快查询用户材料，但模拟用户并不等于重新访问真实用户。",
     content: [
-      "事实背景：dontbesilent 的 GitHub 仓库在 2026 年 7 月 29 日 18:44（北京时间）发布 v2.18.15。版本差异显示，dbs-bridge 现在默认桥接 Claude Code、Codex、WorkBuddy 与 Grok，不再默认写入 ~/.agents/skills；只有明确需要豆包 Mac App、Trae Solo 等通用 Agents 时才使用 --with-agents。",
-      "为什么重要：Codex 会同时读取 ~/.codex/skills 与 ~/.agents/skills。同一个 Skill 同时出现在两个目录时，用户会看到重复能力，也更难判断哪个目录是真源。此次更新不是新增更多功能，而是减少重复入口，让“一份源文件、多端调用”的关系更可理解。",
-      "产品与用户研究视角：基础设施产品常见的痛点不是“能力不够”，而是状态不可见、路径重复、边界不清。对用户而言，列表中两个同名 Skill 并不意味着能力翻倍，只意味着额外判断成本。好的默认值应该服务大多数真实使用路径，把特殊兼容需求变成显式选项。",
-      "对实践的建议：截至 7 月 31 日早间，v2.18.15 仍是最新 release，7 月 30—31 日没有新版本。无需为了“保持最新”继续升级；只有发现同名 Skill 重复或真源不清时，才检查目录。",
+      "事实背景：Dovetail 于 2026 年 7 月 14 日发布 Summer Launch ’26，新增可依据真实通话、客服工单和研究资料建立客户、细分人群或 persona 数字孪生的能力，并允许团队在 Dovetail Chat、Slack 或 Teams 中询问其优先级、反对理由和对新想法的反应。",
+      "必要概念解释：这里的“数字孪生”不是一个真实客户的复制品，而是根据已有资料生成的可查询模拟。它能把散落证据组织成对话入口，却仍受原始样本、分类方式、资料新旧与模型推断影响。",
+      "为什么重要：产品团队经常知道资料存在哪里，却没有时间反复翻访谈。对话式入口降低检索成本，也可能让更多非研究人员接触用户证据；风险是回答太流畅，使团队忘记它只是对历史材料的推断，而不是一次新的用户访谈。",
+      "对实践的建议：以后用 AI 分析视频评论或用户材料时，要求它同时返回原始证据和反例。把 AI 生成的用户反应当作待验证假设，不把“数字用户说了什么”写成真实用户已经说过什么。",
     ],
-    source: "https://github.com/dontbesilent2025/dbskill/releases/tag/v2.18.15",
-    sourceLabel: "GitHub Release v2.18.15",
+    source: "https://dovetail.com/blog/suns-out-2026-launch/",
+    sourceLabel: "Dovetail 官方发布",
   },
 ];
 
 const trends = [
-  ["重复目标", "把 AI 嵌入真实工作流，并找到自己会实际使用、能解决具体问题的方式。"],
-  ["重复阻碍", "高密度信息流、游戏与深夜直播提供即时反馈；长内容和真实使用反馈较慢，容易被切换或继续搭系统取代。"],
-  ["精力变化", "过去七天多次凌晨四点或通宵，白天补觉、困倦和缺少行动欲望反复出现；7 月 30 日只睡约四五小时。"],
-  ["正向变化", "你从 7 月 24 日写“早报没看过、简报偶尔看”，走到了 7 月 30 日明确写“还是把我的简报看了”。这是可核验的使用变化。"],
+  ["重复目标", "把 AI 从抽象学习变成能落地的工作流；本周先后出现择校工具复盘、知识星球采集、每日简报融合、工作台和财务核对。"],
+  ["重复阻碍", "直播、信息流、游戏和工具搭建都能提供即时刺激；当任务没有外部期限时，容易继续找新输入或换系统，而不是把一个结果交付出去。"],
+  ["精力变化", "近七天多次熬到凌晨四点或通宵，白天补觉、困倦和缺少行动欲望反复出现；7 月 31 日本人再次写“早睡挑战失败”。"],
+  ["正向变化", "7 月 31 日没有停在工作台形式：你把网页版账单发到群里让舅舅查看，用真实使用替代重复核对；这是一条可核验的工作流结果。"],
 ];
 
-const briefDate = "2026-07-31";
+const briefDate = "2026-08-01";
 const weather = {
   location: "南宁",
-  condition: "阵雨",
+  condition: "小雨",
   temperature: "24–30℃",
-  icon: "🌦️",
+  icon: "🌧️",
 };
 
 export default function Home() {
@@ -97,7 +97,7 @@ export default function Home() {
               <span className="chevron">⌄</span>
             </summary>
             <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期">
-              <a href="?date=2026-07-31" aria-current="page">2026年7月31日</a>
+              <a href="?date=2026-08-01" aria-current="page">2026年8月1日</a>
             </nav>
           </details>
           <div className="status">
@@ -141,9 +141,7 @@ export default function Home() {
             <div className="nav-group">
               <a className="nav-title" href="#planet"><span className="nav-icon icon-planet" aria-hidden="true">✦</span>昨日知识星球</a>
               <div className="nav-sub">
-                <a href="#planet-post-1">核心技能都要经过难看的阶段</a>
-                <a href="#planet-post-2">开头也要筛掉不合适的人</a>
-                <a href="#planet-post-3">不要为躲小山包绕大山</a>
+                <a href="#planet-missing">7 月 31 日归档尚未生成</a>
               </div>
             </div>
 
@@ -159,8 +157,8 @@ export default function Home() {
             <div className="nav-group">
               <a className="nav-title" href="#schedule"><span className="nav-icon icon-schedule" aria-hidden="true">◷</span>今日时间块</a>
               <div className="nav-sub">
-                <a href="#schedule">上午恢复与确认精力</a>
-                <a href="#schedule">下午完成一次真任务</a>
+                <a href="#schedule">上午到图书馆定题</a>
+                <a href="#schedule">下午完成视频 1.0</a>
                 <a href="#risk">今日风险</a>
               </div>
             </div>
@@ -168,14 +166,14 @@ export default function Home() {
             <div className="nav-group">
               <a className="nav-title" href="#deep-reads"><span className="nav-icon icon-briefing" aria-hidden="true">↗</span>今日深读</a>
               <div className="nav-sub">
-                <a href="#deep-read-1">Dan Koe：理解而非全记住</a>
-                <a href="#deep-read-2">dbskill v2.18.15 差异</a>
-                <a href="#deep-read-3">知识星球：开头负责筛选</a>
+                <a href="#deep-read-1">YouTube：缩略图更新</a>
+                <a href="#deep-read-2">Dovetail：数字孪生</a>
+                <a href="#deep-read-3">Dan Koe：理解而非全记住</a>
               </div>
             </div>
 
             <div className="nav-group">
-              <a className="nav-title" href="/hotlist/2026-07-30.html"><span className="nav-icon icon-hotlist" aria-hidden="true">↗</span>昨日热点榜单</a>
+              <a className="nav-title" href="#hotlist-missing"><span className="nav-icon icon-hotlist" aria-hidden="true">↗</span>昨日热点榜单</a>
             </div>
           </nav>
 
@@ -185,17 +183,17 @@ export default function Home() {
         <div className="page" id="top">
         <section className="hero">
           <div className="date-block">
-            <div className="date-day">31</div>
+            <div className="date-day">01</div>
             <div>
-              <p className="date-month">2026 · 07</p>
-              <p className="date-week">星期五</p>
+              <p className="date-month">2026 · 08</p>
+              <p className="date-week">星期六</p>
             </div>
           </div>
           <div className="hero-copy">
             <p className="eyebrow">TODAY&apos;S DIRECTION</p>
-            <h1>别再研究“怎样使用”，<br />先用它完成一件小事。</h1>
+            <h1>八月先交出第一版，<br />再决定下一步学什么。</h1>
             <p className="judgment">
-              昨天虽然通宵、只睡四五小时，你仍第一次明确写下“把简报看了”。今天不扩建系统：先确认精力，再让工作台完成一个真实小任务，并保住一次主动阅读。
+              昨天终于把工作台用于真实账单，也卖出 5 张游泳票；但早睡仍失败。近一周正从搭系统转向验证使用，今天去图书馆，只做第一条 AI 知识库视频 1.0，并保住睡眠。
             </p>
           </div>
           <div
@@ -272,10 +270,10 @@ export default function Home() {
               <span className="plus" aria-hidden="true">＋</span>
             </summary>
             <div className="brief-content">
-              <p><strong>Dan Koe：</strong>截至 2026 年 7 月 31 日 09:05，未发现 7 月 30—31 日新条目；最近可核验的公开文章为 7 月 25 日《How to remember everything you read... don&apos;t》，已作为上方动态收录。</p>
-              <p><strong>dontbesilent 的 X：</strong>X 公开页无法稳定读取当日时间线，搜索未找到可核验的 7 月 30—31 日新帖；GitHub/dbskill 的最新 release 仍为 7 月 29 日 v2.18.15。</p>
-              <p><strong>Naval：</strong>官网作者页最近可核验条目为 2026 年 6 月 1 日《The AI Industrial Revolution》；未发现 7 月 30—31 日新公开内容。</p>
-              <p><strong>姜胡说公开短视频：</strong>未发现 7 月 30—31 日可核验的新抖音或视频号原始页面；昨日知识星球原文只在下方独立栏目展示，不占公开动态名额。</p>
+              <p><strong>Dan Koe：</strong>截至 2026 年 8 月 1 日 09:00，未发现 7 月 31 日或 8 月 1 日新条目；最近可核验公开文章仍为 7 月 25 日《How to remember everything you read... don&apos;t》。</p>
+              <p><strong>dontbesilent 的 X：</strong>X 公开页无法稳定读取完整当日时间线，因此没有把搜索片段当作更新；GitHub API 核验 dbskill 最新 release 仍为 7 月 29 日 v2.18.15。</p>
+              <p><strong>Naval：</strong>官网首页最新可核验节目为 2026 年 7 月 2 日《Live in the Future》；未发现 7 月 31 日或 8 月 1 日新节目。</p>
+              <p><strong>姜胡说公开短视频：</strong>未发现 7 月 31 日或 8 月 1 日具有明确日期、且可完整核验的抖音或视频号原始页面。</p>
               <p>核验边界：搜索引擎与未登录平台可能漏收内容；因此这里表达的是“未发现可核验更新”，不是断言作者绝对没有发布。</p>
             </div>
           </details>
@@ -287,65 +285,23 @@ export default function Home() {
               <p className="eyebrow">JIANGHU NOTES · YESTERDAY</p>
               <h2>昨日姜胡说知识星球</h2>
             </div>
-            <p>归档区间：7 月 29 日 23:30—7 月 30 日 23:30<br /><a className="archive-link" href="/knowledge/2026-07-30/26-07-30姜胡说知识星球.md">查看原始归档 ↗</a></p>
+            <p>应读取 7 月 31 日归档，不回退旧日期</p>
           </div>
-          <details className="planet-card" id="planet-post-1">
+          <details className="planet-card" id="planet-missing" open>
             <summary>
-              <div className="avatar">胡</div>
+              <div className="avatar">缺</div>
               <div>
-                <span className="planet-time">大胡子 · 08:45</span>
-                <strong>核心技能都要经过难看的阶段</strong>
-                <span>完整原文</span>
+                <span className="planet-time">采集状态</span>
+                <strong>7 月 31 日知识星球归档尚未生成</strong>
+                <span>不使用更早日期顶替</span>
               </div>
-              <span className="open-label">展开</span>
+              <span className="open-label">详情</span>
             </summary>
             <div className="planet-content">
               <div className="original">
-                <span>原文</span>
-                <p>任何一个有用且实用的核心技能，<br />都必须通过大量刻意练习和积累获得。<br />都需要经过一个看起来像狗屎，然后慢慢变好的过程。<br />任何一个。</p>
-                <p>任何想跳过这个过程、破格获取的人，都是蠢货。<br />有的还是超级蠢货。<br />无一例外。</p>
-              </div>
-            </div>
-          </details>
-          <details className="planet-card" id="planet-post-2">
-            <summary>
-              <div className="avatar">胡</div>
-              <div>
-                <span className="planet-time">大胡子 · 20:10</span>
-                <strong>开头也要筛掉不合适的人</strong>
-                <span>完整原文</span>
-              </div>
-              <span className="open-label">展开</span>
-            </summary>
-            <div className="planet-content">
-              <div className="original">
-                <span>原文</span>
-                <p>刚刚我在回填数据的时候看到了这个（参见前两天我给大家发的提示词，我正在进一步优化它）。<br />说明什么？</p>
-                <p>就是标题没选好，前30秒没做好。算法把内容推给了不匹配的人，好内容分发给了不合适的人，造成数据下滑。<br />如果换个标题和开头，数据非常有可能会上来。<br />所以，你的前3秒和开头不一定是把用户吸引进来，反而应该是让不合适的人不要进来。<br />有违常理吧。<br />但，事实就是这样：收藏率和完播率比黄金3秒还重要。你想想平台要的是什么，就明白了。</p>
-                <img src="/knowledge/2026-07-30/images/[2] 大胡子 -1.png" alt="大胡子帖子配图：内容数据回填截图" />
-              </div>
-            </div>
-          </details>
-          <details className="planet-card" id="planet-post-3">
-            <summary>
-              <div className="avatar">胡</div>
-              <div>
-                <span className="planet-time">大胡子 · 20:16</span>
-                <strong>不要为躲小山包绕大山</strong>
-                <span>完整原文</span>
-              </div>
-              <span className="open-label">展开</span>
-            </summary>
-            <div className="planet-content">
-              <div className="original">
-                <span>原文</span>
-                <p>工欲善其事，必先利其器。<br />如果你真的想在某一方面有所成就，应该深入地去理解、打磨关于该项技能的每一个细节。而不是不停地东张西望，去寻找什么奇技淫巧，不停地换赛道。</p>
-                <p>太多的老伙计静不下心来。<br />一旦数据受挫，马上就进入焦虑。思考的问题不是去打磨细节，而是想着要不然我再换个赛道吧。没有数据肯定是因为我讲的这个领域没人感兴趣，我换个领域。<br />你看，又进入了之前我反复强调的“为了躲个小山包，我去绕一座大山”的重复逻辑。</p>
-                <p>在做某件事情的时候，见到一点小困难就想躲。<br />那么恭喜你。只要你想做这个事儿，这些困难就会永远挡在你面前，并且以技术债的形式不断地叠加。最终击溃你。</p>
-                <p>如果你能像我上一个帖子一样，一点一点地去深度研究它。<br />一切困难都他娘的是纸老虎。<br />很可惜，很少有人会像我这么做。</p>
-                <p>他们总希望付出很少的一点点努力，然后获得大大的结果。<br />终究不肯醒来。</p>
-                <img src="/knowledge/2026-07-30/images/[3] 大胡子 -1.png" alt="大胡子帖子配图一" />
-                <img src="/knowledge/2026-07-30/images/[3] 大胡子 -2.png" alt="大胡子帖子配图二" />
+                <span>预期路径</span>
+                <p>8.姜胡说知识星球/output/26.7月/26-07-31姜胡说知识星球/26-07-31姜胡说知识星球.md</p>
+                <p>截至本次生成时没有找到该文件，因此今天不展示星主原文、图片或任何替代性解读，也不回退到 7 月 30 日归档。</p>
               </div>
             </div>
           </details>
@@ -363,10 +319,11 @@ export default function Home() {
             <details className="review-card" id="yesterday-review" open>
               <summary>昨日复盘</summary>
               <div>
-                <p><strong>事实：</strong>7 月 30 日日记记录：前一晚喝奶茶后通宵打王者 14 把，之后继续刷视频；早上外出吃粉，回家睡约四五小时，醒后继续刷手机，没有干活欲望。你写“又是一个休息日”。</p>
-                <p><strong>可确认的变化：</strong>同一篇日记里，你第一次明确写“还是把我的简报看了”。7 月 24 日曾写早报“没看过”、简报“偶尔看”；因此昨天至少完成了一次从搭建到使用的动作。</p>
-                <p><strong>本人已写下的待研究问题：</strong>你认为“工作台这件事，形式大于意义”，并写“我做了可是不会用，明天我要研究一下，为什么我会觉得工作台这件事形式大于意义”。这里只忠实呈现原记录，不替你回答。</p>
-                <p className="advice"><strong>AI 建议：</strong>不要先研究抽象原因，也不要学习全部功能。让工作台处理一个真实小任务，再记录它在哪一步有用或无用；一次使用证据比继续讨论“形式还是意义”更能回答问题。</p>
+                <p><strong>完成：</strong>你把 WorkBuddy 从不明确用途的工作台改成周复盘，随后做了网页版账单，并发到群里让舅舅查看，目的是真实减少重复核对；继续整理了财务工作流。你还在闲鱼卖出 5 张游泳票，每张赚 3 元，共得到 15 元毛收益，并填写了华图兼职班主任。</p>
+                <p><strong>未完成或仍待确认：</strong>学校方面仍没有通知；早睡挑战失败。日记没有记录具体睡眠时长，因此不能推断你昨天睡了多久，也不能把“明天去图书馆”当作已经完成。</p>
+                <p><strong>情绪与精力信号：</strong>你写使用 Codex 额度时“心好痛”，又因为自动任务与额度刷新使用了重置卡；同时写“不想打王者了，只想猛猛蹬额度”。外部资源临期显著拉高行动动力，但也可能把停止时间继续往后推。</p>
+                <p><strong>本人明确写下的方向：</strong>“八月目标开始 AI 知识库视频，至少发三条视频，先去做，做完才知道。”这里只忠实呈现你的原话，不替你补充选题、平台或发布时间。</p>
+                <p className="advice"><strong>AI 建议：</strong>延续昨天已经有效的模式——让工具处理一件真实任务，并把结果交给真实使用者；避免再做一个不知道何时打开的通用工作台。今天的视频也先做 1.0，不先搭完整内容系统。</p>
               </div>
             </details>
             <details className="review-card" id="seven-day-trend">
@@ -380,13 +337,13 @@ export default function Home() {
             <details className="review-card diagnosis" id="action-diagnosis">
               <summary>AI 执行力诊断 / 建议</summary>
               <div>
-                <p><strong>你描述的问题：</strong>你认为工作台“形式大于意义”，因为已经做了却不会用；同时，昨天在通宵、补觉和持续刷手机后，没有干活欲望。</p>
-                <p><strong>证据与信号：</strong>A（执行模拟器）与 B（用研究替代行动）仍存在，但必须与睡眠负荷分开。7 月 24 日写已有多个自动化却很少阅读；7 月 29 日继续搭建采集与融合；7 月 30 日一边首次真正读简报，一边又把下一步表述为“研究为什么工作台形式大于意义”。这说明使用已经开始，但遇到不确定时仍容易回到分析系统。</p>
-                <p><strong>AI 诊断：</strong>工作台是否有意义不是靠继续研究能回答的抽象问题，而是一个使用验证问题。把它留在“我不会用”的状态，可以继续维持“工具可能很强，只是还没学会”的可能性；拿真实任务测试，则可能得到更具体也更不舒服的结果：它对这个任务没用，或自己没有把问题说清。这里同时存在明显睡眠不足，不能把当天缺少行动欲望全部心理化。</p>
-                <p><strong>真正的问题：</strong>你缺的不是另一套工作台教程，而是一条可检查的使用证据：谁的问题、输入是什么、工作台做了什么、结果是否省时或改善判断。</p>
-                <p><strong>阿德勒框架下的解法：</strong>用已有工具帮助一个具体的人解决一个小问题。今天这个人可以是“下午的自己”：拿一件原本要手工整理或判断的小事交给工作台，核对结果，并把有用与无用各记一句。不要把测试扩成新系统。</p>
-                <p className="advice"><strong>一句话处方：</strong>别研究工作台有没有意义；给它一个真问题，结果就是答案。</p>
-                <p><strong>适用边界：</strong>如果今天仍明显困倦、头痛或注意力涣散，先恢复睡眠；这不是用情绪合理化拖延，而是对连续通宵证据作出的负荷调整。</p>
+                <p><strong>你描述的问题：</strong>你已经知道“先去做，做完才知道”，也定下八月至少三条 AI 知识库视频；但你同时明确观察到，积分或额度临期时才会灵感爆棚、动力大涨。</p>
+                <p><strong>证据与信号：</strong>A（执行模拟器）已经出现改善：昨天工作台终于接到真实账单任务。当前更明显的是“借外部截止日期启动”——WorkBuddy 积分快失效时完成工作台，Codex 快刷新时更愿意折腾新想法。它短期有效，却把行动与焦虑、沉没成本和熬夜绑定。</p>
+                <p><strong>AI 诊断：</strong>问题不是你没有行动力，而是目前更擅长响应外部紧迫感，尚未稳定用一个小交付物启动。若把“三条视频”继续留成月度愿望，你很可能先研究工具、知识库结构和选题体系，直到新的截止日期出现；这样仍能感觉自己在推进，却迟迟没有可观看版本。</p>
+                <p><strong>真正的问题：</strong>今天不是要证明能否完成八月计划，而是让第一条视频从“方向”变成一个别人能打开观看的 1.0。它可以粗糙，但必须存在。</p>
+                <p><strong>阿德勒框架下的解法：</strong>把关注点从“我今天有没有状态”转向“这条内容能帮哪个具体新手少卡一步”。只回答一个真实问题，完成后让一个人观看或由自己完整播放核对；不靠熬夜制造截止日期。</p>
+                <p className="advice"><strong>一句话处方：</strong>不要用额度到期逼自己冲刺；用一个可观看的第一版结束今天。</p>
+                <p><strong>适用边界：</strong>你昨日日记没有提供睡眠时长，因此不能断言当天一定睡眠不足；但近七天确有连续熬夜记录，今晚的停止线仍应优先于追加新想法。</p>
                 <p><strong>免责声明：</strong>这是基于 dontbesilent 推文逻辑与本地日记证据生成的 AI 诊断工具，不是心理咨询；若存在持续情绪或睡眠困扰，应寻求专业帮助。</p>
               </div>
             </details>
@@ -396,15 +353,15 @@ export default function Home() {
         <section className="schedule" id="schedule">
           <div>
             <span>上午</span>
-            <p>正常吃饭、补水，确认昨晚是否按本人计划恢复睡眠；若仍明显困倦，不安排需要长时间专注的新项目。</p>
+            <p>按本人计划去图书馆。先用 30 分钟确定第一条 AI 知识库视频只回答哪个问题；随后休息 15 分钟，不继续搜工具和案例。</p>
           </div>
           <div>
             <span>下午</span>
-            <p>给工作台一个 25 分钟内能结束的真实任务：写清输入、查看结果、亲自核对，只记录有用与无用，不新增功能。</p>
+            <p>用 60–90 分钟完成视频 1.0：录开头、演示一个步骤、给出结果，完整播放核对一次。剩余时间留作吃饭、回程与缓冲。</p>
           </div>
           <div>
             <span>晚上</span>
-            <p>从简报任选一条读完并写一句本人锚点；按自己设定的停止时间离开游戏和信息流，优先恢复睡眠。</p>
+            <p>只做必要修正并保存版本；不新增第二条选题。按早上写下的停止时间关掉工作台与信息流，给早睡留出实际空间。</p>
           </div>
         </section>
 
@@ -419,9 +376,9 @@ export default function Home() {
             <span className="plus" aria-hidden="true">＋</span>
           </summary>
           <div className="brief-content">
-            <p><strong>把测试变成搭建：</strong>工作台第一次结果不好时，最容易马上加规则、换工具或重做系统。今天只记录问题，不扩建。</p>
-            <p><strong>信息流与游戏：</strong>7 月 30 日从 14 把游戏切到刷视频，7 月 25 日也明确记录对高密度刺激的需求。开始真任务前关闭这些入口，结束后也不把奖励设成无限信息流。</p>
-            <p><strong>睡眠负荷：</strong>近七天多次凌晨四点或通宵。若白天明显困倦，任务 02 缩成只提交一个输入并保存结果；任务 03 缩成只读五分钟，不用熬夜补齐。</p>
+            <p><strong>把视频变成知识库工程：</strong>今天一旦开始改目录、Agent 说明或工具配置，第一条视频就会再次被系统建设替代。所有结构问题只记进待办，不在今天解决。</p>
+            <p><strong>等待外部截止日期：</strong>昨天明确记录积分和额度临期能激发动力。今天不要等闭馆、额度刷新或深夜才开始，上午先录 30 秒作为不可撤销的起点。</p>
+            <p><strong>睡眠与消费：</strong>近七天多次熬夜，也反复出现奶茶、外食、额度和 Plus 成本。今天没有证据支持新增订阅；先用现有工具做出第一版，晚上按停止线收尾。</p>
           </div>
         </details>
 
@@ -435,28 +392,28 @@ export default function Home() {
           </div>
           <div className="brief-list">
             <details className="brief-item" id="deep-read-1">
-              <summary><span className="brief-index">01</span><span className="brief-main"><strong>Dan Koe：阅读不是记住全部</strong><span>阅读问题：哪一个概念真正改变了你的判断？</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p>背景：这是 7 月 25 日发布的最近可核验原文。文章区分记忆、理解与应用，适合对照你已经开始做的“一句话想法”。</p><p>阅读时不要抄完整摘要。只找一句你愿意反驳、补充或用本人经历连接的话；如果没有，也可以明确记录“没有形成连接”。</p><p><a className="archive-link" href="https://letters.thedankoe.com/p/how-to-remember-everything-you-read">阅读 Dan Koe 原文 ↗</a></p></div>
+              <summary><span className="brief-index">01</span><span className="brief-main"><strong>YouTube：Shorts 缩略图更新</strong><span>阅读问题：入口承诺怎样与视频结果保持一致？</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content"><p>背景：YouTube 于 7 月 24 日公开 Shorts 自定义缩略图、建议画面和 Ask Studio 长视频缩略图生成功能。这是平台官方产品更新，不是第三方教程。</p><p>阅读重点不是学习做精美封面，而是观察平台如何把发现、点击与内容预期串起来。你今天只需为第一条视频写一句真实可兑现的入口承诺。</p><p><a className="archive-link" href="https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/">阅读 YouTube 官方发布 ↗</a></p></div>
             </details>
             <details className="brief-item" id="deep-read-2">
-              <summary><span className="brief-index">02</span><span className="brief-main"><strong>dbskill v2.18.15 版本差异</strong><span>阅读问题：默认路径怎样影响用户理解与维护成本？</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p>背景：这是 7 月 29 日发布、截至今天早间仍为最新的版本。重点不是追版本号，而是作者为什么把特殊兼容路径从默认行为改成显式选项。</p><p>对照自己的工作台：默认出现的功能是否服务最常见任务；特殊能力是否让入口变多、真源变模糊。若没有遇到重复问题，不需要今天处理。</p><p><a className="archive-link" href="https://github.com/dontbesilent2025/dbskill/compare/v2.18.14...v2.18.15">阅读完整代码差异 ↗</a></p></div>
+              <summary><span className="brief-index">02</span><span className="brief-main"><strong>Dovetail：客户数字孪生</strong><span>阅读问题：模拟用户与真实用户证据的边界在哪里？</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content"><p>背景：Dovetail 于 7 月 14 日发布 Summer Launch ’26，数字孪生建立在通话、工单与研究资料上，可供团队对话查询。</p><p>重点观察产品如何降低历史资料检索成本，同时警惕模型把缺失语境补得过于完整。读完不需要试新工具，只要记住：AI 回答应能回到原始证据。</p><p><a className="archive-link" href="https://dovetail.com/blog/suns-out-2026-launch/">阅读 Dovetail 官方发布 ↗</a></p></div>
             </details>
             <details className="brief-item" id="deep-read-3">
-              <summary><span className="brief-index">03</span><span className="brief-main"><strong>知识星球：开头负责筛选</strong><span>阅读问题：什么人不该进入这条内容？</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p>背景：7 月 30 日 20:10 的星主原文提出，开头不只是吸引更多人，也可以让不匹配的人离开，以减少错误分发对收藏率和完播率的影响。</p><p>阅读时把它当作作者基于一次数据回填提出的判断，不当作普遍定律。要验证，需要比较不同标题与开头带来的受众匹配、收藏率、完播率，而不只看播放量。</p><p><a className="archive-link" href="/knowledge/2026-07-30/26-07-30姜胡说知识星球.md">阅读本地原始归档 ↗</a></p></div>
+              <summary><span className="brief-index">03</span><span className="brief-main"><strong>Dan Koe：阅读不是记住全部</strong><span>阅读问题：哪一个概念能被你今天的视频实际使用？</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content"><p>背景：这是 Dan Koe 于 7 月 25 日发布、截至今天仍为最近可核验的公开文章，区分机械记忆、理解和应用。</p><p>它今天只作为可选深读，不作为“当日更新”。不要抄完整摘要；若阅读，只找一个能够改变视频结构或表达的概念，没有实际连接就不必记录。</p><p><a className="archive-link" href="https://letters.thedankoe.com/p/how-to-remember-everything-you-read">阅读 Dan Koe 原文 ↗</a></p></div>
             </details>
           </div>
         </section>
 
-        <a className="hotlist" href="/hotlist/2026-07-30.html">
+        <div className="hotlist" id="hotlist-missing" aria-label="昨日热点榜单尚未生成">
           <span>昨日热点榜单</span>
-          <strong>查看 7 月 30 日完整热点看榜</strong>
-          <span className="arrow">→</span>
-        </a>
+          <strong>7 月 31 日热点榜单尚未生成</strong>
+          <span className="arrow">—</span>
+        </div>
 
         <footer>
-          <p>工作台的意义不在功能列表里，<br />在它能否替一个真实问题产生可核对的结果。</p>
+          <p>今天不用完成三条视频，<br />但要让第一条从想法变成可观看的版本。</p>
           <span>每日 08:00 更新 · 完整内容折叠保存</span>
         </footer>
         </div>
