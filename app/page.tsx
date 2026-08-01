@@ -25,32 +25,127 @@ const tasks = [
   },
 ];
 
+const creatorUpdates = [
+  {
+    tag: "dontbesilent",
+    title: "dbskill 更新至 v2.18.15",
+    intro: "这次更新不只是增加 Skill，而是在处理多 Agent 环境中的安装、发现、冲突与复用。",
+    content: [
+      "事实背景：dbskill 当前已经包含 29 个 Skills。v2.18.15 主要调整 dbs-bridge：默认面向 WorkBuddy，避免 Codex 同时扫描两个 Skill 目录造成重复，并为豆包、Trae 等环境保留通用 Agent 选项。",
+      "为什么重要：一个能力“可以调用”，不等于它已经进入稳定工作流。真正落地时还会遇到：Skill 安装在哪里、哪个 Agent 能发现它、是否重复扫描、用户是否理解目录差异，以及更新后配置是否仍兼容。",
+      "产品视角：dbskill 的价值正在从“把知识做成可调用能力”，继续延伸到“管理这些能力如何被多个 Agent 正确发现和复用”。这是一类基础设施问题：生成结果并不困难，稳定地把正确能力送到正确环境才困难。",
+      "对你的实践启发：以后判断一个 Skill 是否真正可用，可以连续测试四件事：第一次能否找到；换一个 Agent 能否复用；更新后是否要重新配置；是否出现重复入口或冲突。能处理这些问题的工作流产品，才同时照顾了能力层和基础设施层。",
+    ],
+    source: "https://github.com/dontbesilent2025/dbskill/releases/tag/v2.18.15",
+    sourceLabel: "dbskill v2.18.15 发布页",
+  },
+  {
+    tag: "Dan Koe",
+    title: "不要试图记住所有阅读内容",
+    intro: "最新可核验文章发表于 7 月 25 日，重点是把阅读从收藏行为改成解决问题的工具。",
+    content: [
+      "文章区分了两种阅读方式。第一种是“收藏逻辑”：尽可能保存、摘录和记住，担心以后找不到；第二种是“使用逻辑”：围绕眼前正在解决的问题阅读，让概念进入写作、项目和决策。",
+      "为什么重要：当保存工具越来越方便，知识堆积也越来越容易。一个人可能拥有大量笔记，却很少让其中的概念真正改变自己的行动。问题不一定是记忆力不足，而是知识从未参与一次现实任务。",
+      "对你的启发：你现在并不缺日记、热点、知识星球和产品材料。比“这条内容我要不要收藏”更值得问的是：“这条知识参与解决了我的哪个具体问题？”如果暂时没有对应任务，它可以留在原处，不必为了安心再次搬运和整理。",
+      "适用边界：这并不是反对做笔记。需要长期查证、引用或形成个人知识资产的材料仍值得保存；区别在于，保存应服务未来检索或当前使用，而不是成为替代实践的完成感。",
+    ],
+    source: "https://letters.thedankoe.com/p/how-to-remember-everything-you-read",
+    sourceLabel: "Dan Koe 原文",
+  },
+  {
+    tag: "Naval",
+    title: "暂无新的可核验节目，最新主线仍是《Live in the Future》",
+    intro: "不拿旧内容冒充当日更新；保留其中可用于观察早期产品机会的方法。",
+    content: [
+      "核验结果：Naval 官网目前最新可确认节目仍是 7 月 2 日发布的《Live in the Future》。截至本次早报整理，没有发现 7 月 31 日或 8 月 1 日的新节目。",
+      "这期内容值得保留的方法不是预测宏大未来，而是观察已经在使用未来型技术和组织方式的人。一个更具体的问题是：“新技术是否已经让一小群人的行为永久改变？”",
+      "可以观察四个信号：他们是否已经形成稳定习惯；即使早期产品并不成熟，是否仍不愿回到旧方式；是否愿意支付学习成本；新方式是否已经产生可描述的现实结果。",
+      "为什么重要：这些行为证据通常比热度、融资新闻或模型排行榜更接近真实采用。趋势是否成立，不只看大家是否讨论，更要看少数用户是否已经无法回头。",
+    ],
+    source: "https://nav.al/",
+    sourceLabel: "Naval 官网",
+  },
+  {
+    tag: "姜胡说",
+    title: "发现一条新的可访问短视频内容",
+    intro: "视频讨论“拍什么”比“怎么拍”更基础；因页面缺少稳定发布日期，不把它冒充过去一天更新。",
+    content: [
+      "内容核心：很多创作者最大的困难并不是不会拍摄，而是不知道什么值得拍。更强的内容能力，是能从日常生活里识别一个可以继续讨论的问题。",
+      "视频给出的素材识别路径可以拆成三步。先写事情：例如喝了奶茶后通宵打游戏；再写感受：醒来后完全没有工作欲望；最后把个人事件变成讨论问题：为什么一次作息被打乱，会让人把第二天整天都划成“休息日”？",
+      "为什么重要：普通经历本身不自动构成内容。真正的转换发生在“这件事说明了什么更普遍的问题”。这一步要求创作者从个人叙述中识别矛盾、机制和特定人群，而不是只把流水账换一种排版。",
+      "练习方式：遇到一件有感觉的事，先不要写完整文章，只补一句：“这件事说明了一个什么更普遍的问题？”今天的目标不是立刻得到选题成品，而是训练识别问题的能力。",
+      "核验边界：该视频原始页面可以访问，但没有取得稳定、可核验的发布时间，因此这里只称为“新发现的可访问内容”，不称为姜胡说当天更新。",
+    ],
+    source: "https://m.douyin.com/share/video/7650514840460479763",
+    sourceLabel: "姜胡说抖音原视频",
+  },
+];
+
 const briefing = [
   {
-    tag: "视频创作",
-    title: "YouTube：Shorts 开始支持自定义缩略图",
-    intro: "平台把缩略图控制权进一步交给创作者，也把“用户看到什么”变成可设计环节。",
+    tag: "平台治理",
+    title: "Snapchat 不再推荐或奖励完全由 AI 生成的视频",
+    intro: "平台正在明确区分“AI 辅助创作”与“全自动内容供给”。",
     content: [
-      "事实背景：YouTube 于 2026 年 7 月 24 日宣布，YouTube Partner Program 创作者开始可以为 Shorts 上传自定义缩略图，后续会扩大范围；桌面端也可从三个建议画面中选择。长视频方面，Ask Studio 可直接生成缩略图，并通过对话继续调整颜色和版式。",
-      "必要概念解释：缩略图不是视频内容本身，却承担一次“进入承诺”——它告诉用户这条视频大致讲什么、适合谁、看完可能得到什么。自定义能力增加，不代表缩略图可以与内容脱节；承诺越夸张、实际内容越弱，点击可能上升，但信任与留存会受损。",
-      "为什么重要：短视频过去常依赖系统截帧，创作者对入口信息控制有限。现在 Shorts 的包装与长视频更接近，意味着同一个内容需要同时考虑被推荐时的前几秒，以及出现在频道页、搜索与历史记录时的静态入口。",
-      "对实践的建议：你今天做 AI 知识库视频时，先写一句缩略图承诺，再录内容。承诺必须能在视频里被实际兑现，例如“我怎么把一份资料放进本地知识库”，而不是泛化成“普通人必须学会 AI 知识库”。",
+      "事实背景：Snap 于 7 月 31 日宣布，完全由 AI 生成的视频不会获得 Spotlight 推荐或奖励。AI 用于编辑、增强和辅助制作仍然被允许，但内容需要保留真人创作、个人视角或原创叙事。",
+      "这意味着平台开始建立更细的分层：AI 辅助的内容仍可正常分发；全自动内容即使可以发布，也不一定拥有同等推荐和商业激励；真实人物、个人观点与原创故事反而成为更重要的价值证明。",
+      "产品判断：平台保护的不是某一种制作工具，而是内容供给的稀缺性。如果全自动内容可以无限复制，推荐流会出现高度同质、低成本灌水、创作者退出和用户信任下降等问题。限制激励，是平台维护推荐系统质量的一种产品机制。",
+      "对实践的建议：发布前问一句：“删掉 AI 生成部分后，这条内容还剩下什么属于我？”如果只剩公共事实和通用句式，就需要补回真实事件、原始判断、失败细节或亲自验证的结果。",
     ],
-    source: "https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/",
-    sourceLabel: "YouTube 官方博客",
+    source: "https://www.businessinsider.com/ai-slop-substack-youtube-tiktok-pinterest-facebook-instagram-threads-2026-7",
+    sourceLabel: "Business Insider",
+  },
+  {
+    tag: "Agent 产品",
+    title: "网站开始需要同时服务人类用户和 AI Agent",
+    intro: "同样的商品与流程，仅通过更适合 Agent 理解的结构，就能显著提高任务完成率。",
+    content: [
+      "事实背景：一项受控电商实验保持商品、价格、库存和结账流程不变，只调整网站是否对 Agent 友好。结果显示，严格任务成功率从约 49% 提升至约 89%，平均执行步骤减少约 30%。",
+      "Agent-ready 版本并不是把页面写得更像聊天框，而是增加结构化商品数据、稳定标识符、清晰语义标签、评论与认证证据，以及可判断状态是否最新的信息。",
+      "为什么重要：网页过去主要服务人的理解与操作；现在还要服务 Agent 的读取、比较与执行。人类可以借助视觉层级和常识补全语境，Agent 更依赖结构化数据、明确关系、稳定控件、可核验来源和新鲜状态。",
+      "产品与用户研究视角：未来测试网页时，除了观察人是否看懂，也要测试 Agent 能否独立完成搜索、比较、填写和提交。不要先向 Agent 解释页面结构；如果必须人工说明，它就还没有真正具备可机器操作性。",
+    ],
+    source: "https://arxiv.org/abs/2607.12056",
+    sourceLabel: "研究原文",
   },
   {
     tag: "用户研究",
-    title: "Dovetail：用真实研究资料建立客户数字孪生",
-    intro: "AI 可以让团队更快查询用户材料，但模拟用户并不等于重新访问真实用户。",
+    title: "用户研究工具的选择标准从“功能最多”转向“具体瓶颈”",
+    intro: "不同工具分别解决实时协作、快速无主持研究、资料沉淀和参与者招募等不同问题。",
     content: [
-      "事实背景：Dovetail 于 2026 年 7 月 14 日发布 Summer Launch ’26，新增可依据真实通话、客服工单和研究资料建立客户、细分人群或 persona 数字孪生的能力，并允许团队在 Dovetail Chat、Slack 或 Teams 中询问其优先级、反对理由和对新想法的反应。",
-      "必要概念解释：这里的“数字孪生”不是一个真实客户的复制品，而是根据已有资料生成的可查询模拟。它能把散落证据组织成对话入口，却仍受原始样本、分类方式、资料新旧与模型推断影响。",
-      "为什么重要：产品团队经常知道资料存在哪里，却没有时间反复翻访谈。对话式入口降低检索成本，也可能让更多非研究人员接触用户证据；风险是回答太流畅，使团队忘记它只是对历史材料的推断，而不是一次新的用户访谈。",
-      "对实践的建议：以后用 AI 分析视频评论或用户材料时，要求它同时返回原始证据和反例。把 AI 生成的用户反应当作待验证假设，不把“数字用户说了什么”写成真实用户已经说过什么。",
+      "事实背景：Typeform 于 7 月 31 日发布的 2026 AI 用户研究工具指南，将 Lookback、Maze、Dovetail、UserTesting 等工具分别映射到实时协作、快速无主持测试、研究资产库和参与者招募等场景，而不是简单排列“谁的 AI 功能更多”。",
+      "AI 比较适合承担转录、初步编码、片段整理和重复主题发现；研究问题的设定、语境解释、反例识别和最终产品判断仍需要人来完成。",
+      "产品判断：工具市场通常会经历三个阶段——有没有 AI、功能数量有多少、是否解决一段真正昂贵的流程。进入第三阶段后，选工具不应先看功能表，而应先问：“在我当前研究流程中，哪里最耗时、最容易失真？”",
+      "可执行分析：评估一款研究工具时，依次写清它替代了哪一步、过去由谁完成、节省了多少时间、引入了什么新风险，以及哪部分判断必须继续由人承担。这样才能区分产品价值与功能热闹。",
     ],
-    source: "https://dovetail.com/blog/suns-out-2026-launch/",
-    sourceLabel: "Dovetail 官方发布",
+    source: "https://www.typeform.com/blog/best-ai-tools-for-ux-research-2026-guide",
+    sourceLabel: "Typeform 指南",
+  },
+  {
+    tag: "AI 工作流",
+    title: "AI 成本继续下降，差异化进一步向工作流移动",
+    intro: "模型能力与调用成本快速变化后，单纯包装模型更难形成长期价值。",
+    content: [
+      "事实背景：OpenAI 于 7 月 31 日发布的文章继续强调全栈基础设施与更充裕智能的方向，并介绍模型成本下降和系统处理更长项目、更多工具、从想法到产出的能力。",
+      "为什么重要：当基础智能的价格继续下降，只在模型外面增加一个界面的产品更容易被复制。竞争会继续移动到模型不知道、无法自动获得或不能独立承担责任的部分。",
+      "产品判断：更难复制的价值包括专有上下文、稳定工作流、行业规则、质量控制、权限与责任边界、用户关系和分发能力。模型仍然重要，但它逐渐从产品卖点变成底层供应。",
+      "对实践的建议：你做网页、知识库或 Skill 时，优先积累模型本身不知道的材料、流程和判断规则。真正值得保存的不是“我用了哪个模型”，而是“我怎样让它在一个具体任务里稳定产生可检查结果”。",
+    ],
+    source: "https://openai.com/index/building-abundant-intelligence/",
+    sourceLabel: "OpenAI 原文",
+  },
+  {
+    tag: "内容生态",
+    title: "各大内容平台正在集体划定“AI 垃圾内容”边界",
+    intro: "平台普遍允许 AI 辅助，但限制重复、批量、低投入且缺少原创贡献的自动内容。",
+    content: [
+      "截至 7 月 31 日，YouTube、TikTok、Substack、Pinterest、Meta、LinkedIn 和 Snapchat 分别通过限制变现、检测批量账号、增加标签、提供 AI 内容偏好控制或停止推荐全自动视频等方式治理低质量 AI 内容。",
+      "这些措施的共同点不是全面禁止 AI，而是允许 AI 提高编辑与制作效率，同时限制重复、批量和低投入供给，并继续鼓励原创叙事、个人视角与真实参与；部分平台还把是否观看更多 AI 内容的控制权交给用户。",
+      "产品视角：平台真正需要保护的是推荐质量与信任。如果大量账号能够无限复制同类内容，用户会更难判断真实性，推荐系统也更难区分什么值得继续分发。",
+      "创作检查：这条内容是否只是重新包装公共事实？是否可以被任何账号批量复制？有没有真实的人、经历或结果？有没有新的判断？用户看完会改变什么？问题不在于 AI 写了多少，而在于创作者贡献了多少。",
+    ],
+    source: "https://www.businessinsider.com/ai-slop-substack-youtube-tiktok-pinterest-facebook-instagram-threads-2026-7",
+    sourceLabel: "Business Insider",
   },
 ];
 
@@ -132,16 +227,21 @@ export default function Home() {
             <div className="nav-group">
               <a className="nav-title" href="#briefing"><span className="nav-icon icon-briefing" aria-hidden="true">▤</span>产品与创作早报</a>
               <div className="nav-sub">
+                {creatorUpdates.map((item, index) => (
+                  <a href={`#creator-${index + 1}`} key={item.title}>{item.title}</a>
+                ))}
                 {briefing.map((item, index) => (
                   <a href={`#brief-${index + 1}`} key={item.title}>{item.title}</a>
                 ))}
+                <a href="#product-observation">同一套内容服务两类消费者</a>
+                <a href="#early-action">今日行动：素材识别训练</a>
               </div>
             </div>
 
             <div className="nav-group">
               <a className="nav-title" href="#planet"><span className="nav-icon icon-planet" aria-hidden="true">✦</span>昨日知识星球</a>
               <div className="nav-sub">
-                <a href="#planet-missing">7 月 31 日归档尚未生成</a>
+                <a href="#planet-1">大胡子：大多数人会死在第 3 层</a>
               </div>
             </div>
 
@@ -166,9 +266,9 @@ export default function Home() {
             <div className="nav-group">
               <a className="nav-title" href="#deep-reads"><span className="nav-icon icon-briefing" aria-hidden="true">↗</span>今日深读</a>
               <div className="nav-sub">
-                <a href="#deep-read-1">YouTube：缩略图更新</a>
-                <a href="#deep-read-2">Dovetail：数字孪生</a>
-                <a href="#deep-read-3">Dan Koe：理解而非全记住</a>
+                <a href="#deep-read-1">Agent-ready 网站研究</a>
+                <a href="#deep-read-2">Dan Koe：快速学习</a>
+                <a href="#deep-read-3">Typeform：UX 研究工具</a>
               </div>
             </div>
 
@@ -238,7 +338,30 @@ export default function Home() {
               <p className="eyebrow">PRODUCT & CREATION</p>
               <h2>产品与创作早报</h2>
             </div>
-            <p>点击标题展开完整背景与启发</p>
+            <p>完整搬入；只折叠，不删减</p>
+          </div>
+          <p className="judgment">AI 正在改变两类用户：一类是使用产品的人，另一类是替人使用产品的 Agent。与此同时，平台开始明确区分“AI 辅助创作”和“全自动内容供给”。今天重点看三件事：能否让人和 Agent 都准确理解信息；能否把 AI 嵌入真实任务，而不是增加一个聊天入口；能否证明内容中存在真实判断和原创贡献。</p>
+          <div className="brief-list">
+            {creatorUpdates.map((item, index) => (
+              <details className="brief-item" id={`creator-${index + 1}`} key={item.title}>
+                <summary>
+                  <span className="brief-index">人</span>
+                  <span className="brief-main">
+                    <span className="pill">{item.tag}</span>
+                    <strong>{item.title}</strong>
+                    <span>{item.intro}</span>
+                  </span>
+                  <span className="plus" aria-hidden="true">＋</span>
+                </summary>
+                <div className="brief-content">
+                  {item.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  <p><a className="archive-link" href={item.source}>查看原始来源：{item.sourceLabel} ↗</a></p>
+                </div>
+              </details>
+            ))}
+          </div>
+          <div className="section-heading compact-heading">
+            <div><p className="eyebrow">TODAY&apos;S 5 STORIES</p><h2>今日 5 条重要动态</h2></div>
           </div>
           <div className="brief-list">
             {briefing.map((item, index) => (
@@ -259,22 +382,34 @@ export default function Home() {
               </details>
             ))}
           </div>
-          <details className="brief-item" id="source-check">
+          <details className="brief-item" id="product-observation">
             <summary>
-              <span className="brief-index">核验</span>
+              <span className="brief-index">观察</span>
               <span className="brief-main">
-                <span className="pill">指定来源</span>
-                <strong>固定博主今日更新核验</strong>
-                <span>未发现就明确写未发现，不用旧内容补位</span>
+                <span className="pill">产品观察</span>
+                <strong>同一套内容，正在服务两类消费者</strong>
+                <span>高质量内容要做到：人愿意看，机器不容易理解错</span>
               </span>
               <span className="plus" aria-hidden="true">＋</span>
             </summary>
             <div className="brief-content">
-              <p><strong>Dan Koe：</strong>截至 2026 年 8 月 1 日 09:00，未发现 7 月 31 日或 8 月 1 日新条目；最近可核验公开文章仍为 7 月 25 日《How to remember everything you read... don&apos;t》。</p>
-              <p><strong>dontbesilent 的 X：</strong>X 公开页无法稳定读取完整当日时间线，因此没有把搜索片段当作更新；GitHub API 核验 dbskill 最新 release 仍为 7 月 29 日 v2.18.15。</p>
-              <p><strong>Naval：</strong>官网首页最新可核验节目为 2026 年 7 月 2 日《Live in the Future》；未发现 7 月 31 日或 8 月 1 日新节目。</p>
-              <p><strong>姜胡说公开短视频：</strong>未发现 7 月 31 日或 8 月 1 日具有明确日期、且可完整核验的抖音或视频号原始页面。</p>
-              <p>核验边界：搜索引擎与未登录平台可能漏收内容；因此这里表达的是“未发现可核验更新”，不是断言作者绝对没有发布。</p>
+              <p>过去，内容主要面对人类读者。创作者会问：“这条内容能否被人看懂、记住和转发？”现在还需要增加第二个问题：“它能否被搜索引擎、AI 助手和 Agent 正确识别、引用和执行？”</p>
+              <p><strong>人类更依赖：</strong>冲突、故事、情绪、个人经验和清晰节奏。它们帮助人理解为什么值得继续看，以及这件事和自己有什么关系。</p>
+              <p><strong>机器更依赖：</strong>明确标题、稳定结构、具体对象、可核验事实、时间、来源和适用边界。它们减少 Agent 在读取与执行时的误解。</p>
+              <p>两者并不冲突。高质量内容可以同时做到“人愿意看，机器不容易理解错”：正文保留叙事和判断，同时把事实、来源、案例和步骤组织清楚。</p>
+              <p>因此，未来的内容资产不一定只是一篇文章，而可能是一个节点：既有面向人的正文，也有结构化事实、来源和案例。它可以被读者理解，也可以被知识库、搜索和 Skill 稳定调用。</p>
+              <p>这与你正在搭建的知识库和 Skill 直接相关：不要只保存最终成品，还要保存它解决什么问题、面向谁、依据是什么、何时失效，以及下一步能执行什么。</p>
+            </div>
+          </details>
+          <details className="brief-item" id="early-action">
+            <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日练习</span><strong>做一次“素材识别训练”</strong><span>不增加工具，不急着把经历包装成成品</span></span><span className="plus" aria-hidden="true">＋</span></summary>
+            <div className="brief-content">
+              <p>从最近的日记里挑三件普通小事，每件只写四行：</p>
+              <p><strong>发生了什么：</strong>只写事实，不先解释。</p>
+              <p><strong>我当时怎样理解：</strong>保留你当时真实写下的反应，不让 AI 代填。</p>
+              <p><strong>哪个细节最值得讨论：</strong>找矛盾、异常或判断发生变化的位置。</p>
+              <p><strong>它对应哪类人的共同问题：</strong>不要写“所有人”，要写处于相似情境的一类具体人。</p>
+              <p>例如：喝奶茶后通宵打游戏 → 第二天一直刷手机 → 把整天都划成休息日 → 对应“作息被打乱后容易放弃整天的人”。今天不必把它写成小红书，也不必润色成完整选题；这个练习只训练从普通生活中识别问题。</p>
             </div>
           </details>
         </section>
@@ -285,23 +420,24 @@ export default function Home() {
               <p className="eyebrow">JIANGHU NOTES · YESTERDAY</p>
               <h2>昨日姜胡说知识星球</h2>
             </div>
-            <p>应读取 7 月 31 日归档，不回退旧日期</p>
+            <p>归档区间：2026-07-30 23:30 至 2026-07-31 23:30</p>
           </div>
-          <details className="planet-card" id="planet-missing" open>
+          <details className="planet-card" id="planet-1">
             <summary>
-              <div className="avatar">缺</div>
+              <div className="avatar">胡</div>
               <div>
-                <span className="planet-time">采集状态</span>
-                <strong>7 月 31 日知识星球归档尚未生成</strong>
-                <span>不使用更早日期顶替</span>
+                <span className="planet-time">大胡子 · 2026-07-31 18:32</span>
+                <strong>大多数人都会死在了第 3 层</strong>
+                <span>点击展开星主完整原文</span>
               </div>
-              <span className="open-label">详情</span>
+              <span className="open-label">原文</span>
             </summary>
             <div className="planet-content">
               <div className="original">
-                <span>预期路径</span>
-                <p>8.姜胡说知识星球/output/26.7月/26-07-31姜胡说知识星球/26-07-31姜胡说知识星球.md</p>
-                <p>截至本次生成时没有找到该文件，因此今天不展示星主原文、图片或任何替代性解读，也不回退到 7 月 30 日归档。</p>
+                <span>星主原文</span>
+                <p>大多数人都会死在了第3层：<br />甚至很多人做自媒体的目标就是第3层。</p>
+                <p>信息缺失：没有量化「粉丝信任度」vs「粉丝数量」的真实ROI<br />↓<br />误判机制：用「能变现的粉丝数」代替「愿意反复购买的粉丝忠诚度」<br />↓<br />短期奖励：变现→账户进账→财务焦虑缓解→&quot;我找到商业模式了&quot;<br />↓<br />隐藏代价：内容→从「给予价值」转向「收割价值」<br />↓<br />长期结局：粉丝感知到你的目的变了→信任下降→复购率/转介绍率崩<br />↓<br />终局：变现能力 ≠ 赚钱能力。你赚得越急，死得越快。</p>
+                <p><a className="archive-link" href="/daily-briefing/knowledge/2026-07-31/26-07-31姜胡说知识星球.md">查看 7 月 31 日原始归档 ↗</a></p>
               </div>
             </div>
           </details>
@@ -392,23 +528,23 @@ export default function Home() {
           </div>
           <div className="brief-list">
             <details className="brief-item" id="deep-read-1">
-              <summary><span className="brief-index">01</span><span className="brief-main"><strong>YouTube：Shorts 缩略图更新</strong><span>阅读问题：入口承诺怎样与视频结果保持一致？</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p>背景：YouTube 于 7 月 24 日公开 Shorts 自定义缩略图、建议画面和 Ask Studio 长视频缩略图生成功能。这是平台官方产品更新，不是第三方教程。</p><p>阅读重点不是学习做精美封面，而是观察平台如何把发现、点击与内容预期串起来。你今天只需为第一条视频写一句真实可兑现的入口承诺。</p><p><a className="archive-link" href="https://blog.youtube/news-and-events/youtube-studio-custom-thumbnail-updates/">阅读 YouTube 官方发布 ↗</a></p></div>
+              <summary><span className="brief-index">01</span><span className="brief-main"><strong>Designing Agent-Ready Websites for AI Web Agents</strong><span>阅读问题：哪些信息只有你知道，Agent 无法稳定推断？</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content"><p>背景：这项研究通过 300 次受控测试，对比普通电商网站与 Agent-ready 网站在相同商品、价格和流程下的任务表现。结果把“Agent 能不能使用网页”从主观感受变成可测量问题。</p><p>重点看语义结构、证据、稳定标识符和操作结构怎样影响任务成功率。阅读时不要只问 Agent 是否聪明，而要问页面是否迫使它猜测。</p><p>带着这个问题阅读：“我现在制作的网页、知识库或 Skill，哪些信息只有我自己知道，Agent 无法稳定推断？”</p><p><a className="archive-link" href="https://arxiv.org/abs/2607.12056">阅读研究原文 ↗</a></p></div>
             </details>
             <details className="brief-item" id="deep-read-2">
-              <summary><span className="brief-index">02</span><span className="brief-main"><strong>Dovetail：客户数字孪生</strong><span>阅读问题：模拟用户与真实用户证据的边界在哪里？</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p>背景：Dovetail 于 7 月 14 日发布 Summer Launch ’26，数字孪生建立在通话、工单与研究资料上，可供团队对话查询。</p><p>重点观察产品如何降低历史资料检索成本，同时警惕模型把缺失语境补得过于完整。读完不需要试新工具，只要记住：AI 回答应能回到原始证据。</p><p><a className="archive-link" href="https://dovetail.com/blog/suns-out-2026-launch/">阅读 Dovetail 官方发布 ↗</a></p></div>
+              <summary><span className="brief-index">02</span><span className="brief-main"><strong>Dan Koe：The best way to learn anything fast</strong><span>阅读问题：哪些知识还没有进入你的真实任务？</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content"><p>背景：文章讨论如何围绕正在解决的问题学习，而不是为了完整感不断收藏和记忆。它适合用来检查“输入很多、应用很少”的知识工作流。</p><p>阅读重点不是寻找一种更强的记忆术，而是观察概念怎样通过写作、项目、解释和反馈变成可调用能力。</p><p>带着这个问题阅读：“我最近保存的知识中，哪一条实际改变过一次视频、产品或决策？哪些只是让我觉得已经学习？”</p><p><a className="archive-link" href="https://letters.thedankoe.com/p/how-to-remember-everything-you-read">阅读 Dan Koe 原文 ↗</a></p></div>
             </details>
             <details className="brief-item" id="deep-read-3">
-              <summary><span className="brief-index">03</span><span className="brief-main"><strong>Dan Koe：阅读不是记住全部</strong><span>阅读问题：哪一个概念能被你今天的视频实际使用？</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p>背景：这是 Dan Koe 于 7 月 25 日发布、截至今天仍为最近可核验的公开文章，区分机械记忆、理解和应用。</p><p>它今天只作为可选深读，不作为“当日更新”。不要抄完整摘要；若阅读，只找一个能够改变视频结构或表达的概念，没有实际连接就不必记录。</p><p><a className="archive-link" href="https://letters.thedankoe.com/p/how-to-remember-everything-you-read">阅读 Dan Koe 原文 ↗</a></p></div>
+              <summary><span className="brief-index">03</span><span className="brief-main"><strong>Typeform：Best AI Tools for UX Research</strong><span>阅读问题：研究时间究竟耗在哪一段？</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content"><p>背景：这份指南没有把工具简单排成一个总榜，而是按实时访谈、无主持测试、资料沉淀和参与者招募等瓶颈进行区分。</p><p>重点观察每类工具替代了研究流程中的哪一段，以及 AI 介入后哪些判断仍必须保留给研究者。工具能力只有与瓶颈对应，才会产生实际价值。</p><p>带着这个问题阅读：“我的时间究竟消耗在招募、访谈、整理、分析，还是知道结论后仍无法行动？”</p><p><a className="archive-link" href="https://www.typeform.com/blog/best-ai-tools-for-ux-research-2026-guide">阅读 Typeform 指南 ↗</a></p></div>
             </details>
           </div>
         </section>
 
-        <div className="hotlist" id="hotlist-missing" aria-label="昨日热点榜单尚未生成">
+        <div className="hotlist" id="hotlist-missing" aria-label="昨日热点榜单未运行">
           <span>昨日热点榜单</span>
-          <strong>7 月 31 日热点榜单尚未生成</strong>
+          <strong>7 月 31 日热点榜单未生成：昨日因额度不足主动停掉，不是系统异常</strong>
           <span className="arrow">—</span>
         </div>
 

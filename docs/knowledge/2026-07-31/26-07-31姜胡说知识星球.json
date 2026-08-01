@@ -1,0 +1,37 @@
+{
+  "source_url": "https://wx.zsxq.com/group/552521142424",
+  "collected_at": "2026-07-31T23:35:11+08:00",
+  "filters": {
+    "author": "大胡子",
+    "date": "2026-07-31"
+  },
+  "recognized_topic_count": 20,
+  "matched_post_count": 1,
+  "posts": [
+    {
+      "unique_id": "local-3dd8fa3a0145ed696715",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-07-31 18:32",
+      "content": "大多数人都会死在了第3层：\n甚至很多人做自媒体的目标就是第3层。\n\n信息缺失：没有量化「粉丝信任度」vs「粉丝数量」的真实ROI\n↓\n误判机制：用「能变现的粉丝数」代替「愿意反复购买的粉丝忠诚度」\n↓\n短期奖励：变现→账户进账→财务焦虑缓解→\"我找到商业模式了\"\n↓\n隐藏代价：内容→从「给予价值」转向「收割价值」\n↓\n长期结局：粉丝感知到你的目的变了→信任下降→复购率/转介绍率崩\n↓\n终局：变现能力 ≠ 赚钱能力。你赚得越急，死得越快。",
+      "tags": [
+        "自媒体"
+      ],
+      "sequence": 1,
+      "candidate_image_count": 0,
+      "excluded_non_post_image_count": 1,
+      "saved_original_image_count": 0,
+      "image_urls": [],
+      "downloaded_images": [],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    }
+  ],
+  "archive_date": "2026-07-31",
+  "start_time": "2026-07-30T23:30:00+08:00",
+  "end_time": "2026-07-31T23:30:00+08:00",
+  "posts_count": 1,
+  "status": "completed"
+}
