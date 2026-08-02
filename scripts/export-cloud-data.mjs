@@ -291,26 +291,32 @@ const appScript = `<script data-brief-app>
 
 html = html.replace("</body>", `${appScript}</body>`);
 
-// Other Pages tools may live under docs/. Preserve the personal workbench
-// while refreshing the daily briefing shell and data.
-const preservedWorkbench = path.join(root, ".pages-workbench-preserve");
-await rm(preservedWorkbench, { recursive: true, force: true });
-try {
-  await cp(path.join(docs, "workbench"), preservedWorkbench, { recursive: true });
-} catch {
-  // The briefing can also build in a fresh checkout without a workbench.
+// Other Pages tools may live under docs/. Preserve them while refreshing the
+// daily briefing shell and data.
+const preservedPagesRoot = path.join(root, ".pages-tools-preserve");
+const preservedPagesDirectories = ["workbench", "fin-a03c3d"];
+await rm(preservedPagesRoot, { recursive: true, force: true });
+await mkdir(preservedPagesRoot, { recursive: true });
+for (const directory of preservedPagesDirectories) {
+  try {
+    await cp(path.join(docs, directory), path.join(preservedPagesRoot, directory), { recursive: true });
+  } catch {
+    // The briefing can also build in a fresh checkout without this tool.
+  }
 }
 
 await rm(docs, { recursive: true, force: true });
 await mkdir(docs, { recursive: true });
 await cp(path.join(root, "dist/client/assets"), path.join(docs, "assets"), { recursive: true });
 await cp(path.join(root, "public"), docs, { recursive: true });
-try {
-  await cp(preservedWorkbench, path.join(docs, "workbench"), { recursive: true });
-} catch {
-  // Nothing was preserved.
+for (const directory of preservedPagesDirectories) {
+  try {
+    await cp(path.join(preservedPagesRoot, directory), path.join(docs, directory), { recursive: true });
+  } catch {
+    // Nothing was preserved for this tool.
+  }
 }
-await rm(preservedWorkbench, { recursive: true, force: true });
+await rm(preservedPagesRoot, { recursive: true, force: true });
 await writeFile(path.join(docs, "index.html"), html, "utf8");
 await writeFile(path.join(docs, "404.html"), html, "utf8");
 await writeFile(path.join(docs, "robots.txt"), "User-agent: *\nDisallow: /\n", "utf8");
