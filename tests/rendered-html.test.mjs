@@ -28,8 +28,10 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="content-menu"/);
   assert.match(html, /data-brief-date="2026-08-02"/);
   assert.match(html, /href="#task-1">拍出教程视频第一版/);
-  assert.match(html, /href="#creator-1">Dan Koe<!-- -->：当日核验/);
-  assert.match(html, /今日重要动态：0 条/);
+  assert.match(html, /href="#creator-1">dontbesilent<!-- -->：<!-- -->图文矩阵单条内容接近 7000 赞/);
+  assert.match(html, /href="#story-5">5<!-- -->\. <!-- -->AI 原生用户研究/);
+  assert.match(html, /今日重要动态：5 条/);
+  assert.match(html, /内容矩阵不是多发，而是系统化实验/);
   assert.match(html, /href="#planet-1">大胡子：花钱干活/);
   assert.match(html, /href="#planet-2">大胡子：高性价比模型组合/);
   assert.match(html, /花钱干活的感觉就是不一样/);
@@ -78,7 +80,10 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(previous.mainHtml, /南宁当天天气：阵雨，24–30℃/);
   assert.match(latest.mainHtml, /南宁当天天气：中雨转大雨，24–29℃/);
   assert.match(latest.mainHtml, /2026 年 8 月 1 日完整榜单/);
-  assert.match(latest.mainHtml, /今日重要动态：0 条/);
+  assert.match(latest.mainHtml, /今日重要动态：5 条/);
+  assert.match(latest.mainHtml, /欧盟 AI 透明规则于 8 月 2 日进入重要实施节点/);
+  assert.match(latest.mainHtml, /AI 搜索正把内容竞争从 SEO 推向 GEO/);
+  assert.match(latest.mainHtml, /微软研究：CLI 编程 Agent 的采用依赖同伴传播/);
   assert.match(latest.mainHtml, /花钱干活的感觉就是不一样/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });
