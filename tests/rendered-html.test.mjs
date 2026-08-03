@@ -47,6 +47,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="action-diagnosis"/);
   assert.match(html, /AI 执行力诊断 \/ 建议/);
   assert.match(html, /id="deep-reads"/);
+  assert.match(html, /class="brief-list deep-read-list"/);
+  assert.match(html, /class="time-block-heading"/);
+  assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.match(html, /小报童/);
   assert.match(html, /id="xiaobaotong-1"/);
   assert.doesNotMatch(html, /id="deep-read-4"/);
