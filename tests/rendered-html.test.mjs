@@ -30,6 +30,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /南宁当天天气：[^，]+，\d+–\d+℃/);
   assert.match(html, /南宁<!-- --> · <!-- -->\d+–\d+℃/);
   assert.match(html, /id="content-menu"/);
+  const renderedMain = html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
+  assert.equal((renderedMain.match(/data-nav-group/g) ?? []).length, 6);
+  assert.equal((renderedMain.match(/class="nav-chevron"/g) ?? []).length, 6);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
   assert.match(html, /href="#creator-1">dontbesilent/);
