@@ -420,44 +420,6 @@ main { min-height: 100vh; }
 }
 
 .section { padding: 76px 0 0; scroll-margin-top: 78px; }
-.section-fold > summary { list-style: none; cursor: pointer; }
-.section-fold > summary::-webkit-details-marker { display: none; }
-.section-fold-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  min-height: 112px;
-  padding: 24px 28px;
-  border: 1px solid #eaddea;
-  border-radius: 26px;
-  background: linear-gradient(135deg, rgba(255,249,252,.96), rgba(246,239,255,.94));
-  box-shadow: 0 18px 46px rgba(105,76,112,.07), inset 0 1px 0 rgba(255,255,255,.88);
-  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
-}
-.section-fold-summary:hover { border-color: #ddc7e0; box-shadow: 0 20px 52px rgba(105,76,112,.11); }
-.section-fold-summary > span:first-child { display: grid; gap: 4px; }
-.section-fold-summary small { color: var(--rose); font-size: 9px; font-weight: 800; letter-spacing: .17em; }
-.section-fold-summary strong { color: var(--ink); font-family: Georgia, "Songti SC", serif; font-size: clamp(25px, 3.5vw, 34px); font-weight: 600; line-height: 1.2; }
-.section-fold-summary em { color: var(--muted); font-size: 12px; font-style: normal; }
-.section-fold-chevron {
-  display: grid;
-  flex: 0 0 auto;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  color: #815e90;
-  border: 1px solid rgba(190,155,198,.28);
-  border-radius: 50%;
-  background: linear-gradient(145deg, #f9edf5, #ebe1fa);
-  font-size: 23px;
-  transition: transform .22s ease, background .22s ease;
-}
-.section-fold[open] > .section-fold-summary { border-color: #d9c2dd; }
-.section-fold[open] > .section-fold-summary .section-fold-chevron { transform: rotate(180deg); background: linear-gradient(145deg, #efddeb, #dfd1f1); }
-.section-fold-content { padding-top: 30px; }
-.section-fold-content > .compact-heading:first-child { margin-top: 0; }
-.section-fold-content .schedule { margin-top: 42px; }
 .section-context { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
 .task-card,
 .brief-item,
@@ -628,9 +590,6 @@ footer span { display: block; margin-top: 18px; color: var(--muted); font-size: 
   .section { padding-top: 58px; scroll-margin-top: 112px; }
   .section-heading { align-items: start; }
   .section-heading > p { max-width: 130px; }
-  .section-fold-summary { min-height: 94px; padding: 20px; border-radius: 22px; }
-  .section-fold-chevron { width: 36px; height: 36px; font-size: 20px; }
-  .section-fold-content { padding-top: 22px; }
   .task-grid { grid-template-columns: 1fr; }
   .task-card { min-height: 250px; }
   .task-number { margin-bottom: 30px; }

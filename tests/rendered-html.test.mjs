@@ -24,7 +24,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /每日资讯/);
   assert.match(html, /姜胡说/);
   assert.match(html, /复盘/);
-  assert.match(html, /今日深度/);
+  assert.match(html, /今日深读/);
   assert.match(html, /热点榜单/);
   assert.match(html, /每天自动更新/);
   assert.match(html, /南宁当天天气：[^，]+，\d+–\d+℃/);
@@ -33,8 +33,8 @@ test("renders the daily briefing", async () => {
   const renderedMain = html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
   assert.equal((renderedMain.match(/data-nav-group/g) ?? []).length, 6);
   assert.equal((renderedMain.match(/class="nav-chevron"/g) ?? []).length, 6);
-  assert.equal((renderedMain.match(/data-section-fold/g) ?? []).length, 6);
-  assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 6);
+  assert.equal((renderedMain.match(/data-section-fold/g) ?? []).length, 0);
+  assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 0);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
   assert.match(html, /href="#creator-1">dontbesilent/);
