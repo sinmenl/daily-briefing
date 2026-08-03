@@ -45,13 +45,12 @@ export default function Home() {
         <aside className="sidebar" id="content-menu" aria-label="简报阅读目录">
           <div className="sidebar-head"><div><span className="sidebar-kicker">CONTENTS</span><strong>今天看什么</strong></div><button className="menu-close" type="button" aria-label="关闭阅读目录" data-menu-close>×</button></div>
           <nav className="sidebar-nav">
-            <div className="nav-group"><a className="nav-title" href="#today"><span className="nav-icon icon-focus">✓</span>今天只做三件事</a><div className="nav-sub">{tasks.map((task, i) => <a href={`#task-${i + 1}`} key={task.title}>{task.title}</a>)}</div></div>
-            <div className="nav-group"><a className="nav-title" href="#briefing"><span className="nav-icon icon-briefing">▤</span>产品与创作早报</a><div className="nav-sub">{creatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.title + item.tag}>{item.tag}：{item.title}</a>)}{importantUpdates.map((item, i) => <a href={`#story-${i + 1}`} key={item.title}>{i + 1}. {item.title}</a>)}<a href="#product-observation">产品观察：知识如何改变下一步</a><a href="#early-action">今日行动：低风险视频版</a></div></div>
-            <div className="nav-group"><a className="nav-title" href="#planet"><span className="nav-icon icon-planet">✦</span>昨日知识星球</a><div className="nav-sub"><a href="#planet-1">大胡子：门诊轮转 · 2026-W31</a></div></div>
-            <div className="nav-group"><a className="nav-title" href="#review"><span className="nav-icon icon-review">↺</span>昨日复盘与趋势</a><div className="nav-sub"><a href="#yesterday-review">昨日复盘</a><a href="#seven-day-trend">近七天趋势</a><a href="#action-diagnosis">AI 执行力诊断</a></div></div>
-            <div className="nav-group"><a className="nav-title" href="#schedule"><span className="nav-icon icon-schedule">◷</span>今日时间块</a><div className="nav-sub"><a href="#schedule">上午优先恢复</a><a href="#schedule">下午做视频低风险版</a><a href="#risk">今日风险</a></div></div>
-            <div className="nav-group"><a className="nav-title" href="#deep-reads"><span className="nav-icon icon-briefing">↗</span>今日深读</a><div className="nav-sub"><a href="#deep-read-1">欧盟：AI 透明度指南</a><a href="#deep-read-2">Le Monde：AI 搜索与网络经济</a><a href="#deep-read-3">Adobe：创作者工具报告</a></div></div>
-            <div className="nav-group"><a className="nav-title" href="#hotlist"><span className="nav-icon icon-hotlist">↗</span>昨日热点榜单</a></div>
+            <div className="nav-group"><a className="nav-title" href="#today"><span className="nav-icon icon-focus">✓</span>今日计划</a><div className="nav-sub">{tasks.map((task, i) => <a href={`#task-${i + 1}`} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a></div></div>
+            <div className="nav-group"><a className="nav-title" href="#briefing"><span className="nav-icon icon-briefing">▤</span>每日资讯</a><div className="nav-sub">{creatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.title + item.tag}>{item.tag}：{item.title}</a>)}{importantUpdates.map((item, i) => <a href={`#story-${i + 1}`} key={item.title}>{i + 1}. {item.title}</a>)}<a href="#product-observation">产品观察：知识如何改变下一步</a><a href="#early-action">今日行动：低风险视频版</a></div></div>
+            <div className="nav-group"><a className="nav-title" href="#planet"><span className="nav-icon icon-planet">✦</span>姜胡说</a><div className="nav-sub"><a href="#planet-1">大胡子：门诊轮转 · 2026-W31</a></div></div>
+            <div className="nav-group"><a className="nav-title" href="#review"><span className="nav-icon icon-review">↺</span>复盘</a><div className="nav-sub"><a href="#yesterday-review">昨日复盘</a><a href="#seven-day-trend">近七天趋势</a><a href="#action-diagnosis">AI 执行力诊断</a></div></div>
+            <div className="nav-group"><a className="nav-title" href="#deep-reads"><span className="nav-icon icon-briefing">↗</span>今日深度</a><div className="nav-sub"><a href="#deep-read-1">欧盟：AI 透明度指南</a><a href="#deep-read-2">Le Monde：AI 搜索与网络经济</a><a href="#deep-read-3">Adobe：创作者工具报告</a><a href="#deep-read-4">小报童：拍了 100 条还在原地踏步？</a></div></div>
+            <div className="nav-group"><a className="nav-title" href="#hotlist"><span className="nav-icon icon-hotlist">↗</span>热点榜单</a></div>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
         </aside>
@@ -63,12 +62,16 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading"><div><p className="eyebrow">FOCUS</p><h2>今天只做三件事</h2></div><p>睡眠负荷高：恢复优先，只推进一个关键产物</p></div>
+            <div className="section-heading"><div><p className="eyebrow">TODAY&apos;S PLAN</p><h2>今日计划</h2></div><p>三件事与时间块放在一起，按当天精力执行</p></div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>睡眠负荷高：恢复优先，只推进一个关键产物</p></div>
             <div className="task-grid">{tasks.map((task, i) => <article className={`task-card ${task.tone}`} id={`task-${i + 1}`} key={task.number}><span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p><div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div></article>)}</div>
+            <div className="section-heading compact-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h2>今日时间块</h2></div><p>保留空白缓冲，不把全天排满</p></div>
+            <section className="schedule" id="schedule"><div><span>上午</span><p>停止奶茶和游戏，把手机移开，先完成一段连续睡眠。醒后只做洗漱、吃饭和短暂走动，不立刻用信息流把注意力重新切碎。</p></div><div><span>下午</span><p>精力恢复后，用 45–60 分钟录制 AI 知识库视频的低风险版本。只讲“高级收藏夹”这一条真实矛盾，不补新资料、不重搭系统。</p></div><div><span>晚上</span><p>从头播放一次，修正最影响理解的一处，导出可观看文件并写清适用边界。之后停止工作，提前回到正常睡眠窗口；留出至少一小时空白缓冲。</p></div></section>
+            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>最可能让计划失效的四个触发点</strong><span>看清触发点，不增加任务</span></span><span className="plus">＋</span></summary><div className="brief-content"><p><strong>用饮料对冲困倦：</strong>昨天的记录已经显示奶茶与通宵相连。今天困倦是需要睡眠的信号，不是需要再刺激的信号。</p><p><strong>再看一场直播或整理一套方法：</strong>已有笔记和脚本足够完成第一版。新方法全部进入以后再看清单。</p><p><strong>因为不确定正确性而不发布：</strong>第一版明确写成阶段性结论，并给出真实证据与适用边界；它承担的是验证，不是最终定论。</p><p><strong>计划被打断后全盘放弃：</strong>今天只保留一个最小恢复动作和一个最小产出动作。任何时间重新开始，都不需要追回已经错过的时间块。</p></div></details>
           </section>
 
           <section className="section" id="briefing">
-            <div className="section-heading"><div><p className="eyebrow">PRODUCT & CREATION</p><h2>产品与创作早报</h2></div><p>完整搬入 ChatGPT 8 月 3 日早报；5 条重要动态</p></div>
+            <div className="section-heading"><div><p className="eyebrow">DAILY INFORMATION</p><h2>每日资讯</h2></div><p>完整搬入 ChatGPT 8 月 3 日早报；5 条重要动态</p></div>
             <p className="judgment"><strong>AI 正在把“生产”变成低成本基础能力。新的竞争点是：谁能定义正确任务、保留可信证据，并把内容与工具接入真实行动闭环。</strong></p>
             <p>对当前 AI 知识库视频而言，重点不是解释知识库概念，而是展示一个可核验的使用变化：原来怎样反复卡住、知识库替代了哪一步、最后得到什么结果，以及哪些边界仍然存在。</p>
             <div className="brief-list">{creatorUpdates.map((item, i) => <details className="brief-item" id={`creator-${i + 1}`} key={item.tag}><summary><span className="brief-index">人</span><span className="brief-main"><span className="pill">{item.tag}</span><strong>{item.title}</strong><span>{item.intro}</span></span><span className="plus">＋</span></summary><div className="brief-content">{item.content.map(p => <p key={p}>{p}</p>)}<p><a className="archive-link" href={item.source}>查看核验来源：{item.sourceLabel} ↗</a></p></div></details>)}</div>
@@ -79,12 +82,12 @@ export default function Home() {
           </section>
 
           <section className="section planet-section" id="planet">
-            <div className="section-heading"><div><p className="eyebrow">JIANGHU NOTES · YESTERDAY</p><h2>昨日姜胡说知识星球</h2></div><p>归档区间：2026-08-01 23:30 至 2026-08-02 23:30</p></div>
+            <div className="section-heading"><div><p className="eyebrow">JIANGHU NOTES</p><h2>姜胡说</h2></div><p>昨日知识星球归档区间：2026-08-01 23:30 至 2026-08-02 23:30</p></div>
             <details className="planet-card" id="planet-1"><summary><div className="avatar">胡</div><div><span className="planet-time">大胡子 · 2026-08-02 07:54</span><strong>门诊轮转 · 2026-W31</strong><span>点击展开星主完整原文</span></div><span className="open-label">原文</span></summary><div className="planet-content"><div className="original"><span>星主原文</span><p>本周门诊：你是不是也这样？</p><p>下面5句话，是我从几百条星球评论里反复看到的。<br />如果你心里也闪过其中一句，回个数字。</p><p>1. 学了3个月AI，还是不知道能拿来干什么</p><p>2. 知道该做减法，但哪个都舍不得丢</p><p>3. 有技能，但不知道怎么包装成产品卖</p><p>4. 投了3个月没结果，不知道该不该继续</p><p>5. 身边的人都没有我这种想法，我是不是走错了</p><hr /><p>→ <a href="https://wx.zsxq.com/topic/14422555112245152">回1的人看这篇</a></p><p>→ <a href="https://wx.zsxq.com/topic/14422541212185412">回2的人看这篇</a></p><p>→ <a href="https://wx.zsxq.com/topic/55522112558551524">回3的人看这篇</a></p><p>→ <a href="https://wx.zsxq.com/topic/45544418525228148">回4的人看这篇</a></p><p>→ <a href="https://wx.zsxq.com/topic/82255824511115852">回5的人看这篇</a></p><hr /><p>不用写长篇大论。回一个数字就行。</p><p>你回了，我才知道下次门诊该开哪个科。</p><p><a className="archive-link" href="/daily-briefing/knowledge/2026-08-02/26-08-02姜胡说知识星球.md">查看 8 月 2 日原始归档 ↗</a></p></div></div></details>
           </section>
 
           <section className="section" id="review">
-            <div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>昨日复盘与近七天趋势</h2></div><p>事实与 AI 建议分开</p></div>
+            <div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>昨日复盘、近七天趋势与 AI 诊断；事实和建议分开</p></div>
             <div className="review-grid">
               <details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p><strong>完成与记录：</strong>完整记录姜胡说直播笔记，并提炼出输出锚点、用户问题收集、故事案例和知识库循环等方法；同时明确写下“今天并没有执行昨天的规划”。</p><p><strong>未完成：</strong>没有推进原定的 AI 知识库内容产出；现有教程、视频脚本和工具仍没有形成新的公开测试结果。</p><p><strong>精力事实：</strong>喝霸王茶姬后没有睡，连续玩约 21 局王者荣耀，直到早上八点左右；达到排位目标后，继续玩的欲望明显下降。</p><p><strong>行为信号：</strong>你明确写到，不敢发布的原因之一是“不知道判断对不对”；计划一旦被其他事情打断，也容易把整天视为已经失败。</p><p><strong>需要延续：</strong>继续保留对真实用户问题、故事和结果证据的敏感度。</p><p><strong>需要避免：</strong>不要用奶茶对冲熬夜，也不要把继续看直播、整理方法或让 AI 再分析一轮，当成公开测试的替代品。</p><p className="advice"><strong>AI 建议：</strong>今天先恢复睡眠，只推进一个关键产物：用已有真实经历完成一版短视频。内容允许是阶段性结论，但必须注明事实和边界。</p></div></details>
               <details className="review-card" id="seven-day-trend"><summary>近七天趋势</summary><div className="trend-list">{trends.map(([label, text]) => <div key={label}><strong>{label}</strong><p>{text}</p></div>)}</div></details>
@@ -92,18 +95,15 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="schedule" id="schedule"><div><span>上午</span><p>停止奶茶和游戏，把手机移开，先完成一段连续睡眠。醒后只做洗漱、吃饭和短暂走动，不立刻用信息流把注意力重新切碎。</p></div><div><span>下午</span><p>精力恢复后，用 45–60 分钟录制 AI 知识库视频的低风险版本。只讲“高级收藏夹”这一条真实矛盾，不补新资料、不重搭系统。</p></div><div><span>晚上</span><p>从头播放一次，修正最影响理解的一处，导出可观看文件并写清适用边界。之后停止工作，提前回到正常睡眠窗口；留出至少一小时空白缓冲。</p></div></section>
-
-          <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>最可能让计划失效的四个触发点</strong><span>看清触发点，不增加任务</span></span><span className="plus">＋</span></summary><div className="brief-content"><p><strong>用饮料对冲困倦：</strong>昨天的记录已经显示奶茶与通宵相连。今天困倦是需要睡眠的信号，不是需要再刺激的信号。</p><p><strong>再看一场直播或整理一套方法：</strong>已有笔记和脚本足够完成第一版。新方法全部进入以后再看清单。</p><p><strong>因为不确定正确性而不发布：</strong>第一版明确写成阶段性结论，并给出真实证据与适用边界；它承担的是验证，不是最终定论。</p><p><strong>计划被打断后全盘放弃：</strong>今天只保留一个最小恢复动作和一个最小产出动作。任何时间重新开始，都不需要追回已经错过的时间块。</p></div></details>
-
-          <section className="section" id="deep-reads"><div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读原文</h2></div><p>不是额外待办；任选一篇</p></div><div className="brief-list">
+          <section className="section" id="deep-reads"><div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深度</h2></div><p>公开深读与小报童文章；任选一篇</p></div><div className="brief-list">
             <details className="brief-item" id="deep-read-1"><summary><span className="brief-index">01</span><span className="brief-main"><strong>欧盟委员会：AI 系统透明度义务指南</strong><span>阅读问题：怎样准确说明 AI 参与，而不是制造一个没有信息量的标签？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>重点关注提供方和部署方各自需要做什么，以及标识如何让普通用户真正理解内容的生成与处理方式。</p><p>阅读时把自己的创作流程拆成：真实素材、AI 整理、人工判断、最终发布，检查哪一步需要留下来源或说明。</p><p><a className="archive-link" href="https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems">阅读欧盟委员会官方指南 ↗</a></p></div></details>
             <details className="brief-item" id="deep-read-2"><summary><span className="brief-index">02</span><span className="brief-main"><strong>Le Monde：AI 搜索如何改变网络经济</strong><span>阅读问题：GEO、结构化内容和点击减少如何改变内容商业模式？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>适合从内容分发和商业模式角度阅读。重点关注 AI Overviews、AI Mode、GEO，以及出版商如何应对用户在答案页直接完成信息消费。</p><p>阅读时不要只问“怎么被 AI 引用”，还要问：内容被引用之后，什么仍能促使用户进入原网站、信任作者或采取行动？</p><p><a className="archive-link" href="https://www.lemonde.fr/en/pixels/article/2026/08/01/the-new-era-of-ai-powered-search-which-could-change-the-web-economy_6756067_13.html">阅读 Le Monde 原文 ↗</a></p></div></details>
             <details className="brief-item" id="deep-read-3"><summary><span className="brief-index">03</span><span className="brief-main"><strong>Adobe：《Creators’ Toolkit Report 2026》</strong><span>阅读问题：AI 普及后，人的最终选择为什么仍是核心竞争力？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>这份报告基于 16000 多名创作者。重点不是只记住采用率，而是观察创作者把 AI 放在哪些环节、哪些决定坚持由自己完成。</p><p>阅读时区分两种价值：AI 带来的生产效率，以及真实经历、判断、审美和用户关系形成的信任资产。</p><p><a className="archive-link" href="https://news.adobe.com/news/2026/06/creators-toolkit-report-2026">阅读 Adobe 报告 ↗</a></p></div></details>
+            <details className="brief-item" id="deep-read-4"><summary><span className="brief-index">04</span><span className="brief-main"><span className="pill">小报童</span><strong>姜胡说：拍了 100 条还在原地踏步？复制这段 prompt</strong><span>阅读问题：怎样让 AI 从代写工具变成能识别重复卡点的诊断教练？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>文章从“换赛道却重复遇到同一个问题”出发，建议同时向 AI 提供多条视频的数据与口播文本，找出反复出现的卡点和可复用优势，再把结果沉淀为短视频错题本。</p><p>阅读时重点区分单条视频的偶然信号与 5—10 条视频的重复规律，并观察文章如何把播放量、互动、平均播放时长、完播率、章节流失和平台建议组合成诊断证据。</p><p>来源：本地小报童归档《2026-07-27 拍了100条还在原地踏步？复制这段prompt》，作者姜胡说，发布于 2026-07-27 11:52:34。此处是“今日深度”阅读导引，不代表用户本人理解。</p><p><a className="archive-link" href="https://xiaobot.net/post/9614aedb-ee01-4ec2-b349-dc2505d0e9f4">阅读小报童原文 ↗</a></p></div></details>
           </div></section>
 
-          <a className="hotlist" id="hotlist" href="/daily-briefing/hotlist/2026-08-02.html" aria-label="打开昨日热点榜单"><span>昨日热点榜单</span><strong>查看 2026 年 8 月 2 日完整榜单</strong><span className="arrow">↗</span></a>
-          <footer><p>先让身体恢复，<br />再让一份真实结果出现。</p><span>每日 08:00 更新 · 完整内容折叠保存</span></footer>
+          <a className="hotlist" id="hotlist" href="/daily-briefing/hotlist/2026-08-02.html" aria-label="打开热点榜单"><span>热点榜单</span><strong>查看 2026 年 8 月 2 日完整榜单</strong><span className="arrow">↗</span></a>
+          <footer><p>先让身体恢复，<br />再让一份真实结果出现。</p><span>每日 08:30 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>

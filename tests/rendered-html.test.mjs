@@ -20,8 +20,12 @@ test("renders the daily briefing", async () => {
   assert.match(html, /蔓蔓的早课/);
   assert.match(html, /<title>蔓蔓的早课<\/title>/);
   assert.doesNotMatch(html, /产品、创作与个人规划/);
-  assert.match(html, /产品与创作早报/);
-  assert.match(html, /昨日姜胡说知识星球/);
+  assert.match(html, /今日计划/);
+  assert.match(html, /每日资讯/);
+  assert.match(html, /姜胡说/);
+  assert.match(html, /复盘/);
+  assert.match(html, /今日深度/);
+  assert.match(html, /热点榜单/);
   assert.match(html, /每天自动更新/);
   assert.match(html, /南宁当天天气：[^，]+，\d+–\d+℃/);
   assert.match(html, /南宁<!-- --> · <!-- -->\d+–\d+℃/);
@@ -38,6 +42,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="action-diagnosis"/);
   assert.match(html, /AI 执行力诊断 \/ 建议/);
   assert.match(html, /id="deep-reads"/);
+  assert.match(html, /小报童/);
+  assert.match(html, /id="deep-read-4"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="early-action"/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
