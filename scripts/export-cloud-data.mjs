@@ -259,8 +259,11 @@ const appScript = `<script data-brief-app>
     document.querySelectorAll('.sidebar a[href^="#"]').forEach((link) => {
       link.addEventListener("click", () => {
         const target = document.querySelector(link.getAttribute("href"));
-        const details = target?.tagName === "DETAILS" ? target : target?.closest("details");
-        if (details) details.open = true;
+        let details = target?.tagName === "DETAILS" ? target : target?.closest("details");
+        while (details) {
+          details.open = true;
+          details = details.parentElement?.closest("details");
+        }
         closeMenu();
       });
     });

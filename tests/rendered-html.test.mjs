@@ -33,6 +33,8 @@ test("renders the daily briefing", async () => {
   const renderedMain = html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
   assert.equal((renderedMain.match(/data-nav-group/g) ?? []).length, 6);
   assert.equal((renderedMain.match(/class="nav-chevron"/g) ?? []).length, 6);
+  assert.equal((renderedMain.match(/data-section-fold/g) ?? []).length, 6);
+  assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 6);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
   assert.match(html, /href="#creator-1">dontbesilent/);
@@ -46,7 +48,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /AI 执行力诊断 \/ 建议/);
   assert.match(html, /id="deep-reads"/);
   assert.match(html, /小报童/);
-  assert.match(html, /id="deep-read-4"/);
+  assert.match(html, /id="xiaobaotong-1"/);
+  assert.doesNotMatch(html, /id="deep-read-4"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="early-action"/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);
