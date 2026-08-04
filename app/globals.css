@@ -486,6 +486,8 @@ main { min-height: 100vh; }
 .planet-content > div > span { display: inline-block; margin-bottom: 8px; color: #945e84; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
 .planet-content p { margin: 8px 0; color: #685a66; font-size: 14px; }
 .planet-content img { display: block; width: 100%; height: auto; margin-top: 14px; border-radius: 14px; }
+.planet-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.planet-gallery img { margin-top: 0; }
 
 .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .review-card { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; }
@@ -609,6 +611,7 @@ footer span { display: block; margin-top: 18px; color: var(--muted); font-size: 
   .avatar { width: 48px; height: 48px; border-radius: 15px; }
   .open-label { display: none; }
   .planet-content { grid-template-columns: 1fr; padding: 0 16px 16px; }
+  .planet-gallery { grid-template-columns: 1fr; }
   .review-grid { grid-template-columns: 1fr; }
   .review-card.diagnosis { grid-column: auto; }
   .schedule { grid-template-columns: 1fr; }
