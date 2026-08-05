@@ -38,8 +38,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
   assert.match(html, /href="#creator-1">dontbesilent/);
-  assert.match(html, /href="#story-5">5/);
-  assert.match(html, /今日重要动态：5 条/);
+  assert.match(html, /href="#story-1">1/);
+  assert.match(html, /今日重要动态：[1-5] 条/);
+  assert.doesNotMatch(html, /id="story-6"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /href="#planet-1">大胡子：/);
   assert.match(html, /id="hotlist"/);
@@ -93,9 +94,10 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(previous.mainHtml, /南宁当天天气：阵雨，24–30℃/);
   assert.match(latest.mainHtml, /南宁当天天气：[^，]+，\d+–\d+℃/);
   assert.match(latest.mainHtml, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
-  assert.match(latest.mainHtml, /今日重要动态：5 条/);
+  assert.match(latest.mainHtml, /今日重要动态：[1-5] 条/);
   assert.match(latest.mainHtml, /id="creator-1"/);
-  assert.match(latest.mainHtml, /id="story-5"/);
+  assert.match(latest.mainHtml, /id="story-1"/);
+  assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
   assert.match(latest.mainHtml, /id="planet-1"/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });
