@@ -16,9 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
       index: false,
       follow: false,
       nocache: true,
+      noarchive: true,
+      noimageindex: true,
       googleBot: {
         index: false,
         follow: false,
+        noarchive: true,
         noimageindex: true,
       },
     },
