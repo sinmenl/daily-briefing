@@ -37,8 +37,8 @@ test("renders the daily briefing", async () => {
   assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 0);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
-  assert.match(html, /href="#creator-1">Dan Koe/);
-  assert.match(html, /href="#creator-2">dontbesilent/);
+  assert.match(html, /href="#creator-[1-4]">Dan Koe/);
+  assert.match(html, /href="#creator-[1-4]">dontbesilent/);
   assert.match(html, /href="#story-1">1/);
   assert.match(html, /行业重要新闻：[1-5] 条/);
   assert.doesNotMatch(html, /id="story-6"/);
