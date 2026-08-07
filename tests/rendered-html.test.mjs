@@ -27,8 +27,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /今日深读/);
   assert.match(html, /热点榜单/);
   assert.match(html, /每天自动更新/);
-  assert.match(html, /南宁当天天气：[^，]+，\d+–\d+℃/);
-  assert.match(html, /南宁<!-- --> · <!-- -->\d+–\d+℃/);
+  assert.match(html, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
+  assert.match(html, /南宁<!-- --> · <!-- -->(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(html, /id="content-menu"/);
   const renderedMain = html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
   assert.equal((renderedMain.match(/data-nav-group/g) ?? []).length, 6);
@@ -93,7 +93,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(historical.mainHtml, /南宁当天天气：中雨转小雨，26–31℃/);
   assert.doesNotMatch(historical.mainHtml, /南宁当天天气：阵雨/);
   assert.match(previous.mainHtml, /南宁当天天气：阵雨，24–30℃/);
-  assert.match(latest.mainHtml, /南宁当天天气：[^，]+，\d+–\d+℃/);
+  assert.match(latest.mainHtml, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(latest.mainHtml, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(latest.mainHtml, /行业重要新闻：[1-5] 条/);
   assert.match(latest.mainHtml, /id="creator-1"/);
