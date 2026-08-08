@@ -1,62 +1,126 @@
-const briefDate = "2026-08-07";
+const briefDate = "2026-08-08";
 
 const tasks = [
-  { number: "01", title: "先恢复，不把疲惫当成要硬撑", body: "这是 AI 建议，不是既有日程。近一周多次记录晚睡、通宵、白天补觉和运动不适；昨日日记没有写下今天必须完成的约会或截止日期。先吃一顿正常的饭、补水、洗漱和走动；如果仍困或不舒服，优先休息，不用咖啡、游戏或信息流把身体硬推过去。", first: "喝水、吃饭、洗漱后再决定能否工作", time: "45–60 分钟", tone: "mint" },
-  { number: "02", title: "把“能力”拆成一条可检验的表达", body: "昨日记录把能力拆为“能否讲清楚、按时交付、解决具体问题、持续重复产生结果”等小问题。今天只选第一个：能否把一个刚理解的知识点讲给不了解的人听。写清一个对象、一个问题、一个例子和一句结论；不评判整个人，也不补更多方法。", first: "写下“我想让谁少在哪一步卡住”", time: "30–40 分钟", tone: "blue" },
-  { number: "03", title: "完成一段 60 秒录音，留下一个可见结果", body: "先录音，不强制录像或发布。录完只回听一次，标记最难理解的一句话；有精力再修这一处。若能找到一位听者，只问是否听懂主张、哪句难懂、是否有一点实际帮助，不问人格评价。", first: "按“问题—例子—结论”说第一遍", time: "25–35 分钟", tone: "peach" },
+  { number: "01", title: "先保护手机里的数据，再判断怎么修", body: "这是基于昨日日记的 AI 建议，不是既有预约。手机屏幕已被水杯砸碎，数据安全比继续忍着使用更紧迫。先确认触控、显示、充电和备份是否正常；只记录现状与维修选项，今天不需要立刻决定购买新手机。", first: "完成一次照片、通讯录与重要文件备份", time: "20–30 分钟", tone: "mint" },
+  { number: "02", title: "用“谁—场景—痛点”完成一段表达", body: "昨日日记和知识星球都围绕同一件事：痛点决定结构。今天不继续研究钩子和算法，只选一个真实对象，写清他在什么场景卡在哪里，再按“痛点—解决方案—操作步骤”说出第一版。", first: "写下一句：谁，在什么场景，有什么痛点", time: "40–50 分钟", tone: "blue" },
+  { number: "03", title: "用走路启动，不等完整学习状态", body: "昨晚在南湖散步时，你终于点开一直挂在通知栏的知识星球，并发现不必先进入完美学习状态。今天复用这个已经发生过的有效条件：走路时听或读一小段，只留下一个问题或一段 60 秒录音。", first: "穿鞋出门走 10 分钟，同时打开一条材料", time: "25–35 分钟", tone: "peach" },
 ];
 
 const creatorUpdates = [
-  { tag: "dontbesilent", title: "dbskill 正从提示词库走向可维护的任务系统", intro: "昨日未发现可明确核验的 X 新帖；公开项目更值得关注的是任务路由结构。", content: ["未发现可以明确确认于 2026 年 8 月 6 日发布的 dontbesilent X 公开内容，因此不把历史推文包装成昨日动态。", "目前可核验的 dbskill 项目已经更接近一套完整的 Agent 任务路由系统：它把 16,152 条公开推文整理成 4,176 个知识原子，并沉淀为约 29 个 Skills，再由 /dbs 统一入口判断用户当前任务并进行路由。", "公开 Release 页显示的最新版本仍是 v2.12.0，因此它也不被写成 8 月 6 日的新版本。今天值得关注的不是版本数字，而是产品价值正在从“拥有多少个 Skill”转向“用户无需理解全部结构，也能完成一个真实任务”。", "早期路径是：用户先理解 Skill 目录，再挑选工具并执行；更成熟的路径是：用户直接说真实问题，由路由层识别任务、调用合适 Skill，并给出下一步。", "这对个人知识库的启发是：不要只完成收藏和检索。一个真正进入工作流的知识库，至少要形成“问题 → 证据 → 方法 → 判断 → 行动 → 反馈”的闭环；否则它仍然只是更高级的搜索框。"], source: "https://github.com/dontbesilent2025/dbskill", sourceLabel: "dbskill 公开仓库与版本页" },
-  { tag: "Dan Koe", title: "昨日未发现可核验的新长文或帖子", intro: "没有用历史观点制造昨日更新。", content: ["未发现能够准确核验为 2026 年 8 月 6 日发布、且可以读取完整上下文的 Dan Koe X 帖子、Newsletter 或长文。", "因此本期不重复旧观点。固定博主没有新内容时，保留“没有更新”本身就是有效信息；它能避免读者把系统整理的旧观点误认为作者昨天的新表达。"], source: "https://thedankoe.com/", sourceLabel: "Dan Koe 公开主页" },
-  { tag: "Naval", title: "官网昨日没有新节目", intro: "官网最新公开节目仍为 7 月 2 日的《Live in the Future》。", content: ["Naval 官网目前最新可确认节目仍是 2026 年 7 月 2 日发布的《Live in the Future》，没有发现 8 月 6 日的新节目。", "因此本期不把旧节目当作昨日动态。最近值得读与昨天刚发布是两类不同信息，简报必须明确区分。"], source: "https://nav.al/", sourceLabel: "Naval 官网" },
-  { tag: "姜胡说", title: "昨日未发现可完整核验的公开视频", intro: "公开网页无法同时稳定取得准确时间与完整内容。", content: ["公开网页未能稳定取得姜胡说在抖音或视频号于 2026 年 8 月 6 日发布、同时带有准确发布时间和完整内容的作品。", "因此本栏目不使用搜索摘要、转述片段或日期不明的旧视频替代。知识星球与小报童材料继续放在独立的“姜胡说”栏目，不与公开动态混写。"], source: "https://www.douyin.com/search/%E5%A7%9C%E8%83%A1%E8%AF%B4", sourceLabel: "姜胡说抖音公开搜索" },
+  { tag: "dontbesilent", title: "dbskill 从知识库继续走向任务路由与诊断", intro: "未发现可可靠确认于 8 月 7 日发布的 X 新帖；公开文档的结构变化值得记录。", content: ["没有发现能够可靠确认于 8 月 7 日发布的 @dontbesilent X 新帖，因此不拿历史推文充数。", "但 dbskill 的公开文档近期出现了一个值得单独记录的结构变化：公开的新手说明现在写明，系统已从 16,152 条推文整理出 4,176 个知识原子和 29 个 AI Skills，而且强调用户不需要先知道该调用哪个 Skill，只需通过 /dbs 提交真实任务，由系统选择切入点。", "它的 dbs-content 也明确规定：AI 不替用户写内容，而是诊断选题确认之后，形式、表达、方向到底对不对。", "这两个设计放在一起很有意思：知识库阶段问“我有什么知识”；Skill 阶段问“这些知识能做什么”；路由阶段问“面对这个真实问题，该调用什么”；诊断阶段则让 AI 给判断依据，人自己完成表达和决策。", "这比“建一个知识库然后问问题”多了一层非常重要的产品设计：用户不应该学习你的系统结构，系统应该理解用户的任务。", "对你做 AI 知识库内容尤其值得借鉴。与其介绍“我有多少资料、多少 Skill”，不如展示：我只告诉它一个真实问题，它是怎样决定下一步该查什么、调用什么、最后让我做什么。这才是普通用户更容易理解的价值。"], source: "https://github.com/dontbesilent2025/dbskill", sourceLabel: "dbskill 公开仓库" },
+  { tag: "Dan Koe", title: "未发现 8 月 7 日可核验的新更新", intro: "不拿历史文章占位。", content: ["本次未发现可以可靠确认于 8 月 7 日发布的完整 Newsletter 或可核验 X 长内容。", "目前公开可完整读取的近期文章仍包括 5 月 7 日的《Growing on social media is easy, actually》，重点讨论从零增长账号时可控制的关键变量。因为不是昨日内容，本期不重复总结。", "今日状态：未发现可核验新更新。"], source: "https://thedankoe.com/", sourceLabel: "Dan Koe 公开主页" },
+  { tag: "Naval", title: "最新完整节目仍是《Live in the Future》", intro: "没有发现 8 月 7 日新节目。", content: ["Naval 的公开播客页面目前仍把 7 月 2 日《Live in the Future》列为最新完整节目，没有发现 8 月 7 日新节目。", "因此本期不拿历史观点占位。", "今日状态：未发现可核验新更新。"], source: "https://nav.al/", sourceLabel: "Naval 官网" },
+  { tag: "姜胡说", title: "未发现可完整核验的 8 月 7 日公开视频", intro: "公开检索无法同时稳定取得完整口播与准确发布时间。", content: ["公开检索仍未稳定获得姜胡说 8 月 7 日抖音 / 视频号更新的完整口播和准确发布时间，因此不将历史视频包装成昨日更新。", "目前能完整读取的一条历史公开视频，体现了他比较稳定的方法：先真正理解自己要讲的东西，再放掉稿子，用和朋友聊天的方式表达。该视频实际发布于 3 月 3 日，只作为方法论背景，不属于昨日动态。"], source: "https://www.douyin.com/search/%E5%A7%9C%E8%83%A1%E8%AF%B4", sourceLabel: "姜胡说抖音公开搜索" },
 ];
 
 const industryStories = [
-  {
-    tag: "内容商业化",
-    title: "Pinterest 新设全球内容负责人：内容开始直接对商业结果负责",
-    intro: "内容、发现、搜索、商品与购买正在被视为同一条产品链。",
-    source: "https://www.axios.com/2026/08/06/pinterest-david-brinker-global-head-content",
-    sourceLabel: "Axios 原始报道",
-    content: <><p>Pinterest 8 月 6 日确认任命 David Brinker 为全球内容负责人。他将负责视觉搜索、发现、购物等内容体验，并向首席商务官汇报。Pinterest 同时在扩大创作者合作与跨平台内容，希望把公司进一步转型为面向 Gen Z 的 AI 驱动购物平台。</p><p>这件事的重要性不在一次高管任命，而在组织结构：</p><blockquote><strong>内容负责人不是只对“内容好不好看”负责，而开始直接接近商业负责人。</strong></blockquote><p>Pinterest 正把“内容 → 发现 → 搜索 → 商品 → 购买”看成同一条产品链。</p><p>对创作者也是一样。以后判断一条内容，不应该只看播放、点赞和收藏，还应该继续追问：用户因此搜索了什么？下一步做了什么？有没有关注？有没有进入你的其他内容？有没有形成咨询、订阅或购买？</p><p><strong>内容不是商业化之前的东西，内容本身正在成为商业系统的一部分。</strong></p></>,
-  },
-  {
-    tag: "年轻用户",
-    title: "BBC 请 26 岁创业者解决年轻人“不看 BBC”的问题",
-    intro: "渠道迁移背后往往是用户行为迁移。",
-    source: "https://tradingaswdr.blogspot.com/2026/07/gamer-for-bbc-news.html?m=1",
-    sourceLabel: "公开报道线索",
-    content: <><p>BBC 聘请 26 岁创业者 Brandon Relph 加入战略团队，核心任务之一是帮助 BBC 理解并触达年轻受众。背景非常直接：年轻用户越来越多地转向 TikTok、YouTube 等平台，而不是传统直播电视。</p><p>这是一个典型的用户研究问题。BBC 面对的并不是“怎么让年轻人喜欢 BBC？”，而应该拆成“年轻人现在通过什么机制获取信息和娱乐？”</p><p>答案可能涉及：人格化创作者、算法推荐、短视频、评论参与、亚文化、即时反馈和社交谈资。</p><p>所以真正危险的产品策略是：把传统电视节目剪成 60 秒，然后认为自己完成了年轻化。</p><p><strong>渠道迁移背后往往是用户行为迁移。</strong></p><p>这同样适用于知识内容：不能只是把长文章压缩成一分钟，还需要重新设计一分钟里用户为什么继续看、为什么相信以及为什么参与。</p></>,
-  },
-  {
-    tag: "内容治理",
-    title: "“AI Slop”反弹继续扩大：生产能力已经不是平台最缺的东西",
-    intro: "内容极便宜以后，筛选、验证和决策开始变得更重要。",
-    source: "https://www.wired.com/story/ai-slop-is-changing-the-internet-just-not-how-you-might-think/",
-    sourceLabel: "WIRED 关于 AI Slop 的背景报道",
-    content: <><p>WIRED 8 月 6 日讨论了持续扩大的低质量 AI 内容反弹。报道提到 Google Earth 曾推出可将 AI 生成场景叠加在真实地图上的功能，随后由于生成虚假灾难场景等滥用而撤下；LinkedIn、Substack 等平台也开始采取措施识别或处理低质量 AI 内容。</p><p>这背后存在一个非常重要的产品转折：</p><blockquote><p>过去：内容昂贵 → 帮用户生产内容。</p><p>现在：内容极便宜 → 帮用户筛选有价值内容。</p></blockquote><p>因此 AI 产品的机会正在从“生成”依次迁移到“编辑 → 筛选 → 验证 → 决策”。</p><p>这也是为什么“再做一个 AI 写作工具”的价值越来越弱，而来源验证、知识库、工作流、Agent、用户偏好和决策记录越来越重要。</p><p>用户真正的问题开始从“你能不能帮我生成？”变成：<strong>“这么多东西里，什么值得我相信和行动？”</strong></p></>,
-  },
-  {
-    tag: "创作者生态",
-    title: "Disney × TikTok：IP 正在从“给用户看”变成“给用户创作”",
-    intro: "IP 正从内容资产进一步变成创作基础设施。",
-    source: "https://www.techradar.com/streaming/entertainment/disneys-latest-tiktok-deal-shows-its-betting-on-real-creators-instead-of-ai-generated-videos",
-    sourceLabel: "TechRadar 原始报道",
-    content: <><p>Disney 与 TikTok 宣布合作，允许部分创作者使用 Disney、Pixar、Marvel、Star Wars 等官方素材进行短视频创作；部分 TikTok 创作者的视频还可能进入 Disney+ 的竖屏内容区域。</p><p>这件事可以理解成 Disney 把 IP 从“内容资产”进一步改造成<strong>创作基础设施</strong>。</p><p>以前的链路是“Disney → 制作 → 用户观看”；现在则是“Disney 提供世界观 / 素材 → 创作者重新组合 → 用户观看 → 优秀 UGC 重新进入 Disney+”。这是一个反馈循环。</p><p>对于知识创作者，同样可以借鉴：不要只交付一个“完整答案”。可以把内容拆成可供别人再次使用的组件：一个模型、一个框架、一个问题、一个模板、一个 Skill 或一个案例。</p><p><strong>知识能够被别人拿去完成任务，比别人看完觉得“说得真有道理”更有价值。</strong></p></>,
-  },
-  {
-    tag: "推荐系统",
-    title: "新研究：平台不应该永远把流量给头部创作者",
-    intro: "推荐系统应该只奖励“现在已经好”，还是也奖励“正在快速变好”？",
-    source: "https://arxiv.org/abs/2608.02293",
-    sourceLabel: "arXiv 研究原文",
-    content: <><p>8 月 3 日发表的一项创作者经济平台研究专门研究“流量应该如何在成熟创作者和新创作者之间分配”。</p><p>研究发现，如果平台只追求眼前收益，很容易形成 winner-take-all；但简单平均扶持新人同样低效。更有效的策略是根据创作者未来的增长潜力，有条件地把部分流量分配给尚未成熟但增长势头明显的创作者。</p><p>这是一个非常有意思的平台产品问题：<strong>推荐系统到底应该奖励“现在已经好”，还是“正在快速变好”？</strong></p><p>如果只看绝对数据，100 万播放永远胜过 5000 播放，新人很难产生。但如果加入增长速度、互动质量、用户留存和内容改善速度，推荐系统就可能发现新的供给。</p><p>对个人创作者的意义也很直接：<strong>早期不应该拿自己的绝对数据和成熟账号比较。</strong>更有价值的指标是“第 3 条比第 1 条改善了什么？”</p><p>例如：前 3 秒流失下降；评论开始出现具体问题；收藏率提高；开始有人复述你的观点；有人问下一篇什么时候发。这些才是“正在形成产品—市场匹配”的早期信号。</p></>,
-  },
+  { tag: "创作边界", title: "Hank Green 因过度依赖 LLM，公开建立自己的“AI 使用政策”", intro: "当 AI 能参与所有步骤以后，哪些步骤必须由创作者本人承担？", source: "https://www.reddit.com/r/nerdfighters/comments/1vib58u/hank_greene_has_posted_a_video_addressing_his_ai/", sourceLabel: "Hank Green 新视频与 AI Policy 讨论入口", content: <><p>YouTube 创作者 Hank Green 在受到观众质疑后，公开反思自己近期大量依赖 LLM 做研究、编辑和想法生成，并制定个人 AI 使用规则；他还表示会降低部分项目的产出节奏，把重心重新转向质量和更具本人特征的作品。</p><p>这件事情对知识创作者比“平台又出了什么 AI 功能”重要得多。因为它暴露的不是工具问题，而是一个新的创作者产品问题：</p><blockquote><strong>当 AI 能参与所有步骤以后，到底哪些步骤必须由创作者本人承担？</strong></blockquote><p>如果全部外包：AI 找资料 → AI 总结 → AI 找观点 → AI 写稿 → AI 配图 → AI 剪辑。即使最后账号头像还是你，用户真正消费的“你”已经越来越少。</p><p>所以以后创作者更需要的不是一句“本内容由 AI 辅助”，而是一套内部边界：AI 可以整理资料、提出反例、检查漏洞、帮助检索；但最终判断由谁完成、个人经历是否真实、表达是否仍然是自己的，都需要明确。</p><p><strong>AI Policy 很可能会逐渐成为知识创作者的一种产品说明书。</strong></p><p>对你而言，可以直接建立自己的简版规则：AI 帮我检索、整理、质疑；真实经历、最终判断和发布责任由我承担。这比“不用 AI”现实，也比“全都让 AI 做”更有长期信任价值。</p></> },
+  { tag: "内容治理", title: "“AI 标签”开始出现副作用：真人创作者也可能被误判", intro: "透明度如果没有准确性和申诉机制，自己也会成为新的用户伤害。", source: "https://support.tiktok.com/en/using-tiktok/creating-videos/ai-generated-content", sourceLabel: "TikTok AI 生成内容标签说明", content: <><p>近期有创作者报告，真人制作的 TikTok、Instagram 内容被误标为 AI 生成。对创作者来说，这已经不只是一个技术识别错误，因为随着用户对低质 AI 内容产生负面联想，“AI generated”本身可能影响可信度以及商业合作。</p><p>平台原本想解决的是“用户不知道哪些内容是 AI”，新的问题却变成“平台自己能不能准确知道哪些内容是 AI？”这就是典型的二阶产品问题。</p><p>第一阶段是：AI 内容增加 → 增加 AI 标签。第二阶段则是：检测存在误判 → 真人被标错 → 创作者信誉受损 → 用户开始不信任标签。</p><p>这说明产品治理不能只有“检测”，还需要解释为什么被标记、提供证据、允许申诉、修正后恢复信誉，并区分“AI 辅助”和“主体内容由 AI 生成”。</p><p><strong>透明度如果没有准确性和申诉机制，自己也会成为新的用户伤害。</strong></p><p>这其实也是很好的用户研究案例：解决一个问题之前，要问“这个机制错的时候，谁承担成本？”</p></> },
+  { tag: "创作者商业", title: "MrBeast 正在从“超级创作者”变成一个控股式商业系统", intro: "创作者本人正在从整个业务本身，变成系统中的一项资产。", source: "https://www.thecashmerefund.com/portfolio-company/beast-industries", sourceLabel: "Beast Industries 业务组合", content: <><p>近期披露的投资材料显示，MrBeast 的商业设想经历了明显变化：早期探索播客、NFT、订阅等业务，后来逐渐形成媒体、消费品和软件等更大的业务板块，并继续涉足会员、金融科技、移动服务和创作者服务等方向。</p><p>最值得看的不是 MrBeast 又做了多少项目，而是：<strong>他正在降低整个业务对“Jimmy Donaldson 本人每天拍视频”的依赖。</strong></p><p>创作者商业化通常经历：本人等于内容 → 本人带来流量和广告 → 流量进入自有产品 → 品牌形成产品组合和独立业务 → 创作者本人只是整个系统的一项资产。</p><p>这也是“个人 IP”和“公司”真正的区别。</p><p>普通创作者当然没必要模仿 MrBeast 做几十个项目，但这个逻辑值得保留：<strong>内容最好最终积累一种不需要重新发布一条视频才能继续存在的资产。</strong></p><p>可能是邮件列表、知识库、产品、Skill、会员、搜索流量、社群、数据集或方法论。否则账号一停更，业务就立即停摆。</p></> },
+  { tag: "专业内容", title: "LinkedIn 等平台开始重新定义“思想内容”的真实性", intro: "知识内容最大的资产不是信息，而是判断来源。", source: "https://news.linkedin.com/2026/keeping-conversations-real-on-linkedin", sourceLabel: "LinkedIn 官方：Keeping conversations real", content: <><p>LinkedIn 正面对大量格式化、模板化的 AI “thought leadership” 内容，并在探索举报、减少可疑内容传播等机制。其核心矛盾在于：LinkedIn 用户看专业内容，本质上是在判断“这个人的经验和判断是否值得信任”，因此通用 AI 文案对平台价值的伤害比娱乐内容更加直接。</p><p>这里有一个非常重要的内容产品判断：<strong>知识内容最大的资产不是信息，而是判断来源。</strong></p><p>“行动比准备重要”这句话 AI 能生成一万遍。但“我准备了两个月 AI 知识库视频，却一直没有发布。我回看自己的记录以后才发现，我缺的不是资料，而是允许自己的观点暂时不完整”，这是某个人才能提供的证据链。</p><p>未来知识内容很可能会越来越分成两类：可压缩的信息，AI 越来越擅长；不可压缩的经历与判断形成过程，人的价值提高。</p><p>所以知识博主不一定要比 AI “知道更多”。更值得积累的是：<strong>我是怎么知道的。</strong></p></> },
+  { tag: "推荐系统", title: "创作者经济研究把“增长速度”而不是“当前体量”纳入流量分配", intro: "不要只记录绝对播放量，也要记录内容与用户匹配如何变化。", source: "https://arxiv.org/abs/2608.02293", sourceLabel: "Dynamic Traffic Allocation 研究原文", content: <><p>8 月 3 日发布的一项创作者平台研究讨论了一个现实问题：平台如果一直把流量给成熟头部，可以获得更好的即时收益，却可能失去未来的新供给；而无差别扶持新人同样低效。研究提出，应结合创作者当前价值与未来增长动量动态配置流量。</p><p>这对刚开始做内容的人有一个很实际的启发。不要只记录“播放 300、500、800”，应该记录变化：第 1 条没人评论；第 2 条有人问工具叫什么；第 3 条有人提出真实使用问题；第 4 条有人说“我也遇到过”。</p><p>后者说明的可能不是“流量大了”，而是：<strong>产品开始和某类用户产生匹配。</strong></p><p>你当前阶段最有价值的不是追求一个漂亮的绝对数字，而是建立一个自己的“增长动量指标”。</p><p>比如每条视频只跟踪：有没有陌生人提出具体问题；有没有人复述你的观点；有没有人收藏作为以后使用的东西；有没有自然出现下一条选题。</p><p>这四项比“1000 播还是 3000 播”更能告诉你方向有没有形成。</p></> },
 ];
 
-const weather = { location: "南宁", condition: "天气数据暂不可用", temperature: "请以实时预报为准", icon: "☁️" };
+const planetPosts = [
+  { time: "2026-08-07 10:39", title: "先想清楚：谁、场景与痛点", text: `我拍视频的方法没那么复杂，就几个关键节点：
+谁？在什么场景？有什么痛点？
+想明白这个，把它放在一个合适的结构里（基本就是：痛点+解决方案+操作步骤），就完事了。
+
+我发现太多人都把精力放在了那些根本不重要的地方：
+我要拍爆款，这样我才能有流量->我需要爆款结构->这要放个钩子->这儿也要放个钩子->哎呀！我都这么努力了，为什么没流量？！
+他们或者她们为了流量和逃避思考真正的问题，把所有的精力都放在了怎么找到“快速拍出爆款，快点发财”的捷径上。
+然后，把自己都感动了：我都这么努力了，为什么得不到应有的回报。
+
+废物到哪儿都是废物。在自己的本职是个废物，现在拍视频了还是废物。
+为了自己，的“梦”、“想”，不余余力；永远逃避真正重要的事。` },
+  { time: "2026-08-07 10:54", title: "痛点决定结构", text: `为什么一定要想清楚，谁，在什么场景，有什么痛点；
+然后才是结构？
+
+因为痛点决定结构：
+实操型 -> 步骤式;
+认知型 -> 对比式;
+情感型 -> 叙事式；
+
+定不准痛点，所谓的结构都是张冠李戴。` },
+  { time: "2026-08-07 11:08", title: "代入感来自场景、身份与情绪", text: `拍视频一定要有代入感。
+什么是代入感？就是：我靠！这不就是我吗？这不就是我们隔壁的林婶吗？
+
+代入感靠的不是什么文采；
+而是场景（能脑补的画面）+身份（这说的就是我）+情绪（那一刻的感受）；
+这东西不是文采和钩子能带给你的。
+靠的是你对谁？什么情况下？痛点的理解。
+理解的越深，哪怕你用最简单、平时的语言说出来，也会直接把人代入到场景中。
+
+更重要的是：
+我每天思考的是：谁？在什么情况下？痛点？
+3年后，我对用户、需求、痛点的理解就越深。
+
+你每天研究的是什么呢？流量、算法、钩子...
+算法一变，
+你留下的是什么呢？
+
+放心，算法一定会变。而且根本用不了3年。` },
+];
+
+const xiaobotText = `报了口才班，练了绕口令，面对镜头还是磕磕巴巴。你以为是嘴巴的问题；真正的原因是：脑子没想清楚。
+
+你真正要练的是输出力。写文章是输出力。拍视频是输出力。直播是输出力。跟客户沟通也是输出力。口才是输出力的冰山一角，水面下的结构才是关键。
+
+口才训练营大多解决的是“敢说”的问题，解决不了“会说”的问题。“会说”的前提是什么？你脑子里本身就有结构。大多数人以为是嘴的问题，跑去练嘴。练再久，都不会有结果。因为根儿就不在嘴上。
+
+输出力分四层
+
+第一层，写。思考的过程，能不能把一件事写清楚。第二层，说。梳理的过程，能不能实时对话，不卡壳。第三层，教。验证的过程，能不能把复杂的东西讲给小白听。第四层，拍。输出的过程，能不能对着镜头讲清楚。
+
+先思考（写）→ 再梳理（说）→ 验证自己懂了（教）→ 最后输出（拍）。大多数人是越过了前三层，直接跑去做第四层。一定会不舒服。
+
+正确的流程就一句话：先写清楚，再往下走。写的时候通顺，读出来不通顺——说明逻辑链有问题。回去改结构，不是硬背逐字稿。写清楚了，说和教自然就顺了。拍只是前三层的输出。这一条，能解决你80%的问题。
+
+写不出来
+
+大部分都是想一步到位。你问一个人：“你会画画吗？”他通常会回答说不会。怎么可能不会画呢？你一岁不到的时候就已经会画了。你说的不会画是指画得不好看。因为觉得自己画得不好看，所以就不画了。这就是你不会画画的原因。
+
+你会写吗？当然会写。说不会写是写的不好。所以就不写了。你不需要写得好。你只需要写出来。写成流水账也没问题，事实上，你一开始完全可以写成流水账。好，是后面的事。甚至是几个月以后的事儿。
+
+你写不出来，另一个更深层次的原因，不是因为你不会写。是你不知道自己这条到底要表达什么。这叫锚点缺失。锚点就是你的评判标准。没有锚点，所有方法论都是悬空的。
+
+就会出现昨天社群老伙计的那个“不会拆爆款、不会数据分析、发完视频不会一个一个测变量”的问题。你以为你缺的是方法。你缺的是目标。拆了一百个爆款，不知道为什么要拆。学了一堆拍摄技巧，不知道自己的视频要传递什么。每天更新，不知道“好”的标准是什么。
+
+锚点缺失的人，长什么样
+
+第一种：拼数量。“我做了50条视频，比他多，为什么他爆了我不爆？”你的标准是“做了多少”。正确的标准是“影响力”。一条视频，影响了一个人，比你发50条没人看有价值。
+
+第二种：什么火做什么。今天学口播，明天学Vlog，后天学剧情。换了一圈，发现没有一条是自己真正想做的。没有锚点，任何方法都像救命稻草。
+
+第三种：写不出一句话总结。“这条视频帮什么人解决什么问题？”——你答不上来。这不是文笔问题，是锚点问题。
+
+锚点（知道去哪）→ 输出力（知道怎么组织）→ 口才（知道怎么表达）。顺序不能乱。否则，漂移玩得再帅，你也到达不了目的地。你连目的地在哪儿都不知道。
+
+应该怎么拍视频呢
+
+第一步，定锚点。拍摄之前，问问自己：“这条视频能给用户带来什么，我希望观众看完记住什么？”这句话就是你的锚点。回答不出来，不要开拍。后面的脚本、节奏、画面、语调——都围绕它展开。锚点定了，标准就定了。
+
+锚点还有一个更实际的作用：这条视频好在哪儿？数据会怎么样？收藏率、评论量、分享率……为什么？猜对了，记下来。猜错了，下次调整。
+
+人的大脑就是一台推测机器。它代表了你对这件事情的理解。有推测，才有验证。有验证，才能找到你理解的世界与真实世界的偏差。这才是真正的积累。
+
+第二步，写脚本。有了锚点，写脚本就是“怎么把这件事讲清楚”。开头，一句话抛锚点。中间，展开论证。结尾，把锚点再强调一遍。
+
+我个人经常使用的结构是：开头（吸引+洞见）+中间（解决方案）+结尾（金句）。你不需要逐字稿。你需要结构。结构清楚了，根本不需要背，因为是你自己的逻辑。
+
+试着说出来、讲给别人（这个别人很可能是空气）听。通不通顺，有没有卡顿的地方。录是最后一步。
+
+第三步，录。写清楚了，录就是把它说出来。卡了，不要硬背。回去看结构：是不是逻辑链断了？是不是跳过了某一步？90%的卡壳，是结构问题，不是嘴的问题。
+
+对新手来说，我个人建议不要一上来就录。至少分两次，一次是录音，一次是录像。录音的时候相对单纯一点。去掉所有的无关因素，就是把道理讲清楚。然后把录音的文本发送给AI，重新再过一遍：我的锚点是什么？我怎样把这件事情讲清楚？有更好的方法吗？然后才是录像。
+
+有准备的人和没准备的人是完全不一样的。花时间认真准备的人和仅仅是准备了的人是不一样的。
+
+总结一哈
+
+口才不好 → 输出力不足 → 锚点缺失。根因在锚点。没有锚点，所有方法都是悬空的。知道要去哪儿，自然就知道该怎么做了。`;
+
+const weather = { location: "南宁", condition: "雷阵雨", temperature: "26–34℃", icon: "⛈️" };
 
 function SourceLink({ href, label }: { href: string; label: string }) {
   return <p><a className="archive-link" href={href}>阅读原始来源：{label} ↗</a></p>;
@@ -65,71 +129,36 @@ function SourceLink({ href, label }: { href: string; label: string }) {
 export default function Home() {
   return (
     <main data-brief-date={briefDate}>
-      <header className="topbar">
-        <a className="brand" href="#top" aria-label="返回顶部"><span className="brand-dot" />蔓蔓的早课</a>
-        <div className="top-actions">
-          <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
-          <details className="date-picker"><summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary><nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-07" aria-current="page">2026年8月7日</a></nav></details>
-          <div className="status"><span className="status-dot" />每天自动更新</div>
-        </div>
-      </header>
+      <header className="topbar"><a className="brand" href="#top" aria-label="返回顶部"><span className="brand-dot" />蔓蔓的早课</a><div className="top-actions"><button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button><details className="date-picker"><summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary><nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-08" aria-current="page">2026年8月8日</a></nav></details><div className="status"><span className="status-dot" />每天自动更新</div></div></header>
       <button className="sidebar-overlay" type="button" aria-label="关闭阅读目录" data-menu-close />
       <div className="app-shell">
-        <aside className="sidebar" id="content-menu" aria-label="简报阅读目录">
-          <div className="sidebar-head"><div><span className="sidebar-kicker">CONTENTS</span><strong>今天看什么</strong></div><button className="menu-close" type="button" aria-label="关闭阅读目录" data-menu-close>×</button></div>
-          <nav className="sidebar-nav">
-            <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日计划</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub">{tasks.map((task, i) => <a href={`#task-${i + 1}`} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a></div></details>
-            <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub">{creatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.tag}>{item.tag}：{item.title}</a>)}<a href="#story-1">1. Pinterest 任命全球内容负责人</a><a href="#story-2">2. BBC 引入年轻用户战略负责人</a><a href="#story-3">3. 平台开始反击 AI Slop</a><a href="#story-4">4. Disney × TikTok 开放授权 IP</a><a href="#story-5">5. 创作者平台怎样分配流量</a><a href="#product-observation">产品观察：内容正在变成产品</a><a href="#early-action">今日行动建议</a></div></details>
-            <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#planet-1">大胡子：昨日无星主更新</a><a href="#xiaobaotong-1">小报童：认真做好这件小事</a></div></details>
-            <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#yesterday-review">昨日复盘</a><a href="#seven-day-trend">近七天趋势</a><a href="#action-diagnosis">AI 执行力诊断</a></div></details>
-            <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-briefing">↗</span><span>今日深读</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#deep-read-1">Pinterest 内容战略</a><a href="#deep-read-2">创作者平台流量分配研究</a><a href="#deep-read-3">GenAI 与 UX Research</a></div></details>
-            <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 6 日完整榜单</a></div></details>
-          </nav>
-          <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
-        </aside>
+        <aside className="sidebar" id="content-menu" aria-label="简报阅读目录"><div className="sidebar-head"><div><span className="sidebar-kicker">CONTENTS</span><strong>今天看什么</strong></div><button className="menu-close" type="button" aria-label="关闭阅读目录" data-menu-close>×</button></div><nav className="sidebar-nav">
+          <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日计划</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub">{tasks.map((task, i) => <a href={`#task-${i + 1}`} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a></div></details>
+          <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub">{creatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.tag}>{item.tag}：{item.title}</a>)}{industryStories.map((item, i) => <a href={`#story-${i + 1}`} key={item.title}>{i + 1}. {item.title}</a>)}<a href="#product-observation">产品观察：责任归属</a><a href="#early-action">今日行动建议</a></div></details>
+          <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub">{planetPosts.map((item, i) => <a href={`#planet-${i + 1}`} key={item.time}>大胡子：{item.title}</a>)}<a href="#xiaobaotong-1">小报童：你报了口才班还是不会说</a></div></details>
+          <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#yesterday-review">昨日复盘</a><a href="#seven-day-trend">近七天趋势</a><a href="#action-diagnosis">AI 执行力诊断</a></div></details>
+          <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-briefing">↗</span><span>今日深读</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#deep-read-1">Hank Green 的个人 AI Policy</a><a href="#deep-read-2">创作者动态流量分配</a><a href="#deep-read-3">GenAI 与 UX Research</a></div></details>
+          <details className="nav-group" data-nav-group><summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary><div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 7 日完整榜单</a></div></details>
+        </nav><p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p></aside>
 
         <div className="page" id="top">
-          <section className="hero">
-            <div className="date-block"><div className="date-day">07</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期五</p></div></div>
-            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>不检验整个人，<br />只完成一次有限测试。</h1><p className="judgment">昨天把“能力如何被检验”拆成表达、交付与市场三类小测试；近周晚睡、输入与担心做错持续挤占行动。今天不追求正确答案，只完成一段 60 秒表达的第一轮测试。</p></div>
-            <div className="hero-weather" aria-label={`${weather.location}当天天气：${weather.condition}，${weather.temperature}`}><span className="weather-icon">{weather.icon}</span><span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span></div>
+          <section className="hero"><div className="date-block"><div className="date-day">08</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期六</p></div></div><div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>不等学习状态，<br />先让真实问题带你启动。</h1><p className="judgment">昨天游泳、散步和阅读都发生了；散步还打破了“必须先进入学习状态”的门槛。近周睡眠与系统维护负荷偏高，今天先保护手机数据，再用一条 60 秒表达验证“谁—场景—痛点”。</p></div><div className="hero-weather" aria-label={`${weather.location}当天天气：${weather.condition}，${weather.temperature}`}><span className="weather-icon">{weather.icon}</span><span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span></div></section>
+
+          <section className="section" id="today"><div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：先处理真实损失，再做一次小验证</p></div><div className="task-grid">{tasks.map((task, i) => <article className={`task-card ${task.tone}`} id={`task-${i + 1}`} key={task.number}><span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p><div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div></article>)}</div><div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>每段只放一个结果，保留缓冲</p></div><section className="schedule" id="schedule"><div><span>上午 / 起床后</span><p>正常吃饭、补水；用 20–30 分钟确认手机状态并完成备份。不要把“修还是买”扩展成一上午的型号研究。</p></div><div><span>下午 / 精力较好时</span><p>写一句“谁—场景—痛点”，用 40–50 分钟完成一段 60 秒表达。先录音即可，不强制拍摄、剪辑或发布。</p></div><div><span>晚上</span><p>走 20–30 分钟，途中打开一条材料或回听录音，只留一个问题。回家后停止继续补系统，给睡眠留至少一小时空白。</p></div></section><details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个可能让计划失效的触发点</strong><span>只识别触发点，不增加任务</span></span><span className="plus">＋</span></summary><div className="brief-content"><p><strong>把备份变成消费研究：</strong>今天先保护数据，不要求立刻选出新手机。</p><p><strong>把一段表达升级成完整视频工程：</strong>不增加布景、钩子、封面和剪辑；先确认对象与痛点是否清楚。</p><p><strong>把“还没理解”当成不能打开：</strong>允许只读一段、留一个问题；阅读不是考试。</p></div></details></section>
+
+          <section className="section" id="briefing"><div className="section-heading"><div><p className="eyebrow">DAILY INFORMATION</p><h2>每日资讯</h2></div><p>逐段完整搬运 8 月 8 日云端《每日早报》</p></div><div className="section-context"><p><strong>主要观察窗口：8 月 7 日至今早的最新公开更新。</strong> 对无法准确核验为昨日发布的博主内容，不用旧内容补位。</p><p><strong>今日核心判断：</strong>AI 内容竞争正在进入“信任成本”阶段。过去创作者主要优化生产效率；现在平台和用户开始追问：哪些环节用了 AI、判断到底来自谁、内容是否还具有真实经验与责任归属。与此同时，成熟创作者正在从“个人账号”升级成媒体、消费品、软件和会员业务组成的公司。</p></div><div className="brief-list">{creatorUpdates.map((item, i) => <details className="brief-item" id={`creator-${i + 1}`} key={item.tag}><summary><span className="brief-index">人</span><span className="brief-main"><span className="pill">{item.tag}</span><strong>{item.title}</strong><span>{item.intro}</span></span><span className="plus">＋</span></summary><div className="brief-content">{item.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<SourceLink href={item.source} label={item.sourceLabel} /></div></details>)}</div><div className="section-heading compact-heading"><div><p className="eyebrow">YESTERDAY&apos;S STORIES</p><h2>行业重要新闻：5 条</h2></div><p>完整保留事实、判断与实践启发</p></div><div className="brief-list">{industryStories.map((story, i) => <details className="brief-item" id={`story-${i + 1}`} key={story.title}><summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><span className="pill">{story.tag}</span><strong>{story.title}</strong><span>{story.intro}</span></span><span className="plus">＋</span></summary><div className="brief-content">{story.content}<SourceLink href={story.source} label={story.sourceLabel} /></div></details>)}</div>
+            <details className="brief-item" id="product-observation"><summary><span className="brief-index">观察</span><span className="brief-main"><span className="pill">今日产品观察</span><strong>AI 正在把“内容生产问题”变成“责任归属问题”</strong><span>来源、参与、判断与责任需要变成可追踪的产品结构。</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>今天几条信息其实指向同一个变化：<strong>AI 正在把“内容生产问题”变成“责任归属问题”。</strong></p><p>以前用户判断内容：好不好看？有没有用？现在多了一层：这是怎么生产出来的？我为什么应该相信？</p><p>于是产品必须逐渐回答四个问题：<strong>来源</strong>——这句话从哪里来；<strong>参与</strong>——AI 参与了哪一步；<strong>判断</strong>——谁做了最终选择；<strong>责任</strong>——错了以后谁负责。</p><p>这套框架不只是用于内容。做 AI 知识库、Skill、Agent 都可以用。一个知识库只回答“你应该开始做知识博主”是不够的。更完整的产品应该告诉你：它从哪几条记录里发现模式、哪些地方存在反证、为什么目前更倾向这个判断、哪一步仍然需要你自己决定。</p><p>这时候 AI 从“答案机器”变成了：<strong>可追踪的判断辅助系统。</strong>这可能比单纯 RAG 搜索更值得做成 AI 知识库内容主题。</p></div></details>
+            <details className="brief-item" id="early-action"><summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>给自己的 AI 内容工作流写一个 v0.1《AI 使用边界》</strong><span>不用发布，只花 10 分钟。</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>允许 AI：搜索公开资料、整理历史笔记、找反例、检查逻辑、提出结构方案。</p><p>必须由本人完成：真实经历、最终观点、案例真实性确认、是否发布、对内容承担责任。</p><p>发布前必须检查：有没有一句自己都不真正理解的话；有没有 AI 虚构事实；有没有把 AI 判断写成自己的经历；有没有说明重要的不确定性。</p><p>第一批 AI 知识库视频甚至可以不讲“知识库怎么搭”，直接讲：<strong>“用了这么久 AI，我开始觉得最重要的不是怎么让 AI 多做一点，而是哪些东西我绝对不能外包给它。”</strong></p><p>这条内容天然包含真实使用经验、AI 工作流、知识创作和一个可讨论的判断。</p><p><strong>AI 把生产成本降下来以后，人的价值不会自动消失；真正上涨的是可验证的经验、判断和责任。</strong></p></div></details>
           </section>
 
-          <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：缩小任务，留下可见结果</p></div>
-            <div className="task-grid">{tasks.map((task, i) => <article className={`task-card ${task.tone}`} id={`task-${i + 1}`} key={task.number}><span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p><div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div></article>)}</div>
-            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>恢复、表达、睡眠各留一段空间</p></div>
-            <section className="schedule" id="schedule"><div><span>上午 / 起床后</span><p>完成恢复动作；不要一醒来就打开短视频或要求自己进入高强度状态。身体仍不舒服时，今天的表达任务可以推迟到下午。</p></div><div><span>下午</span><p>用 30–40 分钟写锚点与例子，再用 25–35 分钟录一段 60 秒音频。两段之间留至少 15 分钟，不连着刷资料。</p></div><div><span>晚上</span><p>回听、只修一个问题；若没有精力就保存原始录音。提前停止信息流，给睡眠留出一小时缓冲，不把未完成升级成通宵补做。</p></div></section>
-            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个可能让计划失效的触发点</strong><span>只识别触发点，不增加任务</span></span><span className="plus">＋</span></summary><div className="brief-content"><p><strong>把比较当成行动：</strong>昨日记录谈到“证明自己没有输”的冲动。今天不把别人的资源、表达或播放量当作自己是否有能力的判决；只留下一个能被回听的样本。</p><p><strong>把复杂化当成认真：</strong>不要从录音扩展成布景、逐字稿、剪辑、封面和发布全流程。第一个目标是可检验，不是完整成品。</p><p><strong>用娱乐和信息流回避疲惫：</strong>恢复需要有边界。休息、吃饭、洗澡和走动能恢复；无限刷短视频或持续游戏会让下一段行动更难启动。</p></div></details>
-          </section>
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>前一天知识星球原文与小报童原文</p></div><div className="section-context"><p><strong>昨日归档区间：</strong>2026-08-06 23:30 至 2026-08-07 23:30。共 3 条星主原文；以下忠实保留，不添加额外解读。</p></div>{planetPosts.map((post, i) => <details className="planet-card" id={`planet-${i + 1}`} key={post.time}><summary><div className="avatar">胡</div><div><span className="planet-time">大胡子 · {post.time}</span><strong>{post.title}</strong><span>点击展开完整星主原文</span></div><span className="open-label">原文</span></summary><div className="planet-content"><div className="original"><span>星主原文</span><p style={{ whiteSpace: "pre-wrap" }}>{post.text}</p>{i === planetPosts.length - 1 && <SourceLink href="/daily-briefing/knowledge/2026-08-07/26-08-07姜胡说知识星球.md" label="查看 8 月 7 日原始归档" />}</div></div></details>)}<details className="planet-card" id="xiaobaotong-1"><summary><div className="avatar">读</div><div><span className="planet-time">小报童 · 姜胡说 · 2026-08-03 17:40:51</span><strong>你报了口才班还是不会说，因为缺少一个锚点</strong><span>点击展开完整小报童原文</span></div><span className="open-label">原文</span></summary><div className="planet-content"><div className="original"><span>小报童原文</span><p style={{ whiteSpace: "pre-wrap" }}>{xiaobotText}</p><SourceLink href="https://xiaobot.net/post/0fe35cec-f8be-477e-ae8f-59e35ad887c6" label="小报童原文" /></div></div></details></section>
 
-          <section className="section" id="briefing">
-            <div className="section-heading"><div><p className="eyebrow">DAILY INFORMATION</p><h2>每日资讯</h2></div><p>完整搬运 8 月 7 日云端《每日早报》</p></div>
-            <div className="section-context"><p><strong>主要核验范围：2026 年 8 月 6 日。</strong></p><p><strong>今日核心判断：</strong>内容平台正在从“最大化内容消费”进一步转向“让内容直接服务搜索、商业转化和长期用户价值”。与此同时，AI 把内容生产成本压得越来越低，平台真正稀缺的资源反而变成了：可信内容、有效分发和高质量用户关系。</p></div>
-            <div className="brief-list">{creatorUpdates.map((item, i) => <details className="brief-item" id={`creator-${i + 1}`} key={item.tag}><summary><span className="brief-index">人</span><span className="brief-main"><span className="pill">{item.tag}</span><strong>{item.title}</strong><span>{item.intro}</span></span><span className="plus">＋</span></summary><div className="brief-content">{item.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<SourceLink href={item.source} label={item.sourceLabel} /></div></details>)}</div>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p><strong>事实：</strong>8 月 7 日日记记录睡到十点多、查看云端早报、游泳、在朋友家吃饭、去南湖散步，并在散步中打开一直挂在通知栏的知识星球。游泳后水杯砸碎了 iPhone 11 屏幕。</p><p><strong>完成与未完成：</strong>完成了运动、散步、阅读与一段关于视频结构的记录；没有记录当天完成或发布视频，也没有记录手机已经备份、维修或更换。</p><p><strong>情绪与精力信号：</strong>日记明确写到知识星球通知一直存在，却迟迟不愿打开；散步后心情不再那么浮躁，启动门槛下降。近七天仍有通宵、凌晨入睡、补觉与游泳不适，计划应继续缩小。</p><p><strong>需延续：</strong>环境切换和走路已经真实帮助启动；“谁—场景—痛点”也提供了比研究钩子更稳定的观察方向。</p><p><strong>需避免：</strong>不要把阅读自动升级成“必须进入学习状态并完全理解”，也不要因手机损坏把今天全部变成消费比较。</p><p className="advice"><strong>AI 建议：</strong>今天先备份，再用昨天刚读到的结构做一段 60 秒表达；只验证对象和痛点是否清楚。</p></div></details><details className="review-card" id="seven-day-trend"><summary>近七天趋势</summary><div className="trend-list"><div><strong>重复目标</strong><p>反复出现的目标是开始做 AI 知识视频，把每日简报、知识库、直播笔记和真实问题转成能够被人理解、使用与反馈的内容。</p></div><div><strong>重复阻碍</strong><p>晚睡、游戏与信息流、系统故障排查、继续输入、害怕观点错误，以及“必须进入状态”的前置要求，持续把第一版推迟。</p></div><div><strong>精力变化</strong><p>一周内出现通宵、凌晨四点入睡、白天补觉、茶饮后难眠和游泳不适；8 月 7 日散步时浮躁下降，说明低强度运动可能比继续刷信息更能恢复注意力。</p></div><div><strong>已有资产</strong><p>简报系统、教程、脚本、知识星球采集、直播笔记和对用户痛点的观察已经存在。现在缺的不是更多系统，而是让一条表达进入真实反馈。</p></div></div></details><details className="review-card diagnosis" id="action-diagnosis"><summary>AI 执行力诊断 / 建议</summary><div><p><strong>证据：</strong>昨日日记写道，知识星球内容一直挂在通知栏，“明明有很多机会我可以点开查看，但我迟迟不愿点开”，并进一步问“必须进入学习状态才配看胡子哥的内容吗？”走到南湖、心情不那么浮躁后才点开，并发现“不一定要进入学习状态才能去看”。</p><p><strong>行为模式：</strong>按 dbs-action 框架，这更接近“准备成为行动的前提”和“把一次轻量阅读升级为能力检验”。表面上是在等状态，实际效果是：只要没有足够专注，就可以暂时不面对“我可能没看懂”的结果。</p><p><strong>AI 诊断：</strong>这里保护的不是时间，而是对理解能力的评价。不开，就仍然可以相信自己只是没进入状态；打开后若没理解，才像是能力被检验。昨天散步之所以有效，是因为环境切换降低了这次行为的象征重量——它重新变成“看一眼”，不再是一场学习考试。</p><p><strong>具体处方：</strong>以后看到想读却迟迟不点的内容，启动标准改成：只读第一段，写下一个问题，不要求总结。若坐在桌前持续回避，就穿鞋走 10 分钟，边走边打开；结束时只保存一个问题或一句原话。理解可以在第二次发生。</p><p><strong>适用边界：</strong>如果当天确实睡眠不足、身体不适或任务已经过载，推迟深读可以是恢复，不必被诊断成回避；关键区别是有没有给出明确的下一次触发条件。</p><p><strong>免责声明：</strong>这是基于 dbs-action 框架与昨日日记证据生成的 AI 诊断 / 建议，不是心理咨询或医疗诊断。</p></div></details></div></section>
 
-            <div className="section-heading compact-heading"><div><p className="eyebrow">YESTERDAY&apos;S STORIES</p><h2>行业重要新闻：5 条</h2></div><p>完整保留事实、判断与实践启发</p></div>
-            <div className="brief-list">{industryStories.map((story, i) => <details className="brief-item" id={`story-${i + 1}`} key={story.title}><summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><span className="pill">{story.tag}</span><strong>{story.title}</strong><span>{story.intro}</span></span><span className="plus">＋</span></summary><div className="brief-content">{story.content}<SourceLink href={story.source} label={story.sourceLabel} /></div></details>)}</div>
-            <details className="brief-item" id="product-observation"><summary><span className="brief-index">观察</span><span className="brief-main"><span className="pill">今日产品观察</span><strong>内容到底是产品，还是流量？</strong><span>五条信息共同指向：内容正在进入发现、关系、供给和商业系统。</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>今天五条信息其实集中到了同一个问题：<strong>内容到底是产品，还是流量？</strong></p><p>Pinterest 的答案越来越接近：内容是商品发现系统的一部分。</p><p>Disney：内容是 IP 再生产系统的一部分。</p><p>BBC：内容是年轻用户关系的一部分。</p><p>AI Slop：内容供给已经过剩，筛选和可信度开始比生产重要。</p><p>推荐系统研究：内容也是平台必须持续投资和培育的供给资产。</p><p>因此，如果把个人创作者当成一个产品，可以得到一个更完整的模型：</p><blockquote>真实问题 → 内容 → 用户反馈 → 理解用户 → 形成方法 → 产品 / 服务 / Skill → 新的案例 → 再次成为内容</blockquote><p>真正值得积累的不是“发了多少条”，而是这个循环有没有越来越快。</p></div></details>
-            <details className="brief-item" id="early-action"><summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>展示一个真实任务怎样经过 AI 知识库完成</strong><span>不再介绍功能，而是展示任务前后发生了什么变化。</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>今天可以做一个非常小的内容实验：<strong>不要再做一条“AI 知识库有什么功能”，改成“一个真实任务是怎样经过 AI 知识库完成的”。</strong></p><p><strong>问题：</strong>例如“我收藏了很多资料，但真正写内容时还是想不起来。”</p><p><strong>证据：</strong>展示知识库找出的 2—3 条真实资料。</p><p><strong>判断：</strong>不是让 AI 直接输出答案，而是告诉用户：这几条资料为什么与当前问题有关？</p><p><strong>行动：</strong>根据这些资料完成一个非常具体的动作——一个选题、一段观点或一个决定。</p><p><strong>结果：</strong>最后回答：相比不用知识库，这一步到底快在哪里？</p><p>不要把重点放在“AI 好厉害”，而放在：<strong>“以前这个任务怎么完成，现在这个任务怎么完成。”</strong></p><p>这其实也是今天整份早报最值得保留的一句话：<strong>当生产越来越便宜，真正有价值的产品开始负责筛选、判断和行动，而不只是继续制造更多信息。</strong></p></div></details>
-          </section>
+          <section className="section" id="deep-reads"><div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>3 篇原文，任选一篇</p></div><div className="brief-list deep-read-list"><details className="brief-item" id="deep-read-1"><summary><span className="brief-index">01</span><span className="brief-main"><strong>Hank Green 的个人 AI Policy 案例</strong><span>阅读问题：如果观众看不到创作过程，他们通过什么判断“这还是你的作品”？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>值得看的不是道歉，而是一个成熟知识创作者第一次被迫明确：AI 到底可以进入自己的创作流程多深？</p><SourceLink href="https://www.reddit.com/r/nerdfighters/comments/1vib58u/hank_greene_has_posted_a_video_addressing_his_ai/" label="Hank Green AI Policy 讨论入口" /></div></details><details className="brief-item" id="deep-read-2"><summary><span className="brief-index">02</span><span className="brief-main"><strong>Creator Economy 的动态流量分配研究</strong><span>阅读问题：如果不看粉丝和绝对播放量，我该用什么指标证明自己正在变好？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>这篇 8 月 3 日发布的论文讨论平台究竟应该把流量给“现在表现最好的人”，还是“正在快速成长的人”。</p><SourceLink href="https://arxiv.org/abs/2608.02293" label="arXiv 研究原文" /></div></details><details className="brief-item" id="deep-read-3"><summary><span className="brief-index">03</span><span className="brief-main"><strong>GenAI 在 UX Research 中的角色边界</strong><span>阅读问题：效率提升以后，删掉的是机械劳动，还是必要思考？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>一项针对 21 名 UX researcher、PM 和设计师的研究发现，研究人员通常对 AI 生成洞察更加谨慎，而 PM 更容易高估其能力，由此产生“AI 都能做了，研究是不是应该更快”的组织压力。研究提出的关键方向不是让 AI 取代研究员，而是让 AI 的分析过程更加接近可验证的人类研究流程。</p><SourceLink href="https://arxiv.org/abs/2512.15944" label="arXiv 研究原文" /></div></details></div></section>
 
-          <section className="section" id="planet">
-            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>前一天知识星球原文与相关小报童阅读</p></div>
-            <div className="section-context"><p><strong>昨日归档区间：</strong>2026-08-05 23:30 至 2026-08-06 23:30。该文件存在，且明确写明“今日无星主更新”；这不是缺失，不回退使用更早内容。</p></div>
-            <details className="planet-card" id="planet-1"><summary><div className="avatar">胡</div><div><span className="planet-time">大胡子 · 昨日归档</span><strong>昨日无星主更新</strong><span>点击展开星主原文</span></div><span className="open-label">原文</span></summary><div className="planet-content"><div className="original"><span>星主原文</span><p>今日无星主更新。</p><SourceLink href="/daily-briefing/knowledge/2026-08-06/26-08-06姜胡说知识星球.md" label="查看 8 月 6 日原始归档" /></div></div></details>
-            <details className="planet-card" id="xiaobaotong-1"><summary><div className="avatar">读</div><div><span className="planet-time">小报童 · 姜胡说 · 2026-07-20 14:20:07</span><strong>认真做好这件小事</strong><span>阅读导引：把“知道但做不到”缩小到一个可完成动作</span></div><span className="open-label">原文</span></summary><div className="planet-content"><div className="original"><span>小报童原文</span><p>我翻了626条来自星球、小报童、抖音评论区的提问，发现：大部分人不是能力不行，也不是不努力。是卡在了：</p><h3>三道关卡</h3><p><strong>第一道关卡：不知道拍什么</strong> 今天抄这个爆款，明天换那个方向。一年下来，拍了几十条视频，切换了四、五个人设；别说平台不认识你，你自己都不知道自己“应该是谁”。</p><p>“每天都在想选题，每天都很内耗自己不知道拍什么”</p><p><strong>第二道关卡：知道但做不到</strong> 你听懂了，但懂和做之间隔了一道厚厚的墙，没法启动。</p><p>“每次看完你的作品就觉得拍视频特别简单，但一打开手机就不知道说什么，不敢露脸”</p><p><strong>第三道关卡：“做了没结果”</strong> “该做的我都做了，但为什么没有结果？” 很多人把“装工具”当成“在进步”——装了一堆，一个都没用透。</p><p>“个人操作系统已经搭好了，但是不知道具体怎么落地创造实际的价值”</p><p><strong>这三关是连在一起的：</strong>不知道拍什么 → 拖着不开始 → 越拖越焦虑 → 研究新工具 / 搭系统缓解焦虑 → 装了一堆还是没结果 → 更迷茫 → 更不知道拍什么。</p><p><strong>这不是你的问题，是这个循环本身的设计——你越想“准备好再开始”，就越不会开始。</strong></p><h3>怎么破？</h3><p>大多数人以为是：方向 → 行动 → 工具；但实际能走通的是：<strong>行动 → 方向 → 工具</strong>。</p><p>先动起来。方向在行动中浮现，在卡住时，你才知道该学什么知识，该用哪个工具。</p><p>但前提是——收收心。拍了10条视频就问为什么没流量，100个粉丝就想着怎么变现。路都走不稳，就想着御剑飞行。这可能才是你真正的问题。</p><h3>不知道拍什么？</h3><p><strong>那就先不找方向，先锁定结构。</strong></p><p>方向是抽象的。结构是具体的，先从能做的事做起。</p><p><strong>四步结构：痛点 → 反常识 → 方案 → 金句。</strong></p><ul><li><strong>痛点：</strong>你最近被什么卡住了</li><li><strong>反常识：</strong>大多数人以为的解法为什么是错的</li><li><strong>方案：</strong>你的解法是什么，一两句话</li><li><strong>金句：</strong>一句话让前面所有内容被记住</li></ul><p>前面加一个钩子——<strong>吸引</strong>。第一句话就得让人停下来。四步是内容，吸引是手段。</p><p><strong>行动：</strong>今天写一条，200字，连写14天。14天后素材堆在那，你不需要问“我该拍什么”。</p><p>我就不举例子了，我80%以上的视频都是案例——简单的方法重复做。我们大部分老伙计的情况是：好的，我知道了。然后，为什么我的视频没流量？钱去哪儿领？<strong>知道和做到，是两回事。</strong></p><h3>知道但做不到，怎么办？</h3><p><strong>从小事做起。认认真真做好一件小事。</strong></p><p>这是我们很多老伙计的问题。老想干大事。基本功不够，但有种想得跳跃，一步到位。这是好听的说法。不好听的说法就叫：好高骛远，急功近利。</p><p>结果呢？大事干不了，小事看不上。连“开始”都没做到。</p><p>脑子里想的一上来就搞个“大的”——打光、布景、写脚本、背稿、剪辑、发布。跟一上来就想跑马拉松一样。相信我，你跑不下来的。想像和实际是两回事。而最简单、有效的方法是：穿鞋下楼，走两圈。</p><p>拍视频也一样。别一上来就想拍得多好，允许自己录不好。先只录60秒；先只写第一句话；就用最普通的手机拍摄。先拍60秒，再拍2分钟；先能把话说清楚，然后再看怎么讲好、讲得精彩。别跳，你现在能做到什么就做什么。</p><p>先动起来，形成习惯。然后再慢慢优化。</p><blockquote>做！去做！一边做一边学，而不是学完了再做。取得领先的秘诀是先开始。而开始的秘诀，就是把复杂的事分割成一件件做得到的小事，然后从第一件开始。</blockquote><h3>做了没结果，怎么办？</h3><p><strong>钉子优先，锤子后置。</strong></p><p>你搭建系统、安装工具、学习方法，是从“我做了什么”出发。你做了什么，市场不关心。市场关心的是，你能为“我”做什么。</p><p>发现问题，解决问题。市场需要的不是你装了什么工具，是你解决了什么问题。</p><p><strong>先把钉子钉在墙上，再去找锤子。</strong></p><p>找出最近一个最烦的问题，把它描述清楚，越具体越好。然后只找一个能解决它的工具，把它做透。能解决就固化，不能就换下一个。不要偷工减料，不要奇技淫巧。</p><p>然后你就有了很好的结构：痛点 → 反常识 → 方案 → 金句。然后，前面再加上一点点——<strong>吸引</strong>。</p><p>你不需要更多工具，你需要更少的问题。</p><p>基本功不扎实，装再多工具也是花架子。</p><p>可惜很少有人静下心来，认认真真、踏踏实实地去完成这样一件小事。他们总是希望我快速拍一条视频，然后就爆了，然后我就有了大量的流量，再然后我就挣钱了。</p><p>结果就是，永远卡在那个地方，陷入无尽的焦虑，不停地找爆款，追热点……</p><p>为什么我知道？很简单——因为傻子都是这么做的。这是他们的共性。</p><h3>写在结尾</h3><table><thead><tr><th>卡在哪</th><th>今天做什么</th></tr></thead><tbody><tr><td>不知道拍什么，换了好几个方向都不对</td><td>写一条四步结构</td></tr><tr><td>知道该拍什么，但每天拖着不开始</td><td>从小事做起，先完成再优化</td></tr><tr><td>系统搭好了，方法学了不少，但就是没结果</td><td>写一个最烦的问题，今天只解决它</td></tr></tbody></table><p>没有什么新鲜内容，都是一些最简单的道理。需要做的就是静下心来，认认真真把这一件小事做好、做完整。</p><p>查理·芒格说：<strong>“人一辈子做对两件事情就可以很富有：寻找什么是有效的，重复它；发现什么是无效的，避免它。我们不需要新的思想，我们只需要正确的重复。”</strong></p><SourceLink href="https://xiaobot.net/post/0b204918-ef66-46f2-94dc-d4d2cd492387" label="小报童原文" /></div></div></details>
-          </section>
-
-          <section className="section" id="review">
-            <div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div>
-            <div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p><strong>事实：</strong>8 月 6 日日记记录去游泳，因车没电到朋友家；两人讨论广西扶持、普通人就业与城市升级机会。之后记录了对一条短视频的反感、比较冲动与“能力如何被检验”的长段对话。</p><p><strong>完成与未完成：</strong>日记有游泳、交流、问题拆解和完整记录；没有记录当天完成的视频、公开发布、用户测试或其他可确认的内容交付。没有把“没有视频成品”写成“什么都没做”。</p><p><strong>情绪与精力信号：</strong>日记出现对资源无力感、对比较的觉察，以及担心能力被判定的描述。近周还有反复晚睡、补觉和运动不适的记录；这些都支持今天主动缩小计划。</p><p><strong>需延续：</strong>把笼统问题拆成不同层次，例如“总就业需求是否增加”“谁能获得高质量岗位”“普通人能靠近哪些新增问题”，比用一个大结论盖住所有情况更有用。</p><p><strong>需避免：</strong>不要把一条视频、一次反馈或一次状态不佳升级成对整个能力的总判决。</p><p className="advice"><strong>AI 建议：</strong>今天只检验“能否让一个不了解的人听懂一句主张”，而不是检验自己是不是有用的人。</p></div></details><details className="review-card" id="seven-day-trend"><summary>近七天趋势</summary><div className="trend-list"><div><strong>重复目标</strong><p>反复出现的目标是把 AI、知识库、每日简报与真实问题连接起来，开始做 AI 知识视频，并通过输出、反馈和复盘积累内容能力。</p></div><div><strong>重复阻碍</strong><p>晚睡、游戏和信息流、系统搭建与故障排查、继续输入和担心观点是否正确，持续挤占低风险发布。记录还显示，一旦计划被打乱，容易把后续安排整体放弃。</p></div><div><strong>精力变化</strong><p>一周中出现通宵、凌晨入睡、白天补觉、茶饮后难以入睡与游泳不适；恢复不应被当作额外任务，而是交付稳定性的前置条件。</p></div><div><strong>已有资产</strong><p>每日简报、知识星球采集、财务工作台、教程、视频脚本、直播笔记和一次次具体观察已经存在。眼下更缺一批可被他人听见和反馈的样本，不是更大的系统。</p></div></div></details><details className="review-card diagnosis" id="action-diagnosis"><summary>AI 执行力诊断 / 建议</summary><div><p><strong>证据：</strong>8 月 2 日日记写到“因为害怕自己是错的，所以不敢发出去”，并记录“AI 拆了对我也没用，因为我不理解”；8 月 4 日有大量输入、概念整理与“道理我都懂”的记录；8 月 6 日又回到“我也许有天赋、但不愿意能力被整体判决”的问题。与此同时，睡眠负荷和现实行程真实存在，不能把所有未交付简单归为回避。</p><p><strong>我看到的信号：</strong>按 dbs-action 的阿德勒框架，信号 B（思考成为行动替代）、信号 D（继续学习 / 搭系统获得“正在进步”的安全感）与信号 E（把发布等同于接受能力审判）同时出现。8 月 6 日的“未被验证的优秀”表述，也符合用暂未投入来保护自我评价的自我设障模式。</p><p><strong>AI 诊断：</strong>真正危险的不是不会做，而是把“做一次”误解为给整个人下结论。只要测试规模无限大，就总有继续准备的理由；把测试限制为 60 秒录音和一个听者，才会有真实、可修改的信息。</p><p><strong>具体处方：</strong>今天选一个对象和一个问题，录音前写一句锚点；录完只允许修改最难理解的一处。随后请一个人复述主张。对方复述不清楚，说明这段表达要修；不说明这个人没有能力。</p><p><strong>适用边界：</strong>如果持续出现明显睡眠问题、眩晕、心悸或日常功能受影响，应先减少高强度任务并寻求专业医疗或心理支持。恢复身体不是拖延。</p><p><strong>免责声明：</strong>这是基于 dbs-action 框架和本地日记证据生成的 AI 诊断 / 建议，不是心理咨询或医疗诊断。</p></div></details></div>
-          </section>
-
-          <section className="section" id="deep-reads"><div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>3 篇原文，任选一篇</p></div><div className="brief-list deep-read-list"><details className="brief-item" id="deep-read-1"><summary><span className="brief-index">01</span><span className="brief-main"><strong>Pinterest：内容、搜索与商业化为什么正在合并</strong><span>阅读问题：如果内容最终必须产生业务结果，内容团队应该负责到哪一步？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>Axios 对 Pinterest 新任全球内容负责人的报道很短，但非常适合从组织设计角度读。重点不是一次人事任命，而是内容、视觉搜索、发现、购物、创作者合作和商业结果如何被组织到同一条链路。</p><SourceLink href="https://www.axios.com/2026/08/06/pinterest-david-brinker-global-head-content" label="Axios 原始报道" /></div></details><details className="brief-item" id="deep-read-2"><summary><span className="brief-index">02</span><span className="brief-main"><strong>Creator Economy 平台如何分配流量</strong><span>阅读问题：平台究竟该不该扶持新人？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>这篇研究值得做产品的人读，因为它把一个我们每天都在讨论的问题进行了模型化。阅读时重点不要看数学模型，而看三个概念：<strong>短期收益、未来成长、生态供给。</strong></p><SourceLink href="https://arxiv.org/abs/2608.02293" label="arXiv 研究原文" /></div></details><details className="brief-item" id="deep-read-3"><summary><span className="brief-index">03</span><span className="brief-main"><strong>GenAI 与 UX Research</strong><span>阅读问题：AI 可以压缩整理时间，但哪些用户研究判断仍然不能被压缩？</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>一项针对 21 名 UX researcher、PM 和设计师的研究发现，UX researcher 通常比 PM 更谨慎看待 AI 生成的研究洞察，而 PM 容易高估 AI 能力，这会产生“研究必须更快”的组织压力。</p><SourceLink href="https://arxiv.org/abs/2512.15944" label="arXiv 研究原文" /></div></details></div></section>
-
-          <section className="section" id="hotlist"><div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 6 日完整榜单</p></div><a className="hotlist" href="/daily-briefing/hotlist/2026-08-06.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 6 日完整榜单</strong><span className="arrow">↗</span></a></section>
-          <footer><p>不需要先证明自己，<br />先留下一个能被检验的版本。</p><span>每日 08:30 更新 · 完整内容折叠保存</span></footer>
+          <section className="section" id="hotlist"><div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 7 日完整榜单</p></div><a className="hotlist" href="/daily-briefing/hotlist/2026-08-07.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 7 日完整榜单</strong><span className="arrow">↗</span></a></section>
+          <footer><p>不要等状态证明你准备好了，<br />让一次小行动把状态带回来。</p><span>每日 08:30 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
