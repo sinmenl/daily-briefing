@@ -25,14 +25,15 @@ test("renders the daily briefing", async () => {
   assert.match(html, /姜胡说/);
   assert.match(html, /复盘/);
   assert.match(html, /今日深读/);
+  assert.match(html, /课程与视频/);
   assert.match(html, /热点榜单/);
   assert.match(html, /每天自动更新/);
   assert.match(html, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(html, /南宁<!-- --> · <!-- -->(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(html, /id="content-menu"/);
   const renderedMain = html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
-  assert.equal((renderedMain.match(/data-nav-group/g) ?? []).length, 6);
-  assert.equal((renderedMain.match(/class="nav-chevron"/g) ?? []).length, 6);
+  assert.equal((renderedMain.match(/data-nav-group/g) ?? []).length, 7);
+  assert.equal((renderedMain.match(/class="nav-chevron"/g) ?? []).length, 7);
   assert.equal((renderedMain.match(/data-section-fold/g) ?? []).length, 0);
   assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 0);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
@@ -50,6 +51,11 @@ test("renders the daily briefing", async () => {
   assert.match(html, /AI 执行力诊断 \/ 建议/);
   assert.match(html, /id="deep-reads"/);
   assert.match(html, /class="brief-list deep-read-list"/);
+  assert.match(html, /id="learning"/);
+  assert.match(html, /id="learning-1"/);
+  assert.match(html, /YouTube 视频/);
+  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=9RFaz9ZBXpk/);
+  assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.match(html, /小报童/);
@@ -100,5 +106,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
   assert.match(latest.mainHtml, /id="planet-1"/);
+  assert.match(latest.mainHtml, /id="learning-1"/);
+  assert.match(latest.mainHtml, /课程与视频/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });

@@ -51,6 +51,25 @@ const industryStories = [
 </> },
 ];
 
+const learningResources = [
+  {
+    type: "YouTube 视频",
+    title: "Teresa Torres：Build better products with continuous product discovery",
+    meta: "48 分钟 · 英语 · 适合产品、用户研究与内容实验入门",
+    intro: "用持续发现、用户故事和每周反馈，把一次性的灵感变成可重复学习的产品习惯。",
+    why: "今天的计划不是继续补理论，而是让一条表达接受真人反馈。这期访谈正好解释：为什么学习速度比交付速度更重要，以及怎样通过连续的小反馈降低一次成败带来的压力。",
+    focus: [
+      "06:19–14:04：机会解决方案树，以及为什么团队经常过早跳到方案。",
+      "21:58–30:07：什么是持续发现，怎样建立每周与用户对话的节奏。",
+      "36:20–43:58：访谈如何获取用户故事，以及常见提问错误。",
+    ],
+    action: "看完后不要写长笔记。只把今天那条 60–90 秒表达给一个真人听，记录他复述出的重点与原目标之间的一处偏差。",
+    boundary: "这是 2022 年发布的常青访谈，不是昨日新闻；推荐依据是它与今天的反馈任务高度相关。完整视频为英语，若语言负荷过高，可只看上述三个章节。",
+    source: "https://www.youtube.com/watch?v=9RFaz9ZBXpk",
+    sourceLabel: "Lenny's Podcast 原始 YouTube 视频",
+  },
+];
+
 const planetPosts = [
   { time: "2026-08-08 10:30", title: "换赛道与任务思维", text: `说几个我看到的我们老伙计可能存在的问题：
 
@@ -232,6 +251,14 @@ export default function Home() {
 <a href="#deep-read-2">展示未完成的设计现场</a>
 <a href="#deep-read-3">AI 与计算传播方法</a>
 </div>
+</details>
+          <details className="nav-group" data-nav-group>
+<summary className="nav-title">
+<span className="nav-icon icon-briefing">▷</span>
+<span>课程与视频</span>
+<span className="nav-chevron">⌄</span>
+</summary>
+<div className="nav-sub">{learningResources.map((item, i) => <a href={`#learning-${i + 1}`} key={item.title}>{item.title}</a>)}</div>
 </details>
           <details className="nav-group" data-nav-group>
 <summary className="nav-title">
@@ -584,6 +611,36 @@ export default function Home() {
 <SourceLink href="https://nu.edu.kz/eventsm/ai-metods-in-computational-communication-aim-cc-2026/" label="Nazarbayev University 活动原页" />
 </div>
 </details>
+</div>
+</section>
+
+          <section className="section" id="learning">
+<div className="section-heading">
+<div>
+<p className="eyebrow">COURSES & VIDEOS</p>
+<h2>课程与视频</h2>
+</div>
+<p>AI 推荐 · 今天只选 1 项</p>
+</div>
+<div className="brief-list deep-read-list">
+{learningResources.map((item, i) => <details className="brief-item" id={`learning-${i + 1}`} key={item.title}>
+<summary>
+<span className="brief-index">{String(i + 1).padStart(2, "0")}</span>
+<span className="brief-main">
+<strong>{item.type}｜{item.title}</strong>
+<span>{item.meta}<br />{item.intro}</span>
+</span>
+<span className="plus">＋</span>
+</summary>
+<div className="brief-content">
+<p><strong>为什么今天推荐（AI 推荐）：</strong>{item.why}</p>
+<p><strong>建议重点：</strong></p>
+<ul>{item.focus.map((point) => <li key={point}>{point}</li>)}</ul>
+<p><strong>看完只做一件事：</strong>{item.action}</p>
+<p><strong>适用边界：</strong>{item.boundary}</p>
+<SourceLink href={item.source} label={item.sourceLabel} />
+</div>
+</details>)}
 </div>
 </section>
 
