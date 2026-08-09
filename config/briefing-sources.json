@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Asia/Shanghai",
+  "github": [
+    {
+      "id": "dontbesilent-dbskill",
+      "label": "dontbesilent / dbskill",
+      "repository": "dontbesilent2025/dbskill",
+      "topics": ["AI 工作流", "Skill", "Agent", "知识库"]
+    }
+  ],
+  "feeds": [
+    {
+      "id": "dan-koe",
+      "label": "Dan Koe",
+      "url": "https://thedankoe.com/feed/",
+      "kind": "creator",
+      "topics": ["写作系统", "一人公司", "内容商业化"]
+    },
+    {
+      "id": "naval",
+      "label": "Naval",
+      "url": "https://nav.al/feed",
+      "kind": "creator",
+      "topics": ["长期主义", "杠杆", "AI 时代个人机会"]
+    },
+    {
+      "id": "openai-news",
+      "label": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "kind": "industry",
+      "topics": ["AI 产品", "Agent", "开发者工具"]
+    },
+    {
+      "id": "google-ai",
+      "label": "Google AI",
+      "url": "https://blog.google/technology/ai/rss/",
+      "kind": "industry",
+      "topics": ["AI 产品", "搜索", "内容生态"]
+    },
+    {
+      "id": "nngroup",
+      "label": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/feed/rss/",
+      "kind": "industry",
+      "topics": ["用户研究", "产品设计", "UX"]
+    }
+  ],
+  "manualSources": [
+    {
+      "id": "dontbesilent-x",
+      "label": "dontbesilent 的 X",
+      "url": "https://x.com/dontbesilent",
+      "note": "只在能够核验完整正文和发布时间时使用；本地采集器不绕过登录或平台限制。"
+    },
+    {
+      "id": "jianghushuo-douyin",
+      "label": "姜胡说抖音本人账号",
+      "url": "https://www.douyin.com/search/%E5%A7%9C%E8%83%A1%E8%AF%B4",
+      "note": "只使用本人账号且能核验完整口播和发布时间的内容；不采用搜索摘要或转载。"
+    }
+  ]
+}
