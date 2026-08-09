@@ -7,11 +7,13 @@ const tasks = [
 ];
 
 const creatorUpdates = [
-  { tag: "dontbesilent", title: "8 月 8 日未发现可核验的公开更新", intro: "X 无完整时间证据；GitHub API 显示昨日无提交。", content: ["公开检索没有取得能够同时确认 8 月 8 日发布时间与完整正文的 @dontbesilent X 新帖，因此不拿历史推文补位。", "GitHub API 按北京时间 8 月 8 日的完整时间窗口核验 dontbesilent2025/dbskill，结果没有提交记录。仓库当前内容仍可作为方法背景，但不属于昨日动态。", "今日状态：昨日未发现可核验更新。"], source: "https://github.com/dontbesilent2025/dbskill", sourceLabel: "dbskill 公开仓库" },
-  { tag: "Dan Koe", title: "8 月 8 日未发现可核验的新长文", intro: "Newsletter、Blog 与公开搜索均无昨日完整更新。", content: ["本次没有发现可以可靠确认于 8 月 8 日发布的 Newsletter、Blog 或完整 X 更新。", "旧文章即使仍然相关，也不能被包装成昨日新内容。本期只保留核验结果，不用历史观点占位。", "今日状态：昨日未发现可核验更新。"], source: "https://thedankoe.com/", sourceLabel: "Dan Koe 公开主页" },
-  { tag: "Naval", title: "8 月 8 日未发现可核验的新节目", intro: "官网与公开结果没有昨日新文章或节目。", content: ["Naval 官网与公开检索没有出现能够确认于 8 月 8 日发布的新节目或文章。", "因此本期不重复较早节目，也不把旧观点改写成昨日动态。", "今日状态：昨日未发现可核验更新。"], source: "https://nav.al/", sourceLabel: "Naval 官网" },
-  { tag: "姜胡说", title: "8 月 8 日未发现可完整核验的抖音更新", intro: "公开搜索无法同时取得本人账号、准确时间和完整口播。", content: ["按照固定规则只核验姜胡说本人抖音账号。公开搜索没有取得能够同时确认 8 月 8 日发布时间与完整口播的本人视频。", "搜索结果中存在同名或转载账号，不能据此推断星主本人当日发布，因此不纳入。", "今日状态：昨日未发现可核验公开更新。"], source: "https://www.douyin.com/search/%E5%A7%9C%E8%83%A1%E8%AF%B4", sourceLabel: "姜胡说抖音公开搜索" },
+  { hasUpdate: false, tag: "dontbesilent", title: "8 月 8 日未发现可核验的公开更新", intro: "X 无完整时间证据；GitHub API 显示昨日无提交。", content: ["公开检索没有取得能够同时确认 8 月 8 日发布时间与完整正文的 @dontbesilent X 新帖，因此不拿历史推文补位。", "GitHub API 按北京时间 8 月 8 日的完整时间窗口核验 dontbesilent2025/dbskill，结果没有提交记录。仓库当前内容仍可作为方法背景，但不属于昨日动态。", "今日状态：昨日未发现可核验更新。"], source: "https://github.com/dontbesilent2025/dbskill", sourceLabel: "dbskill 公开仓库" },
+  { hasUpdate: false, tag: "Dan Koe", title: "8 月 8 日未发现可核验的新长文", intro: "Newsletter、Blog 与公开搜索均无昨日完整更新。", content: ["本次没有发现可以可靠确认于 8 月 8 日发布的 Newsletter、Blog 或完整 X 更新。", "旧文章即使仍然相关，也不能被包装成昨日新内容。本期只保留核验结果，不用历史观点占位。", "今日状态：昨日未发现可核验更新。"], source: "https://thedankoe.com/", sourceLabel: "Dan Koe 公开主页" },
+  { hasUpdate: false, tag: "Naval", title: "8 月 8 日未发现可核验的新节目", intro: "官网与公开结果没有昨日新文章或节目。", content: ["Naval 官网与公开检索没有出现能够确认于 8 月 8 日发布的新节目或文章。", "因此本期不重复较早节目，也不把旧观点改写成昨日动态。", "今日状态：昨日未发现可核验更新。"], source: "https://nav.al/", sourceLabel: "Naval 官网" },
+  { hasUpdate: false, tag: "姜胡说", title: "8 月 8 日未发现可完整核验的抖音更新", intro: "公开搜索无法同时取得本人账号、准确时间和完整口播。", content: ["按照固定规则只核验姜胡说本人抖音账号。公开搜索没有取得能够同时确认 8 月 8 日发布时间与完整口播的本人视频。", "搜索结果中存在同名或转载账号，不能据此推断星主本人当日发布，因此不纳入。", "今日状态：昨日未发现可核验公开更新。"], source: "https://www.douyin.com/search/%E5%A7%9C%E8%83%A1%E8%AF%B4", sourceLabel: "姜胡说抖音公开搜索" },
 ];
+
+const visibleCreatorUpdates = creatorUpdates.filter((item) => item.hasUpdate);
 
 const industryStories = [
   { tag: "产品能力", title: "AI 产品经理课程把重点从“会提示词”转向“定义、评估与交付”", intro: "8 月 8 日举行的公开课程，把 AI PM 的新技能栈作为核心。", source: "https://maven.com/p/47d8b0/open-ai-pm-become-a-frontier-ai-native-product-manager", sourceLabel: "Maven 活动原页", content: <>
@@ -194,7 +196,7 @@ export default function Home() {
 <span>每日资讯</span>
 <span className="nav-chevron">⌄</span>
 </summary>
-<div className="nav-sub">{creatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.tag}>{item.tag}：{item.title}</a>)}{industryStories.map((item, i) => <a href={`#story-${i + 1}`} key={item.title}>{i + 1}. {item.title}</a>)}<a href="#product-observation">产品观察：从展示工具到验证结果</a>
+<div className="nav-sub">{visibleCreatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.tag}>{item.tag}：{item.title}</a>)}{industryStories.map((item, i) => <a href={`#story-${i + 1}`} key={item.title}>{i + 1}. {item.title}</a>)}<a href="#product-observation">产品观察：从展示工具到验证结果</a>
 <a href="#early-action">今日行动建议</a>
 </div>
 </details>
@@ -342,7 +344,7 @@ export default function Home() {
 <p>
 <strong>今日核心判断（早报分析）：</strong>AI 产品与内容能力正在从“会不会生成”转向“能否定义结果、暴露过程并接受反馈”。昨天可核验的三个公开活动分别强调 AI PM 的新技能栈、展示未完成的设计现场，以及 AI 进入传播研究方法；共同点不是更多工具，而是让不确定过程变得可以观察和校准。</p>
 </div>
-<div className="brief-list">{creatorUpdates.map((item, i) => <details className="brief-item" id={`creator-${i + 1}`} key={item.tag}>
+{visibleCreatorUpdates.length > 0 && <div className="brief-list">{visibleCreatorUpdates.map((item, i) => <details className="brief-item" id={`creator-${i + 1}`} key={item.tag}>
 <summary>
 <span className="brief-index">人</span>
 <span className="brief-main">
@@ -354,7 +356,7 @@ export default function Home() {
 </summary>
 <div className="brief-content">{item.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<SourceLink href={item.source} label={item.sourceLabel} />
 </div>
-</details>)}</div>
+</details>)}</div>}
 <div className="section-heading compact-heading">
 <div>
 <p className="eyebrow">YESTERDAY&apos;S STORIES</p>

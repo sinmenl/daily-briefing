@@ -37,8 +37,8 @@ test("renders the daily briefing", async () => {
   assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 0);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
-  assert.match(html, /href="#creator-[1-4]">Dan Koe/);
-  assert.match(html, /href="#creator-[1-4]">dontbesilent/);
+  assert.doesNotMatch(html, /href="#creator-[1-4]">(?:Dan Koe|dontbesilent|Naval|姜胡说)/);
+  assert.doesNotMatch(html, /id="creator-[1-4]"/);
   assert.match(html, /href="#story-1">1/);
   assert.match(html, /(?:行业重要新闻|昨日可核验动态)：[1-5] 条/);
   assert.doesNotMatch(html, /id="story-6"/);
@@ -96,7 +96,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(latest.mainHtml, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(latest.mainHtml, /(?:行业重要新闻|昨日可核验动态)：[1-5] 条/);
-  assert.match(latest.mainHtml, /id="creator-1"/);
+  assert.doesNotMatch(latest.mainHtml, /id="creator-[1-4]"/);
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
   assert.match(latest.mainHtml, /id="planet-1"/);
