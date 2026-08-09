@@ -40,7 +40,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /href="#creator-[1-4]">Dan Koe/);
   assert.match(html, /href="#creator-[1-4]">dontbesilent/);
   assert.match(html, /href="#story-1">1/);
-  assert.match(html, /行业重要新闻：[1-5] 条/);
+  assert.match(html, /(?:行业重要新闻|昨日可核验动态)：[1-5] 条/);
   assert.doesNotMatch(html, /id="story-6"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /href="#planet-1">大胡子：/);
@@ -95,7 +95,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(previous.mainHtml, /南宁当天天气：阵雨，24–30℃/);
   assert.match(latest.mainHtml, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(latest.mainHtml, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
-  assert.match(latest.mainHtml, /行业重要新闻：[1-5] 条/);
+  assert.match(latest.mainHtml, /(?:行业重要新闻|昨日可核验动态)：[1-5] 条/);
   assert.match(latest.mainHtml, /id="creator-1"/);
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
