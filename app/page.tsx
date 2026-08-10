@@ -32,20 +32,20 @@ const tasks = [
 
 const learningResources = [
   {
-    type: "YouTube 视频（官方）",
-    title: "Create community on #Shorts",
-    meta: "时长未核验 · 英语 · 适合开始用评论做内容反馈的创作者",
-    intro: "YouTube 官方帮助页推荐的 Shorts 社群视频，重点是用直接问题、评论与后续回应建立真实互动。",
-    why: "今天的内容任务最后一步不是继续优化脚本，而是提出一个观众能够回答的问题，并把评论变成下一轮内容证据。这项资源与当天的反馈闭环直接相关。",
+    type: "Startup School 完整讲座",
+    title: "How to Talk to Users｜如何与用户访谈",
+    meta: "约 31 分钟 · 英语 · 免费公开 · 适合第一次做真实用户访谈的人",
+    intro: "Y Combinator 官方课程讲座。内容从三个常见访谈错误讲到五个可直接使用的问题，主体是完整方法教学，不是产品功能宣传。",
+    why: "昨天已经和一位老师讨论了采购、报销与学生参与度，也发现设备条件会直接影响方案是否可行。今天推荐这堂课，是为了把一次自然聊天升级成能获得具体事实的用户访谈，而不是继续凭想象补产品功能。",
     focus: [
-      "如何在视频中分享真实过程，而不只呈现精修结果。",
-      "如何提出直接、具体、观众容易回答的问题。",
-      "怎样把评论转成后续选题，而不是把互动只当作数字。",
+      "三个常见错误：谈自己的想法、询问假设、自己说得太多。",
+      "五个具体问题：最难的部分、最近一次发生、为什么困难、尝试过什么、现有方案哪里不好。",
+      "怎样根据想法、原型和已上线三个阶段，调整访谈的目的与问题。",
     ],
-    action: "发布今天的视频时只设置一个具体问题；明天从评论中摘出一个重复问题，作为下一条内容的假设。",
-    boundary: "这是常青的官方创作者教育资源，不是昨日新闻；视频语言为英语，完整时长未取得可靠证据，因此不猜测时长。",
-    source: "https://www.youtube.com/watch?v=cGo2HCCea_g",
-    sourceLabel: "YouTube 官方视频",
+    action: "找一位真实对象做一次 10–15 分钟访谈，只问课程里的五个问题并记录原话；全程不介绍自己的解决方案。",
+    boundary: "这是 2019 年发布的常青课程，不是昨日新闻；方法适合发现真实问题，但一次访谈只能形成线索，不能直接证明需求普遍存在或一定可商业化。",
+    source: "https://www.youtube.com/watch?v=MT4Ig2uqjTc",
+    sourceLabel: "Y Combinator 官方完整讲座",
   },
 ];
 
@@ -202,7 +202,7 @@ export default function Home() {
   return (
     <main data-brief-date={briefDate}>
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="返回顶部"><span className="brand-dot" />蔓蔓的早课</a>
+        <a className="brand" href="#top" aria-label="返回顶部"><span className="brand-dot" />蔓</a>
         <div className="top-actions">
           <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
           <details className="date-picker">

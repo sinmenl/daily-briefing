@@ -33,7 +33,7 @@ const normalizeDocument = (documentHtml) => {
     .replaceAll("http://localhost:3000/favicon.svg", `${publicUrl}favicon.svg`)
     .replace(/<link rel="modulepreload"[^>]*>/g, "")
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "")
-    .replace(/<title>[^<]*<\/title>/, "<title>蔓蔓的早课</title>");
+    .replace(/<title>[^<]*<\/title>/, "<title>蔓</title>");
 
   const indexDirective = "noindex,nofollow,noarchive,noimageindex";
   for (const bot of ["robots", "googlebot"]) {
@@ -247,6 +247,10 @@ const appScript = `<script data-brief-app>
   };
 
   const initBrief = () => {
+    const brand = document.querySelector(".brand");
+    if (brand?.lastChild?.nodeType === Node.TEXT_NODE) {
+      brand.lastChild.textContent = "蔓";
+    }
     const button = document.querySelector("[data-menu-button]");
     button?.addEventListener("click", () => {
       const willOpen = !document.documentElement.classList.contains("menu-open");
@@ -307,7 +311,7 @@ await writeFile(path.join(docs, ".nojekyll"), "", "utf8");
 const localBriefingRoot = path.resolve(root, "..");
 await writeFile(
   path.join(localBriefingRoot, "今日简报.html"),
-  `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,noimageindex"><meta http-equiv="refresh" content="0;url=${publicUrl}"><title>蔓蔓的早课</title></head><body><p><a href="${publicUrl}">打开蔓蔓的早课</a></p></body></html>`,
+  `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive,noimageindex"><meta http-equiv="refresh" content="0;url=${publicUrl}"><title>蔓</title></head><body><p><a href="${publicUrl}">打开蔓</a></p></body></html>`,
   "utf8",
 );
 

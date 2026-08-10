@@ -17,8 +17,9 @@ test("renders the daily briefing", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /蔓蔓的早课/);
-  assert.match(html, /<title>蔓蔓的早课<\/title>/);
+  assert.match(html, />蔓<\/a>/);
+  assert.match(html, /<title>蔓<\/title>/);
+  assert.doesNotMatch(html, /蔓蔓的早课/);
   assert.doesNotMatch(html, /产品、创作与个人规划/);
   assert.match(html, /今日计划/);
   assert.match(html, /每日资讯/);
@@ -54,8 +55,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
   assert.match(html, /id="learning-1"/);
-  assert.match(html, /YouTube 视频/);
-  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=cGo2HCCea_g/);
+  assert.match(html, /Startup School 完整讲座/);
+  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=MT4Ig2uqjTc/);
+  assert.match(html, /主体是完整方法教学，不是产品功能宣传/);
   assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
@@ -87,6 +89,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(current, /data-calendar-grid/);
   assert.match(current, /renderCalendar\(\);\s*picker\.addEventListener/);
   assert.match(current, /data-brief-app/);
+  assert.match(current, /brand\.lastChild\.textContent = "蔓"/);
   assert.match(current, new RegExp(`data-brief-date="${manifest.latest}"`));
   assert.match(current, /fetch\(repoBase \+ "\/data\/" \+ date \+ "\.json/);
   assert.doesNotMatch(current, /window\.location\.assign\(entry\.href\)/);
