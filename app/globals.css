@@ -29,6 +29,36 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
+.brief-content h4,
+.brief-content h5 {
+  margin: 1.4em 0 .45em;
+  color: #57425f;
+  font-family: Georgia, "Songti SC", serif;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+.brief-content blockquote,
+.cloud-core blockquote {
+  margin: 1em 0;
+  padding: .75em 1em;
+  color: #684f72;
+  background: linear-gradient(135deg, #f4edff, #fff0f6);
+  border-left: 3px solid #b98ac0;
+  border-radius: 0 14px 14px 0;
+}
+.brief-content code,
+.review-card code {
+  padding: .1em .35em;
+  color: #704d7f;
+  background: #f3eafa;
+  border-radius: 6px;
+  font-size: .9em;
+}
+.cloud-core {
+  margin-top: 18px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
 a { color: inherit; text-decoration: none; }
 button, summary { -webkit-tap-highlight-color: transparent; }
 

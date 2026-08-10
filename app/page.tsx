@@ -1,667 +1,401 @@
-const briefDate = "2026-08-09";
+import { Fragment, type ReactNode } from "react";
+
+const briefDate = "2026-08-10";
+const cloudBriefMarkdown = "<!-- DAILY_BRIEF_START -->\n```yaml\nschema_version: 1\nbrief_date: 2026-08-10\ncoverage_date: 2026-08-09\nstatus: complete\ntitle: 产品与创作每日简报\n```\n\n# 产品与创作每日简报｜2026 年 8 月 10 日\n\n## 今日核心判断\n\nAI 产品正在同时沿两条路线演进：\n\n第一条是提高模型能力，让模型执行更长、更复杂的任务；第二条是增加权限、评估、审批和安全边界，让模型能够进入真实工作流。决定 Agent 能否创造价值的，越来越不是“它能生成什么”，而是“它能否在明确目标、有限权限和可验证标准下完成任务”。\n\n内容平台则在处理另一个后果：生成门槛下降之后，低成本、批量化内容快速增加。YouTube、TikTok、Substack、Pinterest、LinkedIn 和 Snapchat 都在加强标识、降权或限制完全由 AI 批量生成的内容。对创作者而言，AI 可以降低制作成本，但无法替代真实经历、独立判断和可验证的实验。\n\n这两条趋势指向同一个机会：\n\n> AI 负责扩大执行能力，人负责定义问题、设定边界、做出判断并承担结果。\n\n对于 AI × 内容创作，长期优势不应建立在“会使用某个工具”上，而应建立在持续发现问题、开展实验、形成观点和获得用户反馈的闭环上。\n\n## 指定博主动态\n\n## 行业重要新闻\n\n### 1. OpenAI 称前沿模型可能接近“关键网络安全能力”阈值\n\n**发生了什么：**\n\nOpenAI 在 2026 年 8 月 7 日公布最新安全评估。其即将发布的模型 Astra 在 Agent 编程和网络安全任务上的能力明显提高，OpenAI认为已经不能排除模型达到其 Preparedness Framework 中“关键网络安全能力”级别的可能性。\n\n这里的变化不是模型更会回答安全知识问题，而是它可能更擅长自主发现漏洞、编写代码、使用工具，并在较少人工干预的情况下完成多步骤任务。\n\n**为什么重要：**\n\n当模型从“给建议”发展到“使用工具并采取行动”，错误的影响范围会被放大。一个聊天回答出错，通常只影响一次判断；一个拥有代码执行、账户权限和网络访问能力的 Agent 出错，可能直接改变外部系统。\n\n因此，未来的 Agent 产品不能只比较模型能力，还需要比较：\n\n- 权限是否遵循最小化原则；\n- 高风险操作是否需要人工确认；\n- 每次工具调用是否可以追踪；\n- 任务有没有明确的退出条件；\n- 出错后能否停止、回滚和恢复。\n\n**产品思维：**\n\nAgent 产品的核心模块正在从“聊天界面＋模型”变成：\n\n目标定义 → 上下文 → 工具权限 → 执行过程 → 结果验证 → 异常处理。\n\n其中，“结果验证”可能比提示词更加重要。能够自动检查结果、识别异常并请求人工介入的产品，更容易进入真实业务。\n\n**用户洞察：**\n\n普通用户可能追求“自动完成”，但组织真正购买的是“可控地完成”。随着任务风险提高，用户对产品的需求会从速度转向确定性、责任边界和可审计性。\n\n**给我的启发：**\n\n设计 AI 工作流时，先写出验收标准，再让 AI 执行。例如，知识库内容整理任务不能只要求“总结这份资料”，而应该明确：\n\n1. 不添加资料中不存在的事实；\n2. 每个结论保留出处；\n3. 无法确认的内容标记为待核验；\n4. 输出后检查重复、矛盾和缺失字段。\n\n原始来源：[OpenAI — Responding to the next frontier of critical cyber capabilities](https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/)\n\n---\n\n### 2. ChatGPT 将“思考深度”变成用户可控制的产品参数\n\n**发生了什么：**\n\nOpenAI 在 2026 年 8 月 6 日更新 GPT‑5.6 Sol，并为 Plus 和 Pro 用户提供思考深度调节功能。免费用户将逐步使用 GPT‑5.6 Luna、获得不限次数的文字对话，并可通过 Think 按钮处理更复杂的问题。\n\nOpenAI称，在其内部金融、医疗和法律事实评估中，相较 GPT‑5.5 Instant，包含至少一个事实错误的回答在 GPT‑5.6 Luna 上减少约 62%，在 GPT‑5.6 Sol 上减少约 68%。\n\n这些数字来自 OpenAI 内部评估，不能直接等同于所有真实场景中的错误率下降。\n\n**为什么重要：**\n\n过去，用户需要理解不同模型名称、速度和推理能力。新的交互方式把技术选择转换成更容易理解的任务选择：\n\n- 简单问题快速回答；\n- 写作、研究和决策增加思考；\n- 用户不必频繁切换模型。\n\n这说明 AI 产品竞争已经从单纯的模型性能，延伸到“如何帮助用户分配计算成本和注意力”。\n\n**产品思维：**\n\n优秀的产品不会把底层技术复杂度直接暴露给用户，而是把它转换成符合用户心智模型的控制项。“需要想多久”比“选择哪个模型版本”更接近用户真正关心的问题。\n\n类似设计可以应用到知识库产品：\n\n- 快速检索：只返回最相关资料；\n- 深度分析：交叉比对多份资料；\n- 严格核验：逐条附出处并检查矛盾。\n\n**用户洞察：**\n\n用户并不总是需要最强模型。真正需求是根据任务风险选择适当投入：选标题时需要速度，发布事实性内容前需要更高的核验强度。\n\n**给我的启发：**\n\n可以为自己的内容工作流设置三个档位：\n\n- 灵感档：快速生成选题和角度；\n- 创作档：形成结构、案例和初稿；\n- 核验档：检查事实、来源、逻辑和反例。\n\n这样能避免对所有任务使用同一种提示词和同一套处理流程。\n\n原始来源：[OpenAI — Improving GPT‑5.6 Sol in ChatGPT](https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/)\n\n---\n\n### 3. Anthropic 通过缩小安全分类边界，减少约 85% 的生物学误拦截\n\n**发生了什么：**\n\nAnthropic 在 2026 年 8 月 7 日更新 Claude Fable 5 的生物学安全机制。此前，为防止模型被用于危险的生物研究，系统会将大量相关请求切换到能力较低的模型，其中也包括普通健康咨询和教育问题。\n\nAnthropic重新编写分类规则、补充训练数据，并邀请专家参与反馈。其内部测试显示，生物学相关请求的模型回退减少约 85%，但病毒学、毒理学和分子设计等具有双重用途风险的专业任务仍受到限制。\n\n**为什么重要：**\n\nAI 安全并不是“允许”与“禁止”的静态开关。规则过宽会损害正常体验，规则过窄则可能放大风险。真正困难的是持续识别误拦截和漏拦截，并调整分类边界。\n\n这也是一个典型的产品问题：安全性、可用性与用户信任之间需要动态平衡。\n\n**产品思维：**\n\n安全机制应该被视为可以持续优化的产品组件，需要监测：\n\n- 哪些正常请求被错误拒绝；\n- 哪些危险请求没有被识别；\n- 用户在什么情况下放弃任务；\n- 回退后是否解释了原因；\n- 用户能否申诉或补充上下文。\n\n“拒绝率越高越安全”并不成立。更好的指标是，在保持风险控制的前提下，减少对正常任务的干扰。\n\n**用户洞察：**\n\n用户通常无法理解复杂安全政策，但能直接感受到产品是否“莫名其妙地拒绝”。如果拒绝缺少解释，用户会把安全机制理解成模型能力不足。\n\n**给我的启发：**\n\n设计知识库或内容审核工作流时，不要只输出“通过/不通过”。增加三种结果：\n\n- 可直接使用；\n- 需要人工核验；\n- 存在明确风险，暂不使用。\n\n同时写出触发原因。这样既保留安全边界，也减少不透明拒绝带来的挫败感。\n\n原始来源：[Anthropic — Improving Fable 5’s biology safeguards](https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards)\n\n---\n\n### 4. 多个平台开始限制“AI 批量内容”，原创判断成为稀缺信号\n\n**发生了什么：**\n\n截至 2026 年 7 月底，多家内容平台都在调整 AI 内容治理：\n\n- YouTube强调，使用 AI 增强原创叙事可以获得收益，但批量生产的重复、低投入内容可能无法变现；\n- TikTok测试识别专门发布 AI 垃圾内容的账号；\n- Substack引入 AI 使用分析和创作过程披露；\n- Pinterest允许用户减少信息流中的生成式 AI 内容；\n- LinkedIn表示将处理表面流畅但缺少独立观点的 AI 内容；\n- Snapchat宣布，完全由 AI 生成的视频不再获得 Spotlight 推荐或奖励，但使用 AI 辅助编辑仍被允许。\n\n这些平台并不是全面排斥 AI，而是在区分“AI 辅助表达”和“用 AI 批量占领分发系统”。\n\n**为什么重要：**\n\n当文本、图片和视频都可以低成本生成时，“制作完成”不再具有稀缺性。平台需要寻找新的质量信号，例如真实人物、原创叙事、个人经验、用户互动和内容差异度。\n\n这意味着纯粹依赖提示词和模板复制的内容模式，生命周期会越来越短。\n\n**产品思维：**\n\n内容平台面临的是典型的生态系统问题：\n\n生成工具提高供给 → 低质量供给激增 → 用户筛选成本上升 → 用户满意度下降 → 平台必须调整推荐和变现规则。\n\n平台不会只判断内容是不是 AI 生成，更可能判断它是否重复、是否具有独立价值，以及用户是否真正愿意消费。\n\n**用户洞察：**\n\n用户不一定反感 AI。他们反感的是内容看起来正确、完整、流畅，却没有提供任何新信息、真实经验或可信判断。\n\n**给我的启发：**\n\n使用 AI 时，至少保留一个无法批量复制的“人类证据”：\n\n- 一次实际操作的录屏；\n- 一个失败案例；\n- 一段用户原话；\n- 一个前后对比结果；\n- 一个带适用边界的判断。\n\nAI 可以负责整理和表达，但内容的核心证据应该来自真实观察或实验。\n\n原始来源：[Business Insider — Social platforms cracking down on AI slop](https://www.businessinsider.com/ai-slop-substack-youtube-tiktok-pinterest-facebook-instagram-threads-2026-7)\n\n---\n\n### 5. MrBeast 的商业版图从个人流量转向媒体、消费品和软件\n\n**发生了什么：**\n\n2026 年 8 月 7 日公开的法庭文件和历史融资材料显示，MrBeast 的商业规划经历了多次变化。\n\n早期计划包括播客、NFT、订阅社区和视频业务；到 2024 年，方向扩大到主题乐园、电影、动画和消费品；到 2025 年，其公司将业务归纳为三个支柱：\n\n- 媒体；\n- 消费品；\n- 软件。\n\n目前推进的方向包括 Feastables、金融服务 Step、创作者服务平台、会员业务、Beast Mobile，以及不依赖 MrBeast 本人出镜的新内容品牌。\n\n**为什么重要：**\n\n这展示了创作者公司从“个人影响力变现”转向“以影响力降低产品获客成本”的过程。内容不是最终商品，而是持续产生信任、注意力和需求的分发系统。\n\n同时，这些历史材料也说明，创作者不需要执行最初提出的每个商业想法。NFT、播客等计划没有成为主要业务，方向会随着用户反馈、团队能力和市场条件变化。\n\n**产品思维：**\n\n创作者商业化可以分为三层：\n\n1. 内容层：获取注意力并建立定位；\n2. 关系层：沉淀社区、会员和直接触达渠道；\n3. 产品层：销售消费品、软件、服务或体验。\n\n真正的增长不是在每一层同时扩张，而是先验证哪一种用户需求能够借助已有信任被更低成本地满足。\n\n**用户洞察：**\n\n用户关注一个创作者，不代表会购买创作者推出的任何产品。能够转化的产品通常需要同时满足两个条件：\n\n- 与创作者长期建立的认知或身份关联；\n- 用户本身存在稳定、明确的需求。\n\n**给我的启发：**\n\n成为 AI 内容创作者时，可以把内容视为需求研究渠道。连续记录评论区出现的问题，将问题按出现频率、解决成本和付费可能性分类。产品机会应来自重复出现的需求，而不是临时想到的功能。\n\n原始来源：[Business Insider — MrBeast’s pitch decks reveal how his business ambitions changed](https://www.businessinsider.com/new-court-docs-show-mrbeast-evolving-expansion-ambitions-membership-mobile-2026-8)\n\n## 产品观察\n\n### 产品一：OpenAI Presence\n\n**1. 它服务谁？**\n\n需要把 AI Agent 部署到客服、销售、保险理赔和内部 IT 等真实业务流程中的大型组织。\n\n**2. 用户原来的解决方案是什么？**\n\n原有方案通常是人工客服、固定规则机器人、知识库搜索，以及多个互不相通的业务系统。复杂请求需要员工手动核验身份、查询资料、解释规则并执行操作。\n\n**3. 它解决了哪个痛点？**\n\nPresence试图把模型、企业知识、业务系统、权限政策、评估工具和人工升级机制组合成完整产品。\n\nAgent只获得完成特定岗位所需的知识和系统权限；企业可以定义哪些操作允许自动完成、哪些需要审批、何时必须转交人工。系统上线后，再从真实会话和转人工案例中发现缺口，测试并批准改进。\n\nOpenAI称，其英文电话支持场景中，Presence能够在无需人工介入的情况下解决约 75% 的来电问题；相关改进流程曾在十天内将转人工比例降低十五个百分点。该数据来自OpenAI自身案例，仍需要结合具体任务难度和统计口径理解。\n\n**4. 为什么现在出现？**\n\n模型已经能够进行多步骤推理和工具调用，但企业采用的主要障碍转向可靠性、权限、合规和持续维护。市场需要的已经不是一个更聪明的聊天窗口，而是一套能管理 Agent 全生命周期的系统。\n\n**5. 如果要做类似产品，可以学习什么？**\n\n不要从“万能 Agent”开始。先选择一个边界清晰、结果可验证的岗位：\n\n- 定义单一任务；\n- 只连接必要知识和工具；\n- 写出允许与禁止的操作；\n- 设计人工接管条件；\n- 收集失败案例；\n- 每次只修复一种高频失败。\n\n原始来源：[OpenAI — Introducing OpenAI Presence](https://openai.com/index/introducing-openai-presence/)\n\n---\n\n### 产品二：ChatGPT 的思考深度控制\n\n**1. 它服务谁？**\n\n既使用 AI 处理日常问题，也会进行研究、写作、规划和复杂决策的普通用户与专业用户。\n\n**2. 用户原来的解决方案是什么？**\n\n用户需要手动选择不同模型，或者通过“认真思考”“一步一步分析”等提示词调节回答深度。这要求用户理解模型差异，并承担选择成本。\n\n**3. 它解决了哪个痛点？**\n\n产品把模型选择转化为任务投入选择：快速任务降低等待时间，重要任务增加推理资源。用户控制的是结果所需的投入，而不是底层技术名称。\n\n**4. 为什么现在出现？**\n\n模型能力和推理成本差距扩大，同一个模型也可以在不同计算投入下运行。产品需要帮助用户在响应速度、成本和答案质量之间做简单选择。\n\n**5. 如果要做类似产品，可以学习什么？**\n\n将复杂技术参数翻译成用户能够理解的结果语言。例如，知识库产品不必展示检索数量、重排模型和上下文长度，可以提供：\n\n- 快速找答案；\n- 跨资料分析；\n- 严格核验。\n\n每个档位同时说明速度、覆盖范围和可信程度，减少用户的技术决策负担。\n\n原始来源：[OpenAI — Improving GPT‑5.6 Sol in ChatGPT](https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/)\n\n## 深读推荐\n\n### 1. Dan Koe：《The Art Of Strategic Thinking》\n\n**核心观点：**\n\nDan Koe 在 2026 年 8 月 8 日发布的文章中区分了策略与战术：\n\n- 战术是具体动作；\n- 策略是持续改善自己所处的位置，使更有效的动作逐渐出现；\n- 收集工具、教程和方法容易制造“正在进步”的错觉；\n- 真正的策略需要明确目标、理解约束、集中资源、获得反馈并根据环境调整。\n\n他进一步提出，系统和工具都会随着环境变化而失效。固定的 Notion 模板、Claude Skill 或 AI 工作流可能在几个月后不再有效，因此使用者仍需要判断什么时候应该调整方法。\n\n**值得学习的部分：**\n\n最值得借鉴的不是文中的成功叙事，而是“原则与工具分离”的思考方式。\n\n对于 AI 创作者：\n\n- “使用什么工具”属于战术；\n- “为哪类用户解决什么问题”属于策略；\n- “发布一条视频”属于战术；\n- “通过连续内容验证用户需求”属于策略；\n- “建立知识库”属于战术；\n- “让资料持续转化为判断和内容”才是策略。\n\n文章中部分高风险建议，例如通过承担超出承受能力的支出来制造压力，不适合直接照做。可以保留其“主动建立约束”的原则，但应采用可逆、低风险方式，例如公开发布计划、限定实验周期或设置交付日期。\n\n**如何应用：**\n\n为接下来三条 AI 知识库视频设置同一个战略问题：\n\n> 哪一类知识管理困难，用户愿意持续寻找解决方案？\n\n三条视频分别验证不同痛点：\n\n1. 收藏很多资料，但之后找不到；\n2. AI 能检索资料，但回答缺少出处；\n3. 知识库内容越来越多，反而无法判断该读什么。\n\n不要先决定产品形态。先比较播放完成率、收藏、评论问题和私信，再判断哪一个痛点值得继续。\n\n原始来源：[Dan Koe — The Art Of Strategic Thinking](https://letters.thedankoe.com/p/strategy-vs-tactics-how-to-actually)\n\n---\n\n### 2. Maze：《The Future of User Research Report 2026》\n\n**核心观点：**\n\nMaze 调研了近 500 名研究、设计和产品从业者。报告显示：\n\n- 69% 的研究者已经在工作流中使用 AI；\n- 认为研究对各层级商业战略都很重要的组织，从 2025 年的 8% 增加到 2026 年的 22%；\n- 66% 的受访者表示研究需求增加；\n- 受访者认为理解情绪和细微差别、伦理判断、提出正确问题仍高度依赖人类参与。\n\n报告的核心判断是：自动化正在成为基础能力，人的判断力成为差异化能力。AI可以替代转录、整理和初步综合等重复工作，但无法自动决定企业现在最应该研究什么，以及观察结果应该如何改变产品决策。\n\n**值得学习的部分：**\n\n报告区分了“更多研究”与“更好的决策”。当研究工具普及后，如果缺少统一方法、资料存储和质量标准，团队得到的可能不是洞察，而是更多相互矛盾的信息。\n\n研究工作的价值正在从执行访谈转向：\n\n- 提出正确问题；\n- 识别信号与噪声；\n- 连接用户需求和商业目标；\n- 把研究结果转化成可执行决策；\n- 建立持续学习机制。\n\n**如何应用：**\n\n把评论区和私信建立成轻量用户研究库，但不要只保存原话。每条反馈记录五个字段：\n\n1. 用户正在完成什么任务；\n2. 当前使用什么替代方案；\n3. 在哪个步骤遇到困难；\n4. 困难造成什么后果；\n5. 用户已经尝试过什么。\n\n每积累十条反馈，进行一次归类。只有当相似任务和痛点重复出现时，才把它提升为选题系列或产品假设。\n\n原始来源：[Maze — The Future of User Research Report 2026](https://maze.co/resources/user-research-report/)\n\n## 今日行动建议\n\n今天完成一条 45—60 秒的观点视频，主题是：\n\n> AI 工具越强，创作者越需要提供“人类证据”。\n\n具体执行：\n\n1. **开头判断，10 秒：**  \n   “多个平台开始限制批量 AI 内容。问题并不是用了 AI，而是内容没有真实判断和证据。”\n\n2. **给出事实，15 秒：**  \n   列出 YouTube、Substack 或 Snapchat 的一项规则变化，并在画面中展示来源页面。\n\n3. **展示一个对比，20 秒：**  \n   同一主题分别展示：\n   - 只有 AI 总结的版本；\n   - 加入实际操作结果、失败过程或适用边界的版本。\n\n4. **给出结论，10 秒：**  \n   “AI 可以负责整理和表达，但创作者必须提供无法批量复制的观察。”\n\n5. **结尾收集反馈：**  \n   询问观众：“你判断一条 AI 内容是否值得信任时，最看重什么？”\n\n发布后只记录四项数据：三秒留存、播放完成率、收藏数、评论中重复出现的问题。明天根据反馈决定，是继续讨论平台规则，还是深入讲“如何为 AI 内容增加可信证据”。\n\n本次行动同时完成闭环中的四步：\n\n信息输入 → 提炼判断 → 发布内容 → 收集用户反馈。\n\n原始来源：[Business Insider — Social platforms cracking down on AI slop](https://www.businessinsider.com/ai-slop-substack-youtube-tiktok-pinterest-facebook-instagram-threads-2026-7)\n<!-- DAILY_BRIEF_END -->";
 
 const tasks = [
-  { number: "01", title: "先恢复睡眠与皮肤，不用运动证明自律", body: "昨日日记记录凌晨四点才睡，脚部水泡碰水仍痛，大腿摩擦处出现红疹。今天的事实边界是身体需要恢复；不把游泳、暴走或新的高强度计划当成补偿。", first: "正常吃饭补水，清洁并保持摩擦处干燥", time: "30 分钟主动处理，其余留作恢复", tone: "mint" },
-  { number: "02", title: "把一个理论压成一条能被检验的表达", body: "昨天最清楚的矛盾不是没有知识，而是理论没有经过现实使用。只选“任务思维与结果思维”这一点，面向一个具体的人，用一个真实工作经历讲清楚，不再增加资料。", first: "写一句：这条内容帮谁看懂哪个具体误区", time: "45–60 分钟", tone: "blue" },
-  { number: "03", title: "让一个真人告诉你哪里没讲清楚", body: "能力不是一次人格判决，而是在明确条件下能否重复产生结果。今天只把第一版发给一位可信任的人，询问能否复述重点、哪句最难懂、是否有实际帮助。", first: "发送录音或文字，并只问三个固定问题", time: "15–20 分钟", tone: "peach" },
-];
-
-const creatorUpdates = [
-  { hasUpdate: false, tag: "dontbesilent", title: "8 月 8 日未发现可核验的公开更新", intro: "X 无完整时间证据；GitHub API 显示昨日无提交。", content: ["公开检索没有取得能够同时确认 8 月 8 日发布时间与完整正文的 @dontbesilent X 新帖，因此不拿历史推文补位。", "GitHub API 按北京时间 8 月 8 日的完整时间窗口核验 dontbesilent2025/dbskill，结果没有提交记录。仓库当前内容仍可作为方法背景，但不属于昨日动态。", "今日状态：昨日未发现可核验更新。"], source: "https://github.com/dontbesilent2025/dbskill", sourceLabel: "dbskill 公开仓库" },
-  { hasUpdate: false, tag: "Dan Koe", title: "8 月 8 日未发现可核验的新长文", intro: "Newsletter、Blog 与公开搜索均无昨日完整更新。", content: ["本次没有发现可以可靠确认于 8 月 8 日发布的 Newsletter、Blog 或完整 X 更新。", "旧文章即使仍然相关，也不能被包装成昨日新内容。本期只保留核验结果，不用历史观点占位。", "今日状态：昨日未发现可核验更新。"], source: "https://thedankoe.com/", sourceLabel: "Dan Koe 公开主页" },
-  { hasUpdate: false, tag: "Naval", title: "8 月 8 日未发现可核验的新节目", intro: "官网与公开结果没有昨日新文章或节目。", content: ["Naval 官网与公开检索没有出现能够确认于 8 月 8 日发布的新节目或文章。", "因此本期不重复较早节目，也不把旧观点改写成昨日动态。", "今日状态：昨日未发现可核验更新。"], source: "https://nav.al/", sourceLabel: "Naval 官网" },
-  { hasUpdate: false, tag: "姜胡说", title: "8 月 8 日未发现可完整核验的抖音更新", intro: "公开搜索无法同时取得本人账号、准确时间和完整口播。", content: ["按照固定规则只核验姜胡说本人抖音账号。公开搜索没有取得能够同时确认 8 月 8 日发布时间与完整口播的本人视频。", "搜索结果中存在同名或转载账号，不能据此推断星主本人当日发布，因此不纳入。", "今日状态：昨日未发现可核验公开更新。"], source: "https://www.douyin.com/search/%E5%A7%9C%E8%83%A1%E8%AF%B4", sourceLabel: "姜胡说抖音公开搜索" },
-];
-
-const visibleCreatorUpdates = creatorUpdates.filter((item) => item.hasUpdate);
-
-const industryStories = [
-  { tag: "产品能力", title: "AI 产品经理课程把重点从“会提示词”转向“定义、评估与交付”", intro: "8 月 8 日举行的公开课程，把 AI PM 的新技能栈作为核心。", source: "https://maven.com/p/47d8b0/open-ai-pm-become-a-frontier-ai-native-product-manager", sourceLabel: "Maven 活动原页", content: <>
-<p>Maven 的公开活动页面显示，“OpenAI PM: Become a Frontier AI-Native Product Manager”于 8 月 8 日举行，页面把课程重点写成新的 AI 产品经理技能栈，并明确指出许多产品经理仍停留在提示词和工具的表层。</p>
-<p>
-<strong>为什么重要：</strong>这说明 AI 产品工作的评价标准正在从“有没有用 AI”转向“能否把不确定能力变成可靠结果”。会生成原型只是起点，产品经理仍要定义用户任务、构造评估标准、处理失败边界，并确认用户是否真的采用结果。</p>
-<p>
-<strong>产品视角：</strong>传统功能通常可以写出确定输入和输出；AI 功能存在概率性，因此需求文档还要回答：正确到什么程度才可用、什么错误必须拦截、何时交还给人、怎样观察信任随时间变化。</p>
-<p>
-<strong>实践建议：</strong>做 AI 知识库内容时，不只展示“它回答了什么”，同时展示你如何判定答案可用、哪里仍需核验、一次错误如何恢复。这样观众看到的是产品判断，而不只是工具演示。</p>
-<p>
-<strong>适用边界：</strong>活动页能够核验日期和课程定位，但无法替代完整课程内容；本条只分析公开页面明确写出的信息，不推断讲师未公开表达的观点。</p>
-</> },
-  { tag: "用户研究", title: "设计社群把“未完成的混乱现场”变成用户反馈入口", intro: "IxDF Pune 8 月 8 日的活动明确禁止只展示精修作品集。", source: "https://ixdf.org/meetups/creative-chaos-coffee-aug-8th-2026", sourceLabel: "IxDF 活动原页", content: <>
-<p>Interaction Design Foundation Pune 在 8 月 8 日举行 “Creative Chaos & Coffee”。活动要求参与者带上凌乱线框、正在卡住的设计挑战或尚未完成的副项目，规则甚至写明“不展示精修作品集”。</p>
-<p>
-<strong>为什么重要：</strong>成品展示更容易获得称赞，却很难暴露真正的决策困难；半成品反而包含用户研究最有价值的材料：哪里犹豫、哪里缺证据、哪些方案已经试过、为什么无法继续。</p>
-<p>
-<strong>用户研究视角：</strong>如果只在项目完成后复盘，研究得到的是被整理过的成功叙事。让用户展示进行中的工作，可以观察真实行为和权衡，减少“我平时大概会这样做”的回忆偏差。</p>
-<p>
-<strong>实践建议：</strong>今天的 60 秒表达不需要先打磨成作品。把第一版给一个真人看，只问三件事：他听懂了什么、哪里断了、是否对他有用。这相当于把“混乱现场”变成研究入口。</p>
-<p>
-<strong>适用边界：</strong>同行互评不等于目标用户研究。设计师觉得结构清楚，不代表普通观众会使用；反馈对象仍应尽量接近真正受众。</p>
-</> },
-  { tag: "传播研究", title: "AIM-CC 2026 把 AI 引入传播研究的方法训练", intro: "8 月 8 日开幕，关注大模型、嵌入与生成式 Agent 如何改变传播研究。", source: "https://nu.edu.kz/eventsm/ai-metods-in-computational-communication-aim-cc-2026/", sourceLabel: "Nazarbayev University 活动原页", content: <>
-<p>Nazarbayev University 公布的 AIM-CC 2026 于 8 月 8 日开始，由该校与 Kazakhstan Sociology Lab 等机构组织。公开介绍指出，计算传播研究正在被大语言模型、嵌入方法、生成式 Agent 和 AI 辅助实验设计重新塑造。</p>
-<p>
-<strong>为什么重要：</strong>内容创作不只是表达技巧，也可以被当作可研究的传播过程：什么对象在什么情境下接收信息、哪个结构让他理解、哪些表述产生误解、反馈如何改变下一版。</p>
-<p>
-<strong>产品或研究视角：</strong>AI 可以扩大材料整理和模式发现的规模，但研究结论仍需回到原始证据。模型发现“观众喜欢对比结构”只是待验证假设，必须结合真实观看行为、原话和反例。</p>
-<p>
-<strong>实践建议：</strong>建立最小实验记录：发布前写出希望观众记住的一句话；发布后记录三位观众实际复述；比较两者偏差。AI 负责聚类和找反例，人负责判断偏差意味着什么。</p>
-<p>
-<strong>适用边界：</strong>本条依据公开活动介绍，不把会议议程当作已经完成并发表的研究结论；真正采用方法前仍应阅读具体论文和实验设计。</p>
-</> },
+  {
+    number: "01",
+    title: "完成一条 45–60 秒观点视频",
+    body: "直接使用云端早报给出的主题：AI 工具越强，创作者越需要提供“人类证据”。今天不再扩充数据库、不再重搭流程，只做出第一版。",
+    first: "写下开头判断，并选择一项可展示的真实证据",
+    time: "45–60 分钟",
+    tone: "mint",
+  },
+  {
+    number: "02",
+    title: "只加入一份无法批量复制的证据",
+    body: "从实际操作录屏、失败过程、来源页面、用户原话或前后对比中只选一种。目标不是让内容显得更丰富，而是让观众知道判断从哪里来。",
+    first: "截取一个真实操作或来源画面",
+    time: "20 分钟",
+    tone: "blue",
+  },
+  {
+    number: "03",
+    title: "发布后只记录四项反馈",
+    body: "记录三秒留存、播放完成率、收藏数和评论里重复出现的问题。一次结果只回答一个有限问题，不把播放量变成对个人能力的总判决。",
+    first: "结尾问：你判断 AI 内容是否可信时最看重什么？",
+    time: "发布后 15 分钟",
+    tone: "peach",
+  },
 ];
 
 const learningResources = [
   {
-    type: "YouTube 视频",
-    title: "Teresa Torres：Build better products with continuous product discovery",
-    meta: "48 分钟 · 英语 · 适合产品、用户研究与内容实验入门",
-    intro: "用持续发现、用户故事和每周反馈，把一次性的灵感变成可重复学习的产品习惯。",
-    why: "今天的计划不是继续补理论，而是让一条表达接受真人反馈。这期访谈正好解释：为什么学习速度比交付速度更重要，以及怎样通过连续的小反馈降低一次成败带来的压力。",
+    type: "YouTube 视频（官方）",
+    title: "Create community on #Shorts",
+    meta: "时长未核验 · 英语 · 适合开始用评论做内容反馈的创作者",
+    intro: "YouTube 官方帮助页推荐的 Shorts 社群视频，重点是用直接问题、评论与后续回应建立真实互动。",
+    why: "今天的内容任务最后一步不是继续优化脚本，而是提出一个观众能够回答的问题，并把评论变成下一轮内容证据。这项资源与当天的反馈闭环直接相关。",
     focus: [
-      "06:19–14:04：机会解决方案树，以及为什么团队经常过早跳到方案。",
-      "21:58–30:07：什么是持续发现，怎样建立每周与用户对话的节奏。",
-      "36:20–43:58：访谈如何获取用户故事，以及常见提问错误。",
+      "如何在视频中分享真实过程，而不只呈现精修结果。",
+      "如何提出直接、具体、观众容易回答的问题。",
+      "怎样把评论转成后续选题，而不是把互动只当作数字。",
     ],
-    action: "看完后不要写长笔记。只把今天那条 60–90 秒表达给一个真人听，记录他复述出的重点与原目标之间的一处偏差。",
-    boundary: "这是 2022 年发布的常青访谈，不是昨日新闻；推荐依据是它与今天的反馈任务高度相关。完整视频为英语，若语言负荷过高，可只看上述三个章节。",
-    source: "https://www.youtube.com/watch?v=9RFaz9ZBXpk",
-    sourceLabel: "Lenny's Podcast 原始 YouTube 视频",
+    action: "发布今天的视频时只设置一个具体问题；明天从评论中摘出一个重复问题，作为下一条内容的假设。",
+    boundary: "这是常青的官方创作者教育资源，不是昨日新闻；视频语言为英语，完整时长未取得可靠证据，因此不猜测时长。",
+    source: "https://www.youtube.com/watch?v=cGo2HCCea_g",
+    sourceLabel: "YouTube 官方视频",
   },
 ];
 
-const planetPosts = [
-  { time: "2026-08-08 10:30", title: "换赛道与任务思维", text: `说几个我看到的我们老伙计可能存在的问题：
+const xiaobot = {
+  title: "用一张“价值罗盘”，将你的视频换成可变现的信任资产",
+  author: "姜胡说",
+  published: "2025-09-29 23:53:20",
+  source: "https://xiaobot.net/post/0f079770-4b4b-44da-a02d-b8b5b64db43b",
+};
 
-1、遇到困难时，第一个想法不是怎么搞定困难，而是跑去看别的赛道；觉得应该是赛道选错了，换个赛道会好一些。我给你一个最简单的审核标准：你是否曾经把一个赛道做深做透过？如果没有，我认为首先是你的问题。你换个赛道，问题还在；最多就是换了另一种新的形式出现。
+const weather = { location: "南宁", condition: "雨", temperature: "24–30℃", icon: "🌧️" };
 
-2、任务思维。这是最普遍的。就是我已经做了xxx多少次、多少遍、多少条了，怎么还没有出成绩？如果你之前一直是打工，从来没创过业，那我明确的告诉你：学习的目的是为了学会，不是读多少书上多少课。赚钱的逻辑是你解决了什么问题，不是你做了多少事。这个思路转不过来，你最好的归宿就是打一辈子工；没错，这还是最好的归宿，至少你还有工可打。随着AI和机器人的来临，你很有可能连工都没得打了。` },
-];
+function renderInline(text: string, keyPrefix: string): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  const pattern = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|`[^`]+`)/g;
+  let cursor = 0;
+  let index = 0;
+  for (const match of text.matchAll(pattern)) {
+    const start = match.index ?? 0;
+    if (start > cursor) nodes.push(text.slice(cursor, start));
+    const token = match[0];
+    if (token.startsWith("**")) {
+      nodes.push(<strong key={keyPrefix + "-strong-" + index}>{token.slice(2, -2)}</strong>);
+    } else if (token.startsWith("[")) {
+      const link = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (link) nodes.push(<a className="archive-link" href={link[2]} key={keyPrefix + "-link-" + index}>{link[1]} ↗</a>);
+      else nodes.push(token);
+    } else {
+      nodes.push(<code key={keyPrefix + "-code-" + index}>{token.slice(1, -1)}</code>);
+    }
+    cursor = start + token.length;
+    index += 1;
+  }
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes;
+}
 
-const xiaobotText = `怎么起号？怎么选题？方法学了一大堆，播放量还是原地不动。
-问题不一定出在努力，更多时候，出在学习方法。
+function renderMarkdown(markdown: string, keyPrefix: string): ReactNode[] {
+  const lines = markdown.trim().split("\n");
+  const blocks: ReactNode[] = [];
+  let index = 0;
+  let block = 0;
+  const isBoundary = (line: string) =>
+    !line.trim() ||
+    /^(#{3,6})\s+/.test(line) ||
+    /^[-*]\s+/.test(line) ||
+    /^\d+\.\s+/.test(line) ||
+    /^>\s?/.test(line) ||
+    /^---+$/.test(line);
 
-别人的方法可以借鉴，但真正能让你起作用的，一定是你能内化、能复现的方法。
+  while (index < lines.length) {
+    const line = lines[index];
+    if (!line.trim() || /^---+$/.test(line.trim())) {
+      index += 1;
+      continue;
+    }
 
-先诊断，再内化，然后用工具反复打磨。
+    const heading = line.match(/^(#{3,6})\s+(.+)$/);
+    if (heading) {
+      const level = Math.min(6, heading[1].length + 1);
+      const children = renderInline(heading[2], keyPrefix + "-heading-" + block);
+      if (level <= 4) blocks.push(<h4 key={keyPrefix + "-h-" + block}>{children}</h4>);
+      else blocks.push(<h5 key={keyPrefix + "-h-" + block}>{children}</h5>);
+      index += 1;
+      block += 1;
+      continue;
+    }
 
-大部分人学自媒体，基本上就卡在这几层：
+    if (/^>\s?/.test(line)) {
+      const quote: string[] = [];
+      while (index < lines.length && /^>\s?/.test(lines[index])) {
+        quote.push(lines[index].replace(/^>\s?/, ""));
+        index += 1;
+      }
+      blocks.push(<blockquote key={keyPrefix + "-quote-" + block}>{renderInline(quote.join(" "), keyPrefix + "-quote-inline-" + block)}</blockquote>);
+      block += 1;
+      continue;
+    }
 
-L1 信息层：“怎么起号？怎么投流？”
-L2 迁移层：“我拆了爆款，拍出来就是不对味”
-L3 行为层：“知道该怎么做，就是坚持不下来”
-L4 身份层：“数据不好，我不适合做这个”
-L5 使命层：“做自媒体的意义是什么？”
+    if (/^[-*]\s+/.test(line)) {
+      const items: string[] = [];
+      while (index < lines.length && /^[-*]\s+/.test(lines[index])) {
+        items.push(lines[index].replace(/^[-*]\s+/, ""));
+        index += 1;
+      }
+      blocks.push(<ul key={keyPrefix + "-ul-" + block}>{items.map((item, itemIndex) => <li key={itemIndex}>{renderInline(item, keyPrefix + "-uli-" + block + "-" + itemIndex)}</li>)}</ul>);
+      block += 1;
+      continue;
+    }
 
-大多数人的问题是：囤了一仓库别人的知识，却和自己无关，因为它还没变成你的动作。
+    if (/^\d+\.\s+/.test(line)) {
+      const items: string[] = [];
+      while (index < lines.length && /^\d+\.\s+/.test(lines[index])) {
+        items.push(lines[index].replace(/^\d+\.\s+/, ""));
+        index += 1;
+      }
+      blocks.push(<ol key={keyPrefix + "-ol-" + block}>{items.map((item, itemIndex) => <li key={itemIndex}>{renderInline(item, keyPrefix + "-oli-" + block + "-" + itemIndex)}</li>)}</ol>);
+      block += 1;
+      continue;
+    }
 
-你不过是存了一个检索路径，而不是可执行的程序。和刷了10条减肥视频不会瘦，一个道理。
+    const paragraph: string[] = [line.trim()];
+    index += 1;
+    while (index < lines.length && !isBoundary(lines[index])) {
+      paragraph.push(lines[index].trim());
+      index += 1;
+    }
+    blocks.push(<p key={keyPrefix + "-p-" + block}>{renderInline(paragraph.join(" "), keyPrefix + "-pi-" + block)}</p>);
+    block += 1;
+  }
+  return blocks;
+}
 
-怎么办？三条
+function buildSectionMap(markdown: string) {
+  const map = new Map<string, string>();
+  const parts = markdown.split(/^## /m).slice(1);
+  for (const part of parts) {
+    const newline = part.indexOf("\n");
+    if (newline < 0) continue;
+    map.set(part.slice(0, newline).trim(), part.slice(newline + 1).trim().replace(/<!-- DAILY_BRIEF_END -->\s*$/, "").trim());
+  }
+  return map;
+}
 
-第一条：一篇对应一个问题。
-下次收藏时问问自己：这个能解决我的哪个具体问题？不知道，没必要收藏。
+function splitSubsections(markdown: string) {
+  return markdown
+    .split(/^### /m)
+    .slice(1)
+    .map((part) => {
+      const newline = part.indexOf("\n");
+      return {
+        title: part.slice(0, newline).trim(),
+        body: part.slice(newline + 1).trim(),
+      };
+    });
+}
 
-第二条：48小时定律。
-给自己设一个48小时内的最小执行。做完它，然后写三句话记录。
-不懂也要做，不是懂了才做，是做了才懂。
+function cleanTitle(title: string) {
+  return title.replace(/^\d+\.\s*/, "");
+}
 
-第三条：重新理解。
-第一次照做，第二次调整，第三次重新理解。
-笔记不算，重要的是能不能在真实场景里用出来，并且稳定复现。
-
-我看我们大部分老伙计用AI的方法就是：“帮我写一个口播脚本”。然后呢？
-
-好在哪？为什么这么写？不知道。
-
-这样拿到的，只是一个成品，不是你的理解。AI能帮你干的事，也能帮别人干；甚至干得更好。
-
-你的价值不在于会不会让 AI 代写内容，而在于你能不能真正理解你要表达的东西。
-
-我很少把重点放在写脚本上，而是把更多精力放在理解知识本身上。每一次输出，都是对这个知识的又一次重新理解。
-
-我之前很擅长讲课，知道怎么讲线下课，擅长使用各种道具、各种方法来营造现场的氛围。后来我把所有额外的动作全去了，只做一件事：讲，认认真真把这个知识讲透讲清楚，讲明白。不依靠任何技术。
-
-真正的 IP，不只是内容包装和话术技巧，而是你身上有稳定、可持续输出的理解力和生活状态。技巧要有，但技巧只是放大器，不是核心。
-
-我一般会这么使用AI：S → P → A → R
-
-S：说出来。
-把你对概念的理解讲给 AI 听，让它只追问，不直接给答案。说不下去的地方——你要补的课就在那儿。
-
-P：压力测试。
-让 AI 用极端场景推翻你的结论，看它在哪些条件下不成立。你的目标不是战胜它，而是看到你的边际在哪儿。
-
-查理·芒格在 2014 年南加州大学毕业典礼演讲中说过：
-
-“I’m not entitled to have an opinion on this subject unless I can state the arguments against my position better than the people who are supporting it.”
-
-“我没资格拥有一个观点，除非我能比对手更好地反驳自己的立场。”
-
-A：核查证据。
-分清事实、推测和幻觉，不把 AI 的话直接当结论。
-
-R：固化成条目（我个人是知识卡片）。
-把修正后的理解写成定义、场景、边界，后面可以反复调用。
-
-当你能够深刻理解你要分享的知识的时候。就没有必要为内容分神了。你可以把所有的精力用在与镜头前的观众沟通上。全情投入，且真诚。
-
-保留瑕疵。真实是最宝贵的资产。很多人一遇到瑕疵就停下来，或者后期过度修剪，反而把真实感磨没了。
-
-这样分享出来的知识才是资产。就算暂时没有播放量，你也不会太当回事儿；你知道它有价值，所以不会因为暂时没播放量就轻易否定自己。且不会随着时间的推移，过期。
-
-当你看到一个对你有用的知识的时候，你要做的第一件事情不是如何把它变成短视频。而是这个知识对我是不是有用？可以解决我的那些问题？花时间认真研究它。把它应用在你的生活中。
-
-真正能成为 IP 的人，往往不是因为短视频技法有多强，而是因为别人能感受到他的状态、理解和表达是稳定的。真正能长期输出的人，不是靠不断消耗自己去追内容，而是先把自己活成一个有内容的人。内容，是生活的溢出，不是精神的消耗。`;
-
-const weather = { location: "南宁", condition: "晴间多云", temperature: "27–35℃", icon: "☀️" };
+const cloudSections = buildSectionMap(cloudBriefMarkdown);
+const coreJudgment = cloudSections.get("今日核心判断") ?? "";
+const industryStories = splitSubsections(cloudSections.get("行业重要新闻") ?? "");
+const productObservations = splitSubsections(cloudSections.get("产品观察") ?? "");
+const deepReads = splitSubsections(cloudSections.get("深读推荐") ?? "");
+const actionAdvice = cloudSections.get("今日行动建议") ?? "";
 
 function SourceLink({ href, label }: { href: string; label: string }) {
-  return <p>
-<a className="archive-link" href={href}>阅读原始来源：{label} ↗</a>
-</p>;
+  return <p><a className="archive-link" href={href}>阅读原始来源：{label} ↗</a></p>;
 }
 
 export default function Home() {
   return (
     <main data-brief-date={briefDate}>
       <header className="topbar">
-<a className="brand" href="#top" aria-label="返回顶部">
-<span className="brand-dot" />蔓蔓的早课</a>
-<div className="top-actions">
-<button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button>
-<span />
-<span />
-<span />
-</button>
-<details className="date-picker">
-<summary aria-label="选择简报日期">
-<span className="calendar-symbol" aria-hidden="true">▦</span>
-<span>{briefDate.replaceAll("-", ".")}</span>
-<span className="chevron">⌄</span>
-</summary>
-<nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期">
-<a href="?date=2026-08-09" aria-current="page">2026年8月9日</a>
-</nav>
-</details>
-<div className="status">
-<span className="status-dot" />每天自动更新</div>
-</div>
-</header>
+        <a className="brand" href="#top" aria-label="返回顶部"><span className="brand-dot" />蔓蔓的早课</a>
+        <div className="top-actions">
+          <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
+          <details className="date-picker">
+            <summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary>
+            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-10" aria-current="page">2026年8月10日</a></nav>
+          </details>
+          <div className="status"><span className="status-dot" />每天自动更新</div>
+        </div>
+      </header>
+
       <button className="sidebar-overlay" type="button" aria-label="关闭阅读目录" data-menu-close />
       <div className="app-shell">
         <aside className="sidebar" id="content-menu" aria-label="简报阅读目录">
-<div className="sidebar-head">
-<div>
-<span className="sidebar-kicker">CONTENTS</span>
-<strong>今天看什么</strong>
-</div>
-<button className="menu-close" type="button" aria-label="关闭阅读目录" data-menu-close>×</button>
-</div>
-<nav className="sidebar-nav">
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-focus">✓</span>
-<span>今日计划</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">{tasks.map((task, i) => <a href={`#task-${i + 1}`} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a>
-<a href="#risk">今日风险</a>
-</div>
-</details>
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-briefing">▤</span>
-<span>每日资讯</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">{visibleCreatorUpdates.map((item, i) => <a href={`#creator-${i + 1}`} key={item.tag}>{item.tag}：{item.title}</a>)}{industryStories.map((item, i) => <a href={`#story-${i + 1}`} key={item.title}>{i + 1}. {item.title}</a>)}<a href="#product-observation">产品观察：从展示工具到验证结果</a>
-<a href="#early-action">今日行动建议</a>
-</div>
-</details>
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-planet">✦</span>
-<span>姜胡说</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">{planetPosts.map((item, i) => <a href={`#planet-${i + 1}`} key={item.time}>大胡子：{item.title}</a>)}<a href="#xiaobaotong-1">小报童：自媒体学习方法论</a>
-</div>
-</details>
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-review">↺</span>
-<span>复盘</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">
-<a href="#yesterday-review">昨日复盘</a>
-<a href="#seven-day-trend">近七天趋势</a>
-<a href="#action-diagnosis">AI 执行力诊断</a>
-</div>
-</details>
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-briefing">↗</span>
-<span>今日深读</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">
-<a href="#deep-read-1">AI 产品经理的新技能栈</a>
-<a href="#deep-read-2">展示未完成的设计现场</a>
-<a href="#deep-read-3">AI 与计算传播方法</a>
-</div>
-</details>
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-briefing">▷</span>
-<span>课程与视频</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">{learningResources.map((item, i) => <a href={`#learning-${i + 1}`} key={item.title}>{item.title}</a>)}</div>
-</details>
-          <details className="nav-group" data-nav-group>
-<summary className="nav-title">
-<span className="nav-icon icon-hotlist">↗</span>
-<span>热点榜单</span>
-<span className="nav-chevron">⌄</span>
-</summary>
-<div className="nav-sub">
-<a href="#hotlist">查看 2026 年 8 月 8 日完整榜单</a>
-</div>
-</details>
-        </nav>
-<p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
-</aside>
+          <div className="sidebar-head">
+            <div><span className="sidebar-kicker">CONTENTS</span><strong>今天看什么</strong></div>
+            <button className="menu-close" type="button" aria-label="关闭阅读目录" data-menu-close>×</button>
+          </div>
+          <nav className="sidebar-nav">
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日计划</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub">{tasks.map((task, i) => <a href={"#task-" + (i + 1)} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a></div>
+            </details>
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub">{industryStories.map((item, i) => <a href={"#story-" + (i + 1)} key={item.title}>{i + 1}. {cleanTitle(item.title)}</a>)}{productObservations.map((item, i) => <a href={i === 0 ? "#product-observation" : "#product-observation-" + (i + 1)} key={item.title}>{item.title}</a>)}<a href="#early-action">今日行动建议</a></div>
+            </details>
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub"><a href="#planet-status">昨日知识星球状态</a><a href="#xiaobaotong-1">小报童：价值罗盘</a></div>
+            </details>
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub"><a href="#yesterday-review">昨日复盘</a><a href="#seven-day-trend">近七天趋势</a><a href="#action-diagnosis">AI 执行力诊断</a></div>
+            </details>
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-briefing">↗</span><span>今日深读</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub">{deepReads.map((item, i) => <a href={"#deep-read-" + (i + 1)} key={item.title}>{cleanTitle(item.title)}</a>)}</div>
+            </details>
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-briefing">▷</span><span>课程与视频</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub">{learningResources.map((item, i) => <a href={"#learning-" + (i + 1)} key={item.title}>{item.title}</a>)}</div>
+            </details>
+            <details className="nav-group" data-nav-group>
+              <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 9 日完整榜单</a></div>
+            </details>
+          </nav>
+          <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
+        </aside>
 
         <div className="page" id="top">
           <section className="hero">
-<div className="date-block">
-<div className="date-day">09</div>
-<div>
-<p className="date-month">2026 · 08</p>
-<p className="date-week">星期日</p>
-</div>
-</div>
-<div className="hero-copy">
-<p className="eyebrow">TODAY&apos;S DIRECTION</p>
-<h1>今天不换方向，<br />只让一个理论接受现实检验。</h1>
-<p className="judgment">昨天睡眠和身体状态不佳，也明确看见“理论多、实践少、遇难就想换”的循环。今天缩减为恢复身体、完成一条表达、拿到一次真人反馈；不增加系统，也不拿任务数量代替结果。</p>
-</div>
-<div className="hero-weather" aria-label={`${weather.location}当天天气：${weather.condition}，${weather.temperature}`}>
-<span className="weather-icon">{weather.icon}</span>
-<span className="weather-copy">
-<strong>{weather.condition}</strong>
-<small>{weather.location} · {weather.temperature}</small>
-</span>
-</div>
-</section>
+            <div className="date-block"><div className="date-day">10</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期一</p></div></div>
+            <div className="hero-copy">
+              <p className="eyebrow">TODAY&apos;S DIRECTION</p>
+              <h1>不要再扩充数据库，<br />今天让一条内容进入真实反馈。</h1>
+              <p className="judgment">昨天继续收集资料，也完成了一次真实需求拆解，却仍没有留下内容产出。今天只做一条 45–60 秒视频，加入一份人类证据并发布，用观众反馈决定下一步。</p>
+            </div>
+            <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
+              <span className="weather-icon">{weather.icon}</span>
+              <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
+            </div>
+          </section>
 
           <section className="section" id="today">
-<div className="section-heading compact-heading">
-<div>
-<p className="eyebrow">THREE PRIORITIES</p>
-<h2>今天只做三件事</h2>
-</div>
-<p>AI 建议：恢复优先，只推进一个可被检验的结果</p>
-</div>
-<div className="task-grid">{tasks.map((task, i) => <article className={`task-card ${task.tone}`} id={`task-${i + 1}`} key={task.number}>
-<span className="task-number">{task.number}</span>
-<h3>{task.title}</h3>
-<p>{task.body}</p>
-<div className="task-meta">
-<span>第一步</span>
-<strong>{task.first}</strong>
-</div>
-<div className="task-time">{task.time}</div>
-</article>)}</div>
-<div className="time-block-heading" id="schedule-heading">
-<div>
-<p className="eyebrow">TIME BLOCKS</p>
-<h3>今日时间块</h3>
-</div>
-<p>睡眠和皮肤负荷偏高，安排留出一半缓冲</p>
-</div>
-<section className="schedule" id="schedule">
-<div>
-<span>上午 / 起床后</span>
-<p>正常吃饭、补水，处理脚部水泡和摩擦红疹。若仍疼痛，不游泳、不暴走；今天不靠运动量证明自己恢复了。</p>
-</div>
-<div>
-<span>下午 / 精力较好时</span>
-<p>选择“任务思维与结果思维”一个观点，用 45–60 分钟写成 60–90 秒文字或录音。只用一个真实工作经历，不补课、不搭系统。</p>
-</div>
-<div>
-<span>晚上</span>
-<p>把第一版发给一位可信任的人，询问能否复述重点、哪句难懂、是否有帮助。收到反馈后只记一处改动，随后停止工作并提前进入睡眠窗口。</p>
-</div>
-</section>
-<details className="brief-item" id="risk">
-<summary>
-<span className="brief-index">风险</span>
-<span className="brief-main">
-<span className="pill">今日边界</span>
-<strong>三个可能让计划失效的触发点</strong>
-<span>只识别，不再增加任务</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p>
-<strong>用更多理论避免被评价：</strong>今天不搜索新的增长方法，只使用昨天已经写下的一个判断。</p>
-<p>
-<strong>把第一版升级成账号战略：</strong>不要求拍摄、剪辑、封面和公开发布；先让一个真人听懂。</p>
-<p>
-<strong>把恢复解释成懒惰：</strong>凌晨四点入睡并有水泡、红疹时，缩减运动是身体边界，不是逃避。恢复完成后再恢复常规训练。</p>
-</div>
-</details>
-</section>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：一条内容、一份证据、一次反馈</p></div>
+            <div className="task-grid">{tasks.map((task, i) => <article className={"task-card " + task.tone} id={"task-" + (i + 1)} key={task.number}>
+              <span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p>
+              <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
+            </article>)}</div>
+            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>只排交付链路，保留恢复与天气缓冲</p></div>
+            <section className="schedule" id="schedule">
+              <div><span>开始前</span><p>正常吃饭、补水，确认脚部伤口；南宁有雨，不安排游泳或长时间步行。关闭资料库与课程页面，只保留早报原始来源和录制工具。</p></div>
+              <div><span>连续 60–80 分钟</span><p>写开头判断、选择一份真实证据、直接录制第一版。只修复最影响理解的一处，不重搭账号定位、知识库或自动化系统。</p></div>
+              <div><span>发布后</span><p>提出一个具体问题，记录三秒留存、完成率、收藏与重复评论。完成记录后停止工作，不用更多输入抵消发布后的不确定感。</p></div>
+            </section>
+            <details className="brief-item" id="risk">
+              <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个会把交付重新变成准备的触发点</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">
+                <p><strong>继续整理数据库：</strong>昨日日记已经明确写下资料库变得臃肿、本人尚未产出。今天禁止以分类、迁移或补资料代替视频。</p>
+                <p><strong>把一条视频升级成完整战略：</strong>今天只验证“人类证据能否让观点更可信”，不同时验证账号定位、产品形态和商业模式。</p>
+                <p><strong>把一次数据变成人格判决：</strong>一次发布只回答一个有限问题。数据低不等于没有能力，数据高也不等于方法已经稳定。</p>
+              </div>
+            </details>
+          </section>
 
           <section className="section" id="briefing">
-<div className="section-heading">
-<div>
-<p className="eyebrow">DAILY INFORMATION</p>
-<h2>每日资讯</h2>
-</div>
-<p>云端早报连续两次真实超时，本期采用公开核验兜底</p>
-</div>
-<div className="section-context">
-<p>
-<strong>统计窗口：2026 年 8 月 8 日。</strong> 对无法准确核验为昨日发布的博主内容，不使用旧内容补位；周末公开更新较少，本期只收录 3 条有明确日期与原始页面的动态。</p>
-<p>
-<strong>今日核心判断（早报分析）：</strong>AI 产品与内容能力正在从“会不会生成”转向“能否定义结果、暴露过程并接受反馈”。昨天可核验的三个公开活动分别强调 AI PM 的新技能栈、展示未完成的设计现场，以及 AI 进入传播研究方法；共同点不是更多工具，而是让不确定过程变得可以观察和校准。</p>
-</div>
-{visibleCreatorUpdates.length > 0 && <div className="brief-list">{visibleCreatorUpdates.map((item, i) => <details className="brief-item" id={`creator-${i + 1}`} key={item.tag}>
-<summary>
-<span className="brief-index">人</span>
-<span className="brief-main">
-<span className="pill">{item.tag}</span>
-<strong>{item.title}</strong>
-<span>{item.intro}</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">{item.content.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<SourceLink href={item.source} label={item.sourceLabel} />
-</div>
-</details>)}</div>}
-<div className="section-heading compact-heading">
-<div>
-<p className="eyebrow">YESTERDAY&apos;S STORIES</p>
-<h2>昨日可核验动态：3 条</h2>
-</div>
-<p>未满 5 条，不为凑数扩大搜索</p>
-</div>
-<div className="brief-list">{industryStories.map((story, i) => <details className="brief-item" id={`story-${i + 1}`} key={story.title}>
-<summary>
-<span className="brief-index">{String(i + 1).padStart(2, "0")}</span>
-<span className="brief-main">
-<span className="pill">{story.tag}</span>
-<strong>{story.title}</strong>
-<span>{story.intro}</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">{story.content}<SourceLink href={story.source} label={story.sourceLabel} />
-</div>
-</details>)}</div>
-            <details className="brief-item" id="product-observation">
-<summary>
-<span className="brief-index">观察</span>
-<span className="brief-main">
-<span className="pill">今日产品观察</span>
-<strong>从“展示我会用工具”转向“展示结果怎样被验证”</strong>
-<span>真正的产品能力，是让不确定过程可以被观察、纠错与复现。</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p>今天三条公开动态虽然分别来自产品课程、设计社群和传播研究，却共同回答一个问题：<strong>怎样把“我做了很多”变成“我解决了什么”。</strong>
-</p>
-<p>AI PM 需要定义评估和失败边界；设计活动要求展示尚未完成的混乱现场；传播研究把观众行为、内容结构和反馈当作可以观察的变量。它们都在拒绝只看任务数量和精修成品。</p>
-<p>对 AI 知识库内容而言，单纯展示“导入了多少资料、生成了什么答案”仍然是任务展示。结果展示应包括：一个具体的人原来卡在哪里、系统做了哪一步、用户是否实际采用、哪里仍然错误、下一轮怎样修正。</p>
-<p>这也给产品设计一个更稳定的结构：<strong>任务定义 → 第一版 → 真人行为 → 偏差 → 修正。</strong>每轮只验证一个有限问题，就不会把一次结果变成对整个人能力的判决。</p>
-<p>
-<strong>适用边界：</strong>小样本反馈不能代表市场，只能帮助暴露表达和流程问题。要判断商业需求，还需要更多真实用户和付费行为。</p>
-</div>
-</details>
+            <div className="section-heading"><div><p className="eyebrow">DAILY INFORMATION</p><h2>每日资讯</h2></div><p>完整搬运云端“26.8每日早报” · 不删减</p></div>
+            <div className="section-context">
+              <p><strong>简报日期：2026 年 8 月 10 日；统计范围：2026 年 8 月 9 日。</strong> 云端正文状态 complete，读取无截断。</p>
+              <p><strong>归因说明：</strong>以下“今日核心判断”、分析、产品判断、用户洞察及原文中的“给我的启发”均为云端早报的 AI 分析与建议，不代表用户本人已经写下或认可这些理解。</p>
+              <div className="cloud-core">{renderMarkdown(coreJudgment, "core")}</div>
+            </div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">INDUSTRY NEWS</p><h2>行业重要新闻：{industryStories.length} 条</h2></div><p>所有背景、判断、边界与原始链接完整保留</p></div>
+            <div className="brief-list">{industryStories.map((story, i) => <details className="brief-item" id={"story-" + (i + 1)} key={story.title}>
+              <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><span className="pill">行业动态</span><strong>{cleanTitle(story.title)}</strong><span>点击展开云端早报完整原文</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">{renderMarkdown(story.body, "story-" + i)}</div>
+            </details>)}</div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">PRODUCT OBSERVATION</p><h2>产品观察</h2></div><p>{productObservations.length} 个产品，逐项完整保留</p></div>
+            <div className="brief-list">{productObservations.map((item, i) => <details className="brief-item" id={i === 0 ? "product-observation" : "product-observation-" + (i + 1)} key={item.title}>
+              <summary><span className="brief-index">产品 {i + 1}</span><span className="brief-main"><span className="pill">产品观察</span><strong>{item.title}</strong><span>点击展开五个产品问题与完整分析</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">{renderMarkdown(item.body, "product-" + i)}</div>
+            </details>)}</div>
             <details className="brief-item" id="early-action">
-<summary>
-<span className="brief-index">行动</span>
-<span className="brief-main">
-<span className="pill">今日行动建议</span>
-<strong>做一次“未完成作品展示”</strong>
-<span>不给自己增加公开发布压力，先取得一条真实反馈。</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p>选昨天写下的“任务思维与结果思维”，只写或录 60–90 秒。</p>
-<p>内容只保留四步：一个真实工作场景；当时如何用“我已经做了很多”解释结果；老板或用户真正要的是什么；现在会怎样重新定义任务。</p>
-<p>把第一版交给一个不熟悉这套理论的人，只问：你能复述重点吗？哪一句最难懂？它对你有没有实际帮助？</p>
-<p>不要问“我讲得好不好”，因为那会把有限反馈重新变成人格评价。今天的目标只是获得一个可以修正的具体位置。</p>
-<p>
-<strong>完成标准：</strong>一份可听或可读的第一版，加上一条真人原话。没有封面、剪辑和数据，也算完成。</p>
-</div>
-</details>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一条 45–60 秒观点视频</strong><span>点击展开云端早报完整执行步骤</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
+            </details>
           </section>
 
           <section className="section" id="planet">
-<div className="section-heading">
-<div>
-<p className="eyebrow">JIANG HUSHUO</p>
-<h2>姜胡说</h2>
-</div>
-<p>前一天知识星球原文与一篇相关小报童文章</p>
-</div>
-<div className="section-context">
-<p>
-<strong>昨日归档区间：</strong>2026-08-07 23:30 至 2026-08-08 23:30。共 1 条星主原文；以下忠实保留，不添加额外解读或用户观点区块。</p>
-</div>{planetPosts.map((post, i) => <details className="planet-card" id={`planet-${i + 1}`} key={post.time}>
-<summary>
-<div className="avatar">胡</div>
-<div>
-<span className="planet-time">大胡子 · {post.time}</span>
-<strong>{post.title}</strong>
-<span>点击展开完整星主原文</span>
-</div>
-<span className="open-label">原文</span>
-</summary>
-<div className="planet-content">
-<div className="original">
-<span>星主原文</span>
-<p style={{ whiteSpace: "pre-wrap" }}>{post.text}</p>{i === planetPosts.length - 1 && <SourceLink href="/daily-briefing/knowledge/2026-08-08/26-08-08姜胡说知识星球.md" label="查看 8 月 8 日原始归档" />}</div>
-</div>
-</details>)}<details className="planet-card" id="xiaobaotong-1">
-<summary>
-<div className="avatar">读</div>
-<div>
-<span className="planet-time">小报童 · 姜胡说 · 2026-06-08 13:56:19</span>
-<strong>自媒体学习方法论：从诊断到操作</strong>
-<span>点击展开完整小报童原文</span>
-</div>
-<span className="open-label">原文</span>
-</summary>
-<div className="planet-content">
-<div className="original">
-<span>小报童原文</span>
-<p style={{ whiteSpace: "pre-wrap" }}>{xiaobotText}</p>
-<SourceLink href="https://xiaobot.net/post/4a08ef17-8e9e-46cb-8502-b7dfb53329a2" label="小报童原文" />
-</div>
-</div>
-</details>
-</section>
+            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日知识星球状态与一篇相关小报童文章</p></div>
+            <div className="section-context" id="planet-status">
+              <p><strong>归档区间：</strong>2026-08-08 23:30 至 2026-08-09 23:30。</p>
+              <p><strong>昨日无星主更新。</strong>本栏目不读取当天内容，也不使用更早的星主原文补位。</p>
+              <SourceLink href="/daily-briefing/knowledge/2026-08-09/26-08-09姜胡说知识星球.md" label="查看 8 月 9 日原始归档" />
+            </div>
+            <details className="planet-card" id="xiaobaotong-1">
+              <summary><div className="avatar">读</div><div><span className="planet-time">小报童 · {xiaobot.author} · {xiaobot.published}</span><strong>{xiaobot.title}</strong><span>阅读导引为 AI 建议，文章原文不在网页转载</span></div><span className="open-label">导引</span></summary>
+              <div className="planet-content"><div className="original">
+                <span>AI 阅读导引</span>
+                <p>昨天已经接触到一个真实用户，也写下“需求 ≠ 可解决需求 ≠ 可商业化需求”，但今天最需要的不是再积累商业理论，而是让一条内容获得观看与信任反馈。这篇文章可以帮助区分“播放量”与“信任资产”。</p>
+                <p><strong>阅读重点：</strong>先看“时间价值 × 信任价值”的两条轴，再看“先定位，然后只改一招”。今天只选一个指标问题，不同时优化钩子、节奏、定位和变现。</p>
+                <p><strong>阅读问题：</strong>这条 45–60 秒视频要让观众留下哪一种可观察痕迹，才能说明它不只是被刷到，而是真的帮助观众建立了判断？</p>
+                <SourceLink href={xiaobot.source} label="小报童原文" />
+              </div></div>
+            </details>
+          </section>
 
           <section className="section" id="review">
-<div className="section-heading">
-<div>
-<p className="eyebrow">PERSONAL REVIEW</p>
-<h2>复盘</h2>
-</div>
-<p>事实与 AI 建议分开呈现</p>
-</div>
-<div className="review-grid">
-<details className="review-card" id="yesterday-review" open>
-<summary>昨日复盘</summary>
-<div>
-<p>
-<strong>事实：</strong>8 月 8 日日记记录凌晨四点才睡；脚部水泡尚未结痂、碰水仍痛，大腿摩擦处出现红疹，因此放弃游泳。当天阅读了知识星球，并结合过去工作经历写下对换赛道、任务思维、用户需求和增长能力的反思。</p>
-<p>
-<strong>完成与未完成：</strong>完成了知识星球阅读，也把“付出很多但没有解决老板需求”“理论多却没有实践”写得具体；日记没有记录完成、发布或交付视频，因此不把内容产出写成已完成。</p>
-<p>
-<strong>情绪与精力信号：</strong>睡眠和身体负荷仍然偏高；同时出现明显挫败——拥有许多理论却无法使用，会让人迫切想换赛道。好的一面是，问题已经从笼统的“我不行”缩小为用户需求、增长和现实反馈不足。</p>
-<p>
-<strong>需延续：</strong>继续把任务改写成希望用户或老板获得什么结果，并允许一次测试只回答一个有限问题。</p>
-<p>
-<strong>需避免：</strong>不要用新的赛道、新课程或新系统消除挫败；它们会让能力暂时免于检验，却不会产生 2.0 能力。</p>
-<p className="advice">
-<strong>AI 建议：</strong>今天不做完整账号规划，只完成一条 60–90 秒表达并让一位真人复述重点。</p>
-</div>
-</details>
-<details className="review-card" id="seven-day-trend">
-<summary>近七天趋势</summary>
-<div className="trend-list">
-<div>
-<strong>重复目标</strong>
-<p>连续一周都在靠近同一目标：把 AI、知识库、直播笔记和工作经历转成能被普通人听懂、使用并反馈的内容。</p>
-</div>
-<div>
-<strong>重复阻碍</strong>
-<p>通宵和游戏、系统故障排查、继续输入、害怕观点错误、等待学习状态，以及遇到现实困难后想换方向，反复阻断第一版进入反馈。</p>
-</div>
-<div>
-<strong>精力变化</strong>
-<p>8 月 2 日通宵到早上八点，4 日与 5 日凌晨四点入睡，8 日再次通宵到四点；期间还出现游泳不适、水泡和摩擦红疹。当前更需要恢复与有限承诺，而不是排满全天。</p>
-</div>
-<div>
-<strong>认知变化</strong>
-<p>记录已从“我不知道怎么做”逐步转向“我知道很多，但没有在同一个问题上承受多轮现实反馈”。问题更具体了：不是缺少理论，而是交付稳定性、用户理解与结果检验不足。</p>
-</div>
-</div>
-</details>
-<details className="review-card diagnosis" id="action-diagnosis">
-<summary>AI 执行力诊断 / 建议</summary>
-<div>
-<p>
-<strong>证据：</strong>昨日日记明确写道：“遇到困难的时候，我没有想着怎么解决，而是下意识想去逃避”“每次工作干得不开心就离职”“我的理论太多了没有实践，我学了太多，反而受困于此”，并指出这种挫败会让自己“迫不及待想要换赛道”。</p>
-<p>
-<strong>行为模式：</strong>按 dbs-action 框架，这同时出现信号 C“方向跳跃”和信号 D“知识上瘾”。理论继续增加时，你仍能保留“我懂很多、只是没用出来”的自我解释；在同一问题上持续测试，则可能得到更具体也更刺痛的结果：某个用户没听懂、某条内容没帮助、某个方法当前无效。</p>
-<p>
-<strong>AI 诊断：</strong>真正回避的未必是工作量，而是让能力接受有限、可重复的检验。换方向可以暂时把失败归因于赛道；继续学习可以暂时把行动推迟到“我准备得更好”。两者都保护了“如果我真正认真，应该能做到”的可能性，却也阻止经验从 1.0 理论变成 2.0 能力。</p>
-<p>
-<strong>阿德勒式处方：</strong>今天找一个比你更需要这段经验的人，用“任务思维与结果思维”帮他理解一个具体问题。交付第一版后，只收集一条真人反馈。对方能否复述、是否减少困惑，就是今天的社会性证据；不以播放量或人格评价为标准。</p>
-<p>
-<strong>一句话处方：</strong>你不是需要再证明自己懂了；你需要允许一个真人指出你哪里还没讲懂。</p>
-<p>
-<strong>适用边界：</strong>睡眠不足、水泡和红疹是真实身体条件，今天缩减运动和任务属于恢复，不应被解释为方向逃避；诊断针对的是反复用换赛道或继续学习绕开反馈的模式。</p>
-<p>
-<strong>免责声明：</strong>这是基于 dbs-action 框架与昨日日记证据生成的 AI 诊断 / 建议，不是心理咨询或医疗诊断。</p>
-</div>
-</details>
-</div>
-</section>
+            <div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实、用户原文与 AI 建议分开呈现</p></div>
+            <div className="review-grid">
+              <details className="review-card" id="yesterday-review" open>
+                <summary>昨日复盘</summary>
+                <div>
+                  <p><strong>事实：</strong>8 月 9 日凌晨约 2:30 入睡，6 点多短暂醒来，随后继续睡到 12 点。下午游泳；脚部仍有伤，因此最后一小时没有继续下水。</p>
+                  <p><strong>真实用户接触：</strong>主动联系一位想学 AI 的老师，拆解了活动采购、报销和学生参与度问题；随后发现对方没有个人电脑，学校设备也无法运行相关工具。这使需求筛选多出一个现实变量：设备与组织条件。</p>
+                  <p><strong>完成与未完成：</strong>完成需求拆解、知识星球与逐字稿资料整理；日记明确写下数据库变得臃肿、本人尚未产出、上周目标尚未完成。日记没有记录完成或发布视频，因此不把内容产出写成已完成。</p>
+                  <p><strong>用户原文：</strong>“需求 ≠ 可解决需求 ≠ 可商业化需求。”“能力不是人格总判决，而是在明确条件下，能不能重复产生某个结果。”来源：<code>2.26年日记/8月日记/2026-08-09.md</code>。</p>
+                  <p className="advice"><strong>AI 建议：</strong>今天把需求研究从笔记推进到一次公开实验：发布一条带真实证据的视频，并记录观众实际反馈。</p>
+                </div>
+              </details>
+              <details className="review-card" id="seven-day-trend">
+                <summary>近七天趋势</summary>
+                <div className="trend-list">
+                  <div><strong>重复目标</strong><p>持续想成为 AI × 内容创作者，也在积累工作流、知识星球、直播笔记、视频逐字稿和用户研究方法。</p></div>
+                  <div><strong>重复阻碍</strong><p>自动化故障、继续输入、等待“学习状态”、理论无法落地，以及遇到困难后换方向的冲动，反复阻止第一版进入公开反馈。</p></div>
+                  <div><strong>出现的新证据</strong><p>8 月 9 日第一次把陌生老师的采购、报销与活动参与问题拆开，并识别到没有个人电脑会让方案无法落地。这比继续想象用户更接近真实研究。</p></div>
+                  <div><strong>当前最小闭环</strong><p>把一个公开事实转成观点 → 加入真实操作或来源证据 → 发布 → 记录四项反馈 → 用一个重复问题决定下一条内容。</p></div>
+                </div>
+              </details>
+              <details className="review-card diagnosis" id="action-diagnosis">
+                <summary>AI 执行力诊断 / 建议</summary>
+                <div>
+                  <p><strong>证据：</strong>昨日日记写下“感觉我的数据库有点臃肿了”“我自己都还没有产出”“我上周定的目标都还没做”，同时继续同步知识星球和大量视频逐字稿。</p>
+                  <p><strong>行为模式：</strong>按 dbs-action 框架，这同时出现信号 A“执行模拟器”和信号 D“知识上瘾”。系统、资料和流程都在变完整，但真正需要接受观众检验的内容仍未交付。</p>
+                  <p><strong>AI 诊断：</strong>当前卡点不是没有选题或资料，而是持续输入能够保护“如果我真正开始，应该能做好”的可能性；一旦发布，表达能力、用户理解和市场反馈都会变成可观察结果。你回避的更可能是这种有限检验，而不是工作本身。</p>
+                  <p><strong>阿德勒式处方：</strong>今天帮助一个具体观众识别“AI 内容为什么不可信”。用一份来源页面或真实操作作为证据，把判断讲清楚。观众能否复述、是否提出下一问，是今天的社会性证据。</p>
+                  <p><strong>一句话处方：</strong>你缺的不是下一份资料，而是让现有判断承担一次被观众听不懂的风险。</p>
+                  <p><strong>适用边界：</strong>自动化故障和设备限制是真实环境问题；本诊断只针对已经具备材料后仍继续扩充输入、没有交付第一版的部分。</p>
+                  <p><strong>免责声明：</strong>这是基于 dbs-action 框架与昨日日记证据生成的 AI 诊断 / 建议，不是心理咨询或医疗诊断。</p>
+                </div>
+              </details>
+            </div>
+          </section>
 
           <section className="section" id="deep-reads">
-<div className="section-heading">
-<div>
-<p className="eyebrow">DEEP READS</p>
-<h2>今日深读</h2>
-</div>
-<p>3 篇原文，任选一篇</p>
-</div>
-<div className="brief-list deep-read-list">
-<details className="brief-item" id="deep-read-1">
-<summary>
-<span className="brief-index">01</span>
-<span className="brief-main">
-<strong>AI 产品经理的新技能栈</strong>
-<span>阅读问题：从“会用 AI”到“能交付 AI 产品”，中间缺少哪些评估与失败边界？</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p>公开课程页浓缩了 AI PM 从提示词与工具表层走向用户任务、评估、交付和组织协作的变化。阅读时重点区分“模型能力演示”和“用户可以依赖的产品结果”。</p>
-<SourceLink href="https://maven.com/p/47d8b0/open-ai-pm-become-a-frontier-ai-native-product-manager" label="Maven 活动原页" />
-</div>
-</details>
-<details className="brief-item" id="deep-read-2">
-<summary>
-<span className="brief-index">02</span>
-<span className="brief-main">
-<strong>Creative Chaos & Coffee：展示未完成的设计现场</strong>
-<span>阅读问题：为什么一个凌乱半成品，有时比精修作品集更容易得到有效反馈？</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p>活动规则要求参与者带上正在卡住的线框和副项目，不展示 polished portfolio。它适合用来思考：怎样让反馈发生在决策仍可改变的时候。</p>
-<SourceLink href="https://ixdf.org/meetups/creative-chaos-coffee-aug-8th-2026" label="IxDF 活动原页" />
-</div>
-</details>
-<details className="brief-item" id="deep-read-3">
-<summary>
-<span className="brief-index">03</span>
-<span className="brief-main">
-<strong>AIM-CC 2026：AI 与计算传播方法</strong>
-<span>阅读问题：怎样把一次内容发布从“凭感觉”变成有事前假设、行为证据和修正记录的实验？</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p>公开介绍梳理了大语言模型、嵌入方法、生成式 Agent 和 AI 辅助实验如何进入传播研究。重点不是照搬技术名词，而是理解 AI 分析仍需返回原始证据和反例。</p>
-<SourceLink href="https://nu.edu.kz/eventsm/ai-metods-in-computational-communication-aim-cc-2026/" label="Nazarbayev University 活动原页" />
-</div>
-</details>
-</div>
-</section>
+            <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
+            <div className="brief-list deep-read-list">{deepReads.map((item, i) => <details className="brief-item" id={"deep-read-" + (i + 1)} key={item.title}>
+              <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><strong>{cleanTitle(item.title)}</strong><span>点击展开核心观点、值得学习的部分、如何应用与适用边界</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">{renderMarkdown(item.body, "deep-" + i)}</div>
+            </details>)}</div>
+          </section>
 
           <section className="section" id="learning">
-<div className="section-heading">
-<div>
-<p className="eyebrow">COURSES & VIDEOS</p>
-<h2>课程与视频</h2>
-</div>
-<p>AI 推荐 · 今天只选 1 项</p>
-</div>
-<div className="brief-list deep-read-list">
-{learningResources.map((item, i) => <details className="brief-item" id={`learning-${i + 1}`} key={item.title}>
-<summary>
-<span className="brief-index">{String(i + 1).padStart(2, "0")}</span>
-<span className="brief-main">
-<strong>{item.type}｜{item.title}</strong>
-<span>{item.meta}<br />{item.intro}</span>
-</span>
-<span className="plus">＋</span>
-</summary>
-<div className="brief-content">
-<p><strong>为什么今天推荐（AI 推荐）：</strong>{item.why}</p>
-<p><strong>建议重点：</strong></p>
-<ul>{item.focus.map((point) => <li key={point}>{point}</li>)}</ul>
-<p><strong>看完只做一件事：</strong>{item.action}</p>
-<p><strong>适用边界：</strong>{item.boundary}</p>
-<SourceLink href={item.source} label={item.sourceLabel} />
-</div>
-</details>)}
-</div>
-</section>
+            <div className="section-heading"><div><p className="eyebrow">COURSES & VIDEOS</p><h2>课程与视频</h2></div><p>AI 推荐 · 今天只选 1 项</p></div>
+            <div className="brief-list deep-read-list">{learningResources.map((item, i) => <details className="brief-item" id={"learning-" + (i + 1)} key={item.title}>
+              <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><strong>{item.type}｜{item.title}</strong><span>{item.meta}<br />{item.intro}</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">
+                <p><strong>为什么今天推荐（AI 推荐）：</strong>{item.why}</p>
+                <p><strong>建议重点：</strong></p><ul>{item.focus.map((point) => <li key={point}>{point}</li>)}</ul>
+                <p><strong>看完只做一件事：</strong>{item.action}</p>
+                <p><strong>适用边界：</strong>{item.boundary}</p>
+                <SourceLink href={item.source} label={item.sourceLabel} />
+              </div>
+            </details>)}</div>
+          </section>
 
           <section className="section" id="hotlist">
-<div className="section-heading">
-<div>
-<p className="eyebrow">HOT LIST</p>
-<h2>热点榜单</h2>
-</div>
-<p>2026 年 8 月 8 日完整榜单</p>
-</div>
-<a className="hotlist" href="/daily-briefing/hotlist/2026-08-08.html" aria-label="打开热点榜单">
-<span>昨日榜单</span>
-<strong>查看 2026 年 8 月 8 日完整榜单</strong>
-<span className="arrow">↗</span>
-</a>
-</section>
-          <footer>
-<p>不要再用理论证明自己可能会，<br />让一个真人告诉你现在会到哪里。</p>
-<span>每日 08:30 更新 · 完整内容折叠保存</span>
-</footer>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 9 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-09.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 9 日完整榜单</strong><span className="arrow">↗</span></a>
+          </section>
+
+          <footer><p>不再用更多资料延迟检验，<br />让一条内容先进入现实。</p><span>每日 08:30 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>

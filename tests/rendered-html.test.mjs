@@ -41,10 +41,11 @@ test("renders the daily briefing", async () => {
   assert.doesNotMatch(html, /href="#creator-[1-4]">(?:Dan Koe|dontbesilent|Naval|姜胡说)/);
   assert.doesNotMatch(html, /id="creator-[1-4]"/);
   assert.match(html, /href="#story-1">1/);
-  assert.match(html, /(?:行业重要新闻|昨日可核验动态)：[1-5] 条/);
+  assert.match(html, /(?:行业重要新闻|昨日可核验动态)：(?:<!-- -->)?[1-5](?:<!-- -->)? 条/);
   assert.doesNotMatch(html, /id="story-6"/);
   assert.match(html, /id="product-observation"/);
-  assert.match(html, /href="#planet-1">大胡子：/);
+  assert.match(html, /href="#planet-status">昨日知识星球状态/);
+  assert.match(html, /昨日无星主更新/);
   assert.match(html, /id="hotlist"/);
   assert.match(html, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(html, /id="action-diagnosis"/);
@@ -54,7 +55,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="learning"/);
   assert.match(html, /id="learning-1"/);
   assert.match(html, /YouTube 视频/);
-  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=9RFaz9ZBXpk/);
+  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=cGo2HCCea_g/);
   assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
@@ -101,11 +102,11 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(previous.mainHtml, /南宁当天天气：阵雨，24–30℃/);
   assert.match(latest.mainHtml, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(latest.mainHtml, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
-  assert.match(latest.mainHtml, /(?:行业重要新闻|昨日可核验动态)：[1-5] 条/);
+  assert.match(latest.mainHtml, /(?:行业重要新闻|昨日可核验动态)：(?:<!-- -->)?[1-5](?:<!-- -->)? 条/);
   assert.doesNotMatch(latest.mainHtml, /id="creator-[1-4]"/);
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
-  assert.match(latest.mainHtml, /id="planet-1"/);
+  assert.match(latest.mainHtml, /id="planet-status"/);
   assert.match(latest.mainHtml, /id="learning-1"/);
   assert.match(latest.mainHtml, /课程与视频/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
