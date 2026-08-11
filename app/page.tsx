@@ -208,6 +208,10 @@ function cleanTitle(title: string) {
 
 const cloudSections = buildSectionMap(cloudBriefMarkdown);
 const coreJudgment = cloudSections.get("今日核心判断") ?? "";
+const emphasizedCoreJudgment = coreJudgment.replace(
+  "今天最值得关注的变化，可以概括成两句话：",
+  "**今天最值得关注的变化，可以概括成两句话：**",
+);
 const industryStories = splitSubsections(cloudSections.get("行业重要新闻") ?? "");
 const productObservations = splitSubsections(cloudSections.get("产品观察") ?? "");
 const deepReads = splitSubsections(cloudSections.get("深读推荐") ?? "");
@@ -309,20 +313,16 @@ export default function Home() {
           </section>
 
           <section className="section" id="briefing">
-            <div className="section-heading"><div><p className="eyebrow">DAILY INFORMATION</p><h2>每日资讯</h2></div><p>完整搬运云端“26.8每日早报” · 不删减</p></div>
-            <div className="section-context">
-              <p><strong>简报日期：2026 年 8 月 11 日；统计范围：2026 年 8 月 10 日。</strong> 云端正文状态 complete，读取无截断。</p>
-              <p><strong>归因说明：</strong>以下“今日核心判断”、分析、产品判断、用户洞察及原文中的“给我的启发”均为云端早报的 AI 分析与建议，不代表用户本人已经写下或认可这些理解。</p>
-              <div className="cloud-core">{renderMarkdown(coreJudgment, "core")}</div>
-            </div>
+            <div className="section-heading"><div><p className="eyebrow">DAILY INFORMATION</p><h2>每日资讯</h2></div></div>
+            <div className="cloud-core">{renderMarkdown(emphasizedCoreJudgment, "core")}</div>
             <div className="section-heading compact-heading"><div><p className="eyebrow">INDUSTRY NEWS</p><h2>行业重要新闻：{industryStories.length} 条</h2></div><p>所有背景、判断、边界与原始链接完整保留</p></div>
             <div className="brief-list">{industryStories.map((story, i) => <details className="brief-item" id={"story-" + (i + 1)} key={story.title}>
-              <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><span className="pill">行业动态</span><strong>{cleanTitle(story.title)}</strong><span>点击展开云端早报完整原文</span></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main brief-main--compact"><span className="pill">行业动态</span><strong>{cleanTitle(story.title)}</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(story.body, "story-" + i)}</div>
             </details>)}</div>
             <div className="section-heading compact-heading"><div><p className="eyebrow">PRODUCT OBSERVATION</p><h2>产品观察</h2></div><p>{productObservations.length} 个产品，逐项完整保留</p></div>
             <div className="brief-list">{productObservations.map((item, i) => <details className="brief-item" id={i === 0 ? "product-observation" : "product-observation-" + (i + 1)} key={item.title}>
-              <summary><span className="brief-index">产品 {i + 1}</span><span className="brief-main"><span className="pill">产品观察</span><strong>{item.title}</strong><span>点击展开五个产品问题与完整分析</span></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">产品 {i + 1}</span><span className="brief-main brief-main--compact"><span className="pill">产品观察</span><strong>{item.title}</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(item.body, "product-" + i)}</div>
             </details>)}</div>
             <details className="brief-item" id="early-action">
@@ -334,8 +334,6 @@ export default function Home() {
           <section className="section" id="planet">
             <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文与一篇相关小报童文章</p></div>
             <div className="section-context" id="planet-status">
-              <p><strong>归档区间：</strong>2026-08-09 23:30 至 2026-08-10 23:30。</p>
-              <p><strong>署名说明：</strong>下列折叠卡完整保留星主原文与原始图片。没有添加用户未写过的个人解读，也没有对星主原文进行 AI 改写。</p>
               <SourceLink href="/daily-briefing/knowledge/2026-08-10/26-08-10姜胡说知识星球.md" label="查看 8 月 10 日原始归档" />
             </div>
             {planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}>
@@ -366,17 +364,17 @@ export default function Home() {
                   <p className="advice"><strong>AI 建议：</strong>今天不补写昨天，也不重新设计整周计划；只执行云端早报与昨日星主原文共同指向的一轮小实验。</p>
                 </div>
               </details>
-              <details className="review-card" id="seven-day-trend">
-                <summary>近七天趋势</summary>
+              <article className="review-card static-review-card" id="seven-day-trend">
+                <h3>近七天趋势</h3>
                 <div className="trend-list">
                   <div><strong>资料范围</strong><p>近七天实际读取 8 月 3–9 日日记；8 月 10 日日记缺失。以下趋势不推断缺失日期发生了什么。</p></div>
                   <div><strong>重复目标</strong><p>持续想成为 AI × 内容创作者，并不断积累工作流、知识星球、直播笔记、逐字稿和用户研究方法。</p></div>
                   <div><strong>重复阻碍</strong><p>自动化故障、继续输入、等待理想学习状态、理论无法落地，以及遇到困难后换方向的冲动，反复推迟第一版接受现实反馈。</p></div>
                   <div><strong>当前最小闭环</strong><p>写下锚点与预测 → 只改一个变量 → 发布 → 对照主指标复盘 → 相同题目与受众重复验证。</p></div>
                 </div>
-              </details>
-              <details className="review-card diagnosis" id="action-diagnosis">
-                <summary>AI 执行力诊断 / 建议</summary>
+              </article>
+              <article className="review-card static-review-card diagnosis" id="action-diagnosis">
+                <h3>AI 执行力诊断 / 建议</h3>
                 <div>
                   <p><strong>证据：</strong>最近可用的 8 月 9 日日记写下“感觉我的数据库有点臃肿了”“我自己都还没有产出”“我上周定的目标都还没做”，同时继续同步知识星球和大量视频逐字稿。8 月 10 日日记缺失，因此不把这段证据写成昨日状态。</p>
                   <p><strong>行为模式：</strong>按 dbs-action 框架，这同时出现信号 A“执行模拟器”和信号 D“知识上瘾”。系统、资料和流程都在变完整，但真正需要接受观众检验的内容仍未交付。</p>
@@ -386,7 +384,7 @@ export default function Home() {
                   <p><strong>适用边界：</strong>自动化故障和设备限制是真实环境问题；本诊断只针对已经具备材料后仍继续扩充输入、没有交付第一版的部分。</p>
                   <p><strong>免责声明：</strong>这是基于 dbs-action 框架与昨日日记证据生成的 AI 诊断 / 建议，不是心理咨询或医疗诊断。</p>
                 </div>
-              </details>
+              </article>
             </div>
           </section>
 

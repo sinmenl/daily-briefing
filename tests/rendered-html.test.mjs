@@ -53,6 +53,13 @@ test("renders the daily briefing", async () => {
   assert.match(html, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(html, /id="action-diagnosis"/);
   assert.match(html, /AI 执行力诊断 \/ 建议/);
+  assert.match(html, /<article class="review-card static-review-card" id="seven-day-trend">/);
+  assert.match(html, /<article class="review-card static-review-card diagnosis" id="action-diagnosis">/);
+  assert.doesNotMatch(html, /点击展开云端早报完整原文/);
+  assert.doesNotMatch(html, /点击展开五个产品问题与完整分析/);
+  assert.doesNotMatch(html, /完整搬运云端“26\.8每日早报”/);
+  assert.doesNotMatch(html, /云端正文状态 complete/);
+  assert.doesNotMatch(html, /署名说明：/);
   assert.match(html, /id="deep-reads"/);
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
@@ -112,6 +119,9 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
   assert.match(latest.mainHtml, /id="planet-status"/);
+  assert.doesNotMatch(latest.mainHtml, /点击展开云端早报完整原文/);
+  assert.doesNotMatch(latest.mainHtml, /归档区间：/);
+  assert.match(latest.mainHtml, /<article class="review-card static-review-card" id="seven-day-trend">/);
   assert.match(latest.mainHtml, /id="learning-1"/);
   assert.match(latest.mainHtml, /课程与视频/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);

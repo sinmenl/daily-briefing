@@ -490,6 +490,7 @@ main { min-height: 100vh; }
 .brief-item[open] summary { padding-inline: 24px; }
 .brief-index { color: #b2a5b1; font-family: Georgia, serif; font-size: 13px; }
 .brief-main { display: grid; grid-template-columns: 100px minmax(220px, .8fr) 1fr; gap: 20px; align-items: center; }
+.brief-main.brief-main--compact { grid-template-columns: 100px minmax(0, 1fr); }
 .brief-main strong { font-family: Georgia, "Songti SC", serif; font-size: 18px; font-weight: 600; line-height: 1.4; }
 .brief-main > span:last-child { color: var(--muted); font-size: 13px; }
 .deep-read-list .brief-main { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
@@ -524,6 +525,7 @@ main { min-height: 100vh; }
 .review-card summary { list-style: none; padding: 22px 24px; cursor: pointer; font-family: Georgia, "Songti SC", serif; font-size: 18px; font-weight: 600; }
 .review-card summary::-webkit-details-marker { display: none; }
 .review-card > div { padding: 0 24px 24px; color: #685c69; font-size: 14px; }
+.review-card.static-review-card h3 { margin: 0; padding: 22px 24px; font-family: Georgia, "Songti SC", serif; font-size: 18px; font-weight: 600; }
 .review-card p { margin: 0 0 12px; }
 .review-card .advice { padding: 14px 16px; color: #704f7d; background: var(--mint); border-radius: 14px; }
 .review-card.diagnosis { grid-column: 1 / -1; background: #f8f1fa; }
