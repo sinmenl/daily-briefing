@@ -45,10 +45,12 @@ test("renders the daily briefing", async () => {
   assert.match(html, /(?:行业重要新闻|昨日可核验动态)：(?:<!-- -->)?[1-5](?:<!-- -->)? 条/);
   assert.doesNotMatch(html, /id="story-6"/);
   assert.match(html, /id="product-observation"/);
+  assert.match(html, /id="signal-radar"/);
+  assert.match(html, /人物日｜最近 30 天重复主题/);
   assert.match(html, /href="#planet-1">/);
   assert.match(html, /id="planet-1"/);
   assert.match(html, /id="planet-2"/);
-  assert.match(html, /2026-08-10 17:10/);
+  assert.match(html, /2026-08-11 09:41/);
   assert.match(html, /id="hotlist"/);
   assert.match(html, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(html, /id="action-diagnosis"/);
@@ -64,9 +66,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
   assert.match(html, /id="learning-1"/);
-  assert.match(html, /YouTube 官方教程/);
-  assert.match(html, /https:\/\/support\.google\.com\/youtube\/answer\/9002587\?hl=zh-Hans/);
-  assert.match(html, /不是课程销售页或工具广告/);
+  assert.match(html, /Stanford eCorner 公开课/);
+  assert.match(html, /https:\/\/ecorner\.stanford\.edu\/videos\/build-the-right-it-entire-talk\//);
+  assert.match(html, /无课程销售/);
   assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
@@ -117,6 +119,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /(?:行业重要新闻|昨日可核验动态)：(?:<!-- -->)?[1-5](?:<!-- -->)? 条/);
   assert.doesNotMatch(latest.mainHtml, /id="creator-[1-4]"/);
   assert.match(latest.mainHtml, /id="story-1"/);
+  assert.match(latest.mainHtml, /id="signal-radar"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
   assert.match(latest.mainHtml, /id="planet-status"/);
   assert.doesNotMatch(latest.mainHtml, /点击展开云端早报完整原文/);
