@@ -231,7 +231,7 @@ export default function Home() {
           <nav className="sidebar-nav">
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日计划</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{tasks.map((task, i) => <a href={"#task-" + (i + 1)} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a></div>
+              <div className="nav-sub">{tasks.map((task, i) => <a href={"#task-" + (i + 1)} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a><a href="#templates">模版</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary>
@@ -295,6 +295,31 @@ export default function Home() {
                 <p><strong>让 AI 替用户形成观点：</strong>AI 可以提供材料和结构，但原有认识、变化和假设必须由用户本人填写；网页不代写个人理解。</p>
               </div>
             </details>
+            <div className="template-section" id="templates">
+              <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div><p>固定保留，需要时再展开</p></div>
+              <div className="brief-list template-list">
+                <details className="brief-item" id="template-video">
+                  <summary><span className="brief-index">01</span><span className="brief-main brief-main--compact"><span className="pill">视频</span><strong>视频流程</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content"><ul className="template-prompts">
+                    <li>我这条到底想验证什么？</li>
+                    <li>我的核心判断是什么？</li>
+                    <li>我用什么具体例子证明？</li>
+                    <li>发出去之后，别人实际理解成了什么？</li>
+                    <li>下一条因此改什么？</li>
+                  </ul></div>
+                </details>
+                <details className="brief-item" id="template-source-experiment">
+                  <summary><span className="brief-index">02</span><span className="brief-main brief-main--compact"><span className="pill">信息源</span><strong>信息源实验卡</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content"><ul className="template-prompts">
+                    <li>今天我看到：</li>
+                    <li>我以前不知道：</li>
+                    <li>我觉得它可能意味着：</li>
+                    <li>我现在没想明白的是：</li>
+                    <li>我能不能亲自试一下：</li>
+                  </ul></div>
+                </details>
+              </div>
+            </div>
           </section>
 
           <section className="section" id="briefing">

@@ -536,6 +536,10 @@ main { min-height: 100vh; }
 .time-block-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 38px 0 14px; }
 .time-block-heading h3 { margin: 2px 0 0; font-family: Georgia, "Songti SC", serif; font-size: 23px; font-weight: 600; line-height: 1.25; }
 .time-block-heading > p { margin: 0 0 2px; color: var(--muted); font-size: 12px; text-align: right; }
+.template-section { scroll-margin-top: 88px; }
+.template-list .brief-content { padding-top: 0; }
+.template-prompts { display: grid; gap: 10px; margin: 0; padding-left: 20px; }
+.template-prompts li { padding-left: 4px; color: #655967; }
 .schedule { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 0; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: 24px; }
 .schedule > div { padding: 24px; background: var(--surface); }
 .schedule span { color: var(--green-deep); font-size: 12px; font-weight: 750; }
