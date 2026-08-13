@@ -46,11 +46,9 @@ test("renders the daily briefing", async () => {
   assert.doesNotMatch(html, /id="story-6"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="signal-radar"/);
-  assert.match(html, /人物日｜最近 30 天重复主题/);
-  assert.match(html, /href="#planet-1">/);
-  assert.match(html, /id="planet-1"/);
-  assert.match(html, /id="planet-2"/);
-  assert.match(html, /2026-08-11 09:41/);
+  assert.match(html, /<span class="pill">(?:社区日|人物日)<\/span><strong>信息源实验雷达<\/strong>/);
+  assert.match(html, /id="planet-status"/);
+  assert.match(html, /id="xiaobaotong-1"/);
   assert.match(html, /id="hotlist"/);
   assert.match(html, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(html, /id="action-diagnosis"/);
@@ -66,9 +64,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
   assert.match(html, /id="learning-1"/);
-  assert.match(html, /Stanford eCorner 公开课/);
-  assert.match(html, /https:\/\/ecorner\.stanford\.edu\/videos\/build-the-right-it-entire-talk\//);
-  assert.match(html, /无课程销售/);
+  assert.match(html, /(?:官方教学视频|公开课|原始视频)/);
+  assert.match(html, /https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|ecorner\.stanford\.edu)\//);
   assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
