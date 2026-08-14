@@ -316,7 +316,7 @@ export default function Home() {
               </div>
             </details>
             <div className="template-section" id="templates">
-              <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div><p>固定保留，需要时再展开</p></div>
+              <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div></div>
               <div className="brief-list template-list">
                 <details className="brief-item" id="template-video">
                   <summary><span className="brief-index">01</span><span className="brief-main brief-main--compact"><span className="pill">视频</span><strong>视频流程</strong></span><span className="plus">＋</span></summary>

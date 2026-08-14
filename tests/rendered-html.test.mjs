@@ -70,6 +70,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /class="time-block-heading"/);
   assert.match(html, /href="#templates">模版<\/a>/);
   assert.match(html, /id="templates"/);
+  assert.doesNotMatch(html, /固定保留，需要时再展开/);
   assert.match(html, /id="template-video"/);
   assert.match(html, /我这条到底想验证什么？/);
   assert.match(html, /id="template-source-experiment"/);
@@ -134,6 +135,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="learning-1"/);
   assert.match(latest.mainHtml, /课程与视频/);
   assert.match(latest.mainHtml, /id="templates"/);
+  assert.doesNotMatch(latest.mainHtml, /固定保留，需要时再展开/);
   assert.match(latest.mainHtml, /视频流程/);
   assert.match(latest.mainHtml, /信息源实验卡/);
   assert.match(latest.mainHtml, /id="template-inspiration"/);
