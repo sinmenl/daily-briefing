@@ -338,6 +338,15 @@ export default function Home() {
                     <li>我能不能亲自试一下：</li>
                   </ul></div>
                 </details>
+                <details className="brief-item" id="template-inspiration">
+                  <summary><span className="brief-index">03</span><span className="brief-main brief-main--compact"><span className="pill">灵感</span><strong>灵感库</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content"><ul className="template-prompts">
+                    <li>触发事件</li>
+                    <li>我遇到的问题</li>
+                    <li>我得到的新判断</li>
+                    <li>可以做成什么内容。</li>
+                  </ul></div>
+                </details>
               </div>
             </div>
           </section>

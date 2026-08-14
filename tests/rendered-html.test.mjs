@@ -74,6 +74,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /我这条到底想验证什么？/);
   assert.match(html, /id="template-source-experiment"/);
   assert.match(html, /我能不能亲自试一下：/);
+  assert.match(html, /id="template-inspiration"/);
+  assert.match(html, /灵感库/);
+  assert.match(html, /可以做成什么内容。/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.match(html, /小报童/);
   assert.match(html, /id="xiaobaotong-1"/);
@@ -133,5 +136,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="templates"/);
   assert.match(latest.mainHtml, /视频流程/);
   assert.match(latest.mainHtml, /信息源实验卡/);
+  assert.match(latest.mainHtml, /id="template-inspiration"/);
+  assert.match(latest.mainHtml, /灵感库/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });
