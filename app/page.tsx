@@ -319,7 +319,7 @@ export default function Home() {
               <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div></div>
               <div className="brief-list template-list">
                 <details className="brief-item" id="template-video">
-                  <summary><span className="brief-index">01</span><span className="brief-main brief-main--compact"><span className="pill">视频</span><strong>视频流程</strong></span><span className="plus">＋</span></summary>
+                  <summary><span className="brief-index">01</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🎬</span><strong>视频流程</strong></span><span className="plus">＋</span></summary>
                   <div className="brief-content"><ul className="template-prompts">
                     <li>我这条到底想验证什么？</li>
                     <li>我的核心判断是什么？</li>
@@ -329,7 +329,7 @@ export default function Home() {
                   </ul></div>
                 </details>
                 <details className="brief-item" id="template-source-experiment">
-                  <summary><span className="brief-index">02</span><span className="brief-main brief-main--compact"><span className="pill">信息源</span><strong>信息源实验卡</strong></span><span className="plus">＋</span></summary>
+                  <summary><span className="brief-index">02</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🔎</span><strong>信息源实验卡</strong></span><span className="plus">＋</span></summary>
                   <div className="brief-content"><ul className="template-prompts">
                     <li>今天我看到：</li>
                     <li>我以前不知道：</li>
@@ -339,7 +339,7 @@ export default function Home() {
                   </ul></div>
                 </details>
                 <details className="brief-item" id="template-inspiration">
-                  <summary><span className="brief-index">03</span><span className="brief-main brief-main--compact"><span className="pill">灵感</span><strong>灵感库</strong></span><span className="plus">＋</span></summary>
+                  <summary><span className="brief-index">03</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">💡</span><strong>灵感库</strong></span><span className="plus">＋</span></summary>
                   <div className="brief-content"><ul className="template-prompts">
                     <li>触发事件</li>
                     <li>我遇到的问题</li>
