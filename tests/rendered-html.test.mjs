@@ -73,7 +73,12 @@ test("renders the daily briefing", async () => {
   assert.doesNotMatch(html, /固定保留，需要时再展开/);
   assert.match(html, /id="template-video"/);
   assert.match(html, /class="pill template-icon"/);
+  assert.match(html, /1\. 找痛点/);
+  assert.match(html, /实操型 → 步骤式/);
+  assert.match(html, /2\. 写脚本时思考/);
   assert.match(html, /我这条到底想验证什么？/);
+  assert.match(html, /3\. 结构/);
+  assert.match(html, /结尾（金句）/);
   assert.match(html, /id="template-source-experiment"/);
   assert.match(html, /我能不能亲自试一下：/);
   assert.match(html, /id="template-inspiration"/);
@@ -138,6 +143,9 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="templates"/);
   assert.doesNotMatch(latest.mainHtml, /固定保留，需要时再展开/);
   assert.match(latest.mainHtml, /视频流程/);
+  assert.match(latest.mainHtml, /1\. 找痛点/);
+  assert.match(latest.mainHtml, /2\. 写脚本时思考/);
+  assert.match(latest.mainHtml, /3\. 结构/);
   assert.match(latest.mainHtml, /信息源实验卡/);
   assert.match(latest.mainHtml, /id="template-inspiration"/);
   assert.match(latest.mainHtml, /class="pill template-icon"/);

@@ -348,13 +348,36 @@ export default function Home() {
               <div className="brief-list template-list">
                 <details className="brief-item" id="template-video">
                   <summary><span className="brief-index">01</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🎬</span><strong>视频流程</strong></span><span className="plus">＋</span></summary>
-                  <div className="brief-content"><ul className="template-prompts">
-                    <li>我这条到底想验证什么？</li>
-                    <li>我的核心判断是什么？</li>
-                    <li>我用什么具体例子证明？</li>
-                    <li>发出去之后，别人实际理解成了什么？</li>
-                    <li>下一条因此改什么？</li>
-                  </ul></div>
+                  <div className="brief-content template-workflow">
+                    <section>
+                      <h4>1. 找痛点</h4>
+                      <p>为什么一定要想清楚：谁，在什么场景，有什么痛点？</p>
+                      <p><strong>痛点决定结构：</strong></p>
+                      <ul className="template-prompts">
+                        <li>实操型 → 步骤式</li>
+                        <li>认知型 → 对比式</li>
+                        <li>情感型 → 叙事式</li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h4>2. 写脚本时思考</h4>
+                      <ul className="template-prompts">
+                        <li>我这条到底想验证什么？</li>
+                        <li>我的核心判断是什么？</li>
+                        <li>我用什么具体例子证明？</li>
+                        <li>发出去之后，别人实际理解成了什么？</li>
+                        <li>下一条因此改什么？</li>
+                      </ul>
+                    </section>
+                    <section>
+                      <h4>3. 结构</h4>
+                      <ul className="template-prompts">
+                        <li>开头（吸引＋洞见）</li>
+                        <li>中间（解决方案）</li>
+                        <li>结尾（金句）</li>
+                      </ul>
+                    </section>
+                  </div>
                 </details>
                 <details className="brief-item" id="template-source-experiment">
                   <summary><span className="brief-index">02</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🔎</span><strong>信息源实验卡</strong></span><span className="plus">＋</span></summary>
