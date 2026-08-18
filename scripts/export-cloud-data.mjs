@@ -53,6 +53,30 @@ const normalizeDocument = (documentHtml) => {
   return normalized;
 };
 
+const normalizeExternalLinks = (htmlFragment) => htmlFragment.replace(
+  /<a\b([^>]*\bhref=(['"])(?:https?:)?\/\/[^'"<>]+\2[^>]*)>/gi,
+  (anchor, attributes) => {
+    let normalizedAttributes = attributes;
+    if (/\btarget\s*=\s*(['"])[^'"]*\1/i.test(normalizedAttributes)) {
+      normalizedAttributes = normalizedAttributes.replace(
+        /\btarget\s*=\s*(['"])[^'"]*\1/i,
+        'target="_blank"',
+      );
+    } else {
+      normalizedAttributes += ' target="_blank"';
+    }
+    if (/\brel\s*=\s*(['"])[^'"]*\1/i.test(normalizedAttributes)) {
+      normalizedAttributes = normalizedAttributes.replace(
+        /\brel\s*=\s*(['"])[^'"]*\1/i,
+        'rel="noopener noreferrer"',
+      );
+    } else {
+      normalizedAttributes += ' rel="noopener noreferrer"';
+    }
+    return `<a${normalizedAttributes}>`;
+  },
+);
+
 const extractMain = (documentHtml) => {
   const match = documentHtml.match(/<main\b[\s\S]*?<\/main>/);
   if (!match) throw new Error("Missing <main> briefing content");
@@ -66,8 +90,8 @@ const getBriefDate = (mainHtml) => {
 };
 
 await mkdir(dataSource, { recursive: true });
-let html = normalizeDocument(await response.text());
-const currentMain = extractMain(html);
+let html = normalizeExternalLinks(normalizeDocument(await response.text()));
+const currentMain = normalizeExternalLinks(extractMain(html));
 const currentDate = getBriefDate(currentMain);
 
 // One-time compatibility migration: preserve existing history as cloud data.
@@ -84,7 +108,7 @@ for (const archiveFile of legacyArchiveFiles) {
     );
     await writeFile(
       target,
-      `${JSON.stringify({ schemaVersion: 1, date, mainHtml: extractMain(legacyHtml) }, null, 2)}\n`,
+      `${JSON.stringify({ schemaVersion: 1, date, mainHtml: normalizeExternalLinks(extractMain(legacyHtml)) }, null, 2)}\n`,
       "utf8",
     );
   }
@@ -103,9 +127,16 @@ const availableDates = dataFiles
   .sort()
   .reverse();
 
+const latestDate = availableDates[0];
+if (!latestDate) throw new Error("No daily briefing data was found");
+const latestPayload = JSON.parse(
+  await readFile(path.join(dataSource, `${latestDate}.json`), "utf8"),
+);
+html = html.replace(/<main\b[\s\S]*?<\/main>/, latestPayload.mainHtml);
+
 await writeFile(
   path.join(dataSource, "manifest.json"),
-  `${JSON.stringify({ schemaVersion: 1, latest: currentDate, dates: availableDates }, null, 2)}\n`,
+  `${JSON.stringify({ schemaVersion: 1, latest: latestDate, dates: availableDates }, null, 2)}\n`,
   "utf8",
 );
 
@@ -127,7 +158,7 @@ const appScript = `<script data-brief-app>
     loading = true;
     document.documentElement.dataset.briefLoading = "true";
     try {
-      const response = await fetch(repoBase + "/data/" + date + ".json?v=${currentDate.replaceAll("-", "")}");
+      const response = await fetch(repoBase + "/data/" + date + ".json?v=${latestDate.replaceAll("-", "")}");
       if (!response.ok) throw new Error("Brief data request failed: " + response.status);
       const payload = await response.json();
       if (!payload.mainHtml || payload.date !== date) throw new Error("Invalid brief data");
@@ -319,8 +350,8 @@ const robots = await readFile(path.join(docs, "robots.txt"), "utf8");
 if (!robots.includes("Disallow: /") || !html.includes("noindex")) {
   throw new Error("Search indexing protection was not generated");
 }
-if (!availableDates.includes(currentDate)) {
-  throw new Error("Current daily data was not added to the cloud manifest");
+if (!availableDates.includes(currentDate) || latestDate !== availableDates[0]) {
+  throw new Error("Daily data manifest does not point to the newest available briefing");
 }
 
 console.log(`Cloud-data GitHub Pages export ready: ${docs}`);

@@ -64,7 +64,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
   assert.match(html, /id="learning-1"/);
-  assert.match(html, /(?:官方教学视频|公开课|原始视频)/);
+  assert.match(html, /(?:官方教学视频|官方 YouTube 视频|公开课|原始视频)/);
   assert.match(html, /https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|ecorner\.stanford\.edu|deeplearning\.ai)\//);
   assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
@@ -115,6 +115,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(current, /data-brief-app/);
   assert.match(current, /brand\.lastChild\.textContent = "蔓"/);
   assert.match(current, new RegExp(`data-brief-date="${manifest.latest}"`));
+  assert.equal(manifest.latest, [...manifest.dates].sort().reverse()[0]);
   assert.match(current, /fetch\(repoBase \+ "\/data\/" \+ date \+ "\.json/);
   assert.doesNotMatch(current, /window\.location\.assign\(entry\.href\)/);
   assert.equal(manifest.dates[0], manifest.latest);
@@ -124,6 +125,12 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.equal(previous.date, "2026-07-31");
   assert.equal(latest.date, manifest.latest);
   assert.match(historical.mainHtml, /data-brief-date="2026-07-30"/);
+  const latestExternalLinks = latest.mainHtml.match(/<a\b[^>]*href="https?:\/\/[^>]*>/g) ?? [];
+  assert.ok(latestExternalLinks.length > 0);
+  for (const link of latestExternalLinks) {
+    assert.match(link, /target="_blank"/);
+    assert.match(link, /rel="noopener noreferrer"/);
+  }
   assert.match(historical.mainHtml, /南宁当天天气：中雨转小雨，26–31℃/);
   assert.doesNotMatch(historical.mainHtml, /南宁当天天气：阵雨/);
   assert.match(previous.mainHtml, /南宁当天天气：阵雨，24–30℃/);
