@@ -64,8 +64,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
   assert.match(html, /id="learning-1"/);
-  assert.match(html, /(?:官方教学视频|官方 YouTube 视频|公开课|原始视频)/);
-  assert.match(html, /https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|ecorner\.stanford\.edu|deeplearning\.ai|huggingface\.co)\//);
+  assert.match(html, /(?:官方教学视频|官方 YouTube 视频|官方课程|公开课|原始视频)/);
+  assert.match(html, /https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|ecorner\.stanford\.edu|deeplearning\.ai|huggingface\.co|academy\.openai\.com)\//);
   assert.match(html, /看完只做一件事/);
   assert.match(html, /class="time-block-heading"/);
   assert.match(html, /href="#templates">模版<\/a>/);

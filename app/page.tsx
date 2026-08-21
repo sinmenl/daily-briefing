@@ -1,108 +1,72 @@
 import { type ReactNode } from "react";
 
-const briefDate = "2026-08-20";
-const cloudBriefMarkdown = "<!-- DAILY_BRIEF_START -->\nschema_version: 1\nbrief_date: 2026-08-20\ncoverage_date: 2026-08-19\nstatus: complete\ntitle: 产品与创作每日简报\n\n# 产品与创作每日简报｜2026 年 8 月 20 日\n\n## 今日核心判断\n\n**AI 正在迅速压低“把东西做出来”的成本，但没有压低“判断什么值得做”的成本。**\n\n8 月 19 日最值得注意的并不是又出现了多少 Agent，而是能力供给方式发生了变化：Replit 用免费模式降低从想法到软件的试错成本；Cloudways 把 Hermes、OpenClaw 的服务器部署和维护包装成托管服务；Sigma 让 MCP 从读取数据继续走向生成持久工作簿、接收外部事件和写回业务系统；Asana 则用多个 Codex Agent 并行完成原本预计需要多年的人工作业。\n\n这些事实共同降低了执行门槛，但没有回答三个更难的问题：谁真的有这个问题、旧方案为什么不够、结果出现后应该相信什么反馈。Paul Graham 最近仍在强调“构建用户需要的东西”；Dan Koe 则把战术依赖称为虚假进展，并把错误视为事实来源。两组信息放在一起，说明稀缺性正在从“会不会做”向“能否选择、验证和迭代”迁移。\n\n对 AI × 内容创作者而言，这意味着工作流不能停在“检索—生成—发布”。完整闭环至少需要：\n\n1. 从真实行为而非热度中选择问题；\n2. 用 AI 降低第一次验证的成本；\n3. 把内容或产品交给真实用户；\n4. 记录用户在哪里停顿、误解、拒绝或愿意继续；\n5. 再决定是改表达、改方案，还是放弃原判断。\n\n因此，判断力不是脱离行动的“想明白”，而是设计一种能尽快暴露错误的行动。AI 越能快速产出，越要防止用更多产出来逃避现实反馈。\n\n原始来源：[OpenAI：Replit Free Mode](https://openai.com/index/replit/)  \n原始来源：[OpenAI：Asana 使用 Codex 的案例](https://openai.com/index/asana/)  \n原始来源：[Paul Graham：AI 时代创业基本原则仍然成立](https://x.com/paulg/status/2087602421791105033)  \n原始来源：[Dan Koe：Strategy vs tactics](https://letters.thedankoe.com/p/strategy-vs-tactics-how-to-actually)\n\n## 指定博主动态\n\n## 行业重要新闻\n\n### 1. Replit 推出由 GPT-5.6 Luna 驱动的 Free Mode\n\n**发生了什么：** OpenAI 与 Replit 于 8 月 19 日宣布，Replit 正引入由 GPT-5.6 Luna 驱动的 Free Mode，让用户在不消耗使用额度的情况下获得项目分析、建议、反馈和规划帮助。Free Mode 能理解项目上下文，支持用户先探索、梳理和优化想法；遇到需要更强推理的任务时，系统可路由到 GPT-5.6 Sol，再返回免费模式并保留项目上下文。\n\n**为什么重要：** 过去的低代码工具主要降低“如何实现”的门槛，这一模式进一步降低了动手前的探索成本。用户不必在聊天工具里讨论完想法，再把上下文搬到开发环境；思考、规划与构建开始发生在同一个项目空间。\n\n**产品思维：** 免费模式不是简单降价，而是把低成本模型放在高频、低风险的探索阶段，把昂贵模型留给高难度节点。这里的关键是模型路由与上下文连续性：用户购买的不是某个模型名称，而是“在适当阶段使用适当能力”的完整体验。\n\n**用户洞察：** 新手最大的成本不一定是 Token，而是害怕试错、工具切换和不知道下一步做什么。免费探索会鼓励更多人开始，但也可能让“不断讨论、不断加功能、不接触用户”的建造循环变得更便宜。\n\n**借鉴：** 使用 AI 构建产品时，为探索阶段设置时间上限和退出条件。例如先用 30 分钟澄清目标，随后必须生成一个可让真实用户体验的最小结果；不能因为免费而无限延长讨论和修改。\n\n原始来源：[OpenAI：Replit expands access to software creation with GPT-5.6 Luna，2026-08-19](https://openai.com/index/replit/)\n\n### 2. OpenAI 预览兼容零数据保留的 Private Safety Processing\n\n**发生了什么：** OpenAI 于 8 月 19 日宣布，为符合条件的 API 客户继续提供 Zero Data Retention，并预览 Private Safety Processing。该机制试图在不让 OpenAI 人员接触客户提示词和模型响应的情况下，跨相关交互识别潜在风险模式。内容可以保留在客户控制的基础设施中；另一方案是在 OpenAI 基础设施上使用客户掌握密钥的加密存储。系统发现风险后，只返回范围受限的安全信号。\n\n**为什么重要：** 单轮检测很难识别长任务中的意图变化，例如 Agent 在多次交互后偏离用户目标，或在被要求停止后继续行动。但跨轮监控通常需要保存更多上下文，与隐私、合规和商业机密保护发生冲突。Private Safety Processing 正面处理了“安全需要上下文、隐私要求少保留”的结构性矛盾。\n\n**产品思维：** 隐私与安全不应被设计成二选一。可以把原始内容、自动检测和人工可见信息拆成不同层级，只暴露执行决策真正需要的最小信号。数据位置、密钥归属和申诉路径本身也应成为可理解的产品功能。\n\n**用户洞察：** 企业用户不是只问“数据是否用于训练”，还会问“谁能看到、保留多久、发生误判时如何调查”。随着 Agent 接触更多连续任务，用户会更重视权限与数据生命周期的可预测性。\n\n**借鉴：** 个人知识库也应区分“可被模型检索”与“可被人工或外部服务读取”。对日记、财务和私人沟通设置独立权限；自动化只接收完成任务所需的字段，不要默认把整个资料库交给每个 Agent。\n\n原始来源：[OpenAI：Offering Zero Data Retention for frontier models](https://openai.com/index/offering-zero-data-retention-for-frontier-models/)\n\n### 3. Asana 用 Codex 在两周内移除预计需要五年的旧测试系统\n\n**发生了什么：** OpenAI 于 8 月 18 日公布 Asana 案例：Asana 使用最多四个并行 Codex Agent，在约两周内移除了已停止活跃维护的 Enzyme 测试系统。公开案例称，模型和基础设施成本约为 1.2 万美元，而原人工计划估算约为 600 万美元、至少需要五年。Agent 在独立代码副本中工作，工程师每天两次检查进度，并审查每项拟议变更。\n\n**为什么重要：** 该案例的价值不只是“写代码更快”，而是改变了哪些积压项目值得重新评估。过去因为人力回报过低而长期搁置的迁移、重写和技术债任务，可能在 Agent 成本结构下重新变得可行。\n\n**产品思维：** 合适的 Agent 项目往往具有三个特征：目标清晰、结果可测试、错误可通过版本控制和人工审查回退。Asana 没有取消工程师，而是把人放在任务选择、进度检查和最终审批的位置。案例还指出，简单指令比复杂设置表现更好，说明清晰目标和良好测试环境可能比超长 Prompt 更重要。\n\n**用户洞察：** 用户愿意把“工作量大但边界清楚”的任务交给 Agent，却不会因此放弃对关键结果的审查。真正的价值是让人开始处理以前不值得处理的工作，而不是单纯减少现有人员。\n\n**借鉴：** 选择个人自动化项目时，优先找“重复很多、验收明确、失败可回退”的任务，例如整理来源、生成结构化卡片和检查链接；不要先把判断含糊、结果不可验证的工作全部自动化。\n\n原始来源：[OpenAI：Asana cleared 5 years of engineering work in 2 weeks with Codex](https://openai.com/index/asana/)\n\n### 4. Cloudways 将 Hermes 与 OpenClaw 变成托管式 AI Agent\n\n**发生了什么：** DigitalOcean 旗下 Cloudways 于 8 月 17 日推出 Managed AI Agents，首批支持 OpenClaw 与 Hermes。用户可以通过托管平台部署这些开源 Agent，无需自行租用 VPS、配置容器、安全、网关、端口和服务器，并获得统一的基础设施管理、支持与计费。\n\n**为什么重要：** 开源 Agent 的关注度很高，但“能够在 GitHub 上找到项目”与“能够长期稳定运行”之间仍有明显距离。托管服务把安装、维护与安全问题从用户任务转化为平台责任，说明 Agent 生态正在从工具传播进入服务化阶段。\n\n**产品思维：** 当大量用户反复卡在部署、升级和维护时，市场机会未必是再写一份教程，而是直接消除这些步骤。基础设施公司拥有运行环境、监控、计费和支持体系，可以把开源能力包装成更可购买的结果。\n\n**用户洞察：** 非专业用户真正想要的是“Agent 每天稳定完成任务”，不是拥有一台服务器。用户愿意为减少不确定性付费，尤其是在本地部署、云端维护和权限安全超出其主要能力范围时。\n\n**借鉴：** 做 AI 教程或服务时，不要只教“如何安装”。观察用户是否愿意为“代部署、代维护、预设工作流、失败恢复”付费。教程回答一次问题，托管服务承担持续结果。\n\n原始来源：[DigitalOcean：Cloudways Managed AI Agents](https://investors.digitalocean.com/news/news-details/2026/Cloudways-Launches-Managed-AI-Agents-With-General-Availability-of-OpenClaw-and-Hermes/default.aspx)\n\n### 5. Sigma 让 MCP 从查询数据走向生成对象和双向写回\n\n**发生了什么：** Sigma 于 8 月 17 日公布三组能力：正在开发的 MCP Server 升级、已进入公开测试的 Webhook Triggers，以及可直接选择 Anthropic 模型的能力。现有 MCP Server 已允许 Claude、ChatGPT、Codex 和 Cursor 查询用户有权限访问的 Sigma 文档与数据；升级后计划支持从外部工具直接创建工作簿。Webhook 则允许 Slack、Salesforce、ServiceNow、n8n 或 Zapier 等外部系统触发 Sigma 操作，并把审批或业务结果写回。\n\n**为什么重要：** 第一阶段 MCP 主要解决“让模型读取工具和数据”，下一阶段开始解决“生成可持续工作的对象、接收外部事件、执行写操作、保留决策结果”。这使 AI 回答从一次性文本变成工作流中的中间状态。\n\n**产品思维：** 有价值的 Agent 输出应进入后续流程。聊天答案如果不能保存、审批、修改和写回，就很难成为业务系统的一部分。MCP、Skill 和 Webhook 分别承担连接能力、使用方法与事件触发，它们组合后才形成完整自动化。\n\n**用户洞察：** 用户不想在聊天、表格、Slack 和业务系统之间反复复制内容。与此同时，他们仍需要权限继承、人工审批和历史记录，而不是让 Agent 绕过原有治理体系。\n\n**借鉴：** 设计内容 Agent 时，让每次输出落到明确对象：选题卡、证据表、脚本版本、评论问题或实验记录。后续反馈写回同一对象，避免每次对话结束后上下文清零。\n\n原始来源：[Sigma：Webhooks、MCP upgrades and Anthropic models](https://www.sigmacomputing.com/blog/sigma-webhooks-mcp-anthropic-models)\n\n## 产品观察\n\n### 1. Replit Free Mode\n\n1. **它服务谁？** 服务有想法但缺少编程能力、担心使用成本，或需要在项目上下文中反复探索的个人创作者、学生、独立开发者和创业者。\n2. **用户原来的解决方案是什么？** 在通用聊天工具中讨论需求，再复制到代码工具；或者直接进入付费 Agent 模式，在尚未确认方向时消耗额度。\n3. **它解决了哪个痛点？** 把低成本探索、项目理解和正式构建放在同一环境，并通过模型路由控制成本。用户可以先形成足够清晰的方案，再投入更昂贵的构建能力。\n4. **为什么现在出现？** 模型价格性能改善，使产品可以把基础智能作为免费入口；同时，AI 编程市场的竞争已从“能不能生成代码”转向“谁能让更多非开发者持续完成项目”。\n5. **如果我要做类似产品，可以学习什么？** 免费层不能只是能力缩水，还要承担明确任务。可以把“诊断、规划、资料整理”设计为低成本入口，把“执行、发布、长任务”放入付费或高能力层，并在两层之间保留上下文。\n\n原始来源：[OpenAI：Replit Free Mode](https://openai.com/index/replit/)\n\n### 2. Cloudways Managed AI Agents\n\n1. **它服务谁？** 想运行 Hermes、OpenClaw，却不愿持续维护 VPS、容器、端口、安全更新和网关的开发者、创作者、小型机构与代理商。\n2. **用户原来的解决方案是什么？** 根据教程在本地电脑或云服务器手工安装；遇到依赖、网络和权限问题时自行排查，升级后还可能再次失效。\n3. **它解决了哪个痛点？** 把部署、隔离、维护、计费和支持整合成托管体验，让用户把注意力放回 Agent 要完成的任务。\n4. **为什么现在出现？** 开源 Agent 已积累大量关注，但从“能安装”到“能稳定用于业务”之间仍有明显鸿沟。基础云服务商拥有运行环境、安全和支持体系，天然适合承接这一层。\n5. **如果我要做类似产品，可以学习什么？** 不要把反复出现的用户困难都归因于“用户不会”。当一个步骤需要每个人重复学习和排错时，它可能应该被产品消除。可以托管一个经过验证的垂直工作流，而不是重新造通用 Agent。\n\n原始来源：[DigitalOcean：Cloudways Managed AI Agents](https://investors.digitalocean.com/news/news-details/2026/Cloudways-Launches-Managed-AI-Agents-With-General-Availability-of-OpenClaw-and-Hermes/default.aspx)\n\n## 深读推荐\n\n### 1. Strategy vs tactics: How to actually get ahead of 99% of people\n\n**核心观点：** Dan Koe 把策略理解为逐步改善自己的位置，使有效战术自然出现；战术只是某个局面下的动作。不断收集工具、技巧和“可执行步骤”，却没有明确目标、约束与位置判断，会产生大量看似忙碌的虚假进展。\n\n**值得学习的部分：** 文章用棋局解释为什么有效动作不能脱离局面复制。同一个战术，在不同资源、能力、时间和市场位置下可能完全无效。真正的策略不是预测一条完美路线，而是让下一步可选项变多、失败成本变低、反馈更快。\n\n**如何应用：** 在学习任何新工具前先写三行：它要解决哪个正在发生的问题；原方案具体卡在哪里；学会后准备观察哪个结果。如果无法写出结果指标，就暂时不把它列为学习任务。这样能区分“能力积累”与“用学习逃避当前问题”。\n\n原始来源：[Dan Koe：Strategy vs tactics，2026-08-08](https://letters.thedankoe.com/p/strategy-vs-tactics-how-to-actually)\n\n### 2. Asana cleared 5 years of engineering work in 2 weeks with Codex\n\n**核心观点：** Agent 的高价值场景不一定是创造全新产品，也可能是重新计算旧任务的成本。Asana 把一个范围明确、可测试、长期积压的迁移任务交给多个并行 Agent，再由工程师定期检查和审查所有变更。\n\n**值得学习的部分：** 案例给出的不是“完全自治”，而是明确分工：人选择值得做的任务、提供环境和验收标准；Agent 执行大量可并行工作；人检查关键节点与最终变更。简单提示、独立工作副本、持续测试和可回滚审查共同构成了成功条件。\n\n**如何应用：** 列出三个过去因“太麻烦”被搁置的内容任务，按四个条件评分：目标是否清晰、能否拆分、能否自动检查、失败能否回退。只自动化评分最高的一项，并保留人工验收。不要因为案例中的巨大数字，就推断所有多年任务都能压缩成数周。\n\n原始来源：[OpenAI：Asana 与 Codex 案例](https://openai.com/index/asana/)\n\n## 信息源实验雷达\n\n### 人物日\n\n#### 重复主题 1：能力越强，控制权、数据归属和停止机制越重要\n\n**谁在谈：** Naval Ravikant、Sam Altman。\n\n**最近 30 天出现情况：** Naval 在 8 月 11 日称“真正重视软件的人会训练自己的模型”，把竞争优势指向对模型、数据和任务分布的深度控制；8 月 15 日又用“不能创造神再给它套上牵引绳”的高度压缩表达触及能力与控制问题。Sam Altman 在 8 月 18 日宣布暂停部分前沿强化学习训练，以补齐对齐、安全和监控标准；OpenAI 8 月 19 日发布的 Private Safety Processing 又处理跨交互监控与零数据保留之间的冲突。最近 30 天至少出现四个相关信号，属于持续关注而非单条偶发信息。\n\n**原始证据：**\n\n原始来源：[Naval：People who are serious about software train their own models](https://x.com/naval/status/2086987724037185547)  \n原始来源：[Naval：You cannot create God and put him on a leash](https://x.com/naval/status/2088550653497053623)  \n原始来源：[Sam Altman：暂停部分前沿 RL 训练](https://x.com/sama/status/2089787807611195475)  \n原始来源：[OpenAI：Private Safety Processing](https://openai.com/index/offering-zero-data-retention-for-frontier-models/)\n\n**他们实际上在讨论什么：** Naval 的表达更强调所有权和能力失控的哲学问题，Sam Altman 的近期行动更强调工程治理；二者不能视为同一立场。但它们共同指向：当系统能够长期执行并接触私人数据时，模型能力不是唯一变量，谁控制上下文、谁定义权限、谁能检查并停止系统同样决定价值。\n\n#### 重复主题 2：AI 改变执行成本，但没有取消用户需求、策略和现实反馈\n\n**谁在谈：** Paul Graham、Dan Koe。\n\n**最近 30 天出现情况：** Paul Graham 在 8 月 12 日连续回应“AI 时代还有多少创业建议成立”，认为目前几乎所有核心建议仍然成立，并强调创业的核心仍是构建用户需要的东西并获得增长；他同时注意到 AI 让极端高产的编程成为可能，但没有据此宣布创业基本逻辑失效。Dan Koe 在 7 月 31 日把犯错称为大目标的事实来源，8 月 8 日又集中讨论策略与战术，批评人们追逐 Claude Code Skill、商业步骤和其他人人可得的战术。最近 30 天至少有四个同向表达，构成持续主题。\n\n**原始证据：**\n\n原始来源：[Paul Graham：AI 时代几乎全部创业建议仍成立](https://x.com/paulg/status/2087601208123126228)  \n原始来源：[Paul Graham：核心仍是构建用户需要的东西](https://x.com/paulg/status/2087602421791105033)  \n原始来源：[Dan Koe：错误是事实来源](https://www.threads.com/%40thedankoe)  \n原始来源：[Dan Koe：Strategy vs tactics](https://letters.thedankoe.com/p/strategy-vs-tactics-how-to-actually)\n\n**他们实际上在讨论什么：** 工具能让人更快写代码、生成内容和测试想法，但不能自动提供正确的目标。用户是否需要、内容是否被理解、产品是否产生留存，仍要通过现实行为判断。策略的作用是决定把便宜的执行能力投向哪里；反馈的作用是证明原判断是否成立。\n\n#### 本期最值得注意的关注点变化\n\n**过去：** AI 相关讨论常集中在模型会替代哪些工作、个人如何利用新工具提高产量，以及能力增长有多快。\n\n**现在：** 最近一个月，这四人的公开内容更频繁地落到能力之后的问题：谁拥有模型与数据、系统能否被控制、传统创业原则是否仍成立、如何避免用战术制造虚假进展。\n\n**为什么值得注意：** 当生成与构建逐渐成为廉价能力，竞争优势可能从“会用某个工具”转向三种资产：对具体用户的理解、自己的评价标准、持续获得现实反馈的渠道。这是基于近期内容形成的中等强度推断，并不能证明四人的长期注意力已全面迁移；Naval 的表达高度压缩，不能替他补出未明确说明的技术立场。\n\n#### 留给我的一个问题\n\n**如果“把内容或产品做出来”越来越便宜，那么什么事实出现以后，才能证明我选择的问题真的值得继续，而不是只证明 AI 很会执行？**\n\n## 今日行动建议\n\n今天做一次 **60 分钟“问题语言采样”实验**，不搭新工具，也不先写完整文案。\n\n1. 选择一个最近亲自遇到、并准备做成内容的问题，例如“为什么 Agent 明明有工具却没有正确调用”或“Agent、Skill、MCP 到底怎么区分”。\n2. 找三位对 AI 了解不深的人，分别只问两句：“你遇到过什么具体情况？”“当时你以为原因是什么？”\n3. 不解释答案，只记录他们使用的原话、误解和追问。\n4. 从三份记录中寻找一个重复出现的停顿点，用他们的语言写一个不超过 100 字的解释。\n5. 把解释发回给其中一人，只问：“你现在能不能用自己的话复述？”\n\n**完成标准：** 至少获得三份真实回答，并让一人能够复述。如果三个人描述的问题完全不同，说明当前选题可能只是概念兴趣，还没有发现稳定用户问题；如果两人以上在同一点误解，那个误解就是下一条内容最值得解决的核心，也可能成为后续 Skill、教程或产品功能的入口。\n\n这个实验把“我觉得别人不懂”转成可观察证据，并完成信息输入、理解加工、最小内容输出和用户反馈四个环节。\n<!-- DAILY_BRIEF_END -->";
+const briefDate = "2026-08-21";
+const cloudBriefMarkdown = "<!-- DAILY_BRIEF_START -->\nschema_version: 1\nbrief_date: 2026-08-21\ncoverage_date: 2026-08-20\nstatus: complete\ntitle: 产品与创作每日简报\n\n# 产品与创作每日简报｜2026 年 8 月 21 日\n\n## 今日核心判断\n\n**Skill 生态已经进入“供给爆炸、价值证据稀缺”的阶段。真正稀缺的能力，不再是写出一份 SKILL.md，而是证明它在一个具体任务上改变了 Agent 的行为。**\n\n8 月 20 日，Skillselion 的动态目录统计称其已追踪 59,826 个 Agent Skills、8,439 个 MCP Server 和 10,411 个 Marketplace；其中约三分之二的工具集中于 Build 阶段，而 Validate 仅占 2.9%。这些数字是该目录依据 registry 与 GitHub 自动汇总的自报统计，不能等同于整个生态的精确普查，但它清楚显示了供给结构：大家更热衷于制造能力包，而不是验证能力包。\n\n与之形成对照的是 SWE-Skills-Bench：研究者把 49 个公开软件工程 Skill 放进固定代码仓库，以明确验收标准进行“有 Skill / 无 Skill”配对测试。39 个 Skill 没有提高通过率，平均提升只有 1.2%；少数高度专业化的 Skill 可提升最多 30%，也有 Skill 因版本冲突使表现下降。Reddit 社区近期的高讨论帖同样反复抱怨：大量所谓 Skill 只是“你是资深专家”式角色描述，没有修复模型在真实工作流中反复犯的错误。\n\n三组信息共同指向一个方法论：\n\n1. Skill 不应从“我想让 Agent 更专业”开始，而应从“它在什么任务里反复犯了什么可观察的错误”开始；\n2. 好 Skill 更像一份针对伤口的操作规程，而不是一份能力简历；\n3. Skill 的最小评价单位不是星标、安装量或生成结果看起来不错，而是相同输入、相同模型、相同环境下的前后差异；\n4. 如果不能定义验收标准，就无法判断 Skill 在增强能力，还是只增加上下文和仪式感；\n5. 对 AI × 内容创作者而言，最值得积累的不是公共 Skill 数量，而是自己从真实失败、用户反馈和重复任务中提炼出的“小而专”程序。\n\n这也给“信息输入 → 思考加工 → 内容输出 → 用户反馈 → 产品机会”闭环增加了一个必要环节：**每次把经验固化为自动化之前，先证明这段经验会稳定改善结果。** 否则，知识库和 Skill 只是在保存未经验证的判断。\n\n原始来源：[Skillselion：The State of AI Agent Skills 2026](https://skillselion.com/state-of-ai-agent-skills-2026)  \n原始来源：[arXiv：SWE-Skills-Bench](https://arxiv.org/abs/2603.15401)  \n原始来源：[Reddit：Why are all the Claude Code skill files…pointless?](https://www.reddit.com/r/ClaudeAI/comments/1uhed8x/why_are_all_the_claude_code_skill_files_i_see/)\n\n## 指定博主动态\n\n## 行业重要新闻\n\n### 1. Stampli 用 ChatGPT Work 与 Codex 将发布工时压缩 68%\n\n**发生了什么：** OpenAI 于 8 月 20 日发布 Stampli 案例。Stampli 在设计资源和外部承包商已有其他安排、发布日期固定的情况下，把产品决策、会议记录、消息规范和产品上下文接入 Codex 与 ChatGPT Work。公开案例称，原估计需要 243 小时的生产工作被压缩至约 77 小时，覆盖七篇博客、邮件、网络研讨会与演示文稿、社交和广告素材、新闻稿、网页及销售资料；所有面向客户的内容仍由人工审查和最终批准。\n\n**为什么重要：** 这不是“让 AI 写一篇文案”的案例，而是把一次跨渠道发布视为同一个知识系统。内容团队过去的主要摩擦往往不是缺少写作能力，而是产品信息散落在会议、文档和人员记忆中，导致每个渠道重新理解、反复确认和修改。\n\n**产品思维：** AI 工作流的价值来自共享上下文和对象连续性，而不只是生成速度。先把产品事实、决策依据、受众和消息边界组织成可复用系统，再让不同产物从同一事实层生成，可以减少渠道之间的事实漂移。人工审查仍是系统的一部分，不是失败后的补救措施。\n\n**用户洞察：** 内容人员最痛苦的工作常常是等待资料、寻找最新版本、判断哪个说法已经过时，以及把同一事实改写成不同载体。用户真正需要的是“可信的当前上下文”，不是更多孤立的草稿。\n\n**借鉴：** 为一个内容主题建立“事实层—观点层—渠道层”三层结构：事实层只放可核验资料；观点层记录解释与适用边界；渠道层再生成短视频、图文或邮件。更新事实时优先修改上游，而不是逐篇修补下游内容。\n\n原始来源：[OpenAI：Stampli cuts launch hours by 68% using ChatGPT Work，2026-08-20](https://openai.com/index/stampli/)\n\n### 2. Agent Skill 目录规模迅速膨胀，但验证阶段明显薄弱\n\n**发生了什么：** Skillselion 于 8 月 20 日更新其 2026 Agent Skill 状态页。该目录称追踪 81,061 个 AI 编码 Agent 工具，包括 59,826 个 Skills、8,439 个 MCP Server 和 10,411 个 Marketplace，合计安装量 1.52 亿。按其分类，Build 阶段占 66.6%，Validate 仅占 2.9%，Launch 占 2%。这些数据来自 skills.sh registry 与 GitHub，并每天自动重算，因此应视为特定目录的动态统计，而不是第三方审计后的市场规模。\n\n**为什么重要：** 生态的瓶颈正在从“有没有能力包”转向“如何发现、选择、信任和维护能力包”。当公共供给超过个人能够阅读和测试的数量时，目录、评分、兼容性、版本追踪、安全审查与效果评测会比再新增一个通用 Skill 更有价值。\n\n**产品思维：** 工具市场早期依赖数量增长，成熟后转向降低选择风险。一个 Skill 市场如果只展示星标和安装量，会奖励传播能力；如果展示适用模型、任务边界、成本、失败案例和有无 Skill 的对照结果，才开始奖励实际效果。\n\n**用户洞察：** 用户安装 Skill，通常不是为了收藏文件，而是希望少犯错、少解释、少返工。选择成本一旦超过自己写一份定制规则的成本，公共市场的价值就会下降。个人用户尤其需要“适合我的任务”而不是“全网最热门”。\n\n**借鉴：** 不以“安装几个 Skill”为学习目标。为每个正在使用的 Skill 增加四项记录：它修复哪个错误、在哪类输入上触发、用什么标准验收、最近一次验证日期。无法回答这四项的 Skill，暂时降级为参考资料。\n\n原始来源：[Skillselion：The State of AI Agent Skills 2026](https://skillselion.com/state-of-ai-agent-skills-2026)\n\n### 3. OpenAI 成立 Strategic Futures 团队，讨论 AI、权力与个人能动性\n\n**发生了什么：** OpenAI 于 8 月 20 日推出 AI Futures，这是新 Strategic Futures 团队的公开博客。首篇文章由 Dean Ball 撰写，明确说明内容代表作者观点，不一定代表 OpenAI 组织立场。团队要研究的核心问题是：面对变革性 AI，自由社会应如何重构，以保存个人权利与能动性。文章重点关注权力集中、企业和政府结构变化，以及自动化是否会削弱公众在经济与治理中的谈判位置。\n\n**为什么重要：** AI 产品讨论常把“能完成什么任务”当作终点，但 Agent、知识库和自动化同时在重新分配信息权、决策权与行动权。对个人产品而言，能动性不是抽象政策词汇，而是用户能否理解系统依据、修改目标、撤销动作、迁移数据和拒绝默认路径。\n\n**产品思维：** 一个强 Agent 不应只优化完成率，还要设计权力边界。权限提示、行动预览、可撤销性、日志、数据导出和人工接管，都是用户价值的一部分。越是能长期运行和代表用户行动的系统，越不能把控制权隐藏在默认设置里。\n\n**用户洞察：** 用户既想把麻烦交给自动化，又担心失去理解和控制。信任不只来自“模型更聪明”，还来自系统在不确定时是否说明依据、在高风险动作前是否等待批准、出错后是否能恢复。\n\n**借鉴：** 检查自己的一个自动化：用户是否能看见输入来源、当前目标、即将执行的动作和停止方法。若四项中缺一项，先补控制界面或日志，再增加更多自主步骤。\n\n原始来源：[OpenAI：Introducing AI Futures，2026-08-20](https://openai.com/index/introducing-ai-futures/)\n\n### 4. AI 品牌合作开始产生“信任风险溢价”\n\n**发生了什么：** Business Insider 于 8 月 20 日报道，部分创作者因推广 AI 产品遭遇明显负面评论，创作者和经纪团队开始提高合作门槛。报道援引多位经纪人与行业人士称，头部 AI 公司为部分创作者提供五至七位数合作预算；由于潜在声誉风险，部分经纪人会在常规报价上增加 20% 至 30%。一些创作者即便接受合作，也会主动强调作品中哪些部分仍由人工完成。\n\n**为什么重要：** AI 工具的商业机会与受众情绪并不同步。品牌愿意支付高预算，不代表受众愿意接受同样的叙事。对创作者而言，一次赞助的收益是短期现金流，受众信任则是长期资产，两者需要单独核算。\n\n**产品思维：** 创作者商业化不能只看报价，还要看“品牌—受众—内容方法”的匹配度。最有效的合作不是把品牌卖点贴到账号上，而是用真实任务展示工具边界、保留人工判断，并允许观众看见过程。评论区情绪不是发布后的公关问题，而应进入选题和合作决策前的用户研究。\n\n**用户洞察：** 受众反感的可能不是所有 AI 使用，而是低质量替代、隐瞒使用、价值观不一致，或创作者突然用陌生话术替品牌背书。报道也显示，许多创作者日常使用 AI 工具，但仍会区别“提高效率”和“牺牲作品诚意”。\n\n**借鉴：** 接受或模拟评估一次 AI 品牌合作时，先写三条不可妥协条件：只演示亲自使用过的场景；明确哪些环节由 AI 完成；公开一个工具没做好的地方。若品牌不允许表达边界，合作带来的信任成本可能高于收入。\n\n原始来源：[Business Insider：Can influencers post AI ads without alienating their fans?，2026-08-20](https://www.businessinsider.com/ai-brand-deals-chatgpt-claude-influencers-weigh-backlash-over-paychecks-2026-8)\n\n### 5. Claude 文本水印把“AI 参与”变成平台层信号\n\n**发生了什么：** Anthropic 于 8 月 15 日介绍 Claude 文本水印机制，以满足欧盟相关透明度要求。官方说明强调，水印只能表明 Claude 很可能参与过内容，不能区分“完全由 Claude 写作”和“由 Claude 大幅编辑”；翻译内容同样会带水印。旧模型将在过渡期内逐步加入相关机制。\n\n**为什么重要：** 内容平台过去主要依赖第三方检测器从语言风格推测 AI 使用，误判与规避都很常见。由模型提供方嵌入、以密钥验证的信号改变了证明方式，但仍不能回答作者贡献比例、内容质量或是否存在欺骗。因此，“检测到 AI”不能直接等同于“内容不可信”。\n\n**产品思维：** 合规标签必须与用户真正想知道的问题区分开。水印解决“某个模型是否参与”这一窄问题；产品还需设计使用披露、编辑责任、申诉和误解预防。把单一技术信号扩张成质量判断，会制造新的用户伤害。\n\n**用户洞察：** 受众在意的通常不只是工具名称，而是创作者有没有独立判断、是否核验事实、是否隐瞒关键生成环节。创作者需要把透明度变成流程，而不是等平台强制标记后再解释。\n\n**借鉴：** 为自己的 AI 辅助内容建立简短披露模板：AI 用于哪一步、哪些事实经过人工核验、最终观点由谁负责。披露不必列出全部 Prompt，但应让读者知道责任边界。\n\n原始来源：[Anthropic：How Claude's text watermarking works，2026-08-15](https://www.anthropic.com/news/claude-text-watermark)\n\n## 产品观察\n\n### 1. Stampli 的 AI 发布工作流\n\n1. **它服务谁？** 主要服务需要同时协调产品、市场、销售、设计和运营的中型 B2B 团队，尤其适合信息复杂、渠道多、发布日期固定的产品发布。\n2. **用户原来的解决方案是什么？** 产品信息散落在会议记录、聊天、文档和人员记忆中；每个渠道分别写作，依赖项目经理追问最新说法，再通过多轮人工修改保持一致。\n3. **它解决了哪个痛点？** 它缩短了“产品发生变化”到“所有发布资产同步变化”的距离。AI 不只是生成文案，还承担上下文连接、草稿生产和跨载体改写；人负责事实审查、品牌判断和最终批准。\n4. **为什么现在出现？** 长上下文、文件处理、编码 Agent 和企业知识连接已经足以支撑多阶段工作；同时，内容团队面临更多渠道和更短发布周期，单纯增加人力的协调成本越来越高。\n5. **如果我要做类似产品，可以学习什么？** 不要从“万能内容 Agent”开始。先选择一个固定发布动作，定义输入对象、事实版本、每个渠道的模板和最终验收人。系统需要保存的是决策链，而不是只保存最终文案。衡量指标也应包含返工次数、事实错误、等待时间和跨渠道一致性，而不只是生成速度。\n\n原始来源：[OpenAI：Stampli cuts launch hours by 68% using ChatGPT Work](https://openai.com/index/stampli/)\n\n### 2. SWE-Skills-Bench：把 Skill 从演示品变成可评测对象\n\n1. **它服务谁？** 服务 Skill 作者、Agent 平台团队、企业 AI 工程师，以及需要判断某个程序性知识包是否真的改善软件任务的人。\n2. **用户原来的解决方案是什么？** 作者展示几个成功案例，用户凭 README、星标和主观观感安装；失败时很难区分模型能力、项目环境、Skill 指令和版本冲突各自造成了什么影响。\n3. **它解决了哪个痛点？** 它通过固定仓库版本、明确需求文档、执行型测试，以及“有 Skill / 无 Skill”配对，隔离 Skill 的边际价值。结果不只看输出是否像样，而看验收标准是否实际通过。\n4. **为什么现在出现？** Skill 数量和安装量增长后，选择错误、上下文膨胀和过时指导开始成为成本。生态需要从“能分发”走向“能证明”。\n5. **如果我要做类似产品，可以学习什么？** 评价任何 AI 工作流时保留一个对照组。一次只改变一个变量，先写验收标准，再运行任务；同时记录质量、时间、Token 和失败类型。对于内容 Skill，可以把执行测试替换为结构检查、事实链接完整性、用户复述率或编辑次数，而不能只靠作者本人打分。\n\n原始来源：[arXiv：SWE-Skills-Bench](https://arxiv.org/abs/2603.15401)\n\n## 深读推荐\n\n### 1. SWE-Skills-Bench: Do Agent Skills Actually Help in Real-World Software Engineering?\n\n**核心观点：** Agent Skill 是一种窄干预，其效果取决于任务匹配、抽象层级和上下文兼容性。研究没有把“是否使用 Skill”与不同模型或不同代码库混在一起，而是构造配对实验来测量边际增益。49 个公开 Skill 中，39 个没有提高通过率，平均增益仅 1.2%；少数专门 Skill 有明显帮助，部分过时 Skill 反而有害。\n\n**值得学习的部分：** 最重要的不是具体排行榜，而是评价结构：固定环境、明确验收、一次改变一个变量、使用执行结果而非主观印象。论文也提醒，Token 增加不是免费代价；最长可增加 451% 而通过率不变。对知识库和自动化同样适用：更多上下文可能制造干扰，并不天然提高质量。\n\n**如何应用：** 把自己的每个 Skill 改写成一个可证伪假设：“在任务 X 上，它会把错误 Y 从 A 次降到 B 次，同时不让时间或 Token 超过阈值 C。”准备五个真实输入，先跑无 Skill 基线，再在新会话中跑有 Skill 版本。若没有稳定改善，就删掉泛化描述，只保留能修复具体错误的步骤、检查表或确定性脚本。\n\n**适用边界：** 论文研究的是软件工程 Skill，不能直接把 1.2% 平均增益外推到写作、研究或个人知识管理。但它证明了一个可迁移的方法：公开流行度不能代替任务级验证。\n\n原始来源：[arXiv：SWE-Skills-Bench](https://arxiv.org/abs/2603.15401)\n\n### 2. The State of AI Agent Skills 2026\n\n**核心观点：** Skillselion 的目录显示，Agent 扩展生态已经形成 Skills、MCP Servers 与 Marketplaces 三层供给，但资源明显偏向构建阶段。目录还把安装量、星标、工具类型和开发阶段放在同一个视图中，帮助观察生态拥挤区与空白区。\n\n**值得学习的部分：** 对产品机会最有价值的不是“最大分类是什么”，而是供给失衡：Build 占 66.6%，Validate 只有 2.9%，Launch 只有 2%。这提示机会可能不在继续生产通用构建工具，而在评测、维护、兼容、安全、选择和部署结果上。报告同时公开了数据来源和每日重算机制，提醒读者不要把动态目录数字当成永久事实。\n\n**如何应用：** 选择一个自己熟悉的工作流，分别列出 Idea、Validate、Build、Launch、Operate、Grow 六个阶段目前使用的工具和人工步骤。若工具都集中在 Build，而验证和反馈仍完全靠临时判断，优先做一个“验证辅助”小产品：例如对照实验模板、反馈归因表、引用核验或 Skill 回归测试，而不是再造一个生成器。\n\n**适用边界：** 该报告由目录运营方自行汇总，覆盖范围、去重质量和安装统计口径可能偏向其已收录生态。它适合发现结构性假设，不适合作为精确市场规模或投资结论。\n\n原始来源：[Skillselion：The State of AI Agent Skills 2026](https://skillselion.com/state-of-ai-agent-skills-2026)\n\n## 信息源实验雷达\n\n### 社区日\n\n#### 信号 1｜反复抱怨：公共 Skill 很多，但大量内容没有修复真实错误\n\n**现象：** 社区反复质疑“角色描述包装成 Skill”的做法。典型内容只是要求模型成为资深开发者、写干净代码，却没有指出模型在哪个真实流程中反复失败，也没有提供程序、检查或验收方式。另一类抱怨是 Skill 和 MCP 过多导致上下文成本、选择成本和维护成本增加，最终形成“装了很多但结果没变”的工具剧场。\n\n**代表性原始证据：**\n\n原始来源：[Reddit：Why are all the Claude Code skill files I see online completely pointless?](https://www.reddit.com/r/ClaudeAI/comments/1uhed8x/why_are_all_the_claude_code_skill_files_i_see/)  \n原始来源：[Reddit：Top 15+ MCP servers that are actually useful in 2026?](https://www.reddit.com/r/ClaudeAI/comments/1vh0yd3/top_15_mcp_servers_that_are_actually_useful_in/)  \n原始来源：[arXiv：SWE-Skills-Bench](https://arxiv.org/abs/2603.15401)\n\n**共同问题：** 用户缺少判断“这个 Skill 是否为我的任务提供边际价值”的低成本方法。README 说明它想做什么，星标说明它传播得怎样，但都不能证明它在当前模型、当前版本和当前任务上有用。\n\n**为什么值得关注：** 这是比“有没有更多 Skill”更接近付费价值的问题。若一个产品能自动生成基线、运行配对测试、记录失败类型并提示版本冲突，它减少的是反复试错与错误信任，而不是再增加一个内容包。\n\n#### 信号 2｜开始行动：开发者转向原子化 Skill、按需加载与文件化上下文\n\n**现象：** 一批近期项目不再把所有知识塞进巨型 Prompt，而是把工作分成较小的 Skill，按任务路由加载；同时把计划、证据和进度保存为可检查文件，使 Agent 在上下文压缩或重启后可以恢复。SEO Skills AI 的作者把单次约 25K Token 的大流程拆成原子 Skill；Agent Skills for Context Engineering 则集中处理上下文选择、压缩、记忆、评估和多 Agent 协作；contextd 试图生成确定、可解释的上下文产物。\n\n**代表项目与讨论：**\n\n原始来源：[Reddit：SEO 工作流从大 Prompt 转向原子 Skill](https://www.reddit.com/r/ClaudeAI/comments/1vssmny/i_got_tired_of_claude_seo_burning_25k_tokens_per/)  \n原始来源：[GitHub：Agent Skills for Context Engineering](https://github.com/muratcankoylan/agent-skills-for-context-engineering)  \n原始来源：[GitHub：contextd](https://github.com/philngt/contextd)  \n原始来源：[GitHub：agent-skills topic](https://github.com/topics/agent-skills)\n\n**大家实际在解决什么：** 不是单纯追求更短 Prompt，而是控制“何时把什么信息放进上下文”，并让关键状态不依赖模型临时记忆。原子化方便测试和替换，文件化方便审查和恢复，确定性脚本则把不应交给语言模型猜测的步骤固定下来。\n\n**为什么值得关注：** 这是一种从“提示词写作”向“上下文工程和运行系统”的迁移。对内容创作同样适用：选题证据、受众问题、观点、脚本和反馈应是不同对象，按当前任务加载，而不是把整个知识库一次性塞入对话。\n\n#### 信号 3｜正在变化：关注点从分发数量转向包装标准、兼容性与效果评测\n\n**过去：** 生态早期的重点是让 Skill 和 MCP 能被发布、发现和安装，成功指标多是仓库星标、市场收录与安装量。\n\n**现在：** 社区开始同时建设两个方向：一是 Agent Plugin 的最小包装规范，试图统一扩展如何被描述和分发；二是任务级评测，用固定环境和验收标准判断 Skill 是否真的改善结果。目录报告也暴露出 Validate 工具远少于 Build 工具，说明验证基础设施仍处早期。\n\n**变化是什么：** “能安装”正在变成基本条件，“能说明适用边界、能复现效果、能发现冲突、能安全更新”开始成为下一层价值。这里仍是早期信号，不能断言统一标准已经形成；不同 Agent 产品的权限、Skill 格式和运行方式仍有差异。\n\n**证据：**\n\n原始来源：[GitHub：Agent Plugins Specification](https://github.com/agentplugins/agent-plugins-spec)  \n原始来源：[arXiv：SWE-Skills-Bench](https://arxiv.org/abs/2603.15401)  \n原始来源：[Skillselion：The State of AI Agent Skills 2026](https://skillselion.com/state-of-ai-agent-skills-2026)\n\n#### 今天最值得注意的一个信号\n\n**最值得注意的是“Skill 需要可观察的前后对照”，而不是原子化或统一包装本身。**\n\n原子化能降低上下文成本，统一规范能降低安装摩擦，但它们都可能让无效 Skill 更容易生产和传播。只有配对评测能回答最关键的问题：加入这段程序性知识后，结果到底有没有变好。这个信号比另外两个更值得关注，是因为它直接连接判断、产品和商业价值：用户愿意为稳定减少错误付费，不会长期为多一个文件付费。\n\n#### 今日最小实验\n\n**我要验证：** 我正在使用的一份 Skill，是否真的改善一个具体内容任务，而不是只让输出看起来更完整。\n\n**我具体做：** 选择一个真实输入，例如把一条行业新闻加工成“事实—重要性—产品思维—用户洞察—行动”的卡片。运行前写四个验收条件：事实均有原始链接；事实与推断明确分开；至少提出一个可观察的用户行为；行动可在两小时内开始。随后在两个新会话中分别运行：A 不加载 Skill，B 加载 Skill；使用相同模型、相同输入和相同字数上限。隐藏版本标记后逐项打分，并记录耗时、Token 或修改次数。\n\n**什么结果算有发现：** 如果 B 在至少两个验收条件上稳定优于 A，且没有明显增加事实错误或修改成本，说明 Skill 有可保留的边际价值；如果只让文字更长，或两版无稳定差异，就说明应删除泛化指令，只保留能修复具体失败的步骤。无论结果正负，只要能指出哪一条指令改变了哪一种行为，就算获得了发现。\n\n## 今日行动建议\n\n今天完成一次 **90 分钟 Skill 前后对照，并把结果做成一条可发布的观察笔记**：\n\n1. 用“今日最小实验”中的同一输入完成 A/B 两版；\n2. 按四个预先写好的标准评分，不凭整体感觉选优；\n3. 只截取差异最大的一个片段，写出“原错误—Skill 指令—行为变化—仍存在的边界”；\n4. 发布一条不超过 300 字的内容，结尾只问读者一个问题：“你用 Skill 后，哪种错误确实减少了？”\n5. 在 24 小时后把评论分成三类：有具体案例、只有态度、提出新痛点。只有“具体案例”和“新痛点”进入下一轮产品机会记录。\n\n**完成标准：** 得到一组可复现 A/B 结果、一条公开内容，以及至少一条真实反馈；即使无人回复，也记录“该表达没有触发具体经验分享”这一负反馈。这样今天同时完成信息输入、方法加工、内容输出、用户反馈入口和 Skill 产品假设五个环节。\n<!-- DAILY_BRIEF_END -->";
 
 const tasks = [
   {
     number: "01",
-    title: "先完成昨天剩下的作业",
-    body: "回到昨天关于 FDE 课程与职业判断的作业，不再增加新概念。主动找一个反例，检查原判断在哪个范围内成立，再把结论缩小或改写。",
-    first: "打开昨天的灵感卡，只补一个反例",
-    time: "25 分钟",
+    title: "先让身体回到可用状态",
+    body: "昨日日记明确记录接近通宵，而且睡眠不足时情绪容易波动。今天先吃饭、补水并安排一段安静休息；恢复之前不处理高判断负荷的任务。",
+    first: "先离开信息流，完成吃饭、补水或安静休息",
+    time: "恢复优先",
     tone: "mint",
   },
   {
     number: "02",
-    title: "拿到三份真实回答",
-    body: "选择一个最近亲自遇到的 AI 问题，找三位对 AI 了解不深的人。只问上次遇到的具体情形和当时的处理方式，不解释答案、不推销观点。",
-    first: "先联系第一位愿意回答的人",
-    time: "30 分钟",
+    title: "写清 30 天作业的单一交付物",
+    body: "只写一句话：今天这份作业究竟要验证什么，最后留下哪一个可检查结果。暂时不研究新工具，也不增加课程和资料。",
+    first: "补完“今天结束时，我要留下____”",
+    time: "15 分钟",
     tone: "blue",
   },
   {
     number: "03",
-    title: "让一人复述你的解释",
-    body: "从三份回答中找一个重复停顿点，用对方的语言写一段不超过 100 字的解释，发回给其中一人，只问能否用自己的话复述。",
-    first: "圈出三份回答里重复出现的原话",
-    time: "20 分钟",
+    title: "做一次最小 Skill A/B",
+    body: "精力恢复后，用同一个真实输入分别测试“无 Skill”和“有 Skill”。只设两项验收标准，保存一个最明显差异，不强迫自己今天公开发布。",
+    first: "选一个昨天真实遇到的错误作为测试输入",
+    time: "30 分钟",
     tone: "peach",
   },
 ];
 
 const learningResources = [
   {
-    type: "YouTube 官方教学视频",
-    title: "Eric Migicovsky - How to Talk to Users",
-    meta: "约 40 分钟 · 英语（可开自动字幕）· 免费 · 适合第一次用户访谈",
-    intro: "Y Combinator 的完整用户访谈教学，讲三类常见错误、五个访谈问题，以及为什么要追问过去发生的具体行为，而不是询问未来意愿。",
-    why: "今天要拿到三份真实回答。视频直接示范如何避免夸奖、假设和泛泛而谈，帮助你把“我觉得别人有这个问题”变成发生过的具体事实。",
+    type: "OpenAI Academy 官方课程",
+    title: "AI Techniques (Foundations): Evaluating LLM Applications",
+    meta: "英语 · 时长未在公开页面核验 · 登录或加入社区后观看",
+    intro: "介绍 LLM 应用评估的基础：测试用例设计、评分方法，以及如何把 eval 放进开发生命周期。适合第一次系统设计 A/B 与验收标准的人。",
+    why: "今天的早报核心是“Skill 需要可验证的价值证据”，而你的最小任务正是做一组有 Skill / 无 Skill 对照。这门课直接补评估方法，不是工具广告或泛泛趋势分享。",
     focus: [
-      "不要介绍或推销自己的方案，先了解对方过去遇到的问题。",
-      "重点问“上一次是什么时候”和“你试过什么”，不要问“你以后会不会用”。",
-      "把称赞、假设和泛泛表达视为弱证据，继续追问具体行为与代价。",
+      "先固定同一输入与同一任务环境，再比较有无 Skill。",
+      "把验收标准写成可以观察或计数的结果，而不是“感觉更好”。",
+      "保留失败样本和退化情况，不只展示成功案例。",
     ],
-    action: "不用看完整视频才开始。先抄下其中两个问题，立即找第一位对象访谈；完成三份记录后，再回来看自己漏掉了什么。",
-    boundary: "这是创业用户访谈的基础教学，不保证三次访谈就能证明市场需求；它只能帮助你形成更好的假设和下一步验证。",
-    source: "https://www.youtube.com/watch?v=MT4Ig2uqjTc",
-    sourceLabel: "Y Combinator 官方 YouTube 视频",
+    action: "不用先看完整课程。先给今天的测试写两条验收标准；如果写不出来，再进入课程查“test case design”和“scoring approaches”。",
+    boundary: "官方公开页面要求登录或加入社区后继续；当前页面未显示视频时长。课程讲通用评估基础，不会替你定义具体 Skill 的业务价值。",
+    source: "https://academy.openai.com/en/public/clubs/builders-etkn1/videos/ai-techniques-building-applications-with-evaluations",
+    sourceLabel: "OpenAI Academy 官方课程页面",
   },
 ];
 
 const xiaobot = {
-  title: "你只拆到了结构，但没走到用户心里",
+  title: "认真做好这件小事",
   author: "姜胡说",
-  published: "2026-08-17 23:17:56",
-  source: "https://xiaobot.net/post/36942815-ae81-4d10-9742-1e0ffff9b9bd",
+  published: "2026-07-20 14:20:07",
+  source: "https://xiaobot.net/post/0b204918-ef66-46f2-94dc-d4d2cd492387",
 };
 
-const weather = { location: "南宁", condition: "小雨转中雨", temperature: "27–33℃", icon: "🌧️" };
+const weather = { location: "南宁", condition: "雨", temperature: "26–34℃", icon: "🌧️" };
 
 const planetPosts: Array<{ index: string; author: string; published: string; title: string; body: string; images: string[] }> = [
   {
-    "index": "1",
-    "author": "大胡子",
-    "published": "2026-08-19 06:58",
-    "title": "终于走到这一步了。",
-    "body": "终于走到这一步了。\n我们之前讲过，当你知识库里的存货越来越多的时候，每一次检索都会耗费大量的token，这个时候，你就需要构建自己的valut mcp了。\n这是姜小胡的核心技术之一。你能想像每一次回答问题在数万条知识卡片和原子中搜索需要耗费的token吗？\n\n核心设计思路如下，就三层：\n\n第一层，把知识拆成不同索引。不是把所有笔记扔进一个大向量库，而是按内容类型建独立索引——原子、卡片、洞见、案例、需求，各建一套 BGE 嵌入矩阵。这样搜索时每条索引都跑一遍，互不干扰。\n\n第二层，多路召回加融合排序。一次搜索同时跑8路召回（关键词BM25 + BGE向量 + 各类别索引），然后用 RRF（倒数排名融合）合并排序，再用交叉编码器做最后精排。关键词负责精确匹配，向量负责语义理解，两者互补。\n\n第三层，查询改写和降级。用户输入先过同义词表、HyDE 假设文档生成，把口语化问题展开成多维度查询。嵌入服务挂了自动降级为关键词搜索，不中断。",
-    "images": [
-      "/daily-briefing/knowledge/2026-08-19/images/%5B1%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.png",
-      "/daily-briefing/knowledge/2026-08-19/images/%5B1%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-2.png",
-      "/daily-briefing/knowledge/2026-08-19/images/%5B1%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-3.png"
-    ]
+    index: "1",
+    author: "大胡子",
+    published: "2026-08-20 13:38",
+    title: "真正稀缺的是判断力，还有行动力",
+    body: "当我们可以把 （比如Qwen3.8 27b）安装到本地，\n知识已经不再是最稀缺的资源；\n甚至智力也不是。\n\n我们真正稀缺的是判断力，\n还有行动力。",
+    images: [],
   },
-  {
-    "index": "2",
-    "author": "大胡子",
-    "published": "2026-08-19 07:28",
-    "title": "它现在居然超过了 DeepSeek v4 pro。",
-    "body": "它现在居然超过了 DeepSeek v4 pro。\n如果有 Qwen 3.8 35b，那将会更加疯狂。",
-    "images": [
-      "/daily-briefing/knowledge/2026-08-19/images/%5B2%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.jpg",
-      "/daily-briefing/knowledge/2026-08-19/images/%5B2%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-2.png"
-    ]
-  },
-  {
-    "index": "3",
-    "author": "大胡子",
-    "published": "2026-08-19 13:32",
-    "title": "如果你想进入 YC，就不要专注于进入 YC。",
-    "body": "“如果你想进入 YC，就不要专注于进入 YC。专注于构建产品并理解你的用户。这才是让你进入 YC 的关键”。\n\n这句话对于想做自媒体和构建自己社群的人，同样适用。",
-    "images": [
-      "/daily-briefing/knowledge/2026-08-19/images/%5B3%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.png"
-    ]
-  },
-  {
-    "index": "4",
-    "author": "大胡子",
-    "published": "2026-08-19 19:37",
-    "title": "Qwen3.8-27B-4b使用了Lightning MTP + DFlash2技术之后，性能全面提升。",
-    "body": "Qwen3.8-27B-4b使用了Lightning MTP + DFlash2技术之后，性能全面提升。\n只可惜我的显存有点小，无法开启双 ANE 预填充，否则跑到50-70tokens/s应该问题不大。\n\n但是作为应急、备用大模型应该足够了。",
-    "images": [
-      "/daily-briefing/knowledge/2026-08-19/images/%5B4%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.png",
-      "/daily-briefing/knowledge/2026-08-19/images/%5B4%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-2.png"
-    ]
-  }
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -276,7 +240,7 @@ export default function Home() {
           <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
           <details className="date-picker">
             <summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary>
-            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-20" aria-current="page">2026年8月20日</a></nav>
+            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-21" aria-current="page">2026年8月21日</a></nav>
           </details>
           <div className="status"><span className="status-dot" />每天自动更新</div>
         </div>
@@ -300,7 +264,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.author}：{post.title}</a>)}<a href="#planet-status">昨日原始归档</a><a href="#xiaobaotong-1">小报童：搭建最简知识库</a></div>
+              <div className="nav-sub">{planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.author}：{post.title}</a>)}<a href="#planet-status">昨日原始归档</a><a href="#xiaobaotong-1">小报童：认真做好这件小事</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary>
@@ -316,7 +280,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 19 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 20 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -324,11 +288,11 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">20</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期四</p></div></div>
+            <div className="date-block"><div className="date-day">21</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期五</p></div></div>
             <div className="hero-copy">
               <p className="eyebrow">TODAY&apos;S DIRECTION</p>
-              <h1>先完成被替代的任务，<br />再用真实回答验证问题。</h1>
-              <p className="judgment">不再用学习制造进展感：先补完昨天的反证作业，再拿到三份用户原话和一次复述反馈。</p>
+              <h1>先把身体拉回可用状态，<br />再定义今天真正要交付什么。</h1>
+              <p className="judgment">昨夜接近通宵，今天不靠意志硬撑：先恢复，再写清单一交付物，最后只做一组最小验证。</p>
             </div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
@@ -337,24 +301,23 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：先还清昨天欠下的结果</p></div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：睡眠债优先，不把今天排满</p></div>
             <div className="task-grid">{tasks.map((task, i) => <article className={"task-card " + task.tone} id={"task-" + (i + 1)} key={task.number}>
               <span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p>
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
-            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>75 分钟完成作业、访谈与复述验证</p></div>
+            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>按精力推进，不设满日程</p></div>
             <section className="schedule" id="schedule">
-              <div><span>还作业 · 25 分钟</span><p>打开昨天的 FDE 灵感卡，只补一个主动反例。根据反例缩小判断，不继续搜索新概念，也不打开新的 GitHub 项目。</p></div>
-              <div><span>拿原话 · 30 分钟</span><p>找三个人各问两句：上次什么时候遇到这个问题？当时怎么处理？只记录原话，不讲解自己的方案。</p></div>
-              <div><span>验理解 · 20 分钟</span><p>用重复出现的语言写一段 100 字以内解释，发给其中一人，让对方复述。记录哪里仍然听不懂。</p></div>
+              <div><span>恢复 · 优先</span><p>先吃饭、补水并安排安静休息。没有恢复到能稳定阅读和判断之前，不启动 Skill 测试，也不继续刷漫剧或信息流。</p></div>
+              <div><span>定义 · 15 分钟</span><p>写完一句交付物定义，并给它加两条“完成时能看见什么”的验收标准。只定义，不扩展计划。</p></div>
+              <div><span>验证 · 30 分钟</span><p>精力允许时再做一次有 Skill / 无 Skill 对照，保存一个差异和一个仍未解决的边界；今天不强制发布。</p></div>
             </section>
             <details className="brief-item" id="risk">
-              <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>四个必须主动截断的替代动作</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个需要主动截断的动作</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">
-                <p><strong>继续学 GitHub 或 Agent：</strong>除非当前作业出现一个具体技术阻塞，否则今天不新增学习入口。</p>
-                <p><strong>把访谈变成讲课：</strong>先听过去发生的事实，不解释概念，也不问对方“会不会喜欢”。</p>
-                <p><strong>拿三个人证明市场：</strong>三份回答只能帮助形成假设，不能证明需求规模或付费意愿。</p>
-                <p><strong>先写完整内容：</strong>没有出现重复用户语言前，只写 100 字解释，不扩成脚本或产品。</p>
+                <p><strong>用意志硬撑：</strong>昨日日记已经记录睡眠不足时情绪波动，今天不把高强度工作放在恢复之前。</p>
+                <p><strong>继续搜 Skill：</strong>早报已经提供足够输入。今天缺的不是更多 Skill，而是一组可以复现的对照结果。</p>
+                <p><strong>把“公开发布”当硬指标：</strong>如果精力不足，保存本地 A/B 结果即算完成；不为了打卡牺牲判断质量。</p>
               </div>
             </details>
             <div className="template-section" id="templates">
@@ -434,16 +397,16 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次问题语言采样</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次最小 Skill A/B 测试</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
           <section className="section" id="planet">
-            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 4 条星主原文 · 一篇相关小报童文章</p></div>
+            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 1 条星主原文 · 一篇相关小报童文章</p></div>
             <div className="section-context" id="planet-status">
-              <p>2026 年 8 月 19 日原始归档已同步，以下四条内容保持作者、发布时间、原文与原始配图完整。</p>
-              <SourceLink href="/daily-briefing/knowledge/2026-08-19/26-08-19姜胡说知识星球.md" label="查看 8 月 19 日原始归档" />
+              <p>2026 年 8 月 20 日原始归档已同步，以下一条内容保持作者、发布时间与原文完整。</p>
+              <SourceLink href="/daily-briefing/knowledge/2026-08-20/26-08-20姜胡说知识星球.md" label="查看 8 月 20 日原始归档" />
             </div>
             {planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}>
               <summary><div className="avatar">{post.index}</div><div><span className="planet-time">{post.author} · {post.published}</span><strong>{post.title}</strong></div><span className="open-label">原文</span></summary>
@@ -453,9 +416,9 @@ export default function Home() {
               <summary><div className="avatar">读</div><div><span className="planet-time">小报童 · {xiaobot.author} · {xiaobot.published}</span><strong>{xiaobot.title}</strong><span>阅读导引为 AI 建议，文章原文不在网页转载</span></div><span className="open-label">导引</span></summary>
               <div className="planet-content"><div className="original">
                 <span>AI 阅读导引</span>
-                <p>今天的重点不是再拆一种内容结构，而是确认谁在什么具体场景下会觉得“这就是我”。这篇文章适合用来检查：你的 FDE 判断或 AI 选题，是否只有观点和结构，却缺少用户可以对号入座的真实画面。</p>
-                <p><strong>阅读重点：</strong>只看“代入感的三种来源”和“看完能否做一个具体动作”两部分。不要照抄案例，直接把今天三位受访者的原话填进场景。</p>
-                <p><strong>阅读问题：</strong>你的下一条内容究竟写给谁？他上一次遇到这个问题时正在做什么？看完以后，能立刻做哪一个小动作？</p>
+                <p>昨日日记写下“我都不知道我在输出什么东西了”。这篇文章适合用来重新排顺序：先做一件真实的小事，在行动中发现方向，再决定需要什么工具，而不是先扩充方法。</p>
+                <p><strong>阅读重点：</strong>只看“行动 → 方向 → 工具”的顺序，以及为什么先钉钉子、再找锤子。不要把文章继续整理成知识卡。</p>
+                <p><strong>阅读问题：</strong>今天最小、最真实、做完后能留下结果的一件事是什么？这个结果会告诉你下一步继续、修改还是停止？</p>
                 <SourceLink href={xiaobot.source} label="小报童原文" />
               </div></div>
             </details>
@@ -467,30 +430,31 @@ export default function Home() {
               <details className="review-card" id="yesterday-review" open>
                 <summary>昨日复盘</summary>
                 <div>
-                  <p><strong>资料状态：</strong>已在本地读取 8 月 13 日至 19 日全部七份记录，没有缺失日期。</p>
-                  <p><strong>用户原文（来源：2026-08-19 日记）：</strong>“要养成多问一句的习惯：我这次在逃避什么问题，我逃避真正要解决的问题是，我会本能去找什么东西。”</p>
-                  <p><strong>用户原文（来源：2026-08-19 日记）：</strong>“这么说吧，我今天逃避了自己制定的30天计划，反而是去选择学习，因为我觉得这两者有关联。”</p>
-                  <p><strong>用户原文（来源：2026-08-19 日记）：</strong>“今天的作业完成了，初次判断还是有不少自己的惯性思维。在看到反证后也会去修改调整，剩下的明天继续。”</p>
-                  <p className="advice"><strong>AI 建议：</strong>今天先补完昨天明确留下的作业，再开始任何新学习；访谈三个人是为了获取反证和用户语言，不是为了再造一个研究系统。</p>
+                  <p><strong>资料状态：</strong>已读取 8 月 14 日至 20 日全部七份本地日记，没有缺失日期。</p>
+                  <p><strong>用户原文（来源：2026-08-20 日记）：</strong>“我今天又将近通宵”</p>
+                  <p><strong>用户原文（来源：2026-08-20 日记）：</strong>“睡眠不足我整个人都是易燃易爆。”</p>
+                  <p><strong>用户原文（来源：2026-08-20 日记）：</strong>“今天做30天小作业的时候迷茫了，我都不知道我在输出什么东西了。”</p>
+                  <p><strong>可以确认的事实：</strong>助教面试已通过；昨日遇到想购买游泳票的人，用户预计今天可能有现金流入账。这两项只作为记录，不替用户增加日程或承诺。</p>
+                  <p className="advice"><strong>AI 建议：</strong>今天先处理睡眠债，再把 30 天作业缩成一个可检查交付物；精力不足时不强制公开发布。</p>
                 </div>
               </details>
               <article className="review-card static-review-card" id="seven-day-trend">
                 <h3>近七天趋势</h3>
                 <div className="trend-list">
-                  <div><strong>资料范围</strong><p>已读取 8 月 13 日至 19 日全部记录；页面只呈现与今天任务直接对应、且适合公开的内容。</p></div>
-                  <div><strong>AI 趋势判断</strong><p>近期问题正在从“我该用哪个 AI 工具”收敛到“我的判断来自什么证据、我是否把核心思考交给 AI、用户是否真的这样行动”。</p></div>
-                  <div><strong>今日完成标准</strong><p>一个旧判断经过主动反例修正；三位真实对象留下原话；其中一人能够复述你的 100 字解释。</p></div>
+                  <div><strong>资料范围</strong><p>已读取 8 月 14 日至 20 日全部七份记录；页面只呈现与今天直接相关、适合公开的事实和用户原话。</p></div>
+                  <div><strong>AI 趋势判断</strong><p>近期卡点从“该学哪个工具”进一步收敛成“我今天到底要留下什么结果”。这不是知识缺口，而是交付物定义仍然模糊；同时，睡眠不足会放大这种模糊和情绪负荷。</p></div>
+                  <div><strong>今日完成标准</strong><p>先完成基本恢复；写出一句单一交付物与两条验收标准；精力允许时保存一组 Skill A/B 差异。</p></div>
                 </div>
               </article>
               <article className="review-card static-review-card diagnosis" id="action-diagnosis">
                 <h3>AI 执行力诊断 / 建议</h3>
                 <div>
-                  <p><strong>证据：</strong>用户在 8 月 19 日日记中明确写下，原本要执行 30 天计划，却转向学习 GitHub，并意识到自己可能在用一个“看起来相关”的动作替代真正任务。</p>
-                  <p><strong>行为模式：</strong>按 dbs-action 框架，这同时接近“用思考回避行动”和“用学习制造正在进步的感觉”。学习本身没有错，问题在于它没有解除当前任务的具体阻塞。</p>
-                  <p><strong>AI 诊断：</strong>今天的卡点不是缺少下一门课，而是不愿让昨天的判断接受反例和真实用户回答。继续收集资料会保护原判断不被现实检验。</p>
-                  <p><strong>一句话处方：</strong>先交出昨天欠下的结果，再打开新的学习入口。</p>
-                  <p><strong>具体处方：</strong>25 分钟内完成一个主动反例和一次判断改写；随后访谈第一位对象。只有出现无法继续的明确知识缺口，才允许针对该缺口学习。</p>
-                  <p><strong>适用边界：</strong>这是基于 dontbesilent 逻辑的 AI 执行诊断，不是心理咨询；它只处理今天公开任务中的替代性进展，不推断更广泛的心理状态。</p>
+                  <p><strong>证据：</strong>用户在 8 月 20 日日记中明确写下接近通宵、睡眠不足时情绪易波动，并在做 30 天小作业时“不知道在输出什么东西”。</p>
+                  <p><strong>行为模式：</strong>按 dbs-action 框架，当前首先是交付物不清；身体疲劳又降低了定义问题与承受不确定性的能力。此时继续收集 Skill 或课程，容易形成“看起来相关”的替代进展。</p>
+                  <p><strong>AI 诊断：</strong>今天的主要卡点不是缺少更多 Skill，也不宜解释成意志力不足；更直接的问题是“没有明确完成标准”叠加睡眠债。</p>
+                  <p><strong>一句话处方：</strong>先恢复，再定义结果，最后只验证一个差异。</p>
+                  <p><strong>具体处方：</strong>先完成基本恢复；随后用 15 分钟写一句交付物和两条验收标准。只有精力稳定时才开始 30 分钟 A/B，不把公开发布列为今天的硬性要求。</p>
+                  <p><strong>适用边界：</strong>这是基于日记文本与 dontbesilent 逻辑的 AI 执行诊断，不是医疗或心理咨询，也不推断用户未写下的动机。</p>
                 </div>
               </article>
             </div>
@@ -519,11 +483,11 @@ export default function Home() {
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 19 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-19.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 19 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 20 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-20.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 20 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>先把问题交给现实，<br />再让 AI 扩大执行。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>先恢复到能判断，<br />再让一次小实验留下证据。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
