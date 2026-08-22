@@ -89,6 +89,13 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="template-inspiration"/);
   assert.match(html, /灵感库/);
   assert.match(html, /可以做成什么内容。/);
+  assert.match(html, /id="template-video-topic-decision"/);
+  assert.match(html, /原来的判断哪里错了/);
+  assert.match(html, /id="template-one-more-question"/);
+  assert.match(html, /我这次在逃避什么问题？/);
+  assert.match(html, /id="template-judgment"/);
+  assert.match(html, /我目前认为问题是 X。/);
+  assert.match(html, /不要替我得结论。检查我的判断，找漏洞、反例和遗漏。/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.match(html, /小报童/);
   assert.match(html, /id="xiaobaotong-1"/);
@@ -162,5 +169,8 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="template-inspiration"/);
   assert.match(latest.mainHtml, /class="pill template-icon"/);
   assert.match(latest.mainHtml, /灵感库/);
+  assert.match(latest.mainHtml, /id="template-video-topic-decision"/);
+  assert.match(latest.mainHtml, /id="template-one-more-question"/);
+  assert.match(latest.mainHtml, /id="template-judgment"/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });

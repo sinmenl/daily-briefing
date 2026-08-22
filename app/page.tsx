@@ -391,6 +391,38 @@ export default function Home() {
                     <li>可以做成什么内容。</li>
                   </ul></div>
                 </details>
+                <details className="brief-item" id="template-video-topic-decision">
+                  <summary><span className="brief-index">04</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🎯</span><strong>视频选题决策</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content"><ul className="template-prompts">
+                    <li>为什么选这个题</li>
+                    <li>预测什么会发生</li>
+                    <li>实际发生了什么</li>
+                    <li>原来的判断哪里错了</li>
+                    <li>下一条准备验证什么</li>
+                  </ul></div>
+                </details>
+                <details className="brief-item" id="template-one-more-question">
+                  <summary><span className="brief-index">05</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🧭</span><strong>多问一句</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content"><ul className="template-prompts">
+                    <li>我这次在逃避什么问题？</li>
+                    <li>当我逃避真正要解决的问题时，我会本能去找什么东西？</li>
+                  </ul></div>
+                </details>
+                <details className="brief-item" id="template-judgment">
+                  <summary><span className="brief-index">06</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">⚖️</span><strong>判断模板</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content template-workflow">
+                    <section>
+                      <h4>需要判断的问题，先强制自己写三句话：</h4>
+                      <p><strong>我的判断：</strong>我目前认为问题是 X。</p>
+                      <p><strong>我的依据：</strong>因为我观察到了 A、B。</p>
+                      <p><strong>我不确定：</strong>我不知道 C 是否成立。</p>
+                    </section>
+                    <section>
+                      <h4>再给 AI：</h4>
+                      <p>不要替我得结论。检查我的判断，找漏洞、反例和遗漏。</p>
+                    </section>
+                  </div>
+                </details>
               </div>
             </div>
           </section>
