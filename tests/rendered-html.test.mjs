@@ -39,8 +39,10 @@ test("renders the daily briefing", async () => {
   assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 0);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
   assert.match(html, /href="#task-1">/);
-  assert.doesNotMatch(html, /href="#creator-[1-4]">(?:Dan Koe|dontbesilent|Naval|姜胡说)/);
-  assert.doesNotMatch(html, /id="creator-[1-4]"/);
+  assert.doesNotMatch(html, /未发现(?:可核验)?更新/);
+  const creatorLinks = renderedMain.match(/href="#creator-\d+"/g) ?? [];
+  const creatorCards = renderedMain.match(/id="creator-\d+"/g) ?? [];
+  assert.equal(creatorLinks.length, creatorCards.length);
   assert.match(html, /href="#story-1">1/);
   assert.match(html, /(?:行业重要新闻|昨日可核验动态)：(?:<!-- -->)?[1-5](?:<!-- -->)? 条/);
   assert.doesNotMatch(html, /id="story-6"/);
@@ -51,10 +53,13 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="xiaobaotong-1"/);
   assert.match(html, /id="hotlist"/);
   assert.match(html, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
-  assert.match(html, /id="action-diagnosis"/);
-  assert.match(html, /AI 执行力诊断 \/ 建议/);
+  assert.match(html, /id="cognitive-observation"/);
+  assert.match(html, /AI 认知观察/);
+  assert.match(html, /id="minimum-action"/);
+  assert.match(html, /最小行动建议/);
   assert.match(html, /<article class="review-card static-review-card" id="seven-day-trend">/);
-  assert.match(html, /<article class="review-card static-review-card diagnosis" id="action-diagnosis">/);
+  assert.match(html, /<article class="review-card static-review-card diagnosis" id="cognitive-observation">/);
+  assert.match(html, /<article class="review-card static-review-card diagnosis" id="minimum-action">/);
   assert.doesNotMatch(html, /点击展开云端早报完整原文/);
   assert.doesNotMatch(html, /点击展开五个产品问题与完整分析/);
   assert.doesNotMatch(html, /完整搬运云端“26\.8每日早报”/);
@@ -137,7 +142,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /南宁当天天气：[^，]+，(?:\d+–\d+℃|请以实时预报为准)/);
   assert.match(latest.mainHtml, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(latest.mainHtml, /(?:行业重要新闻|昨日可核验动态)：(?:<!-- -->)?[1-5](?:<!-- -->)? 条/);
-  assert.doesNotMatch(latest.mainHtml, /id="creator-[1-4]"/);
+  assert.doesNotMatch(latest.mainHtml, /未发现(?:可核验)?更新/);
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.match(latest.mainHtml, /id="signal-radar"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
