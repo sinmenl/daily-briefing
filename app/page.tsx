@@ -6,26 +6,26 @@ const cloudBriefMarkdown = "<!-- DAILY_BRIEF_START -->\nschema_version: 1\nbrief
 const tasks = [
   {
     number: "01",
-    title: "写清今天唯一要验证的判断",
-    body: "今日记录已经给出一个明确判断：Skill 必须证明自己修复了真实错误。先把判断缩成一句可证伪假设，不再扩充 Skill 或知识库。",
-    first: "写下“加入这个 Skill 后，错误____会减少”",
-    time: "10 分钟",
+    title: "确认兼职取舍",
+    body: "昨天已经记录华图准备开启培训，并判断可能需要推掉科技馆助教兼职。先确认时间是否冲突，再完成保留或谢绝的决定。",
+    first: "核对培训时间与科技馆排班是否冲突",
+    time: "15 分钟",
     tone: "mint",
   },
   {
     number: "02",
-    title: "完成一次 Skill 前后对照",
-    body: "选择一个已经发生过的内容任务错误，用同一输入、同一模型分别运行无 Skill 与有 Skill 两版，只比较两条预先写好的验收标准。",
-    first: "固定一个输入、一个 Skill 和两条验收标准",
+    title: "写出下一条视频选题文本",
+    body: "近一周反复记录选题模糊、没有选题文本和内容断更。今天只选一个自己真实经历的问题，先用自己的话写清楚，不让 AI 代替形成观点。",
+    first: "写下问题、自己的判断和一个真实例子",
     time: "30 分钟",
     tone: "blue",
   },
   {
     number: "03",
-    title: "记录差异，不为成功换题",
-    body: "把原错误、Skill 指令、行为变化和仍存在的边界写进一张对照表。没有观察到改善也算结果，不继续换 Skill 凑出正例。",
-    first: "保存一张四栏 A/B 对照表",
-    time: "10 分钟",
+    title: "补看此前视频后台",
+    body: "8 月 16 日记录过要看前两条视频后台，但当时没有完成。今天只看一次数据，写下一条能影响后续选题或表达的观察。",
+    first: "打开最近两条视频后台并记录一个差异",
+    time: "15 分钟",
     tone: "peach",
   },
 ];
@@ -36,14 +36,14 @@ const learningResources = [
     title: "How to Talk to Users",
     meta: "Y Combinator 官方频道 · 英语 · 可直接观看",
     intro: "Eric Migicovsky 讲解如何从用户的具体经历中获得证据，避免把访谈变成推销或让对方评价抽象想法。",
-    why: "今天先用 A/B 判断 Skill 是否改变行为；下一步若要判断这种改变是否真正有价值，仍需要真实用户反馈。这支视频补的是获取反馈的方法，不是工具或课程广告。",
+    why: "今天要把断更缩成一份自己的选题文本；写完后仍需要真实用户反馈来判断问题是否被理解。这支视频补的是获取反馈的方法，不是工具或课程广告。",
     focus: [
       "围绕对方已经发生的具体经历提问，而不是让对方预测未来。",
       "少解释自己的方案，多追问行为、困难和当前替代方案。",
       "把原话与观察留下来，不把礼貌性赞同当成需求证据。",
     ],
     action: "看完只写三个准备问真实用户的问题，并删除任何会诱导对方赞同的措辞。",
-    boundary: "视频面向创业者的用户访谈，不能替代今天的 Skill A/B 技术验证；它适合在得到可复现差异后，用来验证用户是否在意这种改善。",
+    boundary: "视频面向创业者的用户访谈，不能替代今天独立写出选题文本；它适合在观点形成后，用来验证用户是否在意这个问题。",
     source: "https://www.youtube.com/watch?v=MT4Ig2uqjTc",
     sourceLabel: "Y Combinator 官方 YouTube 视频",
   },
@@ -307,8 +307,8 @@ export default function Home() {
             <div className="date-block"><div className="date-day">22</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期六</p></div></div>
             <div className="hero-copy">
               <p className="eyebrow">TODAY&apos;S DIRECTION</p>
-              <h1>先证明经验确实改变结果，<br />再把它固化成 Skill。</h1>
-              <p className="judgment">今天不扩充工具箱：只用一个真实错误做一组前后对照，留下可复现差异或明确的无效结论。</p>
+              <h1>把没有收尾的事变清楚，<br />让内容重新向前一步。</h1>
+              <p className="judgment">今天不从新工具开始：先处理一个现实取舍，写出下一条视频的选题文本，再补回一次已经拖延的数据复盘。</p>
             </div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
@@ -317,23 +317,23 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：一个判断、一组对照、一张结果表</p></div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：一项取舍、一份选题文本、一次数据复盘</p></div>
             <div className="task-grid">{tasks.map((task, i) => <article className={"task-card " + task.tone} id={"task-" + (i + 1)} key={task.number}>
               <span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p>
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
-            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>总计 50 分钟，做完即停</p></div>
+            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>总计 60 分钟，做完即停</p></div>
             <section className="schedule" id="schedule">
-              <div><span>定义 · 10 分钟</span><p>从一个已经发生的内容错误开始，写下 Skill 预期减少的错误和两条可观察验收标准。</p></div>
-              <div><span>对照 · 30 分钟</span><p>固定同一输入、同一模型与同一环境，分别运行无 Skill 和有 Skill 两版；不在中途追加提示。</p></div>
-              <div><span>记录 · 10 分钟</span><p>保存原错误、Skill 指令、行为变化和适用边界。没有改善也算有效结果，不换题凑成功。</p></div>
+              <div><span>取舍 · 15 分钟</span><p>确认华图培训与科技馆助教的时间条件；若冲突，完成一次明确回复，不继续悬置。</p></div>
+              <div><span>写稿 · 30 分钟</span><p>从近期真实卡点中选一个问题，独立写出问题、判断和例子；只求形成选题文本，不要求今天拍完。</p></div>
+              <div><span>复盘 · 15 分钟</span><p>查看最近两条视频后台，只记录一个重复信号或明显差异，并写清它会怎样影响下一条内容。</p></div>
             </section>
             <details className="brief-item" id="risk">
               <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个需要主动截断的动作</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">
-                <p><strong>继续搜 Skill：</strong>今天的判断已经足够明确，缺的是前后对照，不是更多候选项。</p>
-                <p><strong>中途追加提示：</strong>一旦两版输入不同，就无法判断差异来自 Skill 还是临时提醒。</p>
-                <p><strong>只展示成功：</strong>无改善或变差同样是结论；不要为了得到正例反复换任务。</p>
+                <p><strong>继续研究工具：</strong>近一周已经多次出现工具任务替代模糊主任务；今天先让选题文本留下来。</p>
+                <p><strong>把写稿扩大成拍摄：</strong>今天的最低完成线只是形成自己的选题文本，不因追求完整再次难以启动。</p>
+                <p><strong>把数据看成自我评价：</strong>后台只用于发现下一条内容可调整的信号，不用于给自己下能力结论。</p>
               </div>
             </details>
             <div className="template-section" id="templates">
@@ -439,9 +439,9 @@ export default function Home() {
               <summary><div className="avatar">读</div><div><span className="planet-time">小报童 · {xiaobot.author} · {xiaobot.published}</span><strong>{xiaobot.title}</strong><span>阅读导引为 AI 建议，文章原文不在网页转载</span></div><span className="open-label">导引</span></summary>
               <div className="planet-content"><div className="original">
                 <span>AI 阅读导引</span>
-                <p>今天的 Skill 前后对照只能证明输出行为有没有变化，还不能证明观众是否在意。小报童这篇文章补上用户侧验收：结构只是管道，代入感决定观众是否进入，能带走的具体动作决定内容是否产生价值。</p>
+                <p>近一周真正未完成的是下一条视频选题文本。小报童这篇文章可用来检查：结构只是管道，代入感决定观众是否进入，能带走的具体动作决定内容是否产生价值。</p>
                 <p><strong>阅读重点：</strong>先区分“我正在经历”“我属于这个人群”“我理解这种感受”三种代入路径，再检查内容是否给出一个能立即执行的动作。</p>
-                <p><strong>阅读问题：</strong>今天对照实验里改善最大的那句话，能否让一个具体观众认出自己的场景，并知道下一步做什么？</p>
+                <p><strong>阅读问题：</strong>今天写下的选题，能否让一个具体观众认出自己的场景，并知道下一步做什么？</p>
                 <SourceLink href={xiaobot.source} label="小报童原文" />
               </div></div>
             </details>
@@ -455,7 +455,7 @@ export default function Home() {
                 <div>
                   <p><strong>资料状态：</strong>已读取 8 月 15 日至 21 日全部七份本地日记，没有缺失日期。</p>
                   <p><strong>可确认的公开事实：</strong>昨天完成了多项明确、即时的活动；面对持续内容任务时，主次仍不够清楚。页面不公开日记原句和敏感生活细节。</p>
-                  <p className="advice"><strong>AI 建议：</strong>今天不重新设计整套计划，只用一个真实错误验证一份 Skill 是否真的改变结果。</p>
+                  <p className="advice"><strong>AI 建议：</strong>今天不重新设计整套系统；先处理已经浮现的兼职取舍，再把断更问题缩成一份可检查的选题文本。</p>
                 </div>
               </details>
               <article className="review-card static-review-card" id="seven-day-trend">
@@ -463,7 +463,7 @@ export default function Home() {
                 <div className="trend-list">
                   <div><strong>资料范围</strong><p>近七天记录齐全；趋势仅依据用户已经写下的行为和判断，不把 AI 对话内容冒充用户观点。</p></div>
                   <div><strong>AI 趋势判断</strong><p>核心任务越模糊，越容易转向边界清楚、反馈快的工具或学习任务。近期精力与安排变化也可能独立影响专注，因此不能把所有工具学习都解释成替代行为。</p></div>
-                  <div><strong>今日判断</strong><p>先定义可验收差异，再决定某项经验是否值得固化为 Skill；无改善同样是证据。</p></div>
+                  <div><strong>今日判断</strong><p>先让一个现实决定和一份内容草稿落地，再决定是否需要继续学习工具；完成记录比增加输入更能恢复方向感。</p></div>
                 </div>
               </article>
               <article className="review-card static-review-card diagnosis" id="cognitive-observation">
@@ -478,10 +478,10 @@ export default function Home() {
               <article className="review-card static-review-card diagnosis" id="minimum-action">
                 <h3>最小行动建议</h3>
                 <div>
-                  <p><strong>行动：</strong>选择一个已经发生的内容错误，用同一输入分别运行无 Skill 与有 Skill 两版。</p>
-                  <p><strong>最大范围：</strong>30 分钟，只比较一个 Skill、一个输入和两条验收标准。</p>
-                  <p><strong>可观察产物：</strong>一张包含“原错误—Skill 指令—行为变化—仍存在的边界”的 A/B 对照表。</p>
-                  <p><strong>完成标准：</strong>能指出至少一个具体差异；若没有差异，原样记录“未观察到稳定改善”，不继续换 Skill 凑成功。</p>
+                  <p><strong>行动：</strong>从近期真实卡点中选一个问题，用自己的话写出“问题—我的判断—真实例子”。</p>
+                  <p><strong>最大范围：</strong>30 分钟，只完成一份选题文本，不扩展成工具研究或完整拍摄。</p>
+                  <p><strong>可观察产物：</strong>一份可以继续修改或拍摄的选题文本。</p>
+                  <p><strong>完成标准：</strong>离开 AI 生成稿后，仍能用自己的话解释核心判断，并至少写出一个亲历例子。</p>
                 </div>
               </article>
             </div>
@@ -514,7 +514,7 @@ export default function Home() {
             <a className="hotlist" href="/daily-briefing/hotlist/2026-08-21.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 21 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>让一次真实对照，<br />决定什么值得被固化。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>先写出自己的判断，<br />再让真实数据决定下一步。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
