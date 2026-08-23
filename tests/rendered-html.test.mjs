@@ -96,11 +96,6 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="template-judgment"/);
   assert.match(html, /我目前认为问题是 X。/);
   assert.match(html, /不要替我得结论。检查我的判断，找漏洞、反例和遗漏。/);
-  assert.match(html, /id="template-daily-behavior"/);
-  assert.match(html, /今天我实际完成了什么？/);
-  assert.match(html, /本来准备写产品分析，但是去研究 AI 工具；/);
-  assert.match(html, /如果有人观察我一天，他会认为我真正重视什么？/);
-  assert.match(html, /因为它绕过你的自我叙事。/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.match(html, /小报童/);
   assert.match(html, /id="xiaobaotong-1"/);
@@ -177,8 +172,5 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="template-video-topic-decision"/);
   assert.match(latest.mainHtml, /id="template-one-more-question"/);
   assert.match(latest.mainHtml, /id="template-judgment"/);
-  assert.match(latest.mainHtml, /id="template-daily-behavior"/);
-  assert.match(latest.mainHtml, /今天让我改变方向的触发事件是什么？/);
-  assert.match(latest.mainHtml, /这个问题很狠。/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });

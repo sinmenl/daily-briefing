@@ -408,38 +408,6 @@ export default function Home() {
                     </section>
                   </div>
                 </details>
-                <details className="brief-item" id="template-daily-behavior">
-                  <summary><span className="brief-index">07</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🪞</span><strong>今日行为记录</strong></span><span className="plus">＋</span></summary>
-                  <div className="brief-content template-workflow">
-                    <section>
-                      <h4>1. 今天我实际完成了什么？</h4>
-                    </section>
-                    <section>
-                      <h4>2. 今天我逃避了什么？</h4>
-                      <p><strong>这个非常重要。</strong></p>
-                      <p>比如：</p>
-                      <ul className="template-prompts">
-                        <li>本来准备写产品分析，但是去研究 AI 工具；</li>
-                        <li>本来准备销售，但是继续修改框架。</li>
-                      </ul>
-                    </section>
-                    <section>
-                      <h4>3. 今天让我改变方向的触发事件是什么？</h4>
-                      <p>例如：</p>
-                      <ul className="template-prompts">
-                        <li>看到一个案例；</li>
-                        <li>用户反馈；</li>
-                        <li>一句话；</li>
-                        <li>一个失败。</li>
-                      </ul>
-                    </section>
-                    <section>
-                      <h4>4. 如果有人观察我一天，他会认为我真正重视什么？</h4>
-                      <p>这个问题很狠。</p>
-                      <p>因为它绕过你的自我叙事。</p>
-                    </section>
-                  </div>
-                </details>
               </div>
             </div>
           </section>
