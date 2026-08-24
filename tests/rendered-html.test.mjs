@@ -68,10 +68,14 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="deep-reads"/);
   assert.match(html, /class="brief-list deep-read-list"/);
   assert.match(html, /id="learning"/);
-  assert.match(html, /id="learning-1"/);
-  assert.match(html, /(?:官方教学视频|官方 YouTube 视频|官方课程|公开课|原始视频)/);
-  assert.match(html, /https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|ecorner\.stanford\.edu|deeplearning\.ai|huggingface\.co|academy\.openai\.com)\//);
-  assert.match(html, /看完只做一件事/);
+  assert.match(html, /id="(?:learning-1|learning-practice)"/);
+  if (/id="learning-1"/.test(html)) {
+    assert.match(html, /(?:官方教学视频|官方 YouTube 视频|官方课程|公开课|原始视频)/);
+    assert.match(html, /https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|ecorner\.stanford\.edu|deeplearning\.ai|huggingface\.co|academy\.openai\.com)\//);
+    assert.match(html, /看完只做一件事/);
+  } else {
+    assert.match(html, /今天不新增课程/);
+  }
   assert.match(html, /class="time-block-heading"/);
   assert.match(html, /href="#templates">模版<\/a>/);
   assert.match(html, /id="templates"/);
@@ -157,7 +161,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.doesNotMatch(latest.mainHtml, /点击展开云端早报完整原文/);
   assert.doesNotMatch(latest.mainHtml, /归档区间：/);
   assert.match(latest.mainHtml, /<article class="review-card static-review-card" id="seven-day-trend">/);
-  assert.match(latest.mainHtml, /id="learning-1"/);
+  assert.match(latest.mainHtml, /id="(?:learning-1|learning-practice)"/);
   assert.match(latest.mainHtml, /课程与视频/);
   assert.match(latest.mainHtml, /id="templates"/);
   assert.doesNotMatch(latest.mainHtml, /固定保留，需要时再展开/);
