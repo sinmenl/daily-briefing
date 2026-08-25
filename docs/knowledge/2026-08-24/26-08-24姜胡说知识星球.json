@@ -1,0 +1,39 @@
+{
+  "source_url": "https://wx.zsxq.com/group/552521142424",
+  "collected_at": "2026-08-24T23:30:13+08:00",
+  "filters": {
+    "author": "大胡子",
+    "date": "2026-08-24"
+  },
+  "recognized_topic_count": 40,
+  "matched_post_count": 1,
+  "posts": [
+    {
+      "unique_id": "local-b3c99c616c0100b43409",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-08-24 12:17",
+      "content": "大部分人学东西都是浅尝辄止，以为自己理解了。\n其实理解的不过是字面意思。\n\n如果你理解了真正的底层逻辑，\n自然可以做到千变万化。\n因为你真正理解了。",
+      "tags": [],
+      "sequence": 1,
+      "candidate_image_count": 1,
+      "excluded_non_post_image_count": 2,
+      "saved_original_image_count": 1,
+      "image_urls": [
+        "https://images.zsxq.com/FrysQx8n_1NmUSNikxj0Fmnr12mT?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:_oWPzSauXQPASCZu3zW4bZKxQyQ="
+      ],
+      "downloaded_images": [
+        "images/[1] 大胡子 -1.jpg"
+      ],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    }
+  ],
+  "archive_date": "2026-08-24",
+  "start_time": "2026-08-23T23:30:00+08:00",
+  "end_time": "2026-08-24T23:30:00+08:00",
+  "posts_count": 1,
+  "status": "completed"
+}
