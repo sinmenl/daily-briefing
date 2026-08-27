@@ -1,0 +1,116 @@
+{
+  "source_url": "https://wx.zsxq.com/group/552521142424",
+  "collected_at": "2026-08-26T23:30:20+08:00",
+  "filters": {
+    "author": "大胡子",
+    "date": "2026-08-26"
+  },
+  "recognized_topic_count": 20,
+  "matched_post_count": 4,
+  "posts": [
+    {
+      "unique_id": "local-2a372d510391938804f3",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-08-26 16:42",
+      "content": "小米个人推理硬件，1.2TB/s。\n苹果 M5 Ultra，\n阿里， Qwen3.8-Flash-Next 。\n\n全部指向个人本地\n个人生产力的全面提升。\n如果你觉得这事和你无关，那说明你已经落后了。\n\n这不是你要买那个硬件，使用哪个工具，搭建哪个知识库的问题。\n问题的底层是:你要成为一名创作者，而不是消费者。",
+      "tags": [
+        "AI"
+      ],
+      "sequence": 1,
+      "candidate_image_count": 2,
+      "excluded_non_post_image_count": 6,
+      "saved_original_image_count": 2,
+      "image_urls": [
+        "https://images.zsxq.com/FsUl_swxqT06TkgoLOWi-BbAFAip?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:nFxQ4FumjZNeU0fcHyCNOseYy1c=",
+        "https://images.zsxq.com/Fr_zy0gRCRsLLZZbrG5GV_i3XYt0?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:yGcyTY93PVLjJsjH6UveYjpFums="
+      ],
+      "downloaded_images": [
+        "images/[1] 大胡子 -1.jpg",
+        "images/[1] 大胡子 -2.jpg"
+      ],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    },
+    {
+      "unique_id": "local-76b420b749944cecb81c",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-08-26 18:38",
+      "content": "再分享一个薅羊毛的地方。\n日日新用的人太多了，白天出现的402越来越多，方法就是做降链处理。除了百炼之外，我自己加了这个：\n见图一。\n\n不用身份验证，每天有5M的免费名额可以使用。\nQwen3.8 Max居然是免费的。这样一旦降链就可以使用它来接。用不完，快结束的时候可以用余额来审核你自己的系统。Qwen3.8 Max做质量审核是我用过的大模型里最好的。\n\n我个人买了一个$5的套餐，每天15M可用。\n现在glm-5.3是5小时重置一次，见图三。\n额度不够的时候，可以走它的中转，我看了一下，Deepseek-v4-flash巨便宜（不过得单独交费，见图二）。配合代理很快。\n\n说两个坑，Qwen3.8 Max是收费的，很贵。qwen3.8-max:free这个才是免费的。\n另外，你的agent一定要配代理，否则有点慢。",
+      "tags": [
+        "Ai"
+      ],
+      "sequence": 2,
+      "candidate_image_count": 3,
+      "excluded_non_post_image_count": 3,
+      "saved_original_image_count": 3,
+      "image_urls": [
+        "https://images.zsxq.com/FqhyeStGBIvGIvkA_nuNmJTZYUKI?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:7Q2OLfjkFvfbbh0L8Ga7BmHJGEs=",
+        "https://images.zsxq.com/FvYwkWdAVLN7a18Rfc6JlaOXn8M8?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:B47Q5iZ6HHn6QbXPXqCNrmiKDuU=",
+        "https://images.zsxq.com/Fu9GqaalfaH7qZbTyHrnN66Uxz4y?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:Id-szRiqClf5TRW2k3WnmgB5Cnw="
+      ],
+      "downloaded_images": [
+        "images/[2] 大胡子 -1.png",
+        "images/[2] 大胡子 -2.png",
+        "images/[2] 大胡子 -3.png"
+      ],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    },
+    {
+      "unique_id": "local-59350a8530570f0c6460",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-08-26 19:00",
+      "content": "再分享一个本地 大模型 ：pooyakn73/Qwen3.8-9B-Distill-MTPLX-Q6G64\n从Qwen3.8-27B里分离出来的9B模型，牺牲了一点点速度，把质量提了上去。带来的结果就是，你完全可以用它来做agent的调度模型。且处理文本分类、蒸馏完全足够(可以达到65-60token/s)。\n亲测有效。\n\n我现在是用pooyakn73/Qwen3.8-9B-Distill-MTPLX-Q6G64作轻量agent；\nQwen3.8-27B作原子精化，质量居然高于deepseek-v4-flash。可惜作agent主模型不够，而且很慢。\n但pooyakn73/Qwen3.8-9B-Distill-MTPLX-Q6G64没有问题。速度很流畅（长文本处理可以达到35-40token/s）。",
+      "tags": [
+        "Ai",
+        "姜小胡"
+      ],
+      "sequence": 3,
+      "candidate_image_count": 2,
+      "excluded_non_post_image_count": 4,
+      "saved_original_image_count": 2,
+      "image_urls": [
+        "https://images.zsxq.com/Fm8lfM3Db91f5hoodp-_XV-lFpPl?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:T9pYyhxeRA83XeI4ex3dWsWzI20=",
+        "https://images.zsxq.com/FnY2_z_kRxPg-lDU7mqji3mgazKw?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1790783999&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:qCzzOJGCOArsHYYQP1kp0sc03as="
+      ],
+      "downloaded_images": [
+        "images/[3] 大胡子 -1.png",
+        "images/[3] 大胡子 -2.png"
+      ],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    },
+    {
+      "unique_id": "local-3fdf0528e1e57de6da52",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-08-26 20:13",
+      "content": "一年前，我仍然坚信这个公式：\n个人产能 = 个人能力 x 时间。\n你每天可以做的事情很少，所以你在努力地提升个人能力，然后每一天在这个基础上不断地积累，产生复利。\n\n今天，公式变了：\n个人产能 = 你的战略能力 x 初始能力 x AI放大系统。\n\nAI不仅仅提升了你的个人能力。\n同时还压缩了你的时间。\n\n所以，一个人深度思考的能力，判断力，产品力，就变得异常重要了。\n大家使用姜小胡的方法，不是遇到问题就提问；\n恰恰相反，反复思考，然后和姜小胡探讨（这个时候的姜小胡99%的情况下其实是我）。",
+      "tags": [],
+      "sequence": 4,
+      "candidate_image_count": 0,
+      "excluded_non_post_image_count": 1,
+      "saved_original_image_count": 0,
+      "image_urls": [],
+      "downloaded_images": [],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    }
+  ],
+  "archive_date": "2026-08-26",
+  "start_time": "2026-08-25T23:30:00+08:00",
+  "end_time": "2026-08-26T23:30:00+08:00",
+  "posts_count": 4,
+  "status": "completed"
+}

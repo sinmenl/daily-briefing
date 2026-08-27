@@ -1,31 +1,31 @@
 import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 
-const briefDate = "2026-08-26";
+const briefDate = "2026-08-27";
 
 const tasks = [
   {
     number: "01",
-    title: "先恢复睡眠与基本精力",
-    body: "昨天记录了睡眠不足、烦躁和难以静下心。今天先补连续睡眠、进食和洗漱，不用信息流或新工具继续透支。",
-    first: "关闭信息流，先完成恢复",
-    time: "恢复后再开始实验",
+    title: "换到霸王茶姬，实际开始",
+    body: "昨天已经明确写下需要改变环境。到店后不打开信息流，只写 loveholidays 案例的三条事实、一个解释和一个推翻条件。",
+    first: "到店后先写四行证明包",
+    time: "10 分钟内开始",
     tone: "mint",
   },
   {
     number: "02",
-    title: "完成一次先判断、后调用 AI 的实验",
-    body: "选一个真实内容问题，先独立写事实、暂时解释和推翻条件，再让 AI 只找混淆点与反例。",
-    first: "先写三行原始判断，不让 AI 代写起点",
-    time: "最多 60 分钟",
+    title: "完成观点—证据—复述闭环",
+    body: "围绕“规则被系统化，非工程人员才能安全做实验”录两版 60 秒口述，并比较哪条证据或反例改变了表达。",
+    first: "先录第一版，不照着 AI 文案念",
+    time: "最多 90 分钟",
     tone: "blue",
   },
   {
     number: "03",
-    title: "留下一个现实行为结果",
-    body: "录一段不超过 60 秒的口述，或让一位目标对象复述。比较 AI 前后的判断，只记录被证据改变的地方。",
-    first: "完成一次可被外界检查的录制或复述",
-    time: "留下记录后停止",
+    title: "只准备明天下午的培训",
+    body: "核对华图培训的时间、地点与需要携带的材料；除此之外不继续扩展准备。晚上给睡眠留下恢复窗口。",
+    first: "一次性确认时间、地点和材料",
+    time: "最多 15 分钟",
     tone: "peach",
   },
 ];
@@ -33,26 +33,98 @@ const tasks = [
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
 const xiaobot = {
-  title: "动起来！彩蛋版...",
+  title: "17天，10万粉；一天一小时，月入5位数；方法不过三把刀",
   author: "姜胡说",
-  published: "2026-06-15 15:05:44",
-  source: "https://xiaobot.net/post/41114167-7c21-4708-9969-bce389ca8f24",
+  published: "2026-08-24 23:59:35",
+  source: "https://xiaobot.net/post/7236ed87-7b47-4a1b-bd3c-15a82f97fad2",
 };
 
-const weather = { location: "南宁", condition: "大雨转中雨", temperature: "27–30℃", icon: "🌧️" };
+const weather = { location: "南宁", condition: "阵雨", temperature: "25–30℃", icon: "🌦️" };
 
-const planetPosts: Array<{ index: string; author: string; published: string; title: string; body: string; images: string[] }> = [];
+const planetPosts: Array<{ index: string; author: string; published: string; title: string; body: string; images: string[] }> = [
+  {
+    index: "1",
+    author: "大胡子",
+    published: "2026-08-26 16:42",
+    title: "你要成为一名创作者，而不是消费者",
+    body: `小米个人推理硬件，1.2TB/s。
+苹果 M5 Ultra，
+阿里， Qwen3.8-Flash-Next 。
+
+全部指向个人本地
+个人生产力的全面提升。
+如果你觉得这事和你无关，那说明你已经落后了。
+
+这不是你要买那个硬件，使用哪个工具，搭建哪个知识库的问题。
+问题的底层是:你要成为一名创作者，而不是消费者。`,
+    images: ["/daily-briefing/knowledge/2026-08-26/images/%5B1%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.jpg", "/daily-briefing/knowledge/2026-08-26/images/%5B1%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-2.jpg"],
+  },
+  {
+    index: "2",
+    author: "大胡子",
+    published: "2026-08-26 18:38",
+    title: "降链、免费额度与质量审核的两个坑",
+    body: `再分享一个薅羊毛的地方。
+日日新用的人太多了，白天出现的402越来越多，方法就是做降链处理。除了百炼之外，我自己加了这个：
+见图一。
+
+不用身份验证，每天有5M的免费名额可以使用。
+Qwen3.8 Max居然是免费的。这样一旦降链就可以使用它来接。用不完，快结束的时候可以用余额来审核你自己的系统。Qwen3.8 Max做质量审核是我用过的大模型里最好的。
+
+我个人买了一个$5的套餐，每天15M可用。
+现在glm-5.3是5小时重置一次，见图三。
+额度不够的时候，可以走它的中转，我看了一下，Deepseek-v4-flash巨便宜（不过得单独交费，见图二）。配合代理很快。
+
+说两个坑，Qwen3.8 Max是收费的，很贵。qwen3.8-max:free这个才是免费的。
+另外，你的agent一定要配代理，否则有点慢。`,
+    images: ["/daily-briefing/knowledge/2026-08-26/images/%5B2%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.png", "/daily-briefing/knowledge/2026-08-26/images/%5B2%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-2.png", "/daily-briefing/knowledge/2026-08-26/images/%5B2%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-3.png"],
+  },
+  {
+    index: "3",
+    author: "大胡子",
+    published: "2026-08-26 19:00",
+    title: "用本地 9B 模型做轻量 Agent 调度",
+    body: `再分享一个本地 大模型 ：pooyakn73/Qwen3.8-9B-Distill-MTPLX-Q6G64
+从Qwen3.8-27B里分离出来的9B模型，牺牲了一点点速度，把质量提了上去。带来的结果就是，你完全可以用它来做agent的调度模型。且处理文本分类、蒸馏完全足够(可以达到65-60token/s)。
+亲测有效。
+
+我现在是用pooyakn73/Qwen3.8-9B-Distill-MTPLX-Q6G64作轻量agent；
+Qwen3.8-27B作原子精化，质量居然高于deepseek-v4-flash。可惜作agent主模型不够，而且很慢。
+但pooyakn73/Qwen3.8-9B-Distill-MTPLX-Q6G64没有问题。速度很流畅（长文本处理可以达到35-40token/s）。`,
+    images: ["/daily-briefing/knowledge/2026-08-26/images/%5B3%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-1.png", "/daily-briefing/knowledge/2026-08-26/images/%5B3%5D%20%E5%A4%A7%E8%83%A1%E5%AD%90%20-2.png"],
+  },
+  {
+    index: "4",
+    author: "大胡子",
+    published: "2026-08-26 20:13",
+    title: "个人产能公式变了",
+    body: `一年前，我仍然坚信这个公式：
+个人产能 = 个人能力 x 时间。
+你每天可以做的事情很少，所以你在努力地提升个人能力，然后每一天在这个基础上不断地积累，产生复利。
+
+今天，公式变了：
+个人产能 = 你的战略能力 x 初始能力 x AI放大系统。
+
+AI不仅仅提升了你的个人能力。
+同时还压缩了你的时间。
+
+所以，一个人深度思考的能力，判断力，产品力，就变得异常重要了。
+大家使用姜小胡的方法，不是遇到问题就提问；
+恰恰相反，反复思考，然后和姜小胡探讨（这个时候的姜小胡99%的情况下其实是我）。`,
+    images: [],
+  },
+];
 
 const deepReadAtoms = [
   {
-    atom: "长期评测必须把用户状态、历史和行为结果纳入评价单位",
-    relation: "今天的判断实验保留调用 AI 前后的版本，并用一次现实行为检验改变来自证据还是措辞。",
-    question: "连续使用十次后，这套建议让判断更独立，还是只让解释更完整？",
+    atom: "高能力 Agent 需要可安全失败的退出机制",
+    relation: "今天的 90 分钟实验预先写明完成标准与停止条件，避免为了产出继续加工具或改任务。",
+    question: "我的自动化在哪些情况下应该明确失败，而不是继续寻找替代路径？",
   },
   {
-    atom: "策略的价值在于把能力连接到现实结果与可推翻条件",
-    relation: "今天不再继续收集方法，而是先写可推翻的解释，再用 60 秒口述或目标对象复述检验。",
-    question: "什么现实行为出现以后，才能证明这次真的形成了判断？",
+    atom: "把专家判断编码成约束与验证，才能让非专家安全实验",
+    relation: "今天不是再学一套方法，而是把事实、解释、反例与复述做成最小验证流程。",
+    question: "哪些判断可以固定成检查项，哪些仍必须由本人承担？",
   },
 ];
 
@@ -227,7 +299,7 @@ export default function Home() {
           <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
           <details className="date-picker">
             <summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary>
-            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-26" aria-current="page">2026年8月26日</a></nav>
+            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-27" aria-current="page">2026年8月27日</a></nav>
           </details>
           <div className="status"><span className="status-dot" />每天自动更新</div>
         </div>
@@ -267,7 +339,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 25 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 26 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -275,11 +347,11 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">26</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期三</p></div></div>
+            <div className="date-block"><div className="date-day">27</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期四</p></div></div>
             <div className="hero-copy">
               <p className="eyebrow">TODAY&apos;S DIRECTION</p>
-              <h1>先保留自己的判断起点，<br />再让现实反馈改变它。</h1>
-              <p className="judgment">今天先恢复精力，再完成一次“先判断、后调用 AI”的现实验证，不用漂亮解释代替可观察结果。</p>
+              <h1>换到可行动的环境，<br />留下观点被证据改变的轨迹。</h1>
+              <p className="judgment">今天不再解释为什么没做：去霸王茶姬完成一次 90 分钟“观点—证据—复述”闭环，再为明天下午培训做最低限度准备。</p>
             </div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
@@ -288,23 +360,23 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：恢复优先，只推进一次可推翻的判断实验</p></div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：换环境、做一次现实验证、只准备明天确定发生的安排</p></div>
             <div className="task-grid">{tasks.map((task, i) => <article className={"task-card " + task.tone} id={"task-" + (i + 1)} key={task.number}>
               <span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p>
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
-            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>先恢复，再实验，最后留下现实证据</p></div>
+            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>让时间服务一个可检查结果</p></div>
             <section className="schedule" id="schedule">
-              <div><span>第一段｜恢复</span><p>连续睡眠、进食、洗漱，不塞入课程、工具研究或信息流。</p></div>
-              <div><span>第二段｜60 分钟</span><p>先独立写事实、解释和推翻条件，再让 AI 找混淆点与反例。</p></div>
-              <div><span>第三段｜现实验证</span><p>录一段 60 秒口述或请一位目标对象复述，比较前后判断并留下记录。</p></div>
+              <div><span>第一段｜到店即开始</span><p>去霸王茶姬，10 分钟内写下三条事实、一个解释和一个推翻条件。</p></div>
+              <div><span>第二段｜90 分钟</span><p>完成两版 60 秒口述和四行证明包，比较哪一句被证据或反例改变。</p></div>
+              <div><span>第三段｜15 分钟</span><p>核对明天下午华图培训的时间、地点和材料，确认后停止继续准备。</p></div>
             </section>
             <details className="brief-item" id="risk">
               <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个需要主动截断的动作</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">
-                <p><strong>继续输入：</strong>今天不再增加课程、工具或方法论。</p>
-                <p><strong>让 AI 代写判断起点：</strong>先保存自己的事实、解释和不确定，再调用 AI。</p>
-                <p><strong>把措辞优化当作认知改变：</strong>只有现实证据改变了原解释，才记录为判断更新。</p>
+                <p><strong>换环境却继续刷信息流：</strong>到店后的第一个动作只能是写四行证明包。</p>
+                <p><strong>把 AI 文案当成自己的理解：</strong>第一版口述不看 AI 文案，只允许使用自己确认过的事实。</p>
+                <p><strong>无限准备明天培训：</strong>只核对时间、地点和材料，15 分钟后停止。</p>
               </div>
             </details>
             <div className="template-section" id="templates">
@@ -423,15 +495,15 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 60 分钟“先判断、后调用 AI”实验</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 90 分钟“观点—证据—复述”闭环</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
           <section className="section" id="planet">
-            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日精确归档缺失 · 一篇相关小报童文章</p></div>
+            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 4 条星主原文与一篇相关小报童文章</p></div>
             <div className="section-context" id="planet-status">
-              <p>昨日知识星球归档尚未生成。预期路径：8.姜胡说知识星球/output/26.8月/26-08-25姜胡说知识星球/26-08-25姜胡说知识星球.md；未使用其他日期替代。</p>
+              <SourceLink href="/daily-briefing/knowledge/2026-08-26/26-08-26姜胡说知识星球.md" label="2026 年 8 月 26 日原始归档" />
             </div>
             {planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}>
               <summary><div className="avatar">{post.index}</div><div><span className="planet-time">{post.author} · {post.published}</span><strong>{post.title}</strong></div><span className="open-label">原文</span></summary>
@@ -441,10 +513,10 @@ export default function Home() {
               <summary><div className="avatar">读</div><div><span className="planet-time">小报童 · {xiaobot.author} · {xiaobot.published}</span><strong>{xiaobot.title}</strong><span>阅读导引为 AI 建议，文章原文不在网页转载</span></div><span className="open-label">导引</span></summary>
               <div className="planet-content"><div className="original">
                 <span>AI 阅读导引</span>
-                <p>过去七天多次出现“理解和输入很多，但没有留下可被世界检验的产物”。这篇文章把行动缩成最小可行版本，适合用来截断继续准备。</p>
-                <p><strong>阅读重点：</strong>识别哪些酝酿仍在替代行动，只保留今天能够完成的一次现实验证。</p>
-                <p><strong>阅读问题：</strong>如果不再学习新方法，现有想法中哪一句可以在 5 分钟内先说出来？</p>
-                <p><strong>适用边界：</strong>这是 AI 阅读导引，不代表用户已阅读、认同或实践文章观点；文章不能替代今天的现实验证。</p>
+                <p>这篇文章把短视频的 0 到 1 拆成对标、逆向拆解、复刻和反馈，和今天的 90 分钟口述实验直接相关。它适合用来限制实验范围，而不是再增加一套长期学习计划。</p>
+                <p><strong>阅读重点：</strong>只看作者如何从第一条有瑕疵的作品获得结果，再根据反馈修正；不要把流量案例直接当成普遍规律。</p>
+                <p><strong>阅读问题：</strong>今天的两版口述里，哪些结构来自已经验证的案例，哪些内容仍然只是自己的猜测？</p>
+                <p><strong>适用边界：</strong>这是 AI 阅读导引，不代表用户已阅读、认同或实践文章观点；文中结果来自单个案例，也不能证明照做必然获得相同流量。</p>
                 <SourceLink href={xiaobot.source} label="小报童原文" />
               </div></div>
             </details>
@@ -456,36 +528,37 @@ export default function Home() {
               <details className="review-card" id="yesterday-review" open>
                 <summary>昨日复盘</summary>
                 <div>
-                  <p><strong>资料状态：</strong>已读取 8 月 19 日至 25 日全部七份本地日记，没有缺失日期，也没有读取今日日记。</p>
-                  <p><strong>可确认事实：</strong>昨天参加了一场面试、观看了直播，并记录“没有可验证输出”；同时明确写下拍视频和思考仍未发生。</p>
-                  <p><strong>边界：</strong>睡眠不足、心里有事和急躁都被本人记录为可能影响因素；不能把一天的“零输出”外推成人格结论。</p>
-                  <p className="advice"><strong>AI 建议：</strong>今天不继续解释自己，先完成一次带原始判断和现实结果的最小实验。</p>
+                  <p><strong>资料状态：</strong>已读取 8 月 20 日至 26 日全部七份本地日记，没有缺失日期，也没有读取今日日记。</p>
+                  <p><strong>可确认事实：</strong>昨天没有留下可验证输出；本人明确写下需要改变环境，并计划今天去霸王茶姬。华图培训已改到明天下午，原定 Trae 活动取消。</p>
+                  <p><strong>边界：</strong>昨天的低产出同时发生在睡眠节奏未恢复、任务价值感不足和部分外部安排变化的背景中，不能用单一动机解释。</p>
+                  <p className="advice"><strong>AI 建议：</strong>今天把“换环境”落实为实际开始，并只完成一次有停止条件的现实验证。</p>
                 </div>
               </details>
               <article className="review-card static-review-card" id="seven-day-trend">
                 <h3>近七天趋势</h3>
                 <div className="trend-list">
-                  <div><strong>资料范围</strong><p>2026 年 8 月 19 日至 25 日，七份记录齐全；不包含今日日记。</p></div>
-                  <div><strong>重复模式</strong><p>多个日期记录了学习、工具或解释系统持续增加，但可由外界评价的内容结果较少；本人也反复区分“理解”与“改变”。</p></div>
-                  <div><strong>边界</strong><p>睡眠不足、具体任务回报不清和阶段性迷茫均可能独立造成同样结果，不能只归因为逃避。</p></div>
+                  <div><strong>资料范围</strong><p>2026 年 8 月 20 日至 26 日，七份记录齐全；不包含今日日记。</p></div>
+                  <div><strong>重复模式</strong><p>连续多日出现输入、工具、娱乐或解释增加，但缺少可由外界评价的结果；本人也反复区分“理解”与“改变”。</p></div>
+                  <div><strong>反例</strong><p>期间完成过面试、用户访谈课程、真实用户调研与备课；问题不是完全没有行动，而是核心创作任务较少进入可验证反馈。</p></div>
+                  <div><strong>边界</strong><p>睡眠不足、任务模糊和现实回报不清都可能降低启动，不应只归因为意志力或逃避。</p></div>
                 </div>
               </article>
               <article className="review-card static-review-card diagnosis" id="cognitive-observation">
                 <h3>AI 认知观察</h3>
                 <div>
                   <p><strong>证据等级：</strong>重复模式。</p>
-                  <p><strong>候选解释：</strong>当解释本身带来完成感时，可能在现实验证之前停下；于是“想明白了”没有转成可观察结果。</p>
-                  <p><strong>替代解释：</strong>连续睡眠不足和任务回报不清已经足以降低启动与持续注意。</p>
+                  <p><strong>候选解释：</strong>当核心任务缺少明确交付物与反馈时，更清楚、即时的活动容易替代它；解释和系统整理又会提前提供完成感。</p>
+                  <p><strong>替代解释：</strong>睡眠节奏不稳、若干任务本身回报低或已经取消，也足以让注意力转向别处。</p>
                   <p><strong>适用边界：</strong>这是基于多日日记的可修订 AI 推断，不是人格、心理或医疗结论。</p>
                 </div>
               </article>
               <article className="review-card static-review-card diagnosis" id="minimum-action">
                 <h3>最小行动建议</h3>
                 <div>
-                  <p><strong>行动：</strong>选一个真实内容问题，先写事实、暂时解释和推翻条件，再让 AI 只指出混淆点与一个可观察反例；随后录 60 秒口述或请一位目标对象复述。</p>
-                  <p><strong>最大范围：</strong>60 分钟，不新增资料、不重做系统。</p>
-                  <p><strong>可观察产物：</strong>原始三行、AI 反例、一次录制或复述记录，以及一句被结果修改或暂未修改的判断。</p>
-                  <p><strong>完成标准：</strong>四项记录齐全即完成，不以流量或当天收到回复为标准。</p>
+                  <p><strong>行动：</strong>按本人已写下的计划换到霸王茶姬，只带一个任务——围绕 loveholidays 案例完成“事实—解释—反例—复述”证明包，并录两版不超过 60 秒的口述。</p>
+                  <p><strong>最大范围：</strong>90 分钟，不新增资料、不重做系统。</p>
+                  <p><strong>可观察产物：</strong>三条原始事实、一个暂时解释、一个推翻条件、两段口述，以及一次本人间隔复述或真实听众复述记录。</p>
+                  <p><strong>完成标准：</strong>能够指出“哪条证据或反例改变了哪句话”；没有改变也要明确记录。</p>
                 </div>
               </article>
             </div>
@@ -519,16 +592,16 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>今天已有完整的 60 分钟判断实验，再增加课程会提高输入负担，因此不新增推荐。</p>
-                <p><strong>今天只练习：</strong>保存调用 AI 前后的两个版本，再完成一次 60 秒口述或目标对象复述。</p>
+                <p><strong>AI 建议：</strong>今天已有完整的 90 分钟“观点—证据—复述”路径，再增加课程会与现实验证竞争，因此不新增推荐。</p>
+                <p><strong>今天只练习：</strong>完成四行证明包和两版 60 秒口述，并记录哪一句被证据改变。</p>
                 <p><strong>适用边界：</strong>这不代表课程无用；只有现实实验暴露出明确方法缺口后，再按缺口选择资源。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 25 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-25.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 25 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 26 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-26.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 26 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
           <footer><p>先写出自己的判断，<br />再让真实数据决定下一步。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
@@ -537,4 +610,3 @@ export default function Home() {
     </main>
   );
 }
-
