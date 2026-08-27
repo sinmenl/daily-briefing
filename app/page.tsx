@@ -6,27 +6,37 @@ const briefDate = "2026-08-27";
 const tasks = [
   {
     number: "01",
-    title: "换到霸王茶姬，实际开始",
-    body: "昨天已经明确写下需要改变环境。到店后不打开信息流，只写 loveholidays 案例的三条事实、一个解释和一个推翻条件。",
-    first: "到店后先写四行证明包",
-    time: "10 分钟内开始",
+    title: "发出一条“学了很多却迟迟不行动”的视频 demo",
+    source: "AI 建议",
+    why: "近 7 天已经出现选题未写、断更和逃避拍摄的记录；期间还明确留下“发一条最简单 demo”的计划，但没有找到完成证据。今天是在恢复旧承诺，不是临时增加任务。",
+    question: "面对一个“学了很多，却迟迟没有开始行动”的人，第一条视频应该继续给方法，还是先讲清“继续学习可能正在替代行动”？",
+    steps: [
+      "先写三句：我现在的答案是……；我这样想，是因为我遇到过……；如果后面发现……，我就需要改口。",
+      "再让 AI 只检查：我有没有把不同问题混在一起；有没有一个反例会让我改变当前答案。",
+      "根据检查只改写一次，录成不超过 60 秒的一镜口述；只删明显口误后发布。",
+    ],
+    deliverable: "一条已发布的 60 秒内视频＋链接或截图＋一句“哪句话因为检查而改了”。",
+    done: "视频已对外发布并留下链接或截图；播放量不影响完成判定。",
+    first: "新建“学了很多却没行动-demo”文档，把三个填空句复制进去",
+    time: "最多 90 分钟",
     tone: "mint",
   },
   {
     number: "02",
-    title: "完成观点—证据—复述闭环",
-    body: "围绕“规则被系统化，非工程人员才能安全做实验”录两版 60 秒口述，并比较哪条证据或反例改变了表达。",
-    first: "先录第一版，不照着 AI 文案念",
-    time: "最多 90 分钟",
+    title: "一次性确认明天华图培训的安排",
+    source: "AI 建议",
+    why: "近 7 天记录显示培训已经改到 8 月 28 日下午，但没有找到准确时间、地点和携带材料的确认结果。今天只消除明天出门前的信息缺口，不扩展成长时间备课。",
+    question: "",
+    steps: [
+      "确认准确时间和地点。",
+      "确认证件、电脑、充电器、课件或其他指定材料。",
+      "写成不超过 5 项的明日清单，收好材料后停止准备。",
+    ],
+    deliverable: "一张包含时间、地点和携带材料的明日清单，以及已经收好的材料。",
+    done: "出发时间、到达地点和携带物品三项均已确认；不再继续扩展备课。",
+    first: "打开华图培训通知或对接人聊天窗口",
+    time: "最多 20 分钟",
     tone: "blue",
-  },
-  {
-    number: "03",
-    title: "只准备明天下午的培训",
-    body: "核对华图培训的时间、地点与需要携带的材料；除此之外不继续扩展准备。晚上给睡眠留下恢复窗口。",
-    first: "一次性确认时间、地点和材料",
-    time: "最多 15 分钟",
-    tone: "peach",
   },
 ];
 
@@ -350,8 +360,8 @@ export default function Home() {
             <div className="date-block"><div className="date-day">27</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期四</p></div></div>
             <div className="hero-copy">
               <p className="eyebrow">TODAY&apos;S DIRECTION</p>
-              <h1>换到可行动的环境，<br />留下观点被证据改变的轨迹。</h1>
-              <p className="judgment">今天不再解释为什么没做：去霸王茶姬完成一次 90 分钟“观点—证据—复述”闭环，再为明天下午培训做最低限度准备。</p>
+              <h1>先把拖了七天的内容，<br />变成一条真实发布。</h1>
+              <p className="judgment">今天只恢复两个未完成事项：发出最简单的视频 demo，并一次性确认明天下午培训的必要安排。</p>
             </div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
@@ -360,23 +370,26 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">THREE PRIORITIES</p><h2>今天只做三件事</h2></div><p>AI 建议：换环境、做一次现实验证、只准备明天确定发生的安排</p></div>
-            <div className="task-grid">{tasks.map((task, i) => <article className={"task-card " + task.tone} id={"task-" + (i + 1)} key={task.number}>
-              <span className="task-number">{task.number}</span><h3>{task.title}</h3><p>{task.body}</p>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITIES</p><h2>今天只做两件事</h2></div><p>AI 建议：优先恢复近 7 天明确逃避或尚未完成的事项</p></div>
+            <div className="task-grid task-grid--two">{tasks.map((task, i) => <article className={"task-card task-card--detailed " + task.tone} id={"task-" + (i + 1)} key={task.number}>
+              <div className="task-card-head"><span className="task-number">{task.number}</span><span className="task-source">{task.source}</span></div>
+              <h3>{task.title}</h3>
+              <p className="task-why"><strong>为什么是今天：</strong>{task.why}</p>
+              {task.question ? <p className="task-question"><strong>今天要回答的问题：</strong>{task.question}</p> : null}
+              <div className="task-detail"><strong>具体怎么做：</strong><ol>{task.steps.map((step) => <li key={step}>{step}</li>)}</ol></div>
+              <div className="task-result"><p><strong>交付物：</strong>{task.deliverable}</p><p><strong>完成标准：</strong>{task.done}</p></div>
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
             <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>让时间服务一个可检查结果</p></div>
             <section className="schedule" id="schedule">
-              <div><span>第一段｜到店即开始</span><p>去霸王茶姬，10 分钟内写下三条事实、一个解释和一个推翻条件。</p></div>
-              <div><span>第二段｜90 分钟</span><p>完成两版 60 秒口述和四行证明包，比较哪一句被证据或反例改变。</p></div>
-              <div><span>第三段｜15 分钟</span><p>核对明天下午华图培训的时间、地点和材料，确认后停止继续准备。</p></div>
+              <div><span>第一段｜最多 90 分钟</span><p>回答卡片中的具体问题，录制并发布一条不超过 60 秒的视频 demo。</p></div>
+              <div><span>第二段｜最多 20 分钟</span><p>确认明天下午华图培训的时间、地点和材料，写好清单后停止。</p></div>
             </section>
             <details className="brief-item" id="risk">
-              <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>三个需要主动截断的动作</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>两个需要主动截断的动作</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">
-                <p><strong>换环境却继续刷信息流：</strong>到店后的第一个动作只能是写四行证明包。</p>
-                <p><strong>把 AI 文案当成自己的理解：</strong>第一版口述不看 AI 文案，只允许使用自己确认过的事实。</p>
-                <p><strong>无限准备明天培训：</strong>只核对时间、地点和材料，15 分钟后停止。</p>
+                <p><strong>继续学习来代替发布：</strong>视频只回答卡片中已经给出的一个问题，不再另找选题或课程。</p>
+                <p><strong>无限准备明天培训：</strong>只核对时间、地点和材料，20 分钟后停止。</p>
               </div>
             </details>
             <div className="template-section" id="templates">
@@ -513,9 +526,9 @@ export default function Home() {
               <summary><div className="avatar">读</div><div><span className="planet-time">小报童 · {xiaobot.author} · {xiaobot.published}</span><strong>{xiaobot.title}</strong><span>阅读导引为 AI 建议，文章原文不在网页转载</span></div><span className="open-label">导引</span></summary>
               <div className="planet-content"><div className="original">
                 <span>AI 阅读导引</span>
-                <p>这篇文章把短视频的 0 到 1 拆成对标、逆向拆解、复刻和反馈，和今天的 90 分钟口述实验直接相关。它适合用来限制实验范围，而不是再增加一套长期学习计划。</p>
+                <p>这篇文章把短视频的 0 到 1 拆成对标、逆向拆解、复刻和反馈，和今天要发布的最简单视频 demo 直接相关。它适合用来限制范围，而不是再增加一套长期学习计划。</p>
                 <p><strong>阅读重点：</strong>只看作者如何从第一条有瑕疵的作品获得结果，再根据反馈修正；不要把流量案例直接当成普遍规律。</p>
-                <p><strong>阅读问题：</strong>今天的两版口述里，哪些结构来自已经验证的案例，哪些内容仍然只是自己的猜测？</p>
+                <p><strong>阅读问题：</strong>今天的视频 demo 哪一部分已经有真实经历支撑，哪一部分仍然只是自己的猜测？</p>
                 <p><strong>适用边界：</strong>这是 AI 阅读导引，不代表用户已阅读、认同或实践文章观点；文中结果来自单个案例，也不能证明照做必然获得相同流量。</p>
                 <SourceLink href={xiaobot.source} label="小报童原文" />
               </div></div>
@@ -529,17 +542,17 @@ export default function Home() {
                 <summary>昨日复盘</summary>
                 <div>
                   <p><strong>资料状态：</strong>已读取 8 月 20 日至 26 日全部七份本地日记，没有缺失日期，也没有读取今日日记。</p>
-                  <p><strong>可确认事实：</strong>昨天没有留下可验证输出；本人明确写下需要改变环境，并计划今天去霸王茶姬。华图培训已改到明天下午，原定 Trae 活动取消。</p>
+                  <p><strong>可确认事实：</strong>昨天没有留下可验证的核心输出；华图培训已改到明天下午，原定 Trae 活动取消。</p>
                   <p><strong>边界：</strong>昨天的低产出同时发生在睡眠节奏未恢复、任务价值感不足和部分外部安排变化的背景中，不能用单一动机解释。</p>
-                  <p className="advice"><strong>AI 建议：</strong>今天把“换环境”落实为实际开始，并只完成一次有停止条件的现实验证。</p>
+                  <p className="advice"><strong>AI 建议：</strong>今天优先恢复近七天已明确承诺、但尚未完成的视频 demo，并只做明天培训的必要确认。</p>
                 </div>
               </details>
               <article className="review-card static-review-card" id="seven-day-trend">
                 <h3>近七天趋势</h3>
                 <div className="trend-list">
                   <div><strong>资料范围</strong><p>2026 年 8 月 20 日至 26 日，七份记录齐全；不包含今日日记。</p></div>
-                  <div><strong>重复模式</strong><p>连续多日出现输入、工具、娱乐或解释增加，但缺少可由外界评价的结果；本人也反复区分“理解”与“改变”。</p></div>
-                  <div><strong>反例</strong><p>期间完成过面试、用户访谈课程、真实用户调研与备课；问题不是完全没有行动，而是核心创作任务较少进入可验证反馈。</p></div>
+                  <div><strong>重复模式</strong><p>连续多日增加了输入、工具、娱乐或解释，但原本明确要发布的最简单视频 demo 仍没有完成证据。</p></div>
+                  <div><strong>反例</strong><p>期间完成过备课稿、用户访谈课程和真实用户调研；问题不是完全没有行动，而是内容发布还没有进入外部反馈。</p></div>
                   <div><strong>边界</strong><p>睡眠不足、任务模糊和现实回报不清都可能降低启动，不应只归因为意志力或逃避。</p></div>
                 </div>
               </article>
@@ -547,7 +560,7 @@ export default function Home() {
                 <h3>AI 认知观察</h3>
                 <div>
                   <p><strong>证据等级：</strong>重复模式。</p>
-                  <p><strong>候选解释：</strong>当核心任务缺少明确交付物与反馈时，更清楚、即时的活动容易替代它；解释和系统整理又会提前提供完成感。</p>
+                  <p><strong>候选解释：</strong>内容任务没有明确的观众问题和最小发布标准时，容易被目标更清楚、反馈更即时的活动替代。</p>
                   <p><strong>替代解释：</strong>睡眠节奏不稳、若干任务本身回报低或已经取消，也足以让注意力转向别处。</p>
                   <p><strong>适用边界：</strong>这是基于多日日记的可修订 AI 推断，不是人格、心理或医疗结论。</p>
                 </div>
@@ -555,10 +568,10 @@ export default function Home() {
               <article className="review-card static-review-card diagnosis" id="minimum-action">
                 <h3>最小行动建议</h3>
                 <div>
-                  <p><strong>行动：</strong>按本人已写下的计划换到霸王茶姬，只带一个任务——围绕 loveholidays 案例完成“事实—解释—反例—复述”证明包，并录两版不超过 60 秒的口述。</p>
-                  <p><strong>最大范围：</strong>90 分钟，不新增资料、不重做系统。</p>
-                  <p><strong>可观察产物：</strong>三条原始事实、一个暂时解释、一个推翻条件、两段口述，以及一次本人间隔复述或真实听众复述记录。</p>
-                  <p><strong>完成标准：</strong>能够指出“哪条证据或反例改变了哪句话”；没有改变也要明确记录。</p>
+                  <p><strong>行动：</strong>新建视频 demo 文档，先写完卡片中的三个填空句。</p>
+                  <p><strong>最大范围：</strong>10 分钟；先不继续搜索资料，也不要求句子完整或正确。</p>
+                  <p><strong>可观察产物：</strong>一份不是 AI 代写的三句原始判断。</p>
+                  <p><strong>完成标准：</strong>三个填空句都有内容。</p>
                 </div>
               </article>
             </div>
@@ -592,8 +605,8 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>今天已有完整的 90 分钟“观点—证据—复述”路径，再增加课程会与现实验证竞争，因此不新增推荐。</p>
-                <p><strong>今天只练习：</strong>完成四行证明包和两版 60 秒口述，并记录哪一句被证据改变。</p>
+                <p><strong>AI 建议：</strong>近七天已经出现继续输入、但原定视频 demo 尚未发布的记录；再增加课程会继续推迟外部反馈，因此今天不新增推荐。</p>
+                <p><strong>今天只练习：</strong>围绕卡片中已经给出的具体问题，先写三句原始判断，再录制并发布一条不超过 60 秒的视频 demo。</p>
                 <p><strong>适用边界：</strong>这不代表课程无用；只有现实实验暴露出明确方法缺口后，再按缺口选择资源。</p>
               </div>
             </article>}
@@ -604,7 +617,7 @@ export default function Home() {
             <a className="hotlist" href="/daily-briefing/hotlist/2026-08-26.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 26 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>先写出自己的判断，<br />再让真实数据决定下一步。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>先完成一条真实发布，<br />再用外部反馈决定下一步。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
