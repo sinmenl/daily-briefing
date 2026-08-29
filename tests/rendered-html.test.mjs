@@ -50,7 +50,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="signal-radar"/);
   assert.match(html, /<span class="pill">(?:社区日|人物日)<\/span><strong>信息源实验雷达<\/strong>/);
   assert.match(html, /id="planet-status"/);
-  assert.match(html, /id="xiaobaotong-1"/);
+  const xiaobotLinks = renderedMain.match(/href="#xiaobaotong-\d+"/g) ?? [];
+  const xiaobotCards = renderedMain.match(/id="xiaobaotong-\d+"/g) ?? [];
+  assert.equal(xiaobotLinks.length, xiaobotCards.length);
   assert.match(html, /id="hotlist"/);
   assert.match(html, /查看 2026 年 \d+ 月 \d+ 日完整榜单/);
   assert.match(html, /id="cognitive-observation"/);
@@ -101,8 +103,6 @@ test("renders the daily briefing", async () => {
   assert.match(html, /我目前认为问题是 X。/);
   assert.match(html, /不要替我得结论。检查我的判断，找漏洞、反例和遗漏。/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
-  assert.match(html, /小报童/);
-  assert.match(html, /id="xiaobaotong-1"/);
   assert.doesNotMatch(html, /id="deep-read-4"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="early-action"/);
