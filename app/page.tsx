@@ -1,39 +1,31 @@
 import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 
-const briefDate = "2026-08-29";
+const briefDate = "2026-08-30";
 
 const tasks = [
   {
     number: "01",
-    title: "参加已计划的兼职面试，并带回一张条件表",
-    source: "用户计划",
-    why: "昨天已经完成一次培训并拿到真实的工时、收入和发薪规则，今天又有一场已明确计划的面试。两次都用同一组条件记录，才能比较真实选项，而不是继续在脑中猜。",
-    question: "这份兼职在实际工时、到手收入、发薪时间、请假规则和工作自由度上，是否比华图更适合当前需要？",
-    steps: [
-      "确认时间地点并到场。",
-      "问清实际工时、到手收入、发薪时间、请假规则和工作自由度。",
-      "离场后立刻与昨天的选项并排记录；不知道的项目写“未确认”。",
-    ],
-    deliverable: "一张两列比较表。",
-    done: "五项条件全部填写，未知项明确标记。",
-    first: "打开面试通知，确认出发时间和地点",
-    time: "面试本身＋15 分钟记录",
+    title: "把三组选项整理成一张兼职比较表",
+    source: "AI 建议",
+    why: "最近两天已经完成一次培训和两次面试，现实信息已经足够开始比较。今天不继续扩大搜索范围，先回答现有选项能否兼顾基本收入与自媒体时间。",
+    question: "三组选项在实际工时、到手收入、发薪时间、请假规则和工作自由度上，哪一个更接近当前需要？",
+    steps: ["为三组选项各建一列。", "填写实际工时、到手收入、发薪时间、请假规则和工作自由度；记不清的地方写“未确认”。", "圈出仍会改变选择的一项缺失信息。"],
+    deliverable: "一张三列五行的比较表。",
+    done: "15 个格子都有真实记录或“未确认”，并圈出一个最关键缺口。",
+    first: "新建一张表，先写三列选项名称",
+    time: "最多 30 分钟",
     tone: "mint",
   },
   {
     number: "02",
-    title: "为第四条视频留下第一份反馈记录",
+    title: "为第四条视频补上第一份反馈记录",
     source: "AI 建议",
-    why: "第四条视频已经发布，今天不重复安排“再发一条”。当前更缺的是确认观众是否理解、是否出现反例，以及哪些判断还没有被反馈触及。",
-    question: "现有真实反馈支持、反驳，还是尚未触及“学习工具可能替代原本行动”这个判断？",
-    steps: [
-      "截图当前数据。",
-      "记录至多五条真实评论、私信或口头反馈；没有反馈就明确写“暂无”。",
-      "写一句这些证据支持、反驳或尚未触及哪个判断。",
-    ],
-    deliverable: "一页反馈记录。",
-    done: "至少一张数据截图和一句证据判断。",
+    why: "第四条视频已经发布三天，但近期记录里仍没有发布后的反馈证据。先记录真实反应，才知道下一条该改什么。",
+    question: "现有证据支持、反驳，还是尚未触及第四条视频的核心表达？",
+    steps: ["截图当前数据。", "记录至多五条真实评论、私信或口头反馈；没有反馈就明确写“暂无”。", "写一句这些证据支持、反驳或尚未触及哪一条表达。"],
+    deliverable: "一页第四条视频反馈记录。",
+    done: "一张数据截图和一句证据判断。",
     first: "打开第四条视频的数据页并截图",
     time: "最多 30 分钟",
     tone: "blue",
@@ -42,21 +34,26 @@ const tasks = [
 
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
-const weather = { location: "南宁", condition: "阵雨转多云", temperature: "25–32℃", icon: "🌦️" };
+const weather = { location: "南宁", condition: "多云", temperature: "25–35℃", icon: "⛅" };
 
-const planetPosts: Array<{ index: string; author: string; published: string; title: string; body: string; images: string[] }> = [];
+const planetPosts = [
+  { index: "1", author: "大胡子", published: "2026-08-28 23:52", title: "如果你只想着流量，算法一变，你什么都没有", body: `这件事我说过无数遍，
+如果你只想着流量，那平台算法一变，你什么都没有。别管你多少流量，多少粉丝，都一样。因为那就是平台给你发的‘奖励’。
+
+而算法，一定会变。
+
+但，往往只有你遇到了，
+你才会真的听进去。`, images: ["/daily-briefing/knowledge/2026-08-29/images/[1] 大胡子 -1.jpg"] },
+  { index: "2", author: "大胡子", published: "2026-08-29 19:46", title: "真正的需求", body: `看了一天小报童的评论。
+居然发现：虽然小报童是和大家分享怎么做短视频的。
+但大家真正的需求并不是来‘学拍视频’的，是转型期普通人在找‘从0到闭环’的路——真正的卡点其实是在定位与变现两端，而非短视频拍摄的方法。（参见附图，没有一条是关于短视频拍摄的）
+
+需求来自用户的反馈，而不是你所谓的‘精准定位’。`, images: ["/daily-briefing/knowledge/2026-08-29/images/[2] 大胡子 -1.png"] },
+];
 
 const deepReadAtoms = [
-  {
-    atom: "初稿速度不等于可接受交付（暂定）",
-    relation: "今天的面试比较同样需要同口径条件与未知项标记，不能把一次到场自动等同于职业决策完成。",
-    question: "哪些步骤真正改变最终可靠性，哪些只是让初稿更快？",
-  },
-  {
-    atom: "先写状态、边界与停止条件，再授权执行（暂定）",
-    relation: "反馈记录应区分有数据、无反馈和无法确认；缺失信息必须停在未知，而不是补成解释。",
-    question: "第四条视频的反馈里，什么证据出现时才允许修改原判断？",
-  },
+  { atom: "上游合同变化会暴露工作流可迁移性缺口", relation: "今天的兼职比较表和视频反馈记录都在把隐性的判断变成可携带证据，不让关键状态只存在于某个平台或脑中。", question: "如果当前常用的一项 AI 服务明天停止，哪一份上下文、规则或反馈最难迁走？" },
+  { atom: "过程证据比成品检测更适合说明人机协作边界（暂定）", relation: "第四条视频的反馈记录正是过程证据的一部分；它记录发布后发生了什么，而不是只看最终数据猜测原因。", question: "对第四条视频，哪一项过程证据现在缺失，导致你无法解释它的结果？" },
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -230,7 +227,7 @@ export default function Home() {
           <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
           <details className="date-picker">
             <summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary>
-            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-29" aria-current="page">2026年8月29日</a></nav>
+            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-30" aria-current="page">2026年8月30日</a></nav>
           </details>
           <div className="status"><span className="status-dot" />每天自动更新</div>
         </div>
@@ -254,7 +251,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#planet-status">昨日原始归档</a></div>
+              <div className="nav-sub">{planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.title}</a>)}</div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary>
@@ -270,7 +267,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 28 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 29 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -278,12 +275,8 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">29</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期六</p></div></div>
-            <div className="hero-copy">
-              <p className="eyebrow">TODAY&apos;S DIRECTION</p>
-              <h1>先把职业选项变成数据，<br />再让一次发布得到反馈。</h1>
-              <p className="judgment">今天只完成一场现实比较和一份发布后反馈记录；不知道的内容停在“未确认”，不靠继续想象补齐。</p>
-            </div>
+            <div className="date-block"><div className="date-day">30</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期日</p></div></div>
+            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先把已经发生的选择与发布，<br />变成可以继续使用的证据。</h1><p className="judgment">今天不再扩大搜索或增加课程，只完成一张兼职比较表和一份视频反馈记录。</p></div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
               <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
@@ -291,7 +284,7 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITIES</p><h2>今天只做两件事</h2></div><p>一次现实比较，一次发布后反馈</p></div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITIES</p><h2>今天只做两件事</h2></div><p>一次比较，一次反馈收尾</p></div>
             <div className="task-grid task-grid--two">{tasks.map((task, i) => <article className={"task-card task-card--detailed " + task.tone} id={"task-" + (i + 1)} key={task.number}>
               <div className="task-card-head"><span className="task-number">{task.number}</span><span className="task-source">{task.source}</span></div>
               <h3>{task.title}</h3>
@@ -302,15 +295,8 @@ export default function Home() {
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
             <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>让时间服务一个可检查结果</p></div>
-            <section className="schedule" id="schedule">
-              <div><span>面试前</span><p>只确认出发信息并恢复精力，不新增学习任务。</p></div>
-              <div><span>面试时与离场后 15 分钟</span><p>用五个固定问题收集条件，随后完成两列比较表。</p></div>
-              <div><span>晚上｜最多 30 分钟</span><p>记录第四条视频已有反馈，之后停止加任务。</p></div>
-            </section>
-            <details className="brief-item" id="risk">
-              <summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>不给晚睡后的今天继续加码</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary>
-              <div className="brief-content"><p><strong>睡眠与出行：</strong>优先保证安全出行；不在面试前塞入课程或新工具。</p><p><strong>把未知补成解释：</strong>面试条件与视频反馈缺失时写“未确认”或“暂无”，不让 AI 补造。</p></div>
-            </details>
+            <section className="schedule" id="schedule"><div><span>恢复后｜30 分钟</span><p>完成三组选项比较表，不浏览新职位。</p></div><div><span>下午或傍晚｜30 分钟</span><p>完成第四条视频反馈记录。</p></div><div><span>晚上</span><p>只根据比较表补问一个必要条件；不再扩大搜索或新增课程。</p></div></section>
+            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>晚睡后的今天不继续加码</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>家庭询问或现金流焦虑出现时，先回到已经发生的三组选项，不用扩大搜索来替代决定。</p><p>反馈缺失时写“暂无”，条件记不清时写“未确认”，不让 AI 补造。</p></div></details>
             <div className="template-section" id="templates">
               <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div></div>
               <div className="brief-list template-list">
@@ -427,37 +413,14 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 75 分钟“完成合同”对照实验</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 70 分钟“模型断供演练”</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
-          <section className="section" id="planet">
-            <div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日精确归档尚未生成</p></div>
-            <article className="review-card static-review-card" id="planet-status">
-              <h3>昨日知识星球归档尚未生成</h3>
-              <div><p>预期文件为 2026 年 8 月 28 日归档。今天没有使用更早日期代替，也没有运行或修改采集器。</p><p>小报童没有与今天面试比较或视频反馈直接相关的候选，因此不为填充栏目而新增。</p></div>
-            </article>
-          </section>
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-08-29/26-08-29姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 8 月 29 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div></section>
 
-          <section className="section" id="review">
-            <div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>私有日记只用于证据审计，公开页面已去标识化</p></div>
-            <div className="review-grid">
-              <details className="review-card" id="yesterday-review" open>
-                <summary>昨日复盘</summary>
-                <div><p>昨天完成了一次现实培训，并把原先模糊的“值不值得”变成可比较的工时、收入、发薪节奏和请假规则。这个结果没有直接替用户做职业决定，但它把判断从想象推进到了真实数据。</p><p className="advice"><strong>AI 建议：</strong>今天继续用同口径问题比较另一场面试，不重复做已完成的培训。</p></div>
-              </details>
-              <article className="review-card static-review-card" id="seven-day-trend">
-                <h3>近七天趋势</h3><div className="trend-list"><div><strong>资料范围</strong><p>2026 年 8 月 22 日至 28 日，七份记录齐全；不包含今日日记。</p></div><div><strong>重复信号</strong><p>抽象任务或反馈不足时更容易延后，外部约定与具体交付物更容易促成行动。</p></div><div><strong>反例</strong><p>已完成真实访谈、视频发布和现场培训，说明行动并非持续停滞。</p></div><div><strong>当前缺口</strong><p>把现场数据变成同口径比较，并把已发布内容带入真实反馈。</p></div></div>
-              </article>
-              <article className="review-card static-review-card diagnosis" id="cognitive-observation">
-                <h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>值得观察。</p><p><strong>观察：</strong>当模糊选项被改写成一次到场、几项可记录条件和一个后续比较时，现实行动更容易发生。</p><p><strong>候选解释：</strong>明确外部场景和记录表降低了启动与判断成本。</p><p><strong>替代解释：</strong>睡眠、路程、报酬和现场约束同样会显著影响行动，不能只归因于任务写法。</p></div>
-              </article>
-              <article className="review-card static-review-card diagnosis" id="minimum-action">
-                <h3>最小行动建议</h3><div><p><strong>行动：</strong>面试结束后，用同一组五项条件填写比较表。</p><p><strong>最大范围：</strong>15 分钟；未知项不继续搜索，直接标记“未确认”。</p><p><strong>可观察产物：</strong>一张华图与新兼职的两列条件表。</p><p><strong>完成标准：</strong>五项条件都有真实记录或“未确认”标记。</p></div>
-              </article>
-            </div>
-          </section>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>昨天完成了两次兼职面试，把“要不要找工作”继续推进成真实经历；同时也开始把长期自媒体方向说得更具体：阅读、实践、分享，再用 AI 辅助迭代。当前缺的不是更多可能性，而是把已有兼职信息整理成同口径比较，并让已发布内容产生一份可用于下一轮的反馈记录。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>近七天先后出现了真实用户访谈、面试、视频发布、现场培训和两次新面试，说明现实行动并没有持续停滞。更稳定的缺口在“收尾”：访谈后缺少外部可检查产物，面试后缺少比较表，视频发布后缺少反馈记录。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>值得观察。</p><p><strong>观察：</strong>明确的外部约定能帮助行动发生，但行动后的整理、比较和反馈记录仍容易缺失。</p><p><strong>候选解释：</strong>外部场景降低了启动成本，而收尾需要单独、明确的交付物。</p><p><strong>替代解释：</strong>睡眠、路程、现金流压力与家庭询问也会改变当天注意力，不能把所有未整理都解释为同一种行为模式。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p><strong>行动：</strong>先建一张三列五行的兼职比较表。</p><p><strong>最大范围：</strong>30 分钟，只填真实信息或“未确认”。</p><p><strong>可观察产物：</strong>一张三列五行比较表。</p><p><strong>完成标准：</strong>15 个格子都有记录，并圈出一个关键缺口。</p></div></article></div></section>
 
           <section className="section" id="deep-reads">
             <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
@@ -465,7 +428,7 @@ export default function Home() {
               <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main"><strong>{cleanTitle(item.title)}</strong><span>点击展开核心观点、值得学习的部分、如何应用与适用边界</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(item.body, "deep-" + i)}
                 <div className="advice">
-                  <p><strong>知识原子（暂定）：</strong>{deepReadAtoms[i]?.atom}</p>
+                  <p><strong>知识原子：</strong>{deepReadAtoms[i]?.atom}</p>
                   <p><strong>与今天的关系（AI 分析）：</strong>{deepReadAtoms[i]?.relation}</p>
                   <p><strong>阅读问题：</strong>{deepReadAtoms[i]?.question}</p>
                 </div>
@@ -487,19 +450,19 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>今天已有一场现实面试和一项发布后反馈记录；没有找到比直接实践更相关、且以教学为主的资源，因此不为填满栏目而推荐。</p>
-                <p><strong>今天只练习：</strong>面试时记录实际工时、到手收入、发薪时间、请假规则和工作自由度；离场后 15 分钟内填完比较表。</p>
+                <p><strong>AI 建议：</strong>今天已有两项各 30 分钟的现实任务；没有发现必须先学习、且比直接实践更有价值的资源，因此不为填满栏目而推荐。</p>
+                <p><strong>今天只练习：</strong>打开第四条视频的数据页并截图；记录至多五条真实反馈，最后写一句证据判断。</p>
                 <p><strong>适用边界：</strong>这不代表课程无用；只有现实实验暴露出明确方法缺口后，再按缺口选择资源。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 28 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-28.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 28 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 29 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-29.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 29 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>先把职业选项变成数据，<br />再让一次发布得到反馈。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>把已经发生的选择与发布，<br />变成可以继续使用的证据。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>

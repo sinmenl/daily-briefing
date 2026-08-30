@@ -49,7 +49,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="signal-radar"/);
   assert.match(html, /<span class="pill">(?:社区日|人物日)<\/span><strong>信息源实验雷达<\/strong>/);
-  assert.match(html, /id="planet-status"/);
+  assert.match(html, /id="(?:planet-status|planet-1)"/);
   const xiaobotLinks = renderedMain.match(/href="#xiaobaotong-\d+"/g) ?? [];
   const xiaobotCards = renderedMain.match(/id="xiaobaotong-\d+"/g) ?? [];
   assert.equal(xiaobotLinks.length, xiaobotCards.length);
@@ -157,7 +157,7 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="story-1"/);
   assert.match(latest.mainHtml, /id="signal-radar"/);
   assert.doesNotMatch(latest.mainHtml, /id="story-6"/);
-  assert.match(latest.mainHtml, /id="planet-status"/);
+  assert.match(latest.mainHtml, /id="(?:planet-status|planet-1)"/);
   assert.doesNotMatch(latest.mainHtml, /点击展开云端早报完整原文/);
   assert.doesNotMatch(latest.mainHtml, /归档区间：/);
   assert.match(latest.mainHtml, /<article class="review-card static-review-card" id="seven-day-trend">/);
