@@ -463,6 +463,7 @@ main { min-height: 100vh; }
 
 .task-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .task-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.task-grid--one { grid-template-columns: minmax(0, 1fr); }
 .task-card { position: relative; min-height: 330px; padding: 28px; border-radius: 28px; overflow: hidden; }
 .task-card.mint { background: var(--mint); }
 .task-card.blue { background: var(--blue); }

@@ -1,59 +1,57 @@
 import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 
-const briefDate = "2026-08-30";
+const briefDate = "2026-08-31";
 
 const tasks = [
   {
     number: "01",
-    title: "把三组选项整理成一张兼职比较表",
+    title: "写出第 5 条视频的一页口播草稿",
     source: "AI 建议",
-    why: "最近两天已经完成一次培训和两次面试，现实信息已经足够开始比较。今天不继续扩大搜索范围，先回答现有选项能否兼顾基本收入与自媒体时间。",
-    question: "三组选项在实际工时、到手收入、发薪时间、请假规则和工作自由度上，哪一个更接近当前需要？",
-    steps: ["为三组选项各建一列。", "填写实际工时、到手收入、发薪时间、请假规则和工作自由度；记不清的地方写“未确认”。", "圈出仍会改变选择的一项缺失信息。"],
-    deliverable: "一张三列五行的比较表。",
-    done: "15 个格子都有真实记录或“未确认”，并圈出一个最关键缺口。",
-    first: "新建一张表，先写三列选项名称",
-    time: "最多 30 分钟",
+    why: "第 4 条视频已经发布；8 月 30 日也已经写下‘工具测评不能停留在功能体验，要进入一个真实任务’。对象和核心判断都已存在，今天不需要再选题或补课。",
+    question: "一款看起来有用的 AI 工具，为什么必须放进真实任务里测试，才能判断它是否真的有价值？",
+    steps: ["打开 10.短视频诊断/00-模版.md，新建第 5 条草稿。", "用本人语言写三段：功能看起来有什么用；放进哪个真实任务；实际结果改变了什么判断。", "只让 AI 检查有没有把‘功能存在’误写成‘任务有效’，以及有没有缺少反例；本人决定是否修改。"],
+    deliverable: "一份以 05- 开头的 Markdown 口播草稿。",
+    done: "文件包含一个真实任务、一次可观察结果和一句可能被结果推翻的判断；保存后停止扩写。",
+    first: "离开短视频应用，打开 10.短视频诊断/00-模版.md",
+    time: "最多 45 分钟",
     tone: "mint",
-  },
-  {
-    number: "02",
-    title: "为第四条视频补上第一份反馈记录",
-    source: "AI 建议",
-    why: "第四条视频已经发布三天，但近期记录里仍没有发布后的反馈证据。先记录真实反应，才知道下一条该改什么。",
-    question: "现有证据支持、反驳，还是尚未触及第四条视频的核心表达？",
-    steps: ["截图当前数据。", "记录至多五条真实评论、私信或口头反馈；没有反馈就明确写“暂无”。", "写一句这些证据支持、反驳或尚未触及哪一条表达。"],
-    deliverable: "一页第四条视频反馈记录。",
-    done: "一张数据截图和一句证据判断。",
-    first: "打开第四条视频的数据页并截图",
-    time: "最多 30 分钟",
-    tone: "blue",
   },
 ];
 
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
-const weather = { location: "南宁", condition: "多云", temperature: "25–35℃", icon: "⛅" };
+const weather = { location: "南宁", condition: "中雨转阵雨", temperature: "24–32℃", icon: "🌧️" };
 
 const planetPosts = [
-  { index: "1", author: "大胡子", published: "2026-08-28 23:52", title: "如果你只想着流量，算法一变，你什么都没有", body: `这件事我说过无数遍，
-如果你只想着流量，那平台算法一变，你什么都没有。别管你多少流量，多少粉丝，都一样。因为那就是平台给你发的‘奖励’。
+  { index: "1", author: "大胡子", published: "2026-08-30 09:29", title: "极简模式：Omarchy + Pi + Obsidian", body: `极简模式
+Omarchy + Pi + Obsidian
 
-而算法，一定会变。
+zen`, images: ["/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -1.jpg", "/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -2.jpg", "/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -3.jpg", "/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -4.jpg"] },
+  { index: "2", author: "大胡子", published: "2026-08-30 23:12", title: "工作端用 GitHub，移动端用 iCloud", body: `给你们一个好东西.
 
-但，往往只有你遇到了，
-你才会真的听进去。`, images: ["/daily-briefing/knowledge/2026-08-29/images/[1] 大胡子 -1.jpg"] },
-  { index: "2", author: "大胡子", published: "2026-08-29 19:46", title: "真正的需求", body: `看了一天小报童的评论。
-居然发现：虽然小报童是和大家分享怎么做短视频的。
-但大家真正的需求并不是来‘学拍视频’的，是转型期普通人在找‘从0到闭环’的路——真正的卡点其实是在定位与变现两端，而非短视频拍摄的方法。（参见附图，没有一条是关于短视频拍摄的）
+你的知识库怎么备份并保持同步呢?Github。
+你可以通过多台机器用同一个 GitHub 进行知识库的连接。
+在 GitHub 上建立一个私有仓库，就搞定了。
 
-需求来自用户的反馈，而不是你所谓的‘精准定位’。`, images: ["/daily-briefing/knowledge/2026-08-29/images/[2] 大胡子 -1.png"] },
+重点是这个，如何在移动终端上去访问你的知识库呢？
+如果你的知识库太大的话，在终端很快就会崩溃。
+那我的方法呢，就是在组的分支上建立一个mobile分支。它的缺点就是，如果你更新过于频繁的话，一个月只有12美金的额度，很快就会超支，一个月总有那么几天你是不方便的。
+但，
+
+这个时候你就可以让你的 AI，将只读的部分提取出来，然后交给 iCloud，因为只有文本，所以消耗并不大.然后用你的本地的 Obsidian 打开这个 iCloud 就好了.
+这样你既不用花1分钱，同时还可以享受 iCloud 稳定的服务.
+比如我,四台机器使用同一个知识库.非常的丝滑.
+
+不是单纯的Github，也不是单纯的iCloud。是Github+iCloud。
+工作端用Github（因为它可以和其它项目建立工作流）；移动端用iCloud（瘦身阅读）。
+
+如果你看不懂,把它把这段话扔给你的AI Agent。他知道该怎么做。`, images: ["/daily-briefing/knowledge/2026-08-30/images/[2] 大胡子 -1.png", "/daily-briefing/knowledge/2026-08-30/images/[2] 大胡子 -2.jpg", "/daily-briefing/knowledge/2026-08-30/images/[2] 大胡子 -3.jpg"] },
 ];
 
 const deepReadAtoms = [
-  { atom: "上游合同变化会暴露工作流可迁移性缺口", relation: "今天的兼职比较表和视频反馈记录都在把隐性的判断变成可携带证据，不让关键状态只存在于某个平台或脑中。", question: "如果当前常用的一项 AI 服务明天停止，哪一份上下文、规则或反馈最难迁走？" },
-  { atom: "过程证据比成品检测更适合说明人机协作边界（暂定）", relation: "第四条视频的反馈记录正是过程证据的一部分；它记录发布后发生了什么，而不是只看最终数据猜测原因。", question: "对第四条视频，哪一项过程证据现在缺失，导致你无法解释它的结果？" },
+  { atom: "上下文分层加载让检索路径可观察", relation: "第 5 条草稿不需要继续扩张资料，只围绕一个真实任务保留‘功能—任务—结果’三层上下文；缺什么再补什么。", question: "如果只给一个 Agent 最小上下文包，哪些内容必须先提供，哪些应等任务真正需要时才展开？" },
+  { atom: "混合创作治理应按人和 AI 的角色分类", relation: "草稿应明确本人提供的真实任务、观察结果与判断，AI 只承担检查或整理，让‘谁做了什么’可以被说明。", question: "一条 AI 工具测评里，哪些材料和判断必须由本人产生，哪些环节可以交给 AI 而不损失可信度？" },
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -196,7 +194,8 @@ function cleanTitle(title: string) {
 const cloudSections = buildSectionMap(cloudBriefMarkdownToday);
 const coreJudgment = cloudSections.get("今日核心判断") ?? "";
 const emphasizedCoreJudgment = coreJudgment;
-const creatorUpdates = splitSubsections(cloudSections.get("指定博主动态") ?? "");
+const creatorUpdatesRaw = cloudSections.get("指定博主动态") ?? "";
+const creatorUpdates = splitSubsections(creatorUpdatesRaw);
 const industryStories = splitSubsections(cloudSections.get("行业重要新闻") ?? "");
 const productObservations = splitSubsections(cloudSections.get("产品观察") ?? "");
 const deepReads = splitSubsections(cloudSections.get("深读推荐") ?? "");
@@ -227,7 +226,7 @@ export default function Home() {
           <button className="menu-button" type="button" aria-label="打开阅读目录" aria-controls="content-menu" aria-expanded="false" data-menu-button><span /><span /><span /></button>
           <details className="date-picker">
             <summary aria-label="选择简报日期"><span className="calendar-symbol" aria-hidden="true">▦</span><span>{briefDate.replaceAll("-", ".")}</span><span className="chevron">⌄</span></summary>
-            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-30" aria-current="page">2026年8月30日</a></nav>
+            <nav className="date-list" data-archive-list="true" aria-label="选择过往简报日期"><a href="?date=2026-08-31" aria-current="page">2026年8月31日</a></nav>
           </details>
           <div className="status"><span className="status-dot" />每天自动更新</div>
         </div>
@@ -247,7 +246,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{creatorUpdates.map((item, i) => <a href={"#creator-" + (i + 1)} key={item.title}>{cleanTitle(item.title)}</a>)}{industryStories.map((item, i) => <a href={"#story-" + (i + 1)} key={item.title}>{i + 1}. {cleanTitle(item.title)}</a>)}{productObservations.map((item, i) => <a href={i === 0 ? "#product-observation" : "#product-observation-" + (i + 1)} key={item.title}>{item.title}</a>)}{signalRadar ? <a href="#signal-radar">信息源实验雷达</a> : null}<a href="#early-action">今日行动建议</a></div>
+              <div className="nav-sub">{creatorUpdates.length ? creatorUpdates.map((item, i) => <a href={"#creator-" + (i + 1)} key={item.title}>{cleanTitle(item.title)}</a>) : creatorUpdatesRaw ? <a href="#creator-updates">指定博主动态</a> : null}{industryStories.map((item, i) => <a href={"#story-" + (i + 1)} key={item.title}>{i + 1}. {cleanTitle(item.title)}</a>)}{productObservations.map((item, i) => <a href={i === 0 ? "#product-observation" : "#product-observation-" + (i + 1)} key={item.title}>{item.title}</a>)}{signalRadar ? <a href="#signal-radar">信息源实验雷达</a> : null}<a href="#early-action">今日行动建议</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary>
@@ -267,7 +266,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 29 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 30 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -275,8 +274,8 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">30</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期日</p></div></div>
-            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先把已经发生的选择与发布，<br />变成可以继续使用的证据。</h1><p className="judgment">今天不再扩大搜索或增加课程，只完成一张兼职比较表和一份视频反馈记录。</p></div>
+            <div className="date-block"><div className="date-day">31</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期一</p></div></div>
+            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先把已有判断写成草稿，<br />再让真实任务检验工具。</h1><p className="judgment">今天只写第 5 条视频的一页草稿，不新增课程，也不扩张知识库。</p></div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
               <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
@@ -284,8 +283,8 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITIES</p><h2>今天只做两件事</h2></div><p>一次比较，一次反馈收尾</p></div>
-            <div className="task-grid task-grid--two">{tasks.map((task, i) => <article className={"task-card task-card--detailed " + task.tone} id={"task-" + (i + 1)} key={task.number}>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITY</p><h2>今天只做一件事</h2></div><p>先恢复，再完成一页草稿</p></div>
+            <div className="task-grid task-grid--one">{tasks.map((task, i) => <article className={"task-card task-card--detailed " + task.tone} id={"task-" + (i + 1)} key={task.number}>
               <div className="task-card-head"><span className="task-number">{task.number}</span><span className="task-source">{task.source}</span></div>
               <h3>{task.title}</h3>
               <p className="task-why"><strong>为什么是今天：</strong>{task.why}</p>
@@ -295,8 +294,8 @@ export default function Home() {
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
             <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>让时间服务一个可检查结果</p></div>
-            <section className="schedule" id="schedule"><div><span>恢复后｜30 分钟</span><p>完成三组选项比较表，不浏览新职位。</p></div><div><span>下午或傍晚｜30 分钟</span><p>完成第四条视频反馈记录。</p></div><div><span>晚上</span><p>只根据比较表补问一个必要条件；不再扩大搜索或新增课程。</p></div></section>
-            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>晚睡后的今天不继续加码</strong><span>只识别，不新增任务</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>家庭询问或现金流焦虑出现时，先回到已经发生的三组选项，不用扩大搜索来替代决定。</p><p>反馈缺失时写“暂无”，条件记不清时写“未确认”，不让 AI 补造。</p></div></details>
+            <section className="schedule" id="schedule"><div><span>恢复</span><p>起床后先吃饭、补水并离开床边；不把刷资讯算作开工。</p></div><div><span>恢复后｜45 分钟</span><p>只写第 5 条草稿的三段：功能、真实任务、结果与判断。</p></div><div><span>结束</span><p>保存文件并记录完成或未完成；不临时增加课程、工具或新系统。</p></div></section>
+            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>睡眠不足时不把恢复误写成拖延</strong><span>先恢复，再做唯一交付</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>连续晚睡会直接削弱思考与表达，今天不以意志不足解释所有未完成。</p><p>主要执行风险是再次用课程、工具和信息输入包围一个已经明确的判断。</p></div></details>
             <div className="template-section" id="templates">
               <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div></div>
               <div className="brief-list template-list">
@@ -397,7 +396,7 @@ export default function Home() {
                 <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main brief-main--compact"><span className="pill">人物动态</span><strong>{cleanTitle(item.title)}</strong></span><span className="plus">＋</span></summary>
                 <div className="brief-content">{renderMarkdown(item.body, "creator-" + i)}</div>
               </details>)}</div>
-            </> : null}
+            </> : creatorUpdatesRaw ? <details className="brief-item" id="creator-updates"><summary><span className="brief-index">人物</span><span className="brief-main"><span className="pill">指定博主动态</span><strong>覆盖日公开更新核验</strong></span><span className="plus">＋</span></summary><div className="brief-content">{renderMarkdown(creatorUpdatesRaw, "creator-raw")}</div></details> : null}
             <div className="section-heading compact-heading"><div><p className="eyebrow">INDUSTRY NEWS</p><h2>行业重要新闻：{industryStories.length} 条</h2></div><p>所有背景、判断、边界与原始链接完整保留</p></div>
             <div className="brief-list">{industryStories.map((story, i) => <details className="brief-item" id={"story-" + (i + 1)} key={story.title}>
               <summary><span className="brief-index">{String(i + 1).padStart(2, "0")}</span><span className="brief-main brief-main--compact"><span className="pill">行业动态</span><strong>{cleanTitle(story.title)}</strong></span><span className="plus">＋</span></summary>
@@ -413,14 +412,14 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 70 分钟“模型断供演练”</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 75 分钟“最小上下文包”实验</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
-          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-08-29/26-08-29姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 8 月 29 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div></section>
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-08-30/26-08-30姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 8 月 30 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div></section>
 
-          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>昨天完成了两次兼职面试，把“要不要找工作”继续推进成真实经历；同时也开始把长期自媒体方向说得更具体：阅读、实践、分享，再用 AI 辅助迭代。当前缺的不是更多可能性，而是把已有兼职信息整理成同口径比较，并让已发布内容产生一份可用于下一轮的反馈记录。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>近七天先后出现了真实用户访谈、面试、视频发布、现场培训和两次新面试，说明现实行动并没有持续停滞。更稳定的缺口在“收尾”：访谈后缺少外部可检查产物，面试后缺少比较表，视频发布后缺少反馈记录。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>值得观察。</p><p><strong>观察：</strong>明确的外部约定能帮助行动发生，但行动后的整理、比较和反馈记录仍容易缺失。</p><p><strong>候选解释：</strong>外部场景降低了启动成本，而收尾需要单独、明确的交付物。</p><p><strong>替代解释：</strong>睡眠、路程、现金流压力与家庭询问也会改变当天注意力，不能把所有未整理都解释为同一种行为模式。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p><strong>行动：</strong>先建一张三列五行的兼职比较表。</p><p><strong>最大范围：</strong>30 分钟，只填真实信息或“未确认”。</p><p><strong>可观察产物：</strong>一张三列五行比较表。</p><p><strong>完成标准：</strong>15 个格子都有记录，并圈出一个关键缺口。</p></div></article></div></section>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>8 月 30 日完成了求职投递和直播笔记，但没有可验证内容输出。长时间观看短剧与信息流被用户本人描述为“不想思考”；这说明资料输入正常，不等于创作承诺已经推进。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>过去七天并非完全没有行动：完成了两次兼职面试、一次培训和一条短视频发布。重复出现的问题是，作品交付只在任务被压缩、环境改变后发生；其余多日输入量很高但没有形成可验证作品。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式。</p><p><strong>观察：</strong>当目标停留在“理解更多、找到更好方向”时，输入容易持续扩张；当任务变成一条具体视频并进入外部环境时，更可能完成。</p><p><strong>候选解释：</strong>继续输入可以延后被真实反馈评价。</p><p><strong>替代解释：</strong>睡眠不足会直接削弱思考与拍摄，环境变化可能只是恢复了精力。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p><strong>行动：</strong>今天只写第 5 条视频的一页草稿。</p><p><strong>最大范围：</strong>45 分钟，不学习新工具，不要求发布。</p><p><strong>可观察产物：</strong>一份以 05- 开头的 Markdown 口播草稿。</p><p><strong>完成标准：</strong>包含一个真实任务、一次可观察结果和一句可能被结果推翻的判断。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>当前主要风险不是缺少选题，而是已有判断仍被更多输入包围。按 dbs-action 框架，这接近“知识上瘾”和“用思考替代行动”；但连续晚睡是实际约束，不能被解释成意志不足。今天的处方是先恢复，再把一个已经写明的判断变成可见草稿。</p></div></article></div></section>
 
           <section className="section" id="deep-reads">
             <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
@@ -450,19 +449,19 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>今天已有两项各 30 分钟的现实任务；没有发现必须先学习、且比直接实践更有价值的资源，因此不为填满栏目而推荐。</p>
-                <p><strong>今天只练习：</strong>打开第四条视频的数据页并截图；记录至多五条真实反馈，最后写一句证据判断。</p>
+                <p><strong>AI 建议：</strong>过去七天已经有充足输入，今天的明确缺口是把已有判断写成第 5 条视频草稿；没有发现必须先学习、且比直接写草稿更有价值的资源。</p>
+                <p><strong>今天只练习：</strong>写三段：工具提供什么功能；把它放进哪个真实任务；什么结果会改变“它有用”的判断。</p>
                 <p><strong>适用边界：</strong>这不代表课程无用；只有现实实验暴露出明确方法缺口后，再按缺口选择资源。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 29 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-29.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 29 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 30 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-30.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 30 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>把已经发生的选择与发布，<br />变成可以继续使用的证据。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>把已有判断写成草稿，<br />再让真实任务检验工具。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
