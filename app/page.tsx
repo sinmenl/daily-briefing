@@ -1,57 +1,101 @@
 import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 
-const briefDate = "2026-08-31";
+const briefDate = "2026-09-01";
 
 const tasks = [
   {
     number: "01",
-    title: "写出第 5 条视频的一页口播草稿",
+    title: "把 8 月 31 日的思考录成一条 60–90 秒原始口述",
     source: "AI 建议",
-    why: "第 4 条视频已经发布；8 月 30 日也已经写下‘工具测评不能停留在功能体验，要进入一个真实任务’。对象和核心判断都已存在，今天不需要再选题或补课。",
-    question: "一款看起来有用的 AI 工具，为什么必须放进真实任务里测试，才能判断它是否真的有价值？",
-    steps: ["打开 10.短视频诊断/00-模版.md，新建第 5 条草稿。", "用本人语言写三段：功能看起来有什么用；放进哪个真实任务；实际结果改变了什么判断。", "只让 AI 检查有没有把‘功能存在’误写成‘任务有效’，以及有没有缺少反例；本人决定是否修改。"],
-    deliverable: "一份以 05- 开头的 Markdown 口播草稿。",
-    done: "文件包含一个真实任务、一次可观察结果和一句可能被结果推翻的判断；保存后停止扩写。",
-    first: "离开短视频应用，打开 10.短视频诊断/00-模版.md",
-    time: "最多 45 分钟",
+    why: "昨日已经写出‘AI 解决执行，方向和判断仍由人负责’以及‘内容判断要用数据与现实碰撞’的完整材料；用户同时明确记录‘讨论完感觉就完了’‘不知道怎么分享’。今天不需要继续选题或补充资料，只需要完成从讨论到可检查表达的第一次转换。",
+    question: "AI 已经能帮我做出第一版后，人的价值为什么仍然在定义问题、选择目标和根据反馈修正判断？",
+    steps: ["打开 2.26年日记/8月日记/2026-08-31.md 第 20–70 行，不新增检索。", "用三段口述：我原来怎么理解 AI；短视频数据反馈这个具体例子；我现在的判断和它不适用的边界。", "录一遍 60–90 秒，转成文字后只修正明显口误。"],
+    deliverable: "一段原始录音和一份对应文字稿。",
+    done: "文字稿包含一个真实例子、一句可被现实推翻的判断和一个适用边界；保存即完成，不要求当天发布。",
+    first: "打开 8 月 31 日日记，直接从‘我以前以为 AI 的价值是……’开始说",
+    time: "最多 35 分钟",
     tone: "mint",
   },
 ];
 
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
-const weather = { location: "南宁", condition: "中雨转阵雨", temperature: "24–32℃", icon: "🌧️" };
+const weather = { location: "南宁", condition: "多云到晴伴局地阵雨", temperature: "25–34℃", icon: "⛅" };
 
 const planetPosts = [
-  { index: "1", author: "大胡子", published: "2026-08-30 09:29", title: "极简模式：Omarchy + Pi + Obsidian", body: `极简模式
-Omarchy + Pi + Obsidian
+  { index: "1", author: "大胡子", published: "2026-08-31 16:48", title: "重新调整了‘灵感’流", body: `重新调整了 “灵感”流：
 
-zen`, images: ["/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -1.jpg", "/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -2.jpg", "/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -3.jpg", "/daily-briefing/knowledge/2026-08-30/images/[1] 大胡子 -4.jpg"] },
-  { index: "2", author: "大胡子", published: "2026-08-30 23:12", title: "工作端用 GitHub，移动端用 iCloud", body: `给你们一个好东西.
+iPhone 录音（左侧快捷键、siri） → iCloud 同步 → SenseVoice 转写 → LLM 净稿(qwen3.8-27b) → 灵感库。`, images: ["/daily-briefing/knowledge/2026-08-31/images/[1] 大胡子 -1.png", "/daily-briefing/knowledge/2026-08-31/images/[1] 大胡子 -2.jpg"] },
+  { index: "2", author: "大胡子", published: "2026-08-31 16:58", title: "真正问题是你的思考和行动能力", body: `从今天开始，我会对所有入群超过100天的老伙计的问题进行抽查。
+凡是问题里：没有自己的思考，没有作过尝试的问题，我不但不会回答，还会拿出来作为反面经典案例给大家展示：你问的那些问题根本就不是问题。
 
-你的知识库怎么备份并保持同步呢?Github。
-你可以通过多台机器用同一个 GitHub 进行知识库的连接。
-在 GitHub 上建立一个私有仓库，就搞定了。
+真正问题是：你的思考和行动能力。
 
-重点是这个，如何在移动终端上去访问你的知识库呢？
-如果你的知识库太大的话，在终端很快就会崩溃。
-那我的方法呢，就是在组的分支上建立一个mobile分支。它的缺点就是，如果你更新过于频繁的话，一个月只有12美金的额度，很快就会超支，一个月总有那么几天你是不方便的。
-但，
+所以，
+要不然改变你惯有的行为模式，要不然寄希望于我没有抽查到你。
 
-这个时候你就可以让你的 AI，将只读的部分提取出来，然后交给 iCloud，因为只有文本，所以消耗并不大.然后用你的本地的 Obsidian 打开这个 iCloud 就好了.
-这样你既不用花1分钱，同时还可以享受 iCloud 稳定的服务.
-比如我,四台机器使用同一个知识库.非常的丝滑.
+解答问题是最容易的事。你缺的从来不是知识，而是独立思考的能力。
+无论是做自媒体还是变现，遇到问题下意识的第一反应就是向外求助，那你是做不成事的。`, images: [] },
+  { index: "3", author: "大胡子", published: "2026-08-31 21:52", title: "专注模式开关", body: `很多人和我抱怨说没有精力，
+其实你的精力都被浪费走了。
 
-不是单纯的Github，也不是单纯的iCloud。是Github+iCloud。
-工作端用Github（因为它可以和其它项目建立工作流）；移动端用iCloud（瘦身阅读）。
+我现在个人的操作系统只安装了这几个软件：Omarchy + Pi + Obsidian。而且在我工作时间里，除了固定的几个工作软件，全都是断网的。就是没有办法联网，提前就设好的。
 
-如果你看不懂,把它把这段话扔给你的AI Agent。他知道该怎么做。`, images: ["/daily-briefing/knowledge/2026-08-30/images/[2] 大胡子 -1.png", "/daily-briefing/knowledge/2026-08-30/images/[2] 大胡子 -2.jpg", "/daily-briefing/knowledge/2026-08-30/images/[2] 大胡子 -3.jpg"] },
+怎么做到的呢？
+把下面这些提示词扔给你的本地 Agent。然后让它根据你的情况进行修改。
+
+-------------------------
+
+【任务书——从这里开始整段复制】
+帮我实现"专注模式"开关，要求如下：
+在门卫的订阅扩展配置里新增一个 select 组（agent 先自行检测本机代理客户端、内核与配置目录，按实际路径执行）：
+
+组名 Focus，候选只有两项：DIRECT（默认）、REJECT。
+在规则前置区(优先级最高,必须排在 GEOIP 和兜底规则之前)加飞机场主链路的 6 条域名（主站 / 接口 / 图床 / 视频 CDN ×2 / 直播 CDN），全部指向 Focus：
+
+DOMAIN-SUFFIX,douyin.com
+
+DOMAIN-SUFFIX,snssdk.com
+
+DOMAIN-SUFFIX,amemv.com
+
+DOMAIN-SUFFIX,douyinpic.com
+
+DOMAIN-SUFFIX,douyinvod.com
+
+DOMAIN-SUFFIX,zjcdn.com
+重启门卫使配置生效（注意：改完配置文件必须重启应用，API 热重载可能被 GUI 覆盖）。
+在 ~/.zshrc 里加两个别名：
+
+focus_on = curl -X PUT :<端口>/proxies/Focus -d '{"name":"REJECT"}'
+
+focus_off = 同一条命令，name 换成 DIRECT
+
+端口看配置里的 external-controller（常见默认 9097 或 9090）；如果外部控制没开，先在设置里打开。
+自检并打印结果：
+
+focus_on 之后 curl -x -sI 应该失败或超时；
+
+focus_off 之后同一条 curl 应该返回 200 或 3xx。
+完成后输出改动清单：改了哪些文件、加了几条规则、自检结果。不要动其他任何配置。
+【任务书——到这里结束】
+不用 agent 的人肉版，三步：
+门卫界面 → 订阅右键 → 编辑代理组 → 加 Focus 组（DIRECT / REJECT）
+编辑规则 → 前置区加那 6 条，指向 Focus
+重启门卫。想专注时，把 Focus 组点成 REJECT；结束点回 DIRECT。全程不用命令行。
+你是靠飞机场吃饭的创作者的话，多加一条，放在 6 条最前面：
+DOMAIN,creator.douyin.com,DIRECT
+工作室侧门常开——这条域名是创作入口，焊死的只是刷的前门。
+iPhone 上的话，用小火箭：复制你现在的配置改名“专注版”，在 [Rule] 最顶部把同样 6 条写成 REJECT 结尾，想专注时切到专注版。提醒一句：手机上创作和刷是同一扇门，只能整体开关，回评论传视频放到专注窗口外。
+两个诚实的局限：还有一个飞机场长在聊天工具的肚子里，跟你的日常聊天走同一条水管，代理层切不开；VPN 关了整套就失效。
+还有一个小彩蛋：机场订阅每次更新，Focus 会自动跳回 DIRECT——专注模式自动解除，算是安全默认。
+今晚 focus_on，明早 focus_off。`, images: [] },
 ];
 
 const deepReadAtoms = [
-  { atom: "上下文分层加载让检索路径可观察", relation: "第 5 条草稿不需要继续扩张资料，只围绕一个真实任务保留‘功能—任务—结果’三层上下文；缺什么再补什么。", question: "如果只给一个 Agent 最小上下文包，哪些内容必须先提供，哪些应等任务真正需要时才展开？" },
-  { atom: "混合创作治理应按人和 AI 的角色分类", relation: "草稿应明确本人提供的真实任务、观察结果与判断，AI 只承担检查或整理，让‘谁做了什么’可以被说明。", question: "一条 AI 工具测评里，哪些材料和判断必须由本人产生，哪些环节可以交给 AI 而不损失可信度？" },
+  { atom: "上下文是有递减回报的有限注意力预算", relation: "今天不缺背景材料；更合适的上下文包是昨日原文的三段结构，而不是整个知识库。", question: "如果只允许 Agent 在今天的口述任务里看到四项信息，哪四项缺一不可？哪一项只是看起来相关？" },
+  { atom: "平台收益门槛会反向塑造创作者供给", relation: "今天不需要追逐收益门槛，但复盘内容时应按目标区分触达、观看、互动与商业结果。", question: "如果平台把某个指标设成收益资格，你会因此改变什么内容行为？这种改变是在服务用户，还是在服务平台门槛？" },
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -266,7 +310,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 30 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 8 月 31 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -274,8 +318,8 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">31</div><div><p className="date-month">2026 · 08</p><p className="date-week">星期一</p></div></div>
-            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先把已有判断写成草稿，<br />再让真实任务检验工具。</h1><p className="judgment">今天只写第 5 条视频的一页草稿，不新增课程，也不扩张知识库。</p></div>
+            <div className="date-block"><div className="date-day">01</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期二</p></div></div>
+            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先把两小时的思考，<br />变成一次可听的第一版。</h1><p className="judgment">今天不继续补知识，只录一次 60–90 秒原始口述，让讨论第一次留下可检查结果。</p></div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
               <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
@@ -283,7 +327,7 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITY</p><h2>今天只做一件事</h2></div><p>先恢复，再完成一页草稿</p></div>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITY</p><h2>今天只做一件事</h2></div><p>不补课，先留下可听的第一版</p></div>
             <div className="task-grid task-grid--one">{tasks.map((task, i) => <article className={"task-card task-card--detailed " + task.tone} id={"task-" + (i + 1)} key={task.number}>
               <div className="task-card-head"><span className="task-number">{task.number}</span><span className="task-source">{task.source}</span></div>
               <h3>{task.title}</h3>
@@ -294,8 +338,8 @@ export default function Home() {
               <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
             </article>)}</div>
             <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>让时间服务一个可检查结果</p></div>
-            <section className="schedule" id="schedule"><div><span>恢复</span><p>起床后先吃饭、补水并离开床边；不把刷资讯算作开工。</p></div><div><span>恢复后｜45 分钟</span><p>只写第 5 条草稿的三段：功能、真实任务、结果与判断。</p></div><div><span>结束</span><p>保存文件并记录完成或未完成；不临时增加课程、工具或新系统。</p></div></section>
-            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>睡眠不足时不把恢复误写成拖延</strong><span>先恢复，再做唯一交付</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>连续晚睡会直接削弱思考与表达，今天不以意志不足解释所有未完成。</p><p>主要执行风险是再次用课程、工具和信息输入包围一个已经明确的判断。</p></div></details>
+            <section className="schedule" id="schedule"><div><span>恢复</span><p>早餐、补水和简单活动后再开始；腰部或睡眠状态不佳时不安排拍摄。</p></div><div><span>交付｜35 分钟</span><p>5 分钟看昨日原文，10 分钟口述，15 分钟转写与修正，5 分钟保存并记录结果。</p></div><div><span>结束</span><p>第一版普通也不继续找课程、案例或工具；保存后再决定是否进入短视频流程。</p></div></section>
+            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>不要让继续讨论替代一次原始表达</strong><span>身体状态是真实约束，任务只到口述与文字稿</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>午后困倦、环境变化和腰部不适可能真实降低执行能力，因此今天不要求拍摄、剪辑或发布。</p><p>主要执行风险是再次用新课程和更多讨论包围已经足够完整的判断。</p></div></details>
             <div className="template-section" id="templates">
               <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div></div>
               <div className="brief-list template-list">
@@ -412,14 +456,14 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次 75 分钟“最小上下文包”实验</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成 rules.md + task.md 两层记忆实验</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
-          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-08-30/26-08-30姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 8 月 30 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div></section>
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 3 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-08-31/26-08-31姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 8 月 31 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div></section>
 
-          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>8 月 30 日完成了求职投递和直播笔记，但没有可验证内容输出。长时间观看短剧与信息流被用户本人描述为“不想思考”；这说明资料输入正常，不等于创作承诺已经推进。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>过去七天并非完全没有行动：完成了两次兼职面试、一次培训和一条短视频发布。重复出现的问题是，作品交付只在任务被压缩、环境改变后发生；其余多日输入量很高但没有形成可验证作品。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式。</p><p><strong>观察：</strong>当目标停留在“理解更多、找到更好方向”时，输入容易持续扩张；当任务变成一条具体视频并进入外部环境时，更可能完成。</p><p><strong>候选解释：</strong>继续输入可以延后被真实反馈评价。</p><p><strong>替代解释：</strong>睡眠不足会直接削弱思考与拍摄，环境变化可能只是恢复了精力。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p><strong>行动：</strong>今天只写第 5 条视频的一页草稿。</p><p><strong>最大范围：</strong>45 分钟，不学习新工具，不要求发布。</p><p><strong>可观察产物：</strong>一份以 05- 开头的 Markdown 口播草稿。</p><p><strong>完成标准：</strong>包含一个真实任务、一次可观察结果和一句可能被结果推翻的判断。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>当前主要风险不是缺少选题，而是已有判断仍被更多输入包围。按 dbs-action 框架，这接近“知识上瘾”和“用思考替代行动”；但连续晚睡是实际约束，不能被解释成意志不足。今天的处方是先恢复，再把一个已经写明的判断变成可见草稿。</p></div></article></div></section>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>8 月 31 日睡眠较前几天改善，完成了阅读、长时间讨论和游泳。日记中已经形成关于“AI 扩大执行半径、人负责方向与判断”以及“内容通过数据反馈修正判断”的成体系文字；但“可验证输出”“实际完成”“逃避了什么”三项没有填写，用户本人也明确写下讨论结束后不知道如何分享。因此，昨日不是没有思考，而是思考尚未转成外部可检查的表达。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>过去七天完成过第四条视频、两次兼职面试和一次培训，说明在任务具体、环境变化或存在外部约定时能够行动。反复出现的卡点是：输入与讨论结束后，缺少一个固定的停止点和交付物，导致现实反馈没有进入下一轮判断。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式。</p><p><strong>观察：</strong>8 月 27 日的“具体视频＋图书馆＋先口述”形成了成品；8 月 31 日已经有内容材料，但讨论没有被转换成口述或草稿。</p><p><strong>候选解释：</strong>探索过程提供即时满足，也降低了面对表达质量和受众反馈的风险。</p><p><strong>替代解释：</strong>午后困倦、回家后的环境变化与腰部不适可能真实降低执行能力。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p><strong>行动：</strong>只录一次 60–90 秒原始口述。</p><p><strong>最大范围：</strong>35 分钟，不补充资料，不要求发布。</p><p><strong>可观察产物：</strong>一段原始录音和对应文字稿。</p><p><strong>完成标准：</strong>包含一个真实例子、一句可被现实推翻的判断和一个适用边界。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>当前主要问题不是不会分析，而是没有规定“讨论到什么时候算够、结束时必须留下什么”。今天用一次 60–90 秒口述建立最小转换规则：观点出现后先留下可听、可改的第一版，再决定要不要继续学习或制作。</p></div></article></div></section>
 
           <section className="section" id="deep-reads">
             <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
@@ -449,19 +493,19 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>过去七天已经有充足输入，今天的明确缺口是把已有判断写成第 5 条视频草稿；没有发现必须先学习、且比直接写草稿更有价值的资源。</p>
-                <p><strong>今天只练习：</strong>写三段：工具提供什么功能；把它放进哪个真实任务；什么结果会改变“它有用”的判断。</p>
-                <p><strong>适用边界：</strong>这不代表课程无用；只有现实实验暴露出明确方法缺口后，再按缺口选择资源。</p>
+                <p><strong>AI 建议：</strong>今天的最小任务是把昨日已经形成的判断转成一次 60–90 秒原始口述。云端早报和两篇深读已经提供足够背景，继续加入课程会扩大输入。</p>
+                <p><strong>今天只练习：</strong>只读昨日关于 AI 执行、人的判断与短视频数据反馈的三段，录一次口述；录完标记一句最卡顿的位置。</p>
+                <p><strong>适用边界：</strong>如果口述暴露出明确技能缺口，再为该缺口寻找一项原始教学资源；今天不预先消费课程。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 30 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-30.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 30 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 8 月 31 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-08-31.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 8 月 31 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>把已有判断写成草稿，<br />再让真实任务检验工具。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>把两小时的思考，<br />变成一次可听的第一版。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
