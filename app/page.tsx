@@ -451,6 +451,33 @@ export default function Home() {
                     </section>
                   </div>
                 </details>
+                <details className="brief-item" id="template-conversation-reflection">
+                  <summary><span className="brief-index">07</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">💬</span><strong>对话结束思考四件事</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content"><ol className="template-prompts">
+                    <li>我原来怎么想？</li>
+                    <li>这次对话让我改了什么判断？</li>
+                    <li>哪个事实/案例支撑了这个变化？</li>
+                    <li>下一次遇到什么情况，我要怎么做？</li>
+                  </ol></div>
+                </details>
+                <details className="brief-item" id="template-conversation-ai-prompt">
+                  <summary><span className="brief-index">08</span><span className="brief-main brief-main--compact"><span className="pill template-icon" aria-hidden="true">🧠</span><strong>对话结束的AI提示词</strong></span><span className="plus">＋</span></summary>
+                  <div className="brief-content template-workflow">
+                    <section>
+                      <h4>请从这次对话里提炼：</h4>
+                      <ol className="template-prompts">
+                        <li>我原来的判断</li>
+                        <li>被什么事实动摇</li>
+                        <li>我现在更准确的判断</li>
+                        <li>一个未来可复用的判断规则</li>
+                        <li>一个还没验证的问题</li>
+                      </ol>
+                    </section>
+                    <section>
+                      <p>不要总结整段对话，只保留真正发生认知变化的部分。如果没有认知变化，就明确说“这次没有形成新判断”。</p>
+                    </section>
+                  </div>
+                </details>
               </div>
             </div>
           </section>

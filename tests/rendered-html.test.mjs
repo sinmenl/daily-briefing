@@ -102,6 +102,13 @@ test("renders the daily briefing", async () => {
   assert.match(html, /id="template-judgment"/);
   assert.match(html, /我目前认为问题是 X。/);
   assert.match(html, /不要替我得结论。检查我的判断，找漏洞、反例和遗漏。/);
+  assert.match(html, /id="template-conversation-reflection"/);
+  assert.match(html, /这次对话让我改了什么判断？/);
+  assert.match(html, /哪个事实\/案例支撑了这个变化？/);
+  assert.match(html, /id="template-conversation-ai-prompt"/);
+  assert.match(html, /一个未来可复用的判断规则/);
+  assert.match(html, /不要总结整段对话，只保留真正发生认知变化的部分。/);
+  assert.match(html, /这次没有形成新判断/);
   assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.doesNotMatch(html, /id="deep-read-4"/);
   assert.match(html, /id="product-observation"/);
@@ -176,5 +183,9 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(latest.mainHtml, /id="template-video-topic-decision"/);
   assert.match(latest.mainHtml, /id="template-one-more-question"/);
   assert.match(latest.mainHtml, /id="template-judgment"/);
+  assert.match(latest.mainHtml, /id="template-conversation-reflection"/);
+  assert.match(latest.mainHtml, /id="template-conversation-ai-prompt"/);
+  assert.match(latest.mainHtml, /一个还没验证的问题/);
+  assert.match(latest.mainHtml, /这次没有形成新判断/);
   assert.doesNotMatch(latest.mainHtml, /我的理解/);
 });
