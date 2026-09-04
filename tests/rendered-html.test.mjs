@@ -21,7 +21,7 @@ test("renders the daily briefing", async () => {
   assert.match(html, /<title>蔓<\/title>/);
   assert.doesNotMatch(html, /蔓蔓的早课/);
   assert.doesNotMatch(html, /产品、创作与个人规划/);
-  assert.match(html, /今日计划/);
+  assert.match(html, /今日选题/);
   assert.match(html, /每日资讯/);
   assert.match(html, /姜胡说/);
   assert.match(html, /复盘/);
@@ -48,7 +48,7 @@ test("renders the daily briefing", async () => {
   assert.doesNotMatch(html, /id="story-6"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="signal-radar"/);
-  assert.match(html, /<span class="pill">(?:社区日|人物日)<\/span><strong>信息源实验雷达<\/strong>/);
+  assert.match(html, /<span class="pill">(?:社区日|人物日|实验雷达)<\/span><strong>信息源实验雷达<\/strong>/);
   assert.match(html, /id="(?:planet-status|planet-1)"/);
   const xiaobotLinks = renderedMain.match(/href="#xiaobaotong-\d+"/g) ?? [];
   const xiaobotCards = renderedMain.match(/id="xiaobaotong-\d+"/g) ?? [];

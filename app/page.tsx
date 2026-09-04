@@ -2,124 +2,62 @@ import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 import { planetPostsToday } from "./planet-current";
 
-const briefDate = "2026-09-03";
+const briefDate = "2026-09-04";
 
-const tasks = [
+const topics = [
   {
     number: "01",
-    title: "完成今天的学校课程，并留下五行课后记录",
-    source: "AI 建议",
-    why: "9 月 2 日已经答应今天到学校上一节课，这是一项有明确对象和外部结果的现实义务。近七天在任务缺少明确下一步时，时间较容易转向即时反馈活动；昨天面对明确的试讲要求时则很快完成了录制。今天不增加新的创作任务，先把已答应的课程完成。",
-    question: "",
-    steps: ["出发前确认上课时间、校址、年级、课程主题和联系人；缺一项就发消息补齐。", "打开已经拿到的课本或课件，只标出开场、核心讲解和结束练习三处，不重做整套材料。", "下课后记录五行事实：实际讲了什么、学生在哪一步卡住、哪一句解释有效、哪一步失控、下次只改什么。"],
-    deliverable: "一节实际完成的课，以及一份五行课后记录。",
-    done: "已经到场完成课程，并写下五项具体事实；不以‘感觉讲得好不好’作为完成条件。",
-    first: "打开与学校联系人的聊天，逐项核对时间、地点、年级、主题和联系人",
-    time: "备课最多 45 分钟；课后记录最多 10 分钟",
+    label: "主推",
+    title: "用 AI 构建“我的世界”是一份什么礼物",
+    basis: "已经明确选择这个分享主题，并有卸载传统游戏、用 AI 迭代能力与判断的真实经历。",
+    source: "日记中的真实经历、已形成的个人判断、近期分享场景",
+    why: "这不是从外部热点硬凑出的题目。9 月 3 日已经明确写下这个主题，但仍在追问“这算一份什么礼物”。这个未完成的问题本身就是可讲的入口。",
+    angle: "从“我把手机和平板里的游戏卸载后，发现最好玩的游戏变成了 AI”这件小事切入，不先介绍工具，先解释自己究竟在建造什么。",
+    judgment: "AI 可以像积木和拼图一样帮助自己升级能力、发现漏洞并补齐缺口；但目标、取舍、现实证据和是否修正，仍需要由人负责。",
+    evidence: "9 月 3 日日记中的“我发现我觉得最好玩的游戏是AI，我可以用AI去构建我的世界”，以及 8 月 31 日形成的判断规则。",
+    risk: "“构建世界”太大，容易只剩隐喻。至少用一项具体变化落地；不要把 AI 说成已经替自己解决了长期行动问题。",
+    done: "保存一段 3–5 分钟原始录制，明确说出一段经历、一个当前判断和一项可核验变化；不要求剪辑或发布。",
     tone: "mint",
+  },
+  {
+    number: "02",
+    label: "备选",
+    title: "一段 AI 对话结束后，怎样不让真正改变的判断消失",
+    basis: "曾记录“讨论完感觉就完了”，后来保存了一套只保留认知变化的五问提示词。",
+    source: "重复卡点、本人保存的提示词、一次方法改变",
+    why: "题目来自真实使用摩擦，不是泛泛的 Prompt 分享。它可以解释为什么“总结聊天”不等于“保留变化”。",
+    angle: "从关闭对话后只记得聊了很多，却说不出自己改了什么判断开始，再展示五个问题如何留下可复用结果。",
+    judgment: "对话结束后应保留原判断、动摇它的事实、新判断、可复用规则和未验证问题；没有认知变化时应明确承认。",
+    evidence: "8 月 31 日的“讨论完感觉就完了”，以及 9 月 3 日日记中完整保存的五问提示词。",
+    risk: "目前没有连续使用后的对照结果。可以分享方法和适用场景，不能宣称已经解决长期记忆或稳定改变行动。",
+    done: "保存一段原始录制，讲清问题场景、五问结构和一个尚未验证的边界。",
+    tone: "blue",
+  },
+  {
+    number: "03",
+    label: "备选",
+    title: "结构化环境的吸引力，可能来自它替我定义了完成标准",
+    basis: "在真实试讲和职业选择后，主动追问自己是被工作本身吸引，还是在回避需要自己定义方向的开放任务。",
+    source: "去身份化的工作经历、选择冲突、自我质疑",
+    why: "它有真实选择成本，也能帮助处在稳定工作与自由创作之间的人识别自己究竟在购买什么。",
+    angle: "不讨论具体单位，用“有明确对象和完成标准的任务很快完成；开放创作却容易卡住”这一对比进入。",
+    judgment: "自己可能并不排斥行动，而是更难启动需要独立定义问题、方向和完成标准的任务；这仍是待验证判断。",
+    evidence: "9 月 3 日的真实试讲经历，以及近期对“做成自媒体”和“不知道下一步”的追问。",
+    risk: "不能忽略真实职业兴趣、睡眠、现金流与通勤等替代解释；公开时不得出现机构、地点、薪资或可识别人物。",
+    done: "保存一段原始录制，明确区分已经发生的事实、自己的当前判断和至少一个替代解释。",
+    tone: "peach",
   },
 ];
 
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
-const weather = { location: "南宁", condition: "阴到多云", temperature: "22–31℃", icon: "☁️" };
-
-const previousPlanetPosts = [
-  { index: "1", author: "大胡子", published: "2026-08-31 16:48", title: "重新调整了‘灵感’流", body: `重新调整了 “灵感”流：
-
-iPhone 录音（左侧快捷键、siri） → iCloud 同步 → SenseVoice 转写 → LLM 净稿(qwen3.8-27b) → 灵感库。`, images: ["/daily-briefing/knowledge/2026-08-31/images/[1] 大胡子 -1.png", "/daily-briefing/knowledge/2026-08-31/images/[1] 大胡子 -2.jpg"] },
-  { index: "2", author: "大胡子", published: "2026-08-31 16:58", title: "真正问题是你的思考和行动能力", body: `从今天开始，我会对所有入群超过100天的老伙计的问题进行抽查。
-凡是问题里：没有自己的思考，没有作过尝试的问题，我不但不会回答，还会拿出来作为反面经典案例给大家展示：你问的那些问题根本就不是问题。
-
-真正问题是：你的思考和行动能力。
-
-所以，
-要不然改变你惯有的行为模式，要不然寄希望于我没有抽查到你。
-
-解答问题是最容易的事。你缺的从来不是知识，而是独立思考的能力。
-无论是做自媒体还是变现，遇到问题下意识的第一反应就是向外求助，那你是做不成事的。`, images: [] },
-  { index: "3", author: "大胡子", published: "2026-08-31 21:52", title: "专注模式开关", body: `很多人和我抱怨说没有精力，
-其实你的精力都被浪费走了。
-
-我现在个人的操作系统只安装了这几个软件：Omarchy + Pi + Obsidian。而且在我工作时间里，除了固定的几个工作软件，全都是断网的。就是没有办法联网，提前就设好的。
-
-怎么做到的呢？
-把下面这些提示词扔给你的本地 Agent。然后让它根据你的情况进行修改。
-
--------------------------
-
-【任务书——从这里开始整段复制】
-帮我实现"专注模式"开关，要求如下：
-在门卫的订阅扩展配置里新增一个 select 组（agent 先自行检测本机代理客户端、内核与配置目录，按实际路径执行）：
-
-组名 Focus，候选只有两项：DIRECT（默认）、REJECT。
-在规则前置区(优先级最高,必须排在 GEOIP 和兜底规则之前)加飞机场主链路的 6 条域名（主站 / 接口 / 图床 / 视频 CDN ×2 / 直播 CDN），全部指向 Focus：
-
-DOMAIN-SUFFIX,douyin.com
-
-DOMAIN-SUFFIX,snssdk.com
-
-DOMAIN-SUFFIX,amemv.com
-
-DOMAIN-SUFFIX,douyinpic.com
-
-DOMAIN-SUFFIX,douyinvod.com
-
-DOMAIN-SUFFIX,zjcdn.com
-重启门卫使配置生效（注意：改完配置文件必须重启应用，API 热重载可能被 GUI 覆盖）。
-在 ~/.zshrc 里加两个别名：
-
-focus_on = curl -X PUT :<端口>/proxies/Focus -d '{"name":"REJECT"}'
-
-focus_off = 同一条命令，name 换成 DIRECT
-
-端口看配置里的 external-controller（常见默认 9097 或 9090）；如果外部控制没开，先在设置里打开。
-自检并打印结果：
-
-focus_on 之后 curl -x -sI 应该失败或超时；
-
-focus_off 之后同一条 curl 应该返回 200 或 3xx。
-完成后输出改动清单：改了哪些文件、加了几条规则、自检结果。不要动其他任何配置。
-【任务书——到这里结束】
-不用 agent 的人肉版，三步：
-门卫界面 → 订阅右键 → 编辑代理组 → 加 Focus 组（DIRECT / REJECT）
-编辑规则 → 前置区加那 6 条，指向 Focus
-重启门卫。想专注时，把 Focus 组点成 REJECT；结束点回 DIRECT。全程不用命令行。
-你是靠飞机场吃饭的创作者的话，多加一条，放在 6 条最前面：
-DOMAIN,creator.douyin.com,DIRECT
-工作室侧门常开——这条域名是创作入口，焊死的只是刷的前门。
-iPhone 上的话，用小火箭：复制你现在的配置改名“专注版”，在 [Rule] 最顶部把同样 6 条写成 REJECT 结尾，想专注时切到专注版。提醒一句：手机上创作和刷是同一扇门，只能整体开关，回评论传视频放到专注窗口外。
-两个诚实的局限：还有一个飞机场长在聊天工具的肚子里，跟你的日常聊天走同一条水管，代理层切不开；VPN 关了整套就失效。
-还有一个小彩蛋：机场订阅每次更新，Focus 会自动跳回 DIRECT——专注模式自动解除，算是安全默认。
-今晚 focus_on，明早 focus_off。`, images: [] },
-];
-
-void previousPlanetPosts;
-
-const archivedPlanetPosts = [
-  { index: "1", author: "大胡子", published: "2026-09-01 10:53", title: "北京线下活动只面向过往成员与行动证明", body: `说明一下，北京线下活动，不对今天和今天之后加入的老伙计开放。
-线下活动是为过往老伙计们提供的福利。
-不是新人加入的理由。我无意，更不想因此让更多的朋友加入星球。
-
-同时，根据以往的惯例，即便你在星球里，行动力仍然是最基本的要求。
-你必须提供过往你的行动证明（我之前留过作业的，从今天开始补作业的，一律不算。请不要给我私信，不要给我留言，不要和我哭穷，行动力是最基本的门槛）。
-这次加入的人，我会一个一个审核（欢迎无法通过审核的老伙计随时退出星球。事实上，我不希望更多的人因为这次线下活动加入星球；但我欢迎更多因为没有行动无法参加这次活动的老伙计退出星球）。
-
-因为线下活动新加入的朋友，请在3天内尽快退出（虽然3天后仍然可以随时退费，但星球平台超过3天手续费是不退的，你只能拿到我获得的那部分费用）。
-不要造成财务上的损失。`, images: [] },
-  { index: "2", author: "大胡子", published: "2026-09-01 22:30", title: "用 iPad 调用本地大模型", body: `随时随地，
-你都可以使用iPad 调用本地大模型获得一些建议。
-
-这张图来自直播时的现场演示。`, images: ["/daily-briefing/knowledge/2026-09-01/images/[2] 大胡子 -1.jpg"] },
-];
-
-void archivedPlanetPosts;
+const weather = { location: "南宁", condition: "毛毛雨", temperature: "23–28℃", icon: "🌦️" };
 
 const planetPosts = planetPostsToday;
 
 const deepReadAtoms = [
-  { atom: "执行提速后应把效率与判断分开测量", relation: "今天完成一节课是执行结果；学生在哪里卡住、哪句解释有效，才是判断证据。课后五行记录用来区分这两层。", question: "完成速度提高以后，你用什么证据判断结果也变得更可靠？" },
-  { atom: "自然语言 Skill 属于可执行供应链而非普通文档", relation: "这与今天的现实教学任务没有直接关系，不把它转成今日任务；以后安装或发布 Skill 时，可用它检查权限、依赖和外传路径。", question: "如果一个 Skill 没有传统代码，它仍能通过哪些指令改变 Agent 的现实行为？" },
+  { atom: "可复用 Agent 能力需要保存完整运行契约", relation: "对话结束五问适合先作为反复运行的小流程；连续三次保留输入、判断节点和最终记录，才能知道它是否真的形成能力。", question: "一段 AI 对话结束后，哪些上下文、判断和失败信息必须留下，下一次才能从上次结果继续？" },
+  { atom: "基准能力领先不能替代真实工作流适配", relation: "当天主推题材不需要继续比较模型；更直接的验证是检查它为何还没变成录制：缺具体经历、判断、证据，还是表达入口。", question: "你最近哪个“AI 明明会”的任务，真正断在了最后一公里的哪一步？" },
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -268,7 +206,7 @@ const industryStories = splitSubsections(cloudSections.get("行业重要新闻")
 const productObservations = splitSubsections(cloudSections.get("产品观察") ?? "");
 const deepReads = splitSubsections(cloudSections.get("深读推荐") ?? "");
 const signalRadar = cloudSections.get("信息源实验雷达") ?? "";
-const signalRadarLabel = signalRadar.includes("### 社区日") ? "社区日" : "人物日";
+const signalRadarLabel = signalRadar.includes("### 社区日") ? "社区日" : signalRadar.includes("### 人物日") ? "人物日" : "实验雷达";
 const actionAdvice = cloudSections.get("今日行动建议") ?? "";
 
 function SourceLink({ href, label }: { href: string; label: string }) {
@@ -309,8 +247,8 @@ export default function Home() {
           </div>
           <nav className="sidebar-nav">
             <details className="nav-group" data-nav-group>
-              <summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日计划</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{tasks.map((task, i) => <a href={"#task-" + (i + 1)} key={task.title}>{task.title}</a>)}<a href="#schedule">今日时间块</a><a href="#risk">今日风险</a><a href="#templates">模版</a></div>
+              <summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日选题</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub">{topics.map((topic, i) => <a href={"#task-" + (i + 1)} key={topic.title}>{topic.label}｜{topic.title}</a>)}<a href="#templates">模版</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary>
@@ -318,7 +256,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.title}</a>)}</div>
+              <div className="nav-sub">{planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.title}</a>)}<a href="#xiaobaotong-1">小报童｜最好的礼物</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary>
@@ -334,7 +272,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 9 月 2 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 9 月 3 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -342,8 +280,8 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">03</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期四</p></div></div>
-            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先完成一节真实的课，<br />再从现场留下判断证据。</h1><p className="judgment">今天只完成已经答应的学校课程；课后用五行事实记录学生卡点、有效解释与下一次只改的一处。</p></div>
+            <div className="date-block"><div className="date-day">04</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期五</p></div></div>
+            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>先把想法变成一份礼物，<br />再让 AI 帮它进入现实。</h1><p className="judgment">今天不增加学习任务；从一段真实经历、一个当前判断和一项可核验变化开始，完成第一段原始录制。</p></div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
               <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
@@ -351,19 +289,20 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PRIORITY</p><h2>今天只做一件事</h2></div><p>完成现实义务，留下现场证据</p></div>
-            <div className="task-grid task-grid--one">{tasks.map((task, i) => <article className={"task-card task-card--detailed " + task.tone} id={"task-" + (i + 1)} key={task.number}>
-              <div className="task-card-head"><span className="task-number">{task.number}</span><span className="task-source">{task.source}</span></div>
-              <h3>{task.title}</h3>
-              <p className="task-why"><strong>为什么是今天：</strong>{task.why}</p>
-              {task.question ? <p className="task-question"><strong>今天要回答的问题：</strong>{task.question}</p> : null}
-              <div className="task-detail"><strong>具体怎么做：</strong><ol>{task.steps.map((step) => <li key={step}>{step}</li>)}</ol></div>
-              <div className="task-result"><p><strong>交付物：</strong>{task.deliverable}</p><p><strong>完成标准：</strong>{task.done}</p></div>
-              <div className="task-meta"><span>第一步</span><strong>{task.first}</strong></div><div className="task-time">{task.time}</div>
-            </article>)}</div>
-            <div className="time-block-heading" id="schedule-heading"><div><p className="eyebrow">TIME BLOCKS</p><h3>今日时间块</h3></div><p>围绕一节真实课程安排</p></div>
-            <section className="schedule" id="schedule"><div><span>出发前</span><p>确认时间、地点、年级、主题和联系人；备课只标记开场、核心讲解和结束练习，最多 45 分钟。</p></div><div><span>上课时</span><p>完成真实教学，不临时扩充目标；留意学生具体卡点和哪一句解释真正有效。</p></div><div><span>下课后｜10 分钟</span><p>写五行事实：讲了什么、哪里卡住、什么有效、什么失控、下次只改什么；写完即结束主要任务。</p></div></section>
-            <details className="brief-item" id="risk"><summary><span className="brief-index">风险</span><span className="brief-main"><span className="pill">今日边界</span><strong>不要把备课扩张成重做整套材料</strong><span>只核对必要信息、标记三处结构并完成课程</span></span><span className="plus">＋</span></summary><div className="brief-content"><p>主要风险是因为第一次真实上课而继续补资料、重做课件，挤压休息和出发时间。</p><p>今天的完成标准是到场完成课程并写下五项事实，不以“感觉讲得完美”作为条件。</p></div></details>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S TOPICS</p><h2>今天值得拍什么</h2></div><p>1 个主推＋2 个备选；只推荐，不替你安排</p></div>
+            <div className="brief-list topic-list">{topics.map((topic, i) => <details className={"brief-item topic-card " + topic.tone} id={"task-" + (i + 1)} key={topic.number}>
+              <summary><span className="brief-index">{topic.number}</span><span className="brief-main"><span className="pill">{topic.label}</span><strong>{topic.title}</strong><span>{topic.basis}</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">
+                <p><strong>主要素材类型：</strong>{topic.source}</p>
+                <p><strong>为什么近期值得拍（AI 推荐）：</strong>{topic.why}</p>
+                <p><strong>切入角度：</strong>{topic.angle}</p>
+                <p><strong>核心观点（用户当前判断）：</strong>{topic.judgment}</p>
+                <p><strong>可引用素材：</strong>{topic.evidence}</p>
+                <p><strong>还缺什么 / 表达风险：</strong>{topic.risk}</p>
+                <p><strong>具体怎么做：</strong>找出一段真实经历 → 确定一个观点 → 找一条证据 → 录制。</p>
+                <p><strong>完成标准：</strong>{topic.done}</p>
+              </div>
+            </details>)}</div>
             <div className="template-section" id="templates">
               <div className="time-block-heading"><div><p className="eyebrow">FIXED TEMPLATES</p><h3>模版</h3></div></div>
               <div className="brief-list template-list">
@@ -507,14 +446,16 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成 Skill 权限实验并写成案例卡</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>把抽象观点做成前后可比较的真实案例</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
-          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 5 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-09-02/26-09-02姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 9 月 2 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div></section>
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文与 1 篇相关小报童导读</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-09-03/26-09-03姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 9 月 3 日原始归档 ↗</a></p><div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div>
+            <details className="planet-card" id="xiaobaotong-1"><summary><span className="planet-number">读</span><span><small>小报童 · 姜胡说 · 2025-07-28 22:28</small><strong>最好的礼物</strong></span><span className="planet-kind">导读</span></summary><div className="planet-body"><p><strong>为什么今天相关（AI 推荐）：</strong>9 月 3 日已经为近期分享选择《最有意思的游戏——用AI构建「我的世界」》，但仍在追问这算什么样的“礼物”。这篇文章讨论的正是如何把真实经历、想法或洞见转成给具体对象的礼物。</p><p><strong>阅读重点：</strong>不要从“AI 能做什么”开始，而先回答这份礼物送给谁、对方处在什么具体场景、获得前后有什么变化。文章建议用真实经历建立共鸣，再把表达组织成 HOOK + PROBLEM + SOLUTION + CTA，但同时强调不要让技法盖过真诚。</p><p><strong>适用边界：</strong>文章包含作者对行动力和短视频的强立场，属于经验性方法，不证明所有内容都必须立即发布，也不替代你对分享对象和事实证据的判断。</p><p><strong>读完后的直接使用：</strong>为《用 AI 构建“我的世界”》补三行——这份礼物送给谁、他现在卡在哪里、你的哪段真实经历能证明它有用。</p><SourceLink href="https://xiaobot.net/post/846eefce-3aec-43bd-bf57-6676842136df" label="姜胡说《最好的礼物》" /></div></details>
+          </section>
 
-          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>9 月 2 日睡眠约 7 小时，参加了魔方培训、游泳并继续练习魔方；随后完成了学校临时要求的试讲视频。学校提出今天到校上一节课，用户已经答应，并拿到课本与课件支持。这些是昨日记录中的事实；网页不据此推断课程效果。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>8 月 27 日完成过一条从写稿、拍摄到发布的完整视频，说明完整交付能力存在。8 月 30 日至 9 月 1 日，输入、讨论或娱乐明显多于可验证输出，并多次出现“不知道下一步做什么”的描述。9 月 2 日在明确的外部试讲要求下很快完成录制，说明具体对象、外部反馈和短时限可能有助于启动。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式。</p><p><strong>观察：</strong>近七天多次出现“没有明确下一步时，时间被即时反馈活动占据”的行为链；也有明确外部任务出现后快速行动的反例。</p><p><strong>候选解释：</strong>当前卡点可能更多在任务定义，而不是执行能力。</p><p><strong>替代解释：</strong>培训、通勤、睡眠与社交负荷本身也会压缩可用精力，不能仅凭任务完成与否判断动机。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p><strong>行动：</strong>出发前确认五个确定项；下课后写五项事实。</p><p><strong>最大范围：</strong>备课最多 45 分钟，课后记录最多 10 分钟。</p><p><strong>可观察产物：</strong>一节实际完成的课程和一份五行记录。</p><p><strong>完成标准：</strong>到场完成课程，并记录讲了什么、哪里卡住、什么有效、什么失控、下次只改什么。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>今天不补做过去几天的内容任务，也不重新设计整周计划。把现实义务限定成“核对信息、标记三处课件结构、完成课程、写五行事实”，用明确结束点降低继续准备的诱惑。</p></div></article></div></section>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实、候选解释与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>9 月 3 日完成了真实试讲并收到进一步邀请，也主动比较了结构化工作与开放创作带来的不同感受。当天还为近期分享确定了“用 AI 构建我的世界”这个主题，并保存了一套在对话结束后提取认知变化的五问提示词。</p><p>这些是昨日记录中的事实。公开页面不展示机构、地点、薪资或可识别人物，也不据此替你决定职业方向。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>现实行动增加：培训、面试、试讲视频和真实上课都已经发生，不能再用“完全没有行动”概括这一周。</p><p>内容转化仍不稳定：8 月 31 日形成了较完整的 AI 与判断框架，但当时没有转成可检查表达。9 月 3 日出现正向信号：不仅记录了现实选择，还主动确定分享主题，并保存了一套把对话转成认知变化记录的提示词。</p><p>下一步最值得验证的不是再学一种方法，而是一个已经明确的题材能否形成第一段原始录制。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式。</p><p><strong>观察：</strong>近七天中，开放任务缺少具体下一步时，多次出现输入或即时反馈活动占据时间；而连续两天的明确外部对象促成了实际录制和真实上课。</p><p><strong>候选解释：</strong>当前主要摩擦可能不在“有没有执行能力”，而在能否把开放想法定义成有对象、有证据、有完成标准的交付物。</p><p><strong>替代解释：</strong>睡眠、通勤、现金流和现实工作负荷也会独立改变当天精力，不能把所有差异归因于任务结构。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p>从“我卸载了游戏，却发现最好玩的游戏变成 AI”这段真实经历开始，确定一句当前观点，找一项已经发生的具体变化，然后完成 3–5 分钟原始录制。</p><p><strong>完成标准：</strong>只验证经历、观点和证据是否说清，不要求剪辑或发布。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>今天不新增课程，也不把题目继续扩展成一套宏大方法论。先用一段经历、一个判断和一项变化完成第一版；录完再根据实际表达中的卡点决定下一步。</p></div></article></div></section>
 
           <section className="section" id="deep-reads">
             <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
@@ -544,19 +485,19 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>今天的唯一现实任务是完成已经答应的学校课程并留下真实结果。继续看教学课程会增加输入，却不能替代真实课堂中的反馈。</p>
-                <p><strong>今天只练习：</strong>下课后写五行：实际讲了什么、学生在哪一步卡住、哪一句解释有效、哪一步失控、下次只改什么。</p>
-                <p><strong>适用边界：</strong>如果课后记录暴露出明确、反复出现的教学技能缺口，再针对该缺口寻找课程；今天不为填满栏目而增加资源。</p>
+                <p><strong>AI 建议：</strong>主推题材已经有真实经历、当前判断和明确分享场景，当前缺口不是知识不足，而是把隐喻落到一项可核验变化并完成第一段表达。</p>
+                <p><strong>今天只练习：</strong>为《用 AI 构建“我的世界”》补三行：这份礼物送给谁、对方正卡在哪里、自己的哪段真实经历能证明它有用。随后直接录一遍。</p>
+                <p><strong>适用边界：</strong>如果录制暴露出明确的知识或表达缺口，再针对该缺口寻找资源；今天不为填满栏目而推荐课程。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 9 月 2 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-09-02.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 9 月 2 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 9 月 3 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-09-03.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 9 月 3 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>先完成一节真实的课，<br />再从现场留下判断证据。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>先把想法变成一份礼物，<br />再让 AI 帮它进入现实。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
