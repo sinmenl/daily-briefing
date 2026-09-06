@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>热榜看板</title>
+<style>
+:root{--bg:#0f0f0f;--border:#2a2a4a;--text:#e0e0e0;--dim:#888;--accent:#6c5ce7;--wb:#ff6b35;--bl:#00a1d6;--dy:#fe2c55}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,"SF Pro Display","Helvetica Neue",sans-serif}
+.hdr{padding:24px 32px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hdr h1{font-size:22px;font-weight:600}
+.hdr .m{color:var(--dim);font-size:13px;margin-left:auto}
+.tabs{display:flex;gap:4px;padding:12px 32px;border-bottom:1px solid var(--border)}
+.tab{padding:8px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;color:var(--dim);transition:.2s;border:1px solid transparent}
+.tab:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.tab.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.tab .c{font-size:11px;opacity:.6;margin-left:4px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:16px;padding:24px 32px}
+.col{display:flex;flex-direction:column;gap:2px}
+.ph{display:flex;align-items:center;gap:8px;padding:8px 0;margin-bottom:4px}
+.dot{width:10px;height:10px;border-radius:50%}
+.pn{font-size:15px;font-weight:600}
+.pc{font-size:12px;color:var(--dim)}
+.it{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;transition:.15s;cursor:pointer;text-decoration:none;color:inherit}
+.it:hover{background:rgba(255,255,255,.06)}
+.rk{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:12px;font-weight:700;flex-shrink:0}
+.rk.t3{background:var(--accent);color:#fff}
+.rk.n{background:rgba(255,255,255,.08);color:var(--dim)}
+.tt{flex:1;font-size:14px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ht{font-size:12px;color:var(--dim);flex-shrink:0;font-variant-numeric:tabular-nums}
+.st{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:500;flex-shrink:0}
+.st.v{background:rgba(0,161,214,.15);color:var(--bl)}
+.st.s{background:rgba(108,92,231,.15);color:var(--accent)}
+.fail{margin:4px 0;padding:14px;border:1px solid rgba(255,184,108,.35);border-radius:8px;color:#ffb86c;font-size:13px;line-height:1.5;background:rgba(255,184,108,.06)}
+@media(max-width:768px){.g{grid-template-columns:1fr;padding:16px}.hdr{padding:16px}.tabs{padding:8px 16px;overflow-x:auto}}
+</style>
+</head>
+<body>
+<div class="hdr"><h1>🔥 热榜看板</h1><div class="m" id="m"></div></div>
+<div class="tabs" id="t"></div>
+<div class="g" id="g"></div>
+<script>
+const D={"bilibili": [], "weibo": [], "douyin": [], "twitter": []};
+const E={"bilibili": "Bilibili 热搜失败: HTTPSConnectionPool(host='api.bilibili.com', port=443): Max retries exceeded with url: /x/web-interface/search/square?limit=50 (Caused by NameResolutionError(\"HTTPSConnection(host='api.bilibili.com', port=443): Failed to resolve 'api.bilibili.com' ([Errno 8] nodename nor servname provided, or not known)\"))", "weibo": "微博热搜失败: HTTPSConnectionPool(host='tophub.today', port=443): Max retries exceeded with url: /n/KqndgxeLl9 (Caused by NameResolutionError(\"HTTPSConnection(host='tophub.today', port=443): Failed to resolve 'tophub.today' ([Errno 8] nodename nor servname provided, or not known)\"))", "douyin": "抖音热点失败: HTTPSConnectionPool(host='www.douyin.com', port=443): Max retries exceeded with url: /aweme/v1/web/hot/search/list/ (Caused by NameResolutionError(\"HTTPSConnection(host='www.douyin.com', port=443): Failed to resolve 'www.douyin.com' ([Errno 8] nodename nor servname provided, or not known)\"))", "twitter": "推特热点失败: HTTPSConnectionPool(host='trends24.in', port=443): Max retries exceeded with url: /united-states/ (Caused by NameResolutionError(\"HTTPSConnection(host='trends24.in', port=443): Failed to resolve 'trends24.in' ([Errno 8] nodename nor servname provided, or not known)\"))"};
+const P={bilibili:{n:'Bilibili',c:'#00a1d6',i:'📺'},weibo:{n:'微博',c:'#ff6b35',i:'🔴'},douyin:{n:'抖音',c:'#fe2c55',i:'🎵'},twitter:{n:'推特',c:'#1d9bf0',i:'𝕏'}};
+function f(n){return n>=1e4?(n/1e4).toFixed(1)+'万':n.toLocaleString()}
+function rt(a){const t=document.getElementById('t');t.innerHTML='';const al=document.createElement('div');al.className='tab'+(a==='all'?' on':'');al.innerHTML='全部<span class="c">'+Object.values(D).flat().length+'</span>';al.onclick=()=>r('all');t.appendChild(al);for(const[k,v]of Object.entries(D)){const m=P[k]||{n:k,i:'📌'};const d=document.createElement('div');d.className='tab'+(a===k?' on':'');d.innerHTML=m.i+' '+m.n+'<span class="c">'+v.length+'</span>';d.onclick=()=>r(k);t.appendChild(d)}}
+function r(a){rt(a);const g=document.getElementById('g');g.innerHTML='';for(const p of(a==='all'?Object.keys(D):[a])){const it=D[p]||[];const m=P[p]||{n:p,c:'#888',i:'📌'};const c=document.createElement('div');c.className='col';c.innerHTML='<div class="ph"><div class="dot" style="background:'+m.c+'"></div><div class="pn">'+m.i+' '+m.n+'</div><div class="pc">'+it.length+' 条</div></div>';if(!it.length){c.innerHTML+='<div class="fail">本次抓取失败：'+(E[p]||'接口未返回数据')+'。页面未使用历史缓存。</div>'}for(const x of it.slice(0,30)){const a=document.createElement('a');a.className='it';a.href=x.url||'#';if(x.url)a.target='_blank';a.innerHTML='<div class="rk '+(x.rank<=3?'t3':'n')+'">'+x.rank+'</div><div class="tt">'+x.title+'</div>'+(p==='bilibili'&&x.url.includes('/video/')?'<span class="st v">视频</span>':'<span class="st s">热搜</span>')+'<div class="ht">'+f(x.heat)+'</div>';c.appendChild(a)}g.appendChild(c)}}
+const fi=Object.values(D)[0]?.[0];document.getElementById('m').textContent=fi?'更新: '+fi.fetched_at?.slice(0,16).replace('T',' '):'本次抓取无数据';r('all');if(!fi)document.getElementById('g').innerHTML='<div style="padding:32px;color:#ffb86c">本次未抓取到任何热点，请检查网络或代理配置。页面未使用历史缓存。</div>';
+</script>
+</body>
+</html>

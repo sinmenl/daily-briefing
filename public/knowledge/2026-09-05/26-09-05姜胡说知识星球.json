@@ -1,0 +1,67 @@
+{
+  "source_url": "https://wx.zsxq.com/group/552521142424",
+  "collected_at": "2026-09-05T23:30:18+08:00",
+  "filters": {
+    "author": "大胡子",
+    "date": "2026-09-05"
+  },
+  "recognized_topic_count": 20,
+  "matched_post_count": 2,
+  "posts": [
+    {
+      "unique_id": "local-1c97e18164d71bbe3bec",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-09-05 11:26",
+      "content": "给系统制定的几个功能。\n其中一个就是把屏幕上的一些关键概念,通过划词直接丢到灵感库里。节省在多个软件中来回切换的损耗。不打断当前的“流”。",
+      "tags": [
+        "AI"
+      ],
+      "sequence": 1,
+      "candidate_image_count": 2,
+      "excluded_non_post_image_count": 2,
+      "saved_original_image_count": 2,
+      "image_urls": [
+        "https://images.zsxq.com/Fonet7lg53LtpxdkTkivXoTiLk3N?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1793462399&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:Fz-Il2I9ergVgvJtHTnlannm6wE=",
+        "https://images.zsxq.com/FlbtdYZeq9Go3A3TC6zcZwmTd63S?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1793462399&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:U4YpTDpUTIgX__Ku-0_SS2gjVPQ="
+      ],
+      "downloaded_images": [
+        "images/[1] 大胡子 -1.png",
+        "images/[1] 大胡子 -2.png"
+      ],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    },
+    {
+      "unique_id": "local-3de8b458a99b6c198e75",
+      "post_url": null,
+      "author": "大胡子",
+      "published_at": "2026-09-05 19:02",
+      "content": "从随手的语音记录中自动萃取原子。\n语音->iCloud->灵感库->净稿->萃取->原子。",
+      "tags": [
+        "AI"
+      ],
+      "sequence": 2,
+      "candidate_image_count": 1,
+      "excluded_non_post_image_count": 1,
+      "saved_original_image_count": 1,
+      "image_urls": [
+        "https://images.zsxq.com/FjgOfTc_Blj500xMDR_x-KnhB9dm?imageMogr2/auto-orient/quality/100!/ignore-error/1&e=1793462399&s=vjtmmmvjymjjvjy&token=q6iZ0sQtf9U7s1qz0r4yMawNq3-u2w6lbnai6y2J:dYxIX1U9GyuAB4FPtxf-JBId9qM="
+      ],
+      "downloaded_images": [
+        "images/[2] 大胡子 -1.png"
+      ],
+      "image_download_errors": [],
+      "links": [],
+      "link_resolution_errors": [],
+      "duplicate_link_targets": []
+    }
+  ],
+  "archive_date": "2026-09-05",
+  "start_time": "2026-09-04T23:30:00+08:00",
+  "end_time": "2026-09-05T23:30:00+08:00",
+  "posts_count": 2,
+  "status": "completed"
+}
