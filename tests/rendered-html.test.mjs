@@ -21,7 +21,9 @@ test("renders the daily briefing", async () => {
   assert.match(html, /<title>蔓<\/title>/);
   assert.doesNotMatch(html, /蔓蔓的早课/);
   assert.doesNotMatch(html, /产品、创作与个人规划/);
-  assert.match(html, /今日选题/);
+  assert.match(html, /<h2>今日计划<\/h2>/);
+  assert.match(html, /<h3>今日选题<\/h3>/);
+  assert.match(html, /<h3>待做事项<\/h3>/);
   assert.match(html, /每日资讯/);
   assert.match(html, /姜胡说/);
   assert.match(html, /复盘/);
@@ -38,7 +40,11 @@ test("renders the daily briefing", async () => {
   assert.equal((renderedMain.match(/data-section-fold/g) ?? []).length, 0);
   assert.equal((renderedMain.match(/class="section-fold-chevron"/g) ?? []).length, 0);
   assert.match(html, /data-brief-date="\d{4}-\d{2}-\d{2}"/);
-  assert.match(html, /href="#task-1">/);
+  assert.match(html, /href="#topic-1">/);
+  assert.match(html, /href="#todo-1">/);
+  assert.match(html, /昨日依据（事实）：/);
+  assert.match(html, /AI 建议的最小下一步：/);
+  assert.match(html, /停止条件：/);
   assert.doesNotMatch(html, /未发现(?:可核验)?更新/);
   const creatorLinks = renderedMain.match(/href="#creator-\d+"/g) ?? [];
   const creatorCards = renderedMain.match(/id="creator-\d+"/g) ?? [];
@@ -109,7 +115,6 @@ test("renders the daily briefing", async () => {
   assert.match(html, /一个未来可复用的判断规则/);
   assert.match(html, /不要总结整段对话，只保留真正发生认知变化的部分。/);
   assert.match(html, /这次没有形成新判断/);
-  assert.doesNotMatch(html, /<h2>今日计划<\/h2>/);
   assert.doesNotMatch(html, /id="deep-read-4"/);
   assert.match(html, /id="product-observation"/);
   assert.match(html, /id="early-action"/);

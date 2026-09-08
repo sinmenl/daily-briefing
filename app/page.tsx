@@ -49,6 +49,39 @@ const topics = [
   },
 ];
 
+const todoItems = [
+  {
+    number: "01",
+    title: "为下一次课堂留下一份不依赖 PPT 的备用提纲",
+    basis: "昨日课堂中 PPT 无法使用，你明确复盘自己没有 Plan B；目前没有看到备用提纲已经完成。",
+    missing: "事实只支持“备用方案尚未形成可检查结果”，不推断你是因为拖延或不重视。",
+    next: "另存一页备用提纲，只写开场、三个核心点、一个互动问题和结尾；确保离线可打开。",
+    done: "存在一份不依赖 PPT、离线可读的单页提纲。",
+    stop: "提纲能支撑一次完整讲述就停止，不继续扩写版式或查新资料。",
+    tone: "mint",
+  },
+  {
+    number: "02",
+    title: "选一种不同于连续提问的互动方式，写成一次实验",
+    basis: "昨日你记录了单靠提问和点名较单调，并明确写下需要想办法迭代；目前只有查资料，没有实际实验结果。",
+    missing: "尚不能断定哪种互动一定有效，只能确认原方式没有达到预期。",
+    next: "从已有资料中只选一种互动方式，写下具体做法和一个可观察信号，留给下一次课堂验证。",
+    done: "留下“一种做法＋一个观察信号”的两行实验卡。",
+    stop: "选定一种即可，不继续比较更多方法；结果等真实课堂后再判断。",
+    tone: "blue",
+  },
+  {
+    number: "03",
+    title: "把下月活动与宣传内容先拆成待确认问题",
+    basis: "昨日收到下月活动与宣传内容的任务，但因为尚无想法且在等他人意见，没有形成初稿或问题清单。",
+    missing: "等待协作可能合理；这里只确认目前缺少一个可用于沟通的起点。",
+    next: "写下目标对象、目的、时间、可用资源和谁来决定这五个待确认问题，作为下一次沟通提纲。",
+    done: "存在一张五问清单，不要求今天完成整套方案。",
+    stop: "五个问题写完即停止，不在信息不足时代替他人完成全部方案。",
+    tone: "peach",
+  },
+];
+
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
 const weather = { location: "南宁", condition: "多云有阵雨", temperature: "25–33℃", icon: "🌦️" };
@@ -247,8 +280,8 @@ export default function Home() {
           </div>
           <nav className="sidebar-nav">
             <details className="nav-group" data-nav-group>
-              <summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日选题</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{topics.map((topic, i) => <a href={"#task-" + (i + 1)} key={topic.title}>{topic.label}｜{topic.title}</a>)}<a href="#templates">模版</a></div>
+              <summary className="nav-title"><span className="nav-icon icon-focus">✓</span><span>今日计划</span><span className="nav-chevron">⌄</span></summary>
+              <div className="nav-sub">{topics.map((topic, i) => <a href={"#topic-" + (i + 1)} key={topic.title}>选题｜{topic.label}｜{topic.title}</a>)}{todoItems.map((item, i) => <a href={"#todo-" + (i + 1)} key={item.title}>待做｜{item.title}</a>)}<a href="#templates">模版</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-briefing">▤</span><span>每日资讯</span><span className="nav-chevron">⌄</span></summary>
@@ -289,8 +322,9 @@ export default function Home() {
           </section>
 
           <section className="section" id="today">
-            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S TOPICS</p><h2>今天值得拍什么</h2></div><p>1 个主推＋2 个备选；只推荐，不替你安排</p></div>
-            <div className="brief-list topic-list">{topics.map((topic, i) => <details className={"brief-item topic-card " + topic.tone} id={"task-" + (i + 1)} key={topic.number}>
+            <div className="section-heading compact-heading"><div><p className="eyebrow">TODAY&apos;S PLAN</p><h2>今日计划</h2></div><p>选题建议＋昨日遗漏；不安排时间表</p></div>
+            <div className="time-block-heading plan-subheading"><div><p className="eyebrow">CONTENT TOPICS</p><h3>今日选题</h3></div><p>1 个主推＋2 个备选</p></div>
+            <div className="brief-list topic-list">{topics.map((topic, i) => <details className={"brief-item topic-card " + topic.tone} id={"topic-" + (i + 1)} key={topic.number}>
               <summary><span className="brief-index">{topic.number}</span><span className="brief-main"><span className="pill">{topic.label}</span><strong>{topic.title}</strong><span>{topic.basis}</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">
                 <p><strong>主要素材类型：</strong>{topic.source}</p>
@@ -301,6 +335,18 @@ export default function Home() {
                 <p><strong>还缺什么 / 表达风险：</strong>{topic.risk}</p>
                 <p><strong>具体怎么做：</strong>找出一段真实经历 → 确定一个观点 → 找一条证据 → 录制。</p>
                 <p><strong>完成标准：</strong>{topic.done}</p>
+              </div>
+            </details>)}</div>
+            <div className="time-block-heading plan-subheading"><div><p className="eyebrow">UNFINISHED FROM YESTERDAY</p><h3>待做事项</h3></div><p>只恢复昨日明确发现、尚未留下结果的问题</p></div>
+            <div className="brief-list todo-list">{todoItems.map((item, i) => <details className={"brief-item todo-card " + item.tone} id={"todo-" + (i + 1)} key={item.number}>
+              <summary><span className="brief-index">{item.number}</span><span className="brief-main"><span className="pill">昨日遗漏</span><strong>{item.title}</strong><span>{item.basis}</span></span><span className="plus">＋</span></summary>
+              <div className="brief-content">
+                <p><strong>昨日依据（事实）：</strong>{item.basis}</p>
+                <p><strong>为何仍未完成（事实边界）：</strong>{item.missing}</p>
+                <p><strong>AI 建议的最小下一步：</strong>{item.next}</p>
+                <p><strong>完成标准：</strong>{item.done}</p>
+                <p><strong>停止条件：</strong>{item.stop}</p>
+                <p><strong>隐私处理：</strong>已移除具体单位、人员与地点。</p>
               </div>
             </details>)}</div>
             <div className="template-section" id="templates">

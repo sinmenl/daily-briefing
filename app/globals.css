@@ -549,6 +549,10 @@ main { min-height: 100vh; }
 .time-block-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 38px 0 14px; }
 .time-block-heading h3 { margin: 2px 0 0; font-family: Georgia, "Songti SC", serif; font-size: 23px; font-weight: 600; line-height: 1.25; }
 .time-block-heading > p { margin: 0 0 2px; color: var(--muted); font-size: 12px; text-align: right; }
+.plan-subheading { scroll-margin-top: 88px; }
+.plan-subheading:first-of-type { margin-top: 20px; }
+.todo-list .pill { color: #74536f; background: #f4e8f5; }
+.todo-card[open] { background: linear-gradient(135deg, rgba(249,243,252,.96), rgba(255,250,247,.96)); }
 .template-section { scroll-margin-top: 88px; }
 .template-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; border-top: 0; }
 .template-list .brief-item { min-width: 0; overflow: hidden; border: 1px solid #eee4df; border-radius: 16px; background: rgba(255,253,250,.94); box-shadow: 0 6px 18px rgba(102,76,112,.06); }
