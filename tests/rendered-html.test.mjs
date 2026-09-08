@@ -45,6 +45,8 @@ test("renders the daily briefing", async () => {
   assert.match(html, /昨日依据（事实）：/);
   assert.match(html, /AI 建议的最小下一步：/);
   assert.match(html, /停止条件：/);
+  assert.equal((html.match(/data-todo-check="true"/g) ?? []).length, 3);
+  assert.match(html, /data-todo-check-label="true">标记完成/);
   assert.doesNotMatch(html, /未发现(?:可核验)?更新/);
   const creatorLinks = renderedMain.match(/href="#creator-\d+"/g) ?? [];
   const creatorCards = renderedMain.match(/id="creator-\d+"/g) ?? [];
@@ -141,6 +143,9 @@ test("exports one page shell with cloud data for every date", async () => {
   assert.match(current, /data-calendar-grid/);
   assert.match(current, /renderCalendar\(\);\s*picker\.addEventListener/);
   assert.match(current, /data-brief-app/);
+  assert.match(current, /man-daily-briefing:todo:/);
+  assert.match(current, /localStorage\.setItem\(storageKey, "1"\)/);
+  assert.match(current, /label\.textContent = complete \? "已完成" : "标记完成"/);
   assert.match(current, /brand\.lastChild\.textContent = "蔓"/);
   assert.match(current, new RegExp(`data-brief-date="${manifest.latest}"`));
   assert.equal(manifest.latest, [...manifest.dates].sort().reverse()[0]);

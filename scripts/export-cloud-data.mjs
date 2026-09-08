@@ -153,6 +153,34 @@ const appScript = `<script data-brief-app>
     document.querySelector("[data-menu-button]")?.setAttribute("aria-expanded", "false");
   };
 
+  const initTodoChecks = () => {
+    const date = currentDate();
+    if (!date) return;
+    document.querySelectorAll("[data-todo-check]").forEach((button) => {
+      const itemId = button.dataset.todoId;
+      if (!itemId) return;
+      const storageKey = "man-daily-briefing:todo:" + date + ":" + itemId;
+      const card = button.closest(".todo-card");
+      const label = button.querySelector("[data-todo-check-label]");
+      const paint = (complete) => {
+        button.setAttribute("aria-pressed", String(complete));
+        card?.classList.toggle("is-complete", complete);
+        if (label) label.textContent = complete ? "已完成" : "标记完成";
+      };
+      let complete = false;
+      try { complete = window.localStorage.getItem(storageKey) === "1"; } catch {}
+      paint(complete);
+      button.addEventListener("click", () => {
+        const next = button.getAttribute("aria-pressed") !== "true";
+        try {
+          if (next) window.localStorage.setItem(storageKey, "1");
+          else window.localStorage.removeItem(storageKey);
+        } catch {}
+        paint(next);
+      });
+    });
+  };
+
   const loadBrief = async (date, push = true) => {
     if (loading || !availableSet.has(date) || date === currentDate()) return;
     loading = true;
@@ -302,6 +330,7 @@ const appScript = `<script data-brief-app>
         closeMenu();
       });
     });
+    initTodoChecks();
     initCalendar();
   };
 

@@ -341,6 +341,7 @@ export default function Home() {
             <div className="brief-list todo-list">{todoItems.map((item, i) => <details className={"brief-item todo-card " + item.tone} id={"todo-" + (i + 1)} key={item.number}>
               <summary><span className="brief-index">{item.number}</span><span className="brief-main"><span className="pill">昨日遗漏</span><strong>{item.title}</strong><span>{item.basis}</span></span><span className="plus">＋</span></summary>
               <div className="brief-content">
+                <button className="todo-check" type="button" data-todo-check data-todo-id={item.title} aria-pressed="false"><span className="todo-check-icon" aria-hidden="true">✓</span><span data-todo-check-label>标记完成</span></button>
                 <p><strong>昨日依据（事实）：</strong>{item.basis}</p>
                 <p><strong>为何仍未完成（事实边界）：</strong>{item.missing}</p>
                 <p><strong>AI 建议的最小下一步：</strong>{item.next}</p>
