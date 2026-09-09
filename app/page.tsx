@@ -2,49 +2,49 @@ import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 import { planetPostsToday } from "./planet-current";
 
-const briefDate = "2026-09-08";
+const briefDate = "2026-09-09";
 
 const topics = [
   {
     number: "01",
     label: "主推",
-    title: "PPT 失效以后，我才看见“备课完成”的真实标准",
-    basis: "首次正式课堂出现设备失效与时间缩短；来源：昨日课堂经历与本人复盘。",
-    source: "真实课堂经历、本人复盘、一次未预料到的失败",
-    why: "经历具体，判断正在形成，而且能帮助同样依赖幻灯片的新教师、培训者或演示者。",
-    angle: "从“试讲时设备正常，所以我默认正式课堂也会正常”讲起，说明现实环境怎样推翻这项默认假设。",
-    judgment: "准备不足不只是内容没写完；没有设备失败后的替代方案，也会让课堂目标失去保障。",
-    evidence: "2026-09-07 日记中的首次课堂、PPT 无法播放以及“没有 Plan B”的复盘。",
-    risk: "补一项真正试过的无 PPT 方案及结果；不要把一次课堂扩大为所有课堂都不该使用 PPT，也不要暴露工作单位与学生信息。",
-    done: "保存一版 3–5 分钟内部录音或视频草稿，包含原假设、现场失败、当前判断和下一次准备验证的 Plan B；文件存在即完成，不要求发布。",
+    title: "课堂互动不是多加几个环节，而是先明确希望学生发生什么变化",
+    basis: "连续三节真实课堂出现不同互动反应；来源：昨日课堂经历与本人复盘。",
+    source: "真实课堂经历、三组班级反应、本人复盘",
+    why: "有真实摩擦、当前判断和可继续验证的问题，能帮助需要带课堂、培训或活动的人区分“增加互动形式”和“达成参与目标”。",
+    angle: "从“我已经加了互动，为什么课堂还是无聊”讲起，对比口头点名、书写纸条和同伴互动的实际差异。",
+    judgment: "单纯增加互动环节并没有解决课堂无趣；下一步需要思考课程怎样整改，而不是立刻逃离问题。",
+    evidence: "2026-09-08 日记中的三节课堂观察；书写纸条比口头点名更容易获得参与，但完成后的秩序仍失控。",
+    risk: "当前只有一天、三个班的观察，不能概括所有学生；不要暴露学校、班级或学生身份。",
+    done: "保存一版 3–5 分钟内部录音，讲清原假设、三种反应、当前判断和下一节只验证的一项改变；文件存在即完成。",
     tone: "mint",
   },
   {
     number: "02",
     label: "备选",
-    title: "省时间之前，先回答省下来的时间要去哪里",
-    basis: "两次出现同一追问；来源：9 月 4 日与 9 月 7 日日记。",
-    source: "近期生活与工作中的真实时间分配观察",
-    why: "这不是抽象反效率，而是本人已经连续两次发现“只想减少改动或更快完成，却说不清时间最终用途”。",
-    angle: "选一次等待别人先给方案或优化流程的经历，追踪省下来的时间实际去了哪里。",
-    judgment: "节省时间本身不是最终价值，还要看省下来的时间被重新分配给了什么。",
-    evidence: "2026-09-04、2026-09-07 日记。",
-    risk: "需要一次明确的前后对照；避免把休息、等待协作或娱乐一概描述成浪费。",
-    done: "保存一版 60–90 秒原始录音，讲清一次效率优化、实际时间去向和修正后的判断；文件存在即完成。",
+    title: "做短视频的一级目标，可以不是流量",
+    basis: "本人明确写下成长是一级指标、流量是二级反馈；来源：昨日直播笔记与复盘。",
+    source: "本人对短视频目的的明确判断、一次真实表达卡点",
+    why: "这项判断直接改变了怎样衡量每次录制，能帮助同样因流量压力迟迟不表达的人。",
+    angle: "从“不需要流量，那日记能不能直接发”这一追问切入，区分成长指标与平台反馈。",
+    judgment: "做短视频的目的不只是做短视频，而是训练表达能力、思考角度和深度；成长是一级指标，流量是二级反馈。",
+    evidence: "2026-09-08 日记中的本人直播笔记与明确表述。",
+    risk: "需要用一次录制后的具体变化作证，避免停留在价值口号；也不等于长期无需考虑用户反馈。",
+    done: "保存 60–90 秒录音，包含一次真实表达卡点和怎样判断自己有进步；文件存在即完成。",
     tone: "blue",
   },
   {
     number: "03",
     label: "备选",
-    title: "课堂互动不是把问题问得更多",
-    basis: "昨日课堂出现一次具体问题；来源：首次正式课堂观察。",
-    source: "一次课堂互动不理想的现场观察",
-    why: "问题真实且可继续实验，但当前只有一次信号，因此只作为备选。",
-    angle: "从“我以为多提问、点名就能活跃课堂”这一假设说起，记录学生实际反应。",
-    judgment: "尚未形成稳定判断；目前只能确认单靠提问与点名没有达到预期。",
-    evidence: "2026-09-07 日记。",
-    risk: "先试一种替代互动方式，并观察学生是否真的更参与；不能把一次课堂写成学生或教师的稳定特征。",
-    done: "只有在完成一次替代互动实验后，保存一版 60–90 秒录音，包含原假设、观察结果和仍未确定的问题；否则维持待验证状态。",
+    title: "已有解决方案，不等于问题已经验证",
+    basis: "本人补充了文件 Plan B，却发现此前只记录问题；来源：昨日状态纠错。",
+    source: "一次日记状态遗漏与本人纠错",
+    why: "它能解释为什么 AI 会重复提出已经有方案的问题，也能形成一条可复用的记录规则。",
+    angle: "从“我明明已有 U 盘和手机方案，简报却仍说没有 Plan B”讲起。",
+    judgment: "记录问题时同时记录状态，才能区分没有方案、已有方案但未验证和已经解决。",
+    evidence: "2026-09-08 日记对 9 月 7 日复盘的明确补充。",
+    risk: "方案目前仍未经过下一次设备失效验证，不能写成问题已解决。",
+    done: "保存 60–90 秒录音，讲清问题、已有方案、尚未验证的部分和下一次证据；文件存在即完成。",
     tone: "peach",
   },
 ];
@@ -52,45 +52,25 @@ const topics = [
 const todoItems = [
   {
     number: "01",
-    title: "为下一次课堂留下一份不依赖 PPT 的备用提纲",
-    basis: "昨日课堂中 PPT 无法使用，你明确复盘自己没有 Plan B；目前没有看到备用提纲已经完成。",
-    missing: "事实只支持“备用方案尚未形成可检查结果”，不推断你是因为拖延或不重视。",
-    next: "另存一页备用提纲，只写开场、三个核心点、一个互动问题和结尾；确保离线可打开。",
-    done: "存在一份不依赖 PPT、离线可读的单页提纲。",
-    stop: "提纲能支撑一次完整讲述就停止，不继续扩写版式或查新资料。",
+    title: "只改一个课堂互动环节并记录结果",
+    basis: "昨日多种互动仍未达到预期，你明确提出下一节继续尝试；当前没有新实验结果。",
+    missing: "只能确认尚未验证下一种做法，不能断定哪种互动必然有效。",
+    next: "只选一个环节，事先写下希望学生做出的可观察行为，并记录参与、拒绝和秩序变化。",
+    done: "留下一张“一项改动＋一个预期＋三个观察数”的实验卡，并在课后补结果。",
+    stop: "只验证一个变量，不继续搜集更多课堂技巧。",
     tone: "mint",
-  },
-  {
-    number: "02",
-    title: "选一种不同于连续提问的互动方式，写成一次实验",
-    basis: "昨日你记录了单靠提问和点名较单调，并明确写下需要想办法迭代；目前只有查资料，没有实际实验结果。",
-    missing: "尚不能断定哪种互动一定有效，只能确认原方式没有达到预期。",
-    next: "从已有资料中只选一种互动方式，写下具体做法和一个可观察信号，留给下一次课堂验证。",
-    done: "留下“一种做法＋一个观察信号”的两行实验卡。",
-    stop: "选定一种即可，不继续比较更多方法；结果等真实课堂后再判断。",
-    tone: "blue",
-  },
-  {
-    number: "03",
-    title: "把下月活动与宣传内容先拆成待确认问题",
-    basis: "昨日收到下月活动与宣传内容的任务，但因为尚无想法且在等他人意见，没有形成初稿或问题清单。",
-    missing: "等待协作可能合理；这里只确认目前缺少一个可用于沟通的起点。",
-    next: "写下目标对象、目的、时间、可用资源和谁来决定这五个待确认问题，作为下一次沟通提纲。",
-    done: "存在一张五问清单，不要求今天完成整套方案。",
-    stop: "五个问题写完即停止，不在信息不足时代替他人完成全部方案。",
-    tone: "peach",
   },
 ];
 
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
-const weather = { location: "南宁", condition: "多云有阵雨", temperature: "25–33℃", icon: "🌦️" };
+const weather = { location: "南宁", condition: "阵雨", temperature: "24–33℃", icon: "🌦️" };
 
 const planetPosts = planetPostsToday;
 
 const deepReadAtoms = [
-  { atom: "业务结构先于 AI 自动化", relation: "今天已有真实课堂失败与本人复盘，优先把现实输入说清楚，比继续寻找新的内容工具更符合该原子的边界。", question: "在这段课堂经历中，哪些判断必须由本人保留，哪些整理动作才适合交给 AI？" },
-  { atom: "公开预测应保存证据与修订轨迹", relation: "昨日课堂只提供一次信号；把下一次 Plan B 与互动实验的预期结果先写清楚，能避免一次成败被扩大成稳定结论。", question: "下一节课开始前，哪一项判断能够写成“预期—证据—修正”的最小记录？" },
+  { atom: "可执行 Skill 需要可追溯的来源与版本", relation: "昨天日记状态被错误读取，说明规则和记忆除了可执行，还需保存来源、当前状态与变更记录。", question: "一个 Skill 怎样证明自己来自哪个版本、改过什么、行为是否仍与测试一致？" },
+  { atom: "AI 的新增价值要用新增可行任务衡量", relation: "课堂内容的机会不是把同一份 PPT 生成得更快，而是能否做一次过去嫌麻烦而不会做的单变量观察。", question: "哪项原本因整理成本而放弃的真实实验，现在能用 AI 做出最小版本？" },
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -289,7 +269,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-planet">✦</span><span>姜胡说</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub">{planetPosts.length ? planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.title}</a>) : <a href="#planet-status">昨日无星主更新</a>}<a href="#xiaobaotong-1">小报童｜拍了100条还在原地踏步？</a></div>
+              <div className="nav-sub">{planetPosts.length ? planetPosts.map((post) => <a href={"#planet-" + post.index} key={post.index}>{post.title}</a>) : <a href="#planet-status">昨日无星主更新</a>}<a href="#xiaobaotong-1">小报童｜添加了标签地图</a></div>
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-review">↺</span><span>复盘</span><span className="nav-chevron">⌄</span></summary>
@@ -305,7 +285,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 9 月 7 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 9 月 8 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -313,8 +293,8 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">08</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期二</p></div></div>
-            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>PPT 失效以后，<br />我才看见“备课完成”的真实标准。</h1><p className="judgment">第一次正式课堂已经给出具体证据：准备完成不只是在电脑里写完内容，还要为现场失效保留替代路径。今天只把这段经历和下一次 Plan B 录成第一版。</p></div>
+            <div className="date-block"><div className="date-day">09</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期三</p></div></div>
+            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>课堂互动不是多加几个环节，<br />而是先明确希望学生发生什么变化。</h1><p className="judgment">连续三节真实课堂已经给出对比：口头点名、书写和同伴互动会产生不同反应。今天先把这段经历讲清楚，再为下一节只设计一个可观察的改变。</p></div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
               <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
@@ -493,16 +473,16 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一张“小众问题经济性卡”</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次“五个问题状态化”实验</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
-          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日无星主更新；保留 1 篇相关小报童导读</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-09-07/26-09-07姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 9 月 7 日原始归档 ↗</a></p>{planetPosts.length ? <div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div> : <article className="review-card static-review-card" id="planet-status"><h3>昨日无星主更新</h3><div><p>2026 年 9 月 7 日精确日期归档已生成，记录为“今日无星主更新”。没有使用其他日期内容代替。</p></div></article>}
-            <details className="planet-card" id="xiaobaotong-1"><summary><span className="planet-number">读</span><span><small>小报童 · 姜胡说 · 2026-07-27 11:52:34</small><strong>拍了100条还在原地踏步？复制这段prompt</strong></span><span className="planet-kind">导读</span></summary><div className="planet-body"><p><strong>为什么今天相关（AI 推荐）：</strong>昨日首次课堂已经暴露 Plan B 与互动问题。文章强调一条记录只能提供信号，多次结果才能确认卡点，并建议每次只修改一个可验证问题；这能帮助把后续课堂从泛泛“做得更好”改成连续实验。</p><p><strong>阅读重点：</strong>区分单次信号与重复模式；每次只记录一个最值得修正的问题、采取一个具体动作，并说明用什么结果判断有效。</p><p><strong>适用边界：</strong>文章原本面向短视频数据诊断，课堂没有同样的完播率与点击率，不能照搬指标；应改用学生参与、任务完成或课堂中断等可观察结果。</p><SourceLink href="https://xiaobot.net/post/9614aedb-ee01-4ec2-b349-dc2505d0e9f4" label="姜胡说《拍了100条还在原地踏步？复制这段prompt》" /></div></details>
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文；保留 1 篇相关小报童导读</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-09-08/26-09-08姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 9 月 8 日原始归档 ↗</a></p>{planetPosts.length ? <div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div> : <article className="review-card static-review-card" id="planet-status"><h3>昨日无星主更新</h3><div><p>2026 年 9 月 8 日精确日期归档已生成，但没有星主原文。没有使用其他日期内容代替。</p></div></article>}
+            <details className="planet-card" id="xiaobaotong-1"><summary><span className="planet-number">读</span><span><small>小报童 · 姜胡说 · 2026-09-08 15:03:18</small><strong>添加了标签地图，卡在哪儿，点哪儿（重构中）</strong></span><span className="planet-kind">导读</span></summary><div className="planet-body"><p><strong>为什么今天相关（AI 推荐）：</strong>文章把定位、生产、诊断、变现、AI 工具和心法启动分开。昨天已经有真实课堂与表达问题，适合先判断卡在“诊断”，而不是继续把所有方法混在一起。</p><p><strong>阅读重点：</strong>标签地图是入口，不是完成方案；先选当前卡点，再回到现实结果验证。</p><p><strong>适用边界：</strong>原文面向短视频专栏导航，不能直接替代课堂设计，也不能证明标签本身会改善执行。</p><SourceLink href="https://xiaobot.net/post/e5addba5-2ac4-474d-a736-9997cdc69b8e" label="姜胡说《添加了标签地图，卡在哪儿，点哪儿》" /></div></details>
           </section>
 
-          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实、候选解释与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>昨日完成首次正式课堂。晨会延误、教室位置不清和设备存储爆满共同压缩了授课时间，PPT 最终无法使用。本人随后明确记录了两个改进点：缺少 Plan B，以及仅靠提问难以维持参与；之后查找了相关书籍资料。面对另一个尚无明确结构的活动任务，当天没有形成可检查草稿。</p><p>昨日记录中没有近期个人内容草稿已经录制或发布的事实证据，因此不把它写成已完成。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>近七天里，试讲、线下交流、直播记录和正式课堂等真实场景持续产生具体问题与判断修正。与此同时，当任务没有明确对象、验收标准或第一步时，仍容易等待他人先提供方向，或转向继续查资料。</p><p>这组证据更支持“真实场景能让问题具体化”的候选解释；但新岗位的信息不足、睡眠和现实负荷仍是重要替代解释，不能把它写成稳定人格结论。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式，并出现新的现实场景证据。</p><p><strong>候选解释：</strong>真实对象、限制和即时结果会降低问题定义成本，让下一步从抽象学习变成具体修正。</p><p><strong>替代解释：</strong>外部角色与时间约束本身提供了结构；在入职初期等待同事意见也可能是合理协作。</p><p><strong>当前观察：</strong>昨天最有价值的输出不是一节课“顺利完成”，而是现场失败被转换成两个可验证的改进问题。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p>如果选择主推题，只录一遍：找出“正式课堂设备失效”的真实经历 → 明确“备课完成需要替代路径”的当前观点 → 找一条下一次可验证的 Plan B → 录制。</p><p><strong>完成标准：</strong>保存一版 3–5 分钟原始草稿即停止；不要求剪辑、发布或先补一门课程。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>今天不新增工具或方法。先把昨天已经发生的课堂错误变成一份可检查表达；录完后再根据真实卡点判断缺的是结构、证据还是表达。</p></div></article></div></section>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实、候选解释与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>昨日完成三节真实课堂，并记录不同班级、不同互动形式的反应。文件 Plan B 已明确为 U 盘和手机存储，因此不再把“没有 Plan B”列为未解决问题；它当前属于“已有方案、尚待现场验证”。</p><p>本人还明确写下短视频的一级目标是表达与思考成长，流量只作为二级反馈；但近期仍没有个人内容草稿已经录制或发布的事实证据。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>近七天从魔方、试讲、线下交流到正式课堂，现实任务持续提供能够修正判断的证据。与此同时，短视频与开放式产出仍未看到可检查成品。</p><p>这个组合更支持“真实场景降低了问题定义成本”的候选解释，但睡眠、入职适应和课堂负荷也是重要替代解释。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>重复模式，并出现状态纠错与新的课堂对比证据。</p><p><strong>候选解释：</strong>真正的进展不只是发现问题，而是把问题更新为“无方案 / 已有方案 / 待验证 / 已解决”。</p><p><strong>替代解释：</strong>昨天只是新岗位第二天，信息和经验不足本身足以解释多项未完成，不应归因于稳定性格。</p><p><strong>当前观察：</strong>PPT 问题已经从“没有方案”转为“方案待验证”；课堂互动才是当前仍需现实证据的问题。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p>如果选择主推题，只录一遍：讲一个互动没有按预期工作的场景 → 说出当前判断 → 给出书写与口头参与的一条对比证据 → 说明下一节只验证哪项改变。</p><p><strong>完成标准：</strong>保存一版 3–5 分钟原始草稿即停止；不要求剪辑、发布或先补一门课程。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>今天不新增方法库。先把课堂互动问题改成一项单变量实验；已有 Plan B 只等待真实验证，不再重复设计。</p></div></article></div></section>
 
           <section className="section" id="deep-reads">
             <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
@@ -532,19 +512,19 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>昨日已经有足够具体的真实课堂经历、失败证据与当前判断。新增课程会增加准备，却不能直接解决“把经历、判断和下一次验证说清楚”这一表达缺口。</p>
-                <p><strong>今天只练习：</strong>围绕“PPT 失效以后，我才看见备课完成的真实标准”录一遍 3–5 分钟原始草稿。只讲四点：原来怎样判断备课完成、现场发生了什么、现在的判断是什么、下一节课准备用哪一种 Plan B 验证。</p>
+                <p><strong>AI 建议：</strong>昨日已经有三节真实课堂、具体互动差异和明确表达目标。新增课程会增加输入，不能替代下一次单变量课堂实验或第一版录音。</p>
+                <p><strong>今天只练习：</strong>围绕“我已经加了互动，为什么课堂还是无聊”录一遍 3–5 分钟原始草稿。只讲四点：加了哪些互动、学生实际怎样反应、现在认为问题在哪里、下一节只改什么。</p>
                 <p><strong>适用边界：</strong>如果录制暴露出明确的知识或表达缺口，再针对该缺口寻找资源；今天不为填满栏目而推荐课程。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 9 月 7 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-09-07.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 9 月 7 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 9 月 8 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-09-08.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 9 月 8 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>PPT 失效以后，<br />我才看见“备课完成”的真实标准。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>课堂互动不是多加几个环节，<br />而是先明确希望学生发生什么变化。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>

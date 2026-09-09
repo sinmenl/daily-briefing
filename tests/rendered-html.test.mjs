@@ -45,7 +45,12 @@ test("renders the daily briefing", async () => {
   assert.match(html, /昨日依据（事实）：/);
   assert.match(html, /AI 建议的最小下一步：/);
   assert.match(html, /停止条件：/);
-  assert.equal((html.match(/data-todo-check="true"/g) ?? []).length, 3);
+  const todoLinks = renderedMain.match(/href="#todo-\d+"/g) ?? [];
+  const todoCards = renderedMain.match(/id="todo-\d+"/g) ?? [];
+  const todoChecks = html.match(/data-todo-check="true"/g) ?? [];
+  assert.ok(todoCards.length <= 3);
+  assert.equal(todoLinks.length, todoCards.length);
+  assert.equal(todoChecks.length, todoCards.length);
   assert.match(html, /data-todo-check-label="true">标记完成/);
   assert.doesNotMatch(html, /未发现(?:可核验)?更新/);
   const creatorLinks = renderedMain.match(/href="#creator-\d+"/g) ?? [];
