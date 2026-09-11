@@ -2,49 +2,49 @@ import { type ReactNode } from "react";
 import { cloudBriefMarkdownToday } from "./cloud-brief-current";
 import { planetPostsToday } from "./planet-current";
 
-const briefDate = "2026-09-10";
+const briefDate = "2026-09-11";
 
 const topics = [
   {
     number: "01",
     label: "主推",
-    title: "一堂课有趣，不等于教学目标清楚",
-    basis: "一次具体课后反馈同时肯定主题、指出目标与闭环问题；来源：昨日真实试讲与本人记录。",
-    source: "真实试讲、去身份化外部反馈、本人复盘",
-    why: "它同时具备真实经历、当前判断、具体证据和对教师、培训者或内容表达者的普遍帮助，且比继续泛谈“课堂无聊”更可检验。",
-    angle: "从“别人说我的课有趣，但目标不清楚”讲起，区分新颖主题、互动热闹与真正完成教学目标。",
-    judgment: "一次具体反馈让“课堂哪里有问题”从模糊感受变成了“目标不清楚、环节没有闭环”两个可修改点。",
-    evidence: "同一份反馈同时肯定主题新颖，又指出目标与闭环不足；它说明“有趣”和“教清楚”不是同一个评价维度。",
-    risk: "当前只有一位同事对一节课的反馈，尚未通过下一次课堂结果验证；不要暴露学校、同事、班级或学生身份。",
-    done: "保存一版 3–5 分钟内部录音，讲清原场景、两条反馈、自己现在的区分和下一次准备怎样验证；文件存在即完成。",
+    title: "纪律手段为什么会破坏真实表达",
+    basis: "一次真实课堂暴露出纪律惩罚与安全表达目标的冲突；来源：昨日及连续课堂复盘。",
+    source: "真实课堂、连续课堂复盘、本人写下的替代话术",
+    why: "它有明确摩擦、用户已经形成的判断、可引用现场证据，也能帮助教师、培训者和主持讨论的人检查机制是否与目标冲突。",
+    angle: "从“我一边邀请学生真实表达，一边让表达变成惩罚”讲起，说明纪律管理怎样无意中给出相反信号。",
+    judgment: "上台应该是表达机会，分享应该是安全的；课堂需要惩罚行为，而不是惩罚表达。",
+    evidence: "昨日记录学生更愿意起哄、接梗和集体回答，却可能把主动暴露真实想法理解为有风险；前一日也记录了点名回答和写纸条的参与差异。",
+    risk: "只来自少量课堂，不足以概括所有学生；公开表达时必须去除学校、班级、学生和同事身份。",
+    done: "保存一版 3–5 分钟内部录音，讲清冲突、自己的判断、一条课堂证据和下一次准备验证的纪律话术；文件存在即完成。",
     tone: "mint",
   },
   {
     number: "02",
     label: "备选",
-    title: "这次表格检查里，K3 为什么比 GPT6 更好用",
-    basis: "同一个实际表格任务出现明确检查差异；来源：昨日工具使用记录。",
-    source: "一次同任务模型比较、具体错误发现记录",
-    why: "它有同一任务中的具体结果，能帮助使用 AI 做表格核验的人把总体模型印象改成任务级验收。",
-    angle: "从“更强的模型为什么没找出这些表格错误”切入，说明自己真正需要检查的字段。",
-    judgment: "至少在这次表格检查任务中，K3 的实际结果更好，模型名气或总体能力不能替代具体任务表现。",
-    evidence: "K3 找出了班级错误、错别字和多余符号，而另一模型没有发现这些问题。",
-    risk: "只有一次任务样本，不能外推为 K3 在所有表格或所有任务上都更好；展示时需去除工作数据。",
-    done: "保存 60–90 秒内部录音，包含同一任务、预先关心的检查项、实际差异和下一次复测方式；文件存在即完成。",
+    title: "忙了一天却没有成果，可能是精力用在不可推进点上",
+    basis: "一项真实数据任务受外部填写与流程限制；来源：昨日工作记录与本人判断。",
+    source: "一次多方依赖的数据任务、一次停止无效投入的判断",
+    why: "它能帮助处理多方依赖任务的人区分“尚未完成”和“当前可推进”，也保留了外部限制这一事实边界。",
+    angle: "从“我整理了一上午，结果却无法推进”讲起，区分自己能处理的数据和只能等待的外部缺口。",
+    judgment: "不能推进的外部缺口不应持续占用主要精力；应先把现有数据处理好，再把无法控制的部分单独记录。",
+    evidence: "昨日明确记录未填写名单无法由自己推进，并写下“把精力发错了地方”。",
+    risk: "不是所有等待都应停止；任务仍需符合工作要求，并保护任何个人数据。",
+    done: "保存 60–90 秒内部录音，只讲依赖结构、一次无效投入、一个停止条件和仍需谁确认；文件存在即完成。",
     tone: "blue",
   },
   {
     number: "03",
     label: "备选",
-    title: "等待别人回复时，怎样把“还没完成”变成可推进的状态",
-    basis: "一项真实资料收集任务同时依赖多方回复和暂时拿不到的名单；来源：昨日工作记录。",
-    source: "一次多方依赖任务、一次主动拆分动作",
-    why: "它不是成功经验，而是一段仍在发生的真实协作摩擦，能帮助面对外部依赖的人区分等待与可控推进。",
-    angle: "从“我已经催了，但任务还是卡住”讲起，只谈自己怎样拆分可推进部分。",
-    judgment: "在依赖他人的任务里，不能只等结果，需要主动拆分自己能推进的部分。",
-    evidence: "用户按年级和班级拆分协作，但必要资料仍未全部到位。",
-    risk: "必须完全去除机构、人员与具体资料类型；当前仍没有最终完成结果，不能包装成成功方法。",
-    done: "保存 60–90 秒内部录音，只讲依赖关系、一次拆分动作、仍未解决的部分和下一次证据；文件存在即完成。",
+    title: "改了很多页 PPT，为什么课堂还是没上好",
+    basis: "上课前反复调整 24 页课件，现场仍出现节奏与内容长度问题；来源：昨日课堂记录。",
+    source: "一次课件迭代、一次真实课堂结果",
+    why: "它能把“材料做完了”与“交付准备完成了”区分开，并留下下一节课只改一个变量的空间。",
+    angle: "从“课件赶在上课前十分钟改完，课堂却依然提前讲完”切入，检查备课到底缺了哪一层。",
+    judgment: "改过课件不等于备好课，页面数量也不能替代教学目标、节奏和现场互动准备。",
+    evidence: "昨日课堂仍出现讲得过快、内容提前结束和再次用写纸条补时间。",
+    risk: "只有一次课堂记录，不能把结果完全归因于课件；还缺教学目标、时间分配与学生反馈的对照。",
+    done: "保存 60–90 秒内部录音，包含一次课件修改、实际课堂结果和下一节课只改一个变量的方式；文件存在即完成。",
     tone: "peach",
   },
 ];
@@ -52,35 +52,35 @@ const topics = [
 const todoItems = [
   {
     number: "01",
-    title: "写一张课堂目标与环节闭环卡",
-    basis: "昨日收到“教学目标不清楚、每个环节缺少闭环”的反馈，并明确认为这指出了自己一直没有看清的问题。",
-    missing: "现有记录没有出现一份已经改写完成的教学目标，也没有下一次课堂验证结果。",
-    next: "只选一节课，写下一个学生可观察的课后变化，并给一个现有环节补一句收束语。",
-    done: "存在一张包含“一个目标＋一个环节＋一句收束语”的卡片即完成。",
-    stop: "只改一节课的一个环节，不继续重做整套课程。",
+    title: "把纪律替代话术放进下一节课教案",
+    basis: "昨日明确识别出纪律惩罚与真实表达目标冲突，并写下四句只约束行为、不惩罚表达的替代话术。",
+    missing: "日记没有显示这些话术已经进入下一节课教案，也没有现场验证结果。",
+    next: "把四句中最适合的一句写进下一节课教案，在一次课堂暂停时使用。",
+    done: "教案中存在一句替代话术，并在课后留下“使用 / 未使用”的二元记录。",
+    stop: "只替换一次纪律提示，不同时重做整套课堂管理方案。",
     tone: "mint",
   },
   {
     number: "02",
-    title: "把待回收资料整理成缺口状态表",
-    basis: "昨日记录部分资料尚未回收，另有一份必要名单暂时无法取得，任务仍依赖他人回复。",
-    missing: "日记没有可检查的最终回收结果，也没有完整缺口清单。",
-    next: "只列当前已知缺口、依赖对象、最后一次联系和下一次检查时间；不在表中放公开网页不需要的敏感内容。",
-    done: "一张四列状态表存在，且每个已知缺口都有一个当前状态，即完成。",
-    stop: "只登记当前已知缺口，不把等待期间变成无限追加的新任务。",
+    title: "为不可推进的数据缺口写停止条件",
+    basis: "昨日记录未填写名单无法由自己推进，并明确判断继续折腾没有实际效用。",
+    missing: "现有记录没有一条可复用的停止规则，也没有一份将现有结果与外部缺口分开的说明。",
+    next: "写下一句“现有数据处理完成后停止；未获得部分单列为外部缺口”，并保存缺口数量或状态。",
+    done: "存在一条停止规则和一份去身份化缺口状态，二者均可复查。",
+    stop: "不继续补猜、催促或清洗当前拿不到的数据。",
     tone: "blue",
   },
 ];
 
 const learningResources: Array<{ type: string; title: string; meta: string; intro: string; why: string; focus: string[]; action: string; boundary: string; source: string; sourceLabel: string }> = [];
 
-const weather = { location: "南宁", condition: "多云", temperature: "22–31℃", icon: "⛅" };
+const weather = { location: "南宁", condition: "晴转多云", temperature: "22–30℃", icon: "🌤️" };
 
 const planetPosts = planetPostsToday;
 
 const deepReadAtoms = [
-  { atom: "结构化信息收集通过受控差异提高判断质量", relation: "昨天的课堂反馈把模糊感受变成两个明确检查项；固定检查维度并保留开放追问，比只依赖整体印象更容易形成可复核改进。", question: "下一次课堂反馈能否固定问“目标是否清楚、哪个环节没有收束”，同时保留一个开放问题？" },
-  { atom: "平台视图不完整时用历史样本建立纵向基线", relation: "昨天的一次模型比较很具体，但仍只是单次样本；可靠判断需要用相同检查项保留多次任务结果。", question: "自己的内容与工具实验，最少保留哪些跨期字段，才能在十次以后比较而不是凭印象复盘？" },
+  { atom: "工具编排应分开按需发现与结果压缩", relation: "昨日的数据任务说明“继续处理所有缺口”并不等于推进结果；工作流也应只把当前能改变判断的工具与数据带入下一步。", question: "现有每日简报中，哪些输入必须预载，哪些只在特定栏目按需读取，哪些中间结果应先过滤？" },
+  { atom: "Agent 风险应按完整工作流而非单条回答监测（临时）", relation: "今日简报同时依赖私密输入和公开输出；只检查最终页面文案不足以证明整个处理过程遵守了数据边界。", question: "自己的 Agent 任务最少应记录哪四项运行元数据，才能区分权限、输入、重试和输出位置？" },
 ];
 
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
@@ -295,7 +295,7 @@ export default function Home() {
             </details>
             <details className="nav-group" data-nav-group>
               <summary className="nav-title"><span className="nav-icon icon-hotlist">↗</span><span>热点榜单</span><span className="nav-chevron">⌄</span></summary>
-              <div className="nav-sub"><a href="#hotlist">查看 2026 年 9 月 9 日完整榜单</a></div>
+              <div className="nav-sub"><a href="#hotlist">查看 2026 年 9 月 10 日完整榜单</a></div>
             </details>
           </nav>
           <p className="sidebar-note">点小标题直达正文 · 折叠内容会自动展开</p>
@@ -303,8 +303,8 @@ export default function Home() {
 
         <div className="page" id="top">
           <section className="hero">
-            <div className="date-block"><div className="date-day">10</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期四</p></div></div>
-            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>一堂课有趣，<br />不等于教学目标清楚。</h1><p className="judgment">一次具体课后反馈把模糊的“课堂有问题”收窄为两个可修改点：目标是否清楚，每个环节是否真正收束。今天先把这段经历讲清楚，再只改一个环节验证。</p></div>
+            <div className="date-block"><div className="date-day">11</div><div><p className="date-month">2026 · 09</p><p className="date-week">星期五</p></div></div>
+            <div className="hero-copy"><p className="eyebrow">TODAY&apos;S DIRECTION</p><h1>惩罚行为，<br />不要惩罚表达。</h1><p className="judgment">一边邀请真实表达，一边把回答、站起或上台变成惩罚，会让课堂机制与课程目标互相抵消。今天先把这段真实摩擦讲清楚，下一节课只验证一句替代话术。</p></div>
             <div className="hero-weather" aria-label={weather.location + "当天天气：" + weather.condition + "，" + weather.temperature}>
               <span className="weather-icon">{weather.icon}</span>
               <span className="weather-copy"><strong>{weather.condition}</strong><small>{weather.location} · {weather.temperature}</small></span>
@@ -483,15 +483,15 @@ export default function Home() {
               <div className="brief-content">{renderMarkdown(signalRadar, "signal-radar")}</div>
             </details> : null}
             <details className="brief-item" id="early-action">
-              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次“结果计价”小实验</strong></span><span className="plus">＋</span></summary>
+              <summary><span className="brief-index">行动</span><span className="brief-main"><span className="pill">今日行动建议</span><strong>完成一次“研究调用账本”实验</strong></span><span className="plus">＋</span></summary>
               <div className="brief-content">{renderMarkdown(actionAdvice, "action")}</div>
             </details>
           </section>
 
-          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日无星主更新</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-09-09/26-09-09姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 9 月 9 日原始归档 ↗</a></p>{planetPosts.length ? <div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div> : <article className="review-card static-review-card" id="planet-status"><h3>昨日无星主更新</h3><div><p>2026 年 9 月 9 日精确日期归档已生成，记录为“今日无星主更新”。没有使用其他日期内容代替。</p></div></article>}
+          <section className="section" id="planet"><div className="section-heading"><div><p className="eyebrow">JIANG HUSHUO</p><h2>姜胡说</h2></div><p>昨日 2 条星主原文</p></div><p><a className="archive-link" href="/daily-briefing/knowledge/2026-09-10/26-09-10姜胡说知识星球.md" target="_blank" rel="noopener noreferrer">查看 9 月 10 日原始归档 ↗</a></p>{planetPosts.length ? <div className="planet-list">{planetPosts.map((post) => <details className="planet-card" id={"planet-" + post.index} key={post.index}><summary><span className="planet-number">{post.index}</span><span><small>{post.author} · {post.published}</small><strong>{post.title}</strong></span><span className="planet-kind">原文</span></summary><div className="planet-body">{post.body.split("\n").map((line, i) => line ? <p key={i}>{line}</p> : <br key={i} />)}{post.images.map((src) => <img src={src} alt={post.title + " 原始图片"} key={src} />)}</div></details>)}</div> : <article className="review-card static-review-card" id="planet-status"><h3>昨日无星主更新</h3><div><p>2026 年 9 月 10 日精确日期归档没有星主原文。没有使用其他日期内容代替。</p></div></article>}
           </section>
 
-          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实、候选解释与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>昨日的可确认进展来自三类现实反馈：一项资料收集任务暴露了外部依赖；一次课后反馈把课堂问题收窄为目标与闭环；一次同任务模型比较给出了具体的错误发现差异。</p><p>本人也记录了睡眠不足和白天状态差，这会影响对执行模式的解释，不能把所有未完成都归因为意愿问题。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>近七天从试讲、正式课堂、协作任务到表格检查，现实场景持续把模糊问题变成可观察对象：互动是否产生预期行为、文件方案是否能现场工作、课堂目标是否被理解、模型是否找出具体错误。</p><p>开放式内容产出仍少见可检查成品，但更短的现实反馈回路正在增加。替代解释是新岗位负荷、睡眠波动和临时任务本身提供了更强外部结构。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>近七天重复模式，9 月 9 日新增一次外部反馈和一次同任务工具对比。</p><p><strong>候选解释：</strong>用户在现实任务中获得具体错误、反馈或截止条件时，更容易把抽象困惑收窄成可修改的问题。</p><p><strong>替代解释：</strong>近期新岗位、课堂密度与睡眠不足同样可以解释注意力和产出差异；外部结构有效不等于用户缺乏内在动机。</p><p><strong>当前观察：</strong>相比继续寻找“更好的方法”，把一次反馈改写为一个目标、一个环节和一个验收结果，更接近可验证进展。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p>如果选择主推题，只录一遍：讲一节“有趣但目标不清楚”的真实课 → 说出现在如何区分有趣与教清楚 → 引用两条去身份化反馈 → 说明下一次只验证哪个目标或闭环。</p><p><strong>完成标准：</strong>保存一版 3–5 分钟原始草稿即停止；不要求剪辑、发布或先补一门课程。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>今天不新增方法库。先把课后反馈变成一张“目标＋环节＋收束语”卡片，再用下一次课堂结果判断是否有效。</p></div></article></div></section>
+          <section className="section" id="review"><div className="section-heading"><div><p className="eyebrow">PERSONAL REVIEW</p><h2>复盘</h2></div><p>事实、候选解释与 AI 建议分开呈现</p></div><div className="review-grid"><details className="review-card" id="yesterday-review" open><summary>昨日复盘</summary><div><p>昨日出现两个清楚的现实边界：一项数据工作被外部填写意愿和流程限制，继续投入无法改变结果；一节课堂则暴露出纪律手段与“安全表达”目标冲突。</p><p>本人也明确记录了睡眠不足和疲惫，这可能影响耐心、课堂节奏与挫败感，不能把当天全部问题都归因为方法错误或意愿不足。</p></div></details><article className="review-card static-review-card" id="seven-day-trend"><h3>近七天趋势</h3><div><p>近七天从线下交流、第一节正式课、连续课堂、资料回收、表格检查到课件迭代，现实摩擦持续被改写为更小的可观察问题：设备失效有没有备份、课堂目标是否清楚、纪律动作是否与表达目标冲突、某项工作是否真的在控制范围内。</p><p>这已是跨多个场景的重复信号，但替代解释仍包括新岗位提供密集反馈、睡眠波动降低耐受度，以及不同班级本身存在差异。</p></div></article><article className="review-card static-review-card diagnosis" id="cognitive-observation"><h3>AI 认知观察</h3><div><p><strong>证据等级：</strong>近七天重复模式。</p><p><strong>候选解释：</strong>当现场摩擦被拆成目标、行为和可见后果时，用户更容易形成可修改、可复查的判断。</p><p><strong>替代解释：</strong>新岗位、课堂差异与睡眠不足同样会让问题更突出；更具体的复盘不等于下一次结果一定改善。</p><p><strong>当前观察：</strong>昨日最有价值的变化不是又改了一版 PPT，而是识别到“纪律管理正在破坏课程想要的安全表达”这一机制冲突。</p></div></article><article className="review-card static-review-card diagnosis" id="minimum-action"><h3>最小行动建议</h3><div><p>如果选择主推题，只录一遍：讲一段课堂经历 → 说明“惩罚行为，不惩罚表达”的判断 → 引用一次去身份化的参与差异 → 说出下一节课只验证哪一句纪律话术。</p><p><strong>完成标准：</strong>保存一版 3–5 分钟原始草稿即停止；不要求剪辑、发布或先补一门课程。</p></div></article><article className="review-card static-review-card diagnosis" id="action-diagnosis"><h3>AI 执行力诊断 / 建议</h3><div><p>今天不新增方法库。先把四句替代纪律话术中的一句写进教案，用下一节课的实际结果判断它是否减少机制冲突。</p></div></article></div></section>
 
           <section className="section" id="deep-reads">
             <div className="section-heading"><div><p className="eyebrow">DEEP READS</p><h2>今日深读</h2></div><p>{deepReads.length} 篇云端早报原文，任选一篇</p></div>
@@ -521,19 +521,19 @@ export default function Home() {
             </details>)}</div> : <article className="review-card static-review-card" id="learning-practice">
               <h3>今天不新增课程</h3>
               <div>
-                <p><strong>AI 建议：</strong>昨日已经出现课堂目标与闭环的具体外部反馈。当前缺口不是缺少更多课程，而是把这份反馈变成一张可验证的小改动。</p>
-                <p><strong>今天只练习：</strong>写一张卡：学生下课时要能做什么 → 当前哪个环节服务这个目标 → 用哪一句话收束并检查。完成一张卡即停止。</p>
+                <p><strong>AI 建议：</strong>昨日已经形成足够具体的课堂机制判断和四句替代话术。当前缺口是把其中一句带入下一节课并记录结果，而不是继续观看课堂管理或表达课程。</p>
+                <p><strong>今天只练习：</strong>从四句替代话术中只选一句，写进下一节课教案；课后只记录“是否使用、学生是否恢复安静、是否仍有人主动表达”。完成这一条记录即停止。</p>
                 <p><strong>适用边界：</strong>如果录制暴露出明确的知识或表达缺口，再针对该缺口寻找资源；今天不为填满栏目而推荐课程。</p>
               </div>
             </article>}
           </section>
 
           <section className="section" id="hotlist">
-            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 9 月 9 日完整榜单</p></div>
-            <a className="hotlist" href="/daily-briefing/hotlist/2026-09-09.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 9 月 9 日完整榜单</strong><span className="arrow">↗</span></a>
+            <div className="section-heading"><div><p className="eyebrow">HOT LIST</p><h2>热点榜单</h2></div><p>2026 年 9 月 10 日完整榜单</p></div>
+            <a className="hotlist" href="/daily-briefing/hotlist/2026-09-10.html" aria-label="打开热点榜单"><span>昨日榜单</span><strong>查看 2026 年 9 月 10 日完整榜单</strong><span className="arrow">↗</span></a>
           </section>
 
-          <footer><p>一堂课有趣，<br />不等于教学目标清楚。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
+          <footer><p>惩罚行为，<br />不要惩罚表达。</p><span>每日 09:00 更新 · 完整内容折叠保存</span></footer>
         </div>
       </div>
     </main>
