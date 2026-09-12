@@ -9,17 +9,24 @@ export const planetPostsToday: Array<{
   {
     index: "1",
     author: "大胡子",
-    published: "2026-09-10 11:23",
-    title: "go-lite这个浏览器有点意思",
-    body: "go-lite这个浏览器有点意思。同时为人和AI两个终端提供“阅读体验”。\n也就是说，如果你有什么事是必须通过web完成的，你让AI和它直接沟通会更好。\n使用方法在这里：。",
-    images: [],
+    published: "2026-09-10 23:45",
+    title: "LocalSend：局域网跨设备传输",
+    body: "推荐个好东西：LocalSend\n无视系统，在局域网内的任何设备之间快速传输。",
+    images: [
+      "/daily-briefing/knowledge/2026-09-11/images/[1] 大胡子 -1.png",
+      "/daily-briefing/knowledge/2026-09-11/images/[1] 大胡子 -2.jpg",
+    ],
   },
   {
     index: "2",
     author: "大胡子",
-    published: "2026-09-10 11:51",
-    title: "几乎所有AI的Web端都是免费的",
-    body: "好多人不理解我上一条在说什么，\n那么，\n给大家一个小提示吧：几乎所有AI的Web端都是免费的。",
-    images: [],
+    published: "2026-09-11 13:29",
+    title: "2018 年，我是这么赚钱的",
+    body: "在东子的书架上，看到了他打印出来的公众号。\n2018 年，我是这么赚钱的。\n对当下的老伙计应该还有帮助。",
+    images: [
+      "/daily-briefing/knowledge/2026-09-11/images/[2] 大胡子 -1.jpg",
+      "/daily-briefing/knowledge/2026-09-11/images/[2] 大胡子 -2.jpg",
+      "/daily-briefing/knowledge/2026-09-11/images/[2] 大胡子 -3.jpg",
+    ],
   },
 ];
